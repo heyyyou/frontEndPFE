@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { ModalController } from '@ionic/angular';
 import { SwiperOptions } from 'swiper';
+import { ModalImageComponent } from '../modal-image/modal-image.component';
 @Component({
   selector: 'app-home',
   templateUrl: 'home.page.html',
@@ -37,7 +38,15 @@ export class HomePage {
   selected_users = null;
   constructor(private modalCtrl: ModalController) { }
 
-  openPreview(img) {
+  async openPreview(img) {
+    const modal = await this.modalCtrl.create({
+      component: ModalImageComponent,
+      componentProps: {
+        img
+      },
+      cssClass: 'transparent-modal'
+    });
+    modal.present();
 
   }
 }

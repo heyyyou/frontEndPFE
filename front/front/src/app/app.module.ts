@@ -1,3 +1,4 @@
+import { ModalImageComponent } from './modal-image/modal-image.component';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouteReuseStrategy } from '@angular/router';
@@ -6,11 +7,11 @@ import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { IonicSelectableModule } from 'ionic-selectable';
-import { ModalImagesPipe } from './modal-images.pipe';
+import { SwiperModule } from 'swiper/angular';
 @NgModule({
-  declarations: [AppComponent, ModalImagesPipe],
+  declarations: [AppComponent, ModalImageComponent],
   entryComponents: [],
-  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, IonicSelectableModule],
+  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, IonicSelectableModule, SwiperModule],
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
   bootstrap: [AppComponent],
 })
