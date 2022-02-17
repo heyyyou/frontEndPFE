@@ -69,12 +69,14 @@
       <ion-button fill="outline" color="success">+</ion-button>
       <ion-button fill="outline" color="danger">-</ion-button>
     </div>
-    <ion-card>
-      <swiper [config]="config">
-        <ng-template swiperSlide *ngFor="let img of[1,2,3,4]">
-          <img src="assets/{{img}}.jpg" tappable (click)="openPreview(img)" />
-        </ng-template>
-      </swiper>
-    </ion-card>
+    <div>
+      <ion-card>
+        <swiper [config]="config">
+          <ng-template swiperSlide *ngFor="let img of[1,2,3,4]">
+            <img src="assets/{{img}}.jpg" tappable (click)="openPreview(img)" />
+          </ng-template>
+        </swiper>
+      </ion-card>
+    </div>
   </ion-content>
 </ion-app>
