@@ -9,7 +9,7 @@
         ></ion-button>
       </ion-buttons>
       <div class="image-cropper">
-        <img src="https://via.placeholder.com/150" class="rounded" />
+        <img src="assets/mer.jpg" class="rounded" />
       </div>
       <br />
       <ion-item lines="none" style="border-radius: 15px">
@@ -65,19 +65,21 @@
 
   <ion-content>
     <div class="ajouterdelet">
-      <ion-button fill="outline" color="success">+</ion-button>
+      <ion-button fill="outline" color="success" (click)="openGallery()"
+        >+</ion-button
+      >
       <ion-button fill="outline" color="danger">-</ion-button>
     </div>
     <div>
       <ion-card>
         <swiper [config]="config" class="swiper-slide">
-          <ng-template swiperSlide *ngFor="let img of images">
+          <ng-template swiperSlide *ngFor="let imge of img">
             <img
-              [src]="img"
+              [src]="imge"
               onerror="this.src='assets/add.jpg'"
               alt="alternative"
               tappable
-              (click)="openPreview(img)"
+              (click)="openPreview(imge)"
             />
           </ng-template>
         </swiper>

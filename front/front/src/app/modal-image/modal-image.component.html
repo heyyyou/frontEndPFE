@@ -1,12 +1,9 @@
 <ion-content>
   <swiper [config]="config" #swiper>
     <ng-template swiperSlide>
+      <!-- par tactile -->
       <div class="swiper-zoom-container">
-        <img
-          src="assets/{{ img }}.jpg"
-          onerror="this.src='assets/add.jpg'"
-          alt="alternative"
-        />
+        <img src="{{ imge }}" />
       </div>
     </ng-template>
   </swiper>

@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { ModalController } from '@ionic/angular';
 import { SwiperOptions, Pagination } from 'swiper';
 import { ModalImageComponent } from '../modal-image/modal-image.component';
+
 @Component({
   selector: 'app-home',
   templateUrl: 'home.page.html',
@@ -40,7 +41,7 @@ export class HomePage {
   ]
     ;
   selected_users = null;
-  images: any = [
+  img: any = [
     "assets/1.jpg",
     "assets/2.jpg",
     "assets/3.jpg",
@@ -49,16 +50,19 @@ export class HomePage {
   ]
   constructor(private modalCtrl: ModalController) { }
 
-  async openPreview(img) {
+  async openPreview(imge) {
     const modal = await this.modalCtrl.create({
       component: ModalImageComponent,
       componentProps: {
-        img
+        imge
       },
       cssClass: 'transparent-modal'
     });
     modal.present();
 
+  }
+  openGallery() {
+    console.log("opnened")
   }
 }
 

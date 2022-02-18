@@ -11,7 +11,7 @@ SwiperCore.use([Zoom, Pagination])
 })
 export class ModalImageComponent implements OnInit {
   @ViewChild('swiper') swiper: SwiperComponent
-  @Input() img: String;
+  @Input() imge: String;
   config: SwiperOptions = {
     zoom: {
       maxRatio: 10,
@@ -29,6 +29,7 @@ export class ModalImageComponent implements OnInit {
     zoomIn ? zoom.in() : zoom.out();
 
   }
+
 
 
 
