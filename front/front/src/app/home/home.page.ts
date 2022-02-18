@@ -1,7 +1,10 @@
 import { Component } from '@angular/core';
 import { ModalController } from '@ionic/angular';
 import { SwiperOptions, Pagination } from 'swiper';
+import { ActionSheetController } from '@ionic/angular';
 import { ModalImageComponent } from '../modal-image/modal-image.component';
+import { UserPhoto, PhotoService } from '../services/photo.service';
+
 
 @Component({
   selector: 'app-home',
@@ -48,7 +51,33 @@ export class HomePage {
     "assets/4.jpg",
     "assets/empty.jpg"
   ]
-  constructor(private modalCtrl: ModalController) { }
+  constructor(private modalCtrl: ModalController, public photoService: PhotoService, public actionSheetController: ActionSheetController) { }
+  async ngOnInit() {
+    await this.photoService.loadSaved();
+  }
+  public async showActionSheet(photo: UserPhoto, position: number) {
+    const actionSheet = await this.actionSheetController.create({
+      header: 'Photos',
+      buttons: [{
+        text: 'Delete',
+        role: 'destructive',
+        icon: 'trash',
+        handler: () => {
+          this.photoService.deletePicture(photo, position);
+        }
+      }, {
+        text: 'Cancel',
+        icon: 'close',
+        role: 'cancel',
+        handler: () => {
+          // Nothing to do, action sheet is automatically closed
+        }
+      }]
+    });
+    await actionSheet.present();
+  }
+
+
 
   async openPreview(imge) {
     const modal = await this.modalCtrl.create({
@@ -61,9 +90,7 @@ export class HomePage {
     modal.present();
 
   }
-  openGallery() {
-    console.log("opnened")
-  }
+
 }
 
 

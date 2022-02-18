@@ -65,7 +65,10 @@
 
   <ion-content>
     <div class="ajouterdelet">
-      <ion-button fill="outline" color="success" (click)="openGallery()"
+      <ion-button
+        fill="outline"
+        color="success"
+        (click)="photoService.addNewToGallery()"
         >+</ion-button
       >
       <ion-button fill="outline" color="danger">-</ion-button>
@@ -73,9 +76,12 @@
     <div>
       <ion-card>
         <swiper [config]="config" class="swiper-slide">
-          <ng-template swiperSlide *ngFor="let imge of img">
+          <ng-template
+            swiperSlide
+            *ngFor="let imge of photoService.photos; index as position"
+          >
             <img
-              [src]="imge"
+              [src]="imge.webviewPath"
               onerror="this.src='assets/add.jpg'"
               alt="alternative"
               tappable
@@ -88,4 +94,18 @@
 
     <ion-button expand="block" size="large">AI Modal</ion-button>
   </ion-content>
+
+  <!-- ion-grid>
+  <ion-row>
+    <ion-col
+      size="6"
+      *ngFor="let photo of photoService.photos; index as position"
+    >
+      <ion-img
+        [src]="photo.webviewPath"
+        (click)="showActionSheet(photo, position)"
+      ></ion-img>
+    </ion-col>
+  </ion-row>
+</ion-app> -->
 </ion-app>

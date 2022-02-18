@@ -8,6 +8,7 @@ import { HomePageRoutingModule } from './home-routing.module';
 import { IonicSelectableModule } from 'ionic-selectable';
 import { SwiperModule } from 'swiper/angular';
 
+
 @NgModule({
   imports: [
     CommonModule,
