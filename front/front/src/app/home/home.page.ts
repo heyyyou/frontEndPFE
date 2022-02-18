@@ -10,9 +10,11 @@ import { ModalImageComponent } from '../modal-image/modal-image.component';
 export class HomePage {
 
   config: SwiperOptions = {
-    slidesPerView: 1.35,
+    slidesPerView: 1.20,
     spaceBetween: 15,
-    centeredSlides: true
+    centeredSlides: true,
+    pagination: { clickable: true },
+
 
   }
 
@@ -38,6 +40,13 @@ export class HomePage {
   ]
     ;
   selected_users = null;
+  images: any = [
+    "assets/1.jpg",
+    "assets/2.jpg",
+    "assets/3.jpg",
+    "assets/4.jpg",
+    "assets/empty.jpg"
+  ]
   constructor(private modalCtrl: ModalController) { }
 
   async openPreview(img) {

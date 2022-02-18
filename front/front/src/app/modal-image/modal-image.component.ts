@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, Input, OnInit, ViewChild } from '@angular/core';
 import { ModalController } from '@ionic/angular';
 import Swiper, { Pagination, SwiperOptions } from 'swiper';
 import SwiperCore, { Zoom } from 'swiper';
