@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { ModalController } from '@ionic/angular';
-import { SwiperOptions } from 'swiper';
+import { SwiperOptions, Pagination } from 'swiper';
 import { ModalImageComponent } from '../modal-image/modal-image.component';
 @Component({
   selector: 'app-home',
@@ -13,7 +13,9 @@ export class HomePage {
     slidesPerView: 1.35,
     spaceBetween: 15,
     centeredSlides: true
+
   }
+
 
   segment = 'all';
   users = [

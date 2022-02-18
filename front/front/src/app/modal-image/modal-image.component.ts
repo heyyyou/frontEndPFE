@@ -15,9 +15,12 @@ export class ModalImageComponent implements OnInit {
   config: SwiperOptions = {
     zoom: {
       maxRatio: 10,
-      minRatio: 0.2
+      minRatio: 0.2,
+
     }
+
   }
+
   constructor(private modalCtrl: ModalController) { }
 
   ngOnInit() { }
@@ -26,6 +29,7 @@ export class ModalImageComponent implements OnInit {
     zoomIn ? zoom.in() : zoom.out();
 
   }
+
 
 
 

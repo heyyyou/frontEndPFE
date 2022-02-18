@@ -64,6 +64,10 @@
     ><br />
   </ion-header>
 
+  <link
+    rel="stylesheet"
+    href="https://unpkg.com/swiper/swiper-bundle.min.css"
+  />
   <ion-content>
     <div class="ajouterdelet">
       <ion-button fill="outline" color="success">+</ion-button>
@@ -71,7 +75,7 @@
     </div>
     <div>
       <ion-card>
-        <swiper [config]="config">
+        <swiper [config]="config" class="swiper-slide">
           <ng-template swiperSlide *ngFor="let img of[1,2,3,4]">
             <img src="assets/{{img}}.jpg" tappable (click)="openPreview(img)" />
           </ng-template>
