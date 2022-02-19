@@ -62,6 +62,7 @@ export class HomePage {
         text: 'Delete',
         role: 'destructive',
         icon: 'trash',
+
         handler: () => {
           this.photoService.deletePicture(photo, position);
         }
@@ -90,7 +91,11 @@ export class HomePage {
     modal.present();
 
   }
+  AIModal() {
+    if (this.photoService == null) {
 
+    }
+  }
 }
 
 

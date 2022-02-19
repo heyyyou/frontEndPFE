@@ -66,15 +66,23 @@
   <ion-content>
     <div class="ajouterdelet">
       <ion-button
+        *ngIf="photoService.photos.length<=4 ;else thenBlock"
         fill="outline"
         color="success"
         (click)="photoService.addNewToGallery()"
         >+</ion-button
       >
-      <ion-button fill="outline" color="danger">-</ion-button>
+      <ng-template #thenBlock></ng-template>
     </div>
     <div>
       <ion-card>
+        <ion-button
+          *ngFor="let photo of photoService.photos; index as position"
+          fill="outline"
+          color="danger"
+          (click)="showActionSheet(photo, position)"
+          >-</ion-button
+        >
         <swiper [config]="config" class="swiper-slide">
           <ng-template
             swiperSlide
@@ -85,7 +93,7 @@
               onerror="this.src='assets/add.jpg'"
               alt="alternative"
               tappable
-              (click)="openPreview(imge)"
+              (click)="openPreview(imge.webviewPath)"
             />
           </ng-template>
         </swiper>
