@@ -80,18 +80,18 @@
     </div>
     <div>
       <ion-card>
-        <ion-button
-          *ngFor="let photo of photoService.photos; index as position"
-          fill="outline"
-          color="danger"
-          (click)="showActionSheet(photo, position)"
-          >-</ion-button
-        >
+
         <swiper [config]="config" class="swiper-slide">
           <ng-template
             swiperSlide
-            *ngFor="let imge of photoService.photos; index as position"
+            *ngFor="let imge of photoService.photos;  let i = index"
           >
+          <ion-button
+          fill="outline"
+          color="danger"
+          (click)="showActionSheet(imge, i)"
+          >-</ion-button
+        >
             <img
               [src]="imge.webviewPath"
               onerror="this.src='assets/add.jpg'"
