@@ -66,13 +66,17 @@
   <ion-content>
     <div class="ajouterdelet">
       <ion-button
-        *ngIf="photoService.photos.length<=4 ;else thenBlock"
+        *ngIf="photoService.photos.length<=4 ;else thenBlock "
         fill="outline"
         color="success"
         (click)="photoService.addNewToGallery()"
         >+</ion-button
       >
-      <ng-template #thenBlock></ng-template>
+      <ng-template #thenBlock>
+        <ion-button fill="outline" color="success" (click)="presentToast()"
+          >+</ion-button
+        ></ng-template
+      >
     </div>
     <div>
       <ion-card>
