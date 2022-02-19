@@ -46,7 +46,7 @@
       <br />
     </ion-toolbar>
     <br />
-    <ion-segment
+    <!-- <ion-segment
       [(ngModel)]="segment"
       style="border-radius: 30px"
       color="primary"
@@ -59,10 +59,24 @@
       <ion-segment-button value="gauche">
         <ion-icon name="eye-outline" color="favorites"></ion-icon>
         <ion-text color="favorites"> Oeil Gauche</ion-text></ion-segment-button
-      > </ion-segment
-    ><br />
+      > </ion-segment -->
+    <br />
   </ion-header>
-
+  <ion-segment
+    [(ngModel)]="segment"
+    style="border-radius: 30px"
+    color="primary"
+    size="small"
+  >
+    <ion-segment-button value="droite"
+      ><ion-icon name="eye-outline" color="favorites"></ion-icon
+      ><ion-text color="favorites"> Oeil Droite</ion-text>
+    </ion-segment-button>
+    <ion-segment-button value="gauche">
+      <ion-icon name="eye-outline" color="favorites"></ion-icon>
+      <ion-text color="favorites"> Oeil Gauche</ion-text></ion-segment-button
+    > </ion-segment
+  ><br />
   <ion-content>
     <div class="ajouterdelet">
       <ion-button
@@ -79,19 +93,18 @@
       >
     </div>
     <div>
-      <ion-card>
-
+      <ion-card class="cardfull">
         <swiper [config]="config" class="swiper-slide">
           <ng-template
             swiperSlide
             *ngFor="let imge of photoService.photos;  let i = index"
           >
-          <ion-button
-          fill="outline"
-          color="danger"
-          (click)="showActionSheet(imge, i)"
-          >-</ion-button
-        >
+            <ion-button
+              fill="outline"
+              color="danger"
+              (click)="showActionSheet(imge, i)"
+              >-</ion-button
+            >
             <img
               [src]="imge.webviewPath"
               onerror="this.src='assets/add.jpg'"
@@ -104,7 +117,9 @@
       </ion-card>
     </div>
 
-    <ion-button expand="block" size="large">AI Modal</ion-button>
+    <ion-button expand="block" size="large" class="AImodel"
+      >AI Modal</ion-button
+    >
   </ion-content>
 
   <!-- ion-grid>

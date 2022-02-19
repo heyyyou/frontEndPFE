@@ -33,9 +33,9 @@
 //   }
 
 ion-toolbar {
-  height: 70%;
+  height: 90%;
   .bordered {
-    --border-raduis: 15px;
+    --border-raduis: 20px;
     --box-shadow: 6px 5px 10px #d1d1d1, -5px -5px 10px #ffffff;
   }
 
@@ -111,4 +111,39 @@ ion-avatar {
   position: relative;
   margin-left: auto;
   margin-right: auto;
+}
+.cardfull {
+  border-radius: 12px;
+  padding-top: 7%;
+  margin-left: 7%;
+  margin-right: 7%;
+  margin-top: 5%;
+  margin-bottom: 5%;
+}
+
+.addicon {
+  width: 50px;
+  height: 50px;
+}
+.AImodel {
+  margin-top: 7%;
+  margin-bottom: 10%;
+  margin-left: 7%;
+  margin-right: 7%;
+  --box-shadow: 6px 5px 10px #d1d1d1, -5px -5px 10px #ffffff;
+}
+
+.item1 {
+  margin-left: 7%;
+  margin-right: 7%;
+}
+.bordered2 {
+  height: 30%;
+  width: 15%;
+  border-radius: 20px;
+}
+.bordered3 {
+  height: 50px;
+  width: 50px;
+  border-radius: 20px;
 }

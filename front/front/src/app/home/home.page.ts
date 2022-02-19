@@ -14,6 +14,9 @@ import { ToastController } from '@ionic/angular';
   styleUrls: ['home.page.scss'],
 })
 export class HomePage {
+  segmentChanged(ev: any) {
+    console.log('Segment changed', ev);
+  }
 
   config: SwiperOptions = {
     slidesPerView: 1.20,
