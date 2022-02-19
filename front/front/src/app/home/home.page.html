@@ -2,22 +2,118 @@
   <ion-header class="ion-no-border">
     <ion-toolbar
       color="favorite"
-      style="
-        border-bottom-left-radius: 12px;
-        border-bottom-right-radius: 12px;
-        height: 200%;
-      "
+      style="border-bottom-left-radius: 22px; border-bottom-right-radius: 22px"
       ><ion-buttons>
-        <ion-back-button defaultHref="home" color="dark"></ion-back-button>
+        <ion-button class="bordered" fill="solid" color="light">
+          <ion-icon name="arrow-back-outline"></ion-icon
+        ></ion-button>
       </ion-buttons>
-   <div class="avatar-containter">
-    <ion-avatar>
-      <img
-        src="https://gravatar.com/avatar/dba6bae8c566f9d4041fb9cd9ada7741?d=identicon&f=y"
-      />
-    </ion-avatar>
-   </div>
-
+      <div class="image-cropper">
+        <img src="assets/mer.jpg" class="rounded" />
+      </div>
+      <br />
+      <ion-item lines="none" style="border-radius: 15px">
+        <ion-label
+          ><ion-text color="new2">choisissez un patient</ion-text>
+        </ion-label>
+        <ionic-selectable
+          [(ngModel)]="selected_users"
+          [items]="users"
+          itemValueField="id"
+          itemTextField="name"
+          lines="none"
+          style="border-radius: 15px"
+        >
+          <ng-template ionicSelectableHeaderTemplate>
+            <div class="class">
+              <ion-buttons>
+                <ion-button class="bordered" fill="solid" color="light">
+                  <ion-icon name="arrow-back-outline"></ion-icon
+                ></ion-button>
+              </ion-buttons>
+              <ion-searchbar
+                color="light"
+                class="cancel-button-icon"
+                placeholder="cherchez un patient"
+                style="border-radius: 111px"
+                lines="none"
+              ></ion-searchbar>
+            </div>
+          </ng-template>
+        </ionic-selectable>
+      </ion-item>
+      <br />
+      <br />
     </ion-toolbar>
+    <br />
+    <ion-segment
+      [(ngModel)]="segment"
+      style="border-radius: 30px"
+      color="primary"
+      size="small"
+    >
+      <ion-segment-button value="droite"
+        ><ion-icon name="eye-outline" color="favorites"></ion-icon
+        ><ion-text color="favorites"> Oeil Droite</ion-text>
+      </ion-segment-button>
+      <ion-segment-button value="gauche">
+        <ion-icon name="eye-outline" color="favorites"></ion-icon>
+        <ion-text color="favorites"> Oeil Gauche</ion-text></ion-segment-button
+      > </ion-segment
+    ><br />
   </ion-header>
+
+  <ion-content>
+    <div class="ajouterdelet">
+      <ion-button
+        *ngIf="photoService.photos.length<=4 ;else thenBlock"
+        fill="outline"
+        color="success"
+        (click)="photoService.addNewToGallery()"
+        >+</ion-button
+      >
+      <ng-template #thenBlock></ng-template>
+    </div>
+    <div>
+      <ion-card>
+
+        <swiper [config]="config" class="swiper-slide">
+          <ng-template
+            swiperSlide
+            *ngFor="let imge of photoService.photos;  let i = index"
+          >
+          <ion-button
+          fill="outline"
+          color="danger"
+          (click)="showActionSheet(imge, i)"
+          >-</ion-button
+        >
+            <img
+              [src]="imge.webviewPath"
+              onerror="this.src='assets/add.jpg'"
+              alt="alternative"
+              tappable
+              (click)="openPreview(imge.webviewPath)"
+            />
+          </ng-template>
+        </swiper>
+      </ion-card>
+    </div>
+
+    <ion-button expand="block" size="large">AI Modal</ion-button>
+  </ion-content>
+
+  <!-- ion-grid>
+  <ion-row>
+    <ion-col
+      size="6"
+      *ngFor="let photo of photoService.photos; index as position"
+    >
+      <ion-img
+        [src]="photo.webviewPath"
+        (click)="showActionSheet(photo, position)"
+      ></ion-img>
+    </ion-col>
+  </ion-row>
+</ion-app> -->
 </ion-app>
