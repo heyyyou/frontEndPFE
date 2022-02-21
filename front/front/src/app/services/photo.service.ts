@@ -16,7 +16,7 @@ export class PhotoService {
   public async loadSaved() {
     // Retrieve cached photo array data
     const photoList = await Storage.get({ key: this.PHOTO_STORAGE });
-    this.photos = JSON.parse(photoList.value) || [];
+    this.photos = JSON.parse(photoList.value) || []; // traiter un objet json
 
     // If running on the web...
     if (!this.platform.is('hybrid')) {

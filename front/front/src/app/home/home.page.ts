@@ -6,6 +6,7 @@ import { ModalImageComponent } from '../modal-image/modal-image.component';
 import { UserPhoto, PhotoService } from '../services/photo.service';
 import { AlertController } from '@ionic/angular';
 import { ToastController } from '@ionic/angular';
+import { ChildrenOutletContexts, Router, RouterOutlet } from '@angular/router';
 
 
 @Component({
@@ -14,8 +15,10 @@ import { ToastController } from '@ionic/angular';
   styleUrls: ['home.page.scss'],
 })
 export class HomePage {
+  segment = 'all';
   segmentChanged(ev: any) {
-    console.log('Segment changed', ev);
+
+
   }
 
   config: SwiperOptions = {
@@ -28,35 +31,35 @@ export class HomePage {
   }
 
 
-  segment = 'all';
   users = [
     {
       id: 1,
       name: "chelly mariem",
       contry: "chebba",
-      image: "assets/aq.png",
+      url: "front/front/src/assets/1.jpg",
     },
     {
       id: 2,
       name: "chelly fatma",
-      contry: "chebba"
+      contry: "chebba",
+      url: "front/front/src/assets/1.jpg",
     },
     {
       id: 3,
       name: "chelly sarra",
-      contry: "chebba"
+      contry: "chebba",
+      url: "front/front/src/assets/1.jpg",
     },
   ]
     ;
+
   selected_users = null;
-  img: any = [
-    "assets/1.jpg",
-    "assets/2.jpg",
-    "assets/3.jpg",
-    "assets/4.jpg",
-    "assets/empty.jpg"
-  ]
-  constructor(private modalCtrl: ModalController, public photoService: PhotoService, public actionSheetController: ActionSheetController, public alertController: AlertController, public toastController: ToastController) { }
+  choose() {
+
+    this.selected_users.url;
+  }
+
+  constructor(private modalCtrl: ModalController, public photoService: PhotoService, public actionSheetController: ActionSheetController, public alertController: AlertController, public toastController: ToastController, private router: Router) { }
   async presentToast() {
     const toast = await this.toastController.create({
       message: '5 élèments maximum,merci',
@@ -104,10 +107,19 @@ export class HomePage {
     modal.present();
 
   }
-  AIModal() {
-    if (this.photoService == null) {
 
-    }
+  dismiss() {
+    // using the injected ModalController this page
+    // can "dismiss" itself and optionally pass back data
+    this.modalCtrl.dismiss({
+      'dismissed': true
+    });
+  }
+  ajouter_patient() {
+    this.router.navigate(['patient']);
+    console.log("mamam");
+
+
   }
 
 }

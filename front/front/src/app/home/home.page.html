@@ -9,8 +9,9 @@
         ></ion-button>
       </ion-buttons>
       <div class="image-cropper">
-        <img src="assets/mer.jpg" class="rounded" />
+        <img class="rounded" src="qs" />
       </div>
+
       <br />
       <ion-item lines="none" style="border-radius: 15px">
         <ion-label
@@ -23,11 +24,17 @@
           itemTextField="name"
           lines="none"
           style="border-radius: 15px"
+          (onChange)="choose()"
         >
           <ng-template ionicSelectableHeaderTemplate>
             <div class="class">
               <ion-buttons>
-                <ion-button class="bordered" fill="solid" color="light">
+                <ion-button
+                  class="bordered"
+                  fill="solid"
+                  color="light"
+                  (click)="dismiss()"
+                >
                   <ion-icon name="arrow-back-outline"></ion-icon
                 ></ion-button>
               </ion-buttons>
@@ -41,10 +48,16 @@
             </div>
           </ng-template>
         </ionic-selectable>
+
+        <ion-button fill="outline" color="priamry" (click)="ajouter_patient()">
+          <ion-icon name="person-add-outline" color="primary"></ion-icon
+        ></ion-button>
       </ion-item>
+
       <br />
       <br />
     </ion-toolbar>
+
     <br />
     <!-- <ion-segment
       [(ngModel)]="segment"
@@ -62,32 +75,34 @@
       > </ion-segment -->
     <br />
   </ion-header>
-  <ion-segment
-    [(ngModel)]="segment"
-    style="border-radius: 30px"
-    color="primary"
-    size="small"
-  >
-    <ion-segment-button value="droite"
-      ><ion-icon name="eye-outline" color="favorites"></ion-icon
-      ><ion-text color="favorites"> Oeil Droite</ion-text>
-    </ion-segment-button>
-    <ion-segment-button value="gauche">
-      <ion-icon name="eye-outline" color="favorites"></ion-icon>
-      <ion-text color="favorites"> Oeil Gauche</ion-text></ion-segment-button
-    > </ion-segment
-  ><br />
+  <div class="segment">
+    <ion-segment
+      [(ngModel)]="segment"
+      color="primary"
+      (ionChange)="segmentChanged($event)"
+    >
+      <ion-segment-button value="droite" (click)="droite()"
+        ><ion-icon name="eye-outline" color="favorites"></ion-icon
+        ><ion-text color="favorites"> Oeil Droite</ion-text>
+      </ion-segment-button>
+      <ion-segment-button value="gauche" (click)="gauche()">
+        <ion-icon name="eye-outline" color="favorites"></ion-icon>
+        <ion-text color="favorites"> Oeil Gauche</ion-text></ion-segment-button
+      >
+    </ion-segment>
+  </div>
+  <br />
   <ion-content>
     <div class="ajouterdelet">
       <ion-button
         *ngIf="photoService.photos.length<=4 ;else thenBlock "
-        fill="outline"
-        color="success"
+        fill="solid"
+        color="primary"
         (click)="photoService.addNewToGallery()"
-        >+</ion-button
-      >
+        ><ion-icon name="add-outline"></ion-icon
+      ></ion-button>
       <ng-template #thenBlock>
-        <ion-button fill="outline" color="success" (click)="presentToast()"
+        <ion-button fill="solid" color="primary" (click)="presentToast()"
           >+</ion-button
         ></ng-template
       >
@@ -95,19 +110,19 @@
     <div>
       <ion-card class="cardfull">
         <div *ngIf="photoService.photos.length===0">
-          meriem kharya
+          <img [src]="'assets/add.jpg'" />
         </div>
-        <swiper [config]="config" class="swiper-slide" *ngIf="photoService.photos.length>0">
+        <swiper [config]="config" class="swiper-slide">
           <ng-template
             swiperSlide
             *ngFor="let imge of photoService.photos;  let i = index"
           >
             <ion-button
               fill="outline"
-              color="danger"
+              color="priamry"
               (click)="showActionSheet(imge, i)"
-              >-</ion-button
-            >
+              ><ion-icon name="trash"></ion-icon
+            ></ion-button>
             <img
               [src]="imge.webviewPath"
               onerror="this.src='assets/add.jpg'"
@@ -119,23 +134,12 @@
         </swiper>
       </ion-card>
     </div>
-
-    <ion-button expand="block" size="large" class="AImodel"
+    <ion-button
+      expand="block"
+      size="large"
+      class="AImodel"
+      [class.button-disabled]="photoService.photos.length===0"
       >AI Modal</ion-button
     >
   </ion-content>
-
-  <!-- ion-grid>
-  <ion-row>
-    <ion-col
-      size="6"
-      *ngFor="let photo of photoService.photos; index as position"
-    >
-      <ion-img
-        [src]="photo.webviewPath"
-        (click)="showActionSheet(photo, position)"
-      ></ion-img>
-    </ion-col>
-  </ion-row>
-</ion-app> -->
 </ion-app>

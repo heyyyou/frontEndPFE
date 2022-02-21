@@ -147,3 +147,16 @@ ion-avatar {
   width: 50px;
   border-radius: 20px;
 }
+ion-content {
+  --background: #ffffff;
+}
+ion-segment {
+  --background-checked: var(--ion-color-primary);
+  --color-checked: var(--ion-color-success-dark);
+}
+.segment {
+  background-color: #f7f7f7;
+  border-radius: 12px;
+  margin-left: 7%;
+  margin-right: 7%;
+}
