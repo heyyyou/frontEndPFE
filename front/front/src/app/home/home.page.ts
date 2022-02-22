@@ -36,28 +36,31 @@ export class HomePage {
       id: 1,
       name: "chelly mariem",
       contry: "chebba",
-      url: "front/front/src/assets/1.jpg",
+      url: "assets/1.jpg",
     },
     {
       id: 2,
       name: "chelly fatma",
       contry: "chebba",
-      url: "front/front/src/assets/1.jpg",
+      url: "assets/fatma.jpg",
     },
     {
       id: 3,
       name: "chelly sarra",
       contry: "chebba",
-      url: "front/front/src/assets/1.jpg",
+      url: "assets/ma.jpg",
     },
   ]
     ;
 
   selected_users = null;
+  public pic: string;
   choose() {
-
-    this.selected_users.url;
+    console.log(this.selected_users)
+    this.pic = this.selected_users.url;
+    console.log(this.pic);
   }
+
 
   constructor(private modalCtrl: ModalController, public photoService: PhotoService, public actionSheetController: ActionSheetController, public alertController: AlertController, public toastController: ToastController, private router: Router) { }
   async presentToast() {
@@ -117,7 +120,6 @@ export class HomePage {
   }
   ajouter_patient() {
     this.router.navigate(['patient']);
-    console.log("mamam");
 
 
   }

@@ -1,3 +1,4 @@
+import { PatientComponent } from './patient/patient.component';
 import { ModalImageComponent } from './modal-image/modal-image.component';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
@@ -11,7 +12,7 @@ import { SwiperModule } from 'swiper/angular';
 import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
-  declarations: [AppComponent, ModalImageComponent],
+  declarations: [AppComponent, ModalImageComponent, PatientComponent],
   entryComponents: [],
   imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, IonicSelectableModule, SwiperModule
     , HttpClientModule,],
