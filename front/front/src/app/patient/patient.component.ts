@@ -8,6 +8,8 @@ import { parseISO } from 'date-fns/esm';
   styleUrls: ['./patient.component.scss'],
 })
 export class PatientComponent implements OnInit {
+  photo = 'https://i.pravatar.cc/150';
+
   modes = ['date', 'date-time', 'month', 'month-year', 'time', 'time-date', 'year'];
   selectedMode = 'month-year';
   showPicker = false;

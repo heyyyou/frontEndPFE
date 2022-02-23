@@ -4,9 +4,11 @@
   padding-top: 1px;
 }
 .header {
-  h3 {
+  h5 {
     color: white;
     text-align: center;
+    font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+      "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
   }
 
   border-bottom-right-radius: 12px;
@@ -45,6 +47,17 @@
 .espace {
   padding-left: 10px;
 }
+.valider {
+  margin-top: 7%;
+  margin-bottom: 10%;
+  margin-left: 7%;
+  margin-right: 7%;
+  --box-shadow: 6px 5px 10px #d1d1d1, -5px -5px 10px #ffffff;
+}
+.text {
+  color: #3e64ff;
+}
+
 ion-modal {
   --background: rgba(44, 39, 45, 0.2);
   &::part(content) {

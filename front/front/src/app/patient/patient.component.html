@@ -1,7 +1,7 @@
 <ion-app>
   <ion-content mode="ios">
     <div class="header">
-      <h3>nouveau patient</h3>
+      <h5>Nouveau patient</h5>
 
       <ion-buttons>
         <ion-button class="bordered" fill="solid" color="light">
@@ -20,28 +20,30 @@
     </div>
     <ion-card>
       <ion-item>
-        <ion-label position="stacked">CIN *</ion-label>
+        <ion-label position="stacked" class="text">CIN *</ion-label>
         <ion-input placeholder="réponse courte"></ion-input>
       </ion-item>
 
       <ion-item lines="none">
-        <ion-label position="stacked">Nom & Prénom</ion-label>
+        <ion-label position="stacked" class="text">Nom & Prénom</ion-label>
         <ion-input placeholder="réponse courte"></ion-input> </ion-item
     ></ion-card>
 
     <ion-card>
       <ion-item>
-        <ion-label position="stacked">Numéro de téléphone</ion-label>
+        <ion-label position="stacked" class="text"
+          >Numéro de téléphone</ion-label
+        >
         <ion-input placeholder="réponse courte"></ion-input>
       </ion-item>
       <ion-item lines="none">
-        <ion-label position="stacked">Adresse mail</ion-label>
+        <ion-label position="stacked" class="text">Adresse mail</ion-label>
         <ion-input placeholder="réponse courte"></ion-input>
       </ion-item>
     </ion-card>
     <ion-card>
       <ion-item>
-        <ion-label position="stacked">Sexe</ion-label>
+        <ion-label position="stacked" class="text">Sexe</ion-label>
 
         <ion-item> <ion-checkbox color="primary"></ion-checkbox>Femme</ion-item>
         <ion-item lines="none">
@@ -78,7 +80,9 @@
     </ion-card>
     <ion-card>
       <ion-item>
-        <ion-label position="stacked">Antécédents cardio-vasculaires</ion-label>
+        <ion-label position="stacked" class="text"
+          >Antécédents cardio-vasculaires</ion-label
+        >
 
         <ion-item lines="none">
           <ion-checkbox color="primary" mode="md"></ion-checkbox
@@ -103,6 +107,13 @@
         >
       </ion-item>
     </ion-card>
-    <ion-button color="primary" mode="md">Valider</ion-button>
+    <ion-button
+      color="primary"
+      fill="outline"
+      class="valider"
+      size="large"
+      expand="block"
+      >Valider</ion-button
+    >
   </ion-content>
 </ion-app>
