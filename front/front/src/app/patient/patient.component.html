@@ -3,21 +3,46 @@
     <div class="header">
       <h5>Nouveau patient</h5>
 
-      <ion-buttons>
-        <ion-button class="bordered" fill="solid" color="light">
-          <ion-icon name="arrow-back-outline"></ion-icon
-        ></ion-button>
-      </ion-buttons>
+      <ion-button
+        class="bordered"
+        fill="outline"
+        color="light"
+        (click)="consultation()"
+      >
+        <ion-icon name="arrow-back-outline"></ion-icon
+      ></ion-button>
     </div>
+    <div></div>
     <div class="flex">
       <div class="border-blue">
         <div class="border-white">
           <div class="img-box">
-            <img src="assets/fatma.jpg" />
+            <img
+              [src]="base64"
+              onerror="this.onerror=null;this.src='assets/123.jpg';"
+            />
           </div>
         </div>
       </div>
     </div>
+
+    <div class="flex1">
+      <div class="border-blue1">
+        <div class="border-white1">
+          <div class="img-box1">
+            <div class="cam">
+              <ion-icon
+                (click)="pickImageFromGallery()"
+                color="dark"
+                name="camera"
+                style="margin-left: 4.5px; margin-top: -2px"
+              ></ion-icon>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div></div>
     <ion-card>
       <ion-item>
         <ion-label position="stacked" class="text">CIN *</ion-label>
@@ -115,5 +140,6 @@
       expand="block"
       >Valider</ion-button
     >
+    <!-- EDit -->
   </ion-content>
 </ion-app>

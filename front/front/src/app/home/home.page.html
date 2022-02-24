@@ -1,146 +1,24 @@
+<ion-tabs>
+  <ion-tab-bar slot="bottom">
+    <ion-tab-button tab="schedule">
+      <ion-icon name="home-outline"></ion-icon>
+      <ion-label>Home</ion-label>
+      <ion-badge>6</ion-badge>
+    </ion-tab-button>
+
+    <ion-tab-button tab="speakers">
+      <ion-icon name="clipboard-outline"></ion-icon>
+      <ion-label>Consultation</ion-label>
+    </ion-tab-button>
+
+    <ion-tab-button tab="map">
+      <ion-icon name="people-outline"></ion-icon>
+      <ion-label>Patient</ion-label>
+    </ion-tab-button>
+  </ion-tab-bar>
+</ion-tabs>
 <ion-app>
-  <ion-header class="ion-no-border">
-    <ion-toolbar
-      color="favorite"
-      style="border-bottom-left-radius: 22px; border-bottom-right-radius: 22px"
-      ><ion-buttons>
-        <ion-button class="bordered" fill="solid" color="light">
-          <ion-icon name="arrow-back-outline"></ion-icon
-        ></ion-button>
-      </ion-buttons>
-
-      <div class="image-cropper">
-        <img class="rounded" src="{{pic}}" />
-      </div>
-
-      <br />
-      <ion-item lines="none" style="border-radius: 15px">
-        <ion-label
-          ><ion-text color="new2">choisissez un patient</ion-text>
-        </ion-label>
-        <ionic-selectable
-          [(ngModel)]="selected_users"
-          [items]="users"
-          itemValueField="id"
-          itemTextField="name"
-          lines="none"
-          style="border-radius: 15px"
-          (onChange)="choose()"
-        >
-          <ng-template ionicSelectableHeaderTemplate>
-            <div class="class">
-              <ion-buttons>
-                <ion-button
-                  class="bordered"
-                  fill="solid"
-                  color="light"
-                  (click)="dismiss()"
-                >
-                  <ion-icon name="arrow-back-outline"></ion-icon
-                ></ion-button>
-              </ion-buttons>
-              <ion-searchbar
-                color="light"
-                class="cancel-button-icon"
-                placeholder="cherchez un patient"
-                style="border-radius: 111px"
-                lines="none"
-              ></ion-searchbar>
-            </div>
-          </ng-template>
-        </ionic-selectable>
-
-        <ion-button fill="outline" color="priamry" (click)="ajouter_patient()">
-          <ion-icon name="person-add-outline" color="primary"></ion-icon
-        ></ion-button>
-      </ion-item>
-
-      <br />
-      <br />
-    </ion-toolbar>
-
-    <br />
-    <!-- <ion-segment
-      [(ngModel)]="segment"
-      style="border-radius: 30px"
-      color="primary"
-      size="small"
-    >
-      <ion-segment-button value="droite"
-        ><ion-icon name="eye-outline" color="favorites"></ion-icon
-        ><ion-text color="favorites"> Oeil Droite</ion-text>
-      </ion-segment-button>
-      <ion-segment-button value="gauche">
-        <ion-icon name="eye-outline" color="favorites"></ion-icon>
-        <ion-text color="favorites"> Oeil Gauche</ion-text></ion-segment-button
-      > </ion-segment -->
-    <br />
-  </ion-header>
-  <div class="segment">
-    <ion-segment
-      [(ngModel)]="segment"
-      color="primary"
-      (ionChange)="segmentChanged($event)"
-    >
-      <ion-segment-button value="droite" (click)="droite()"
-        ><ion-icon name="eye-outline" color="favorites"></ion-icon
-        ><ion-text color="favorites"> Oeil Droite</ion-text>
-      </ion-segment-button>
-      <ion-segment-button value="gauche" (click)="gauche()">
-        <ion-icon name="eye-outline" color="favorites"></ion-icon>
-        <ion-text color="favorites"> Oeil Gauche</ion-text></ion-segment-button
-      >
-    </ion-segment>
-  </div>
-  <br />
   <ion-content>
-    <div class="ajouterdelet">
-      <ion-button
-        *ngIf="photoService.photos.length<=4 ;else thenBlock "
-        fill="solid"
-        color="primary"
-        (click)="photoService.addNewToGallery()"
-        ><ion-icon name="add-outline"></ion-icon
-      ></ion-button>
-      <ng-template #thenBlock>
-        <ion-button fill="solid" color="primary" (click)="presentToast()"
-          >+</ion-button
-        ></ng-template
-      >
-    </div>
-    <div>
-      <ion-card class="cardfull">
-        <div *ngIf="photoService.photos.length===0">
-          <img [src]="'assets/add.jpg'" />
-        </div>
-        <swiper [config]="config" class="swiper-slide">
-          <ng-template
-            swiperSlide
-            *ngFor="let imge of photoService.photos;  let i = index"
-          >
-            <ion-button
-              fill="outline"
-              color="priamry"
-              (click)="showActionSheet(imge, i)"
-              ><ion-icon name="trash"></ion-icon
-            ></ion-button>
-            <img
-              [src]="imge.webviewPath"
-              onerror="this.src='assets/add.jpg'"
-              alt="alternative"
-              tappable
-              (click)="openPreview(imge.webviewPath)"
-            />
-          </ng-template>
-        </swiper>
-      </ion-card>
-    </div>
-    <ion-button
-      expand="block"
-      size="large"
-      class="AImodel"
-      [class.button-disabled]="photoService.photos.length===0"
-      >AI Modal</ion-button
-    >
+    <ion-button (click)="open()">open me </ion-button>
   </ion-content>
 </ion-app>

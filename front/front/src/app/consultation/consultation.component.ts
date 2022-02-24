@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ModalController } from '@ionic/angular';
 import { SwiperOptions, Pagination } from 'swiper';
 import { ActionSheetController } from '@ionic/angular';
@@ -7,14 +7,31 @@ import { UserPhoto, PhotoService } from '../services/photo.service';
 import { AlertController } from '@ionic/angular';
 import { ToastController } from '@ionic/angular';
 import { ChildrenOutletContexts, Router, RouterOutlet } from '@angular/router';
-
+import { ImagePicker, ImagePickerOptions } from "@ionic-native/image-picker/ngx"
+import { Camera, CameraResultType, CameraSource, ImageOptions } from '@capacitor/camera';
 
 @Component({
-  selector: 'app-home',
-  templateUrl: 'home.page.html',
-  styleUrls: ['home.page.scss'],
+  selector: 'app-consultation',
+  templateUrl: './consultation.component.html',
+  styleUrls: ['./consultation.component.scss'],
 })
-export class HomePage {
+export class ConsultationComponent implements OnInit {
+  base64: string = "";
+
+  pickImageFromGallery() {
+    var options: ImageOptions = {
+      source: CameraSource.Photos,
+      resultType: CameraResultType.DataUrl
+    }
+    Camera.getPhoto(options).then((result) => {
+      this.base64 = result.dataUrl;
+    }, (err) => {
+      alert(err);
+
+    })
+  }
+
+
   segment = 'all';
   segmentChanged(ev: any) {
 
@@ -60,12 +77,9 @@ export class HomePage {
     this.pic = this.selected_users.url;
     console.log(this.pic);
   }
-  open() {
-    this.router.navigate(['consultation']);
-  }
 
 
-  constructor(private modalCtrl: ModalController, public photoService: PhotoService, public actionSheetController: ActionSheetController, public alertController: AlertController, public toastController: ToastController, private router: Router) { }
+  constructor(private modalCtrl: ModalController, public photoService: PhotoService, public actionSheetController: ActionSheetController, public alertController: AlertController, public toastController: ToastController, private router: Router, private picker: ImagePicker) { }
   async presentToast() {
     const toast = await this.toastController.create({
       message: '5 élèments maximum,merci',
@@ -75,8 +89,11 @@ export class HomePage {
   }
 
   async ngOnInit() {
+    // Camera.requestPermissions({ permissions: ['photos'] })
     await this.photoService.loadSaved();
   }
+
+
   public async showActionSheet(photo: UserPhoto, position: number) {
     const actionSheet = await this.actionSheetController.create({
       header: 'Photos',
