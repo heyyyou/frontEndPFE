@@ -11,6 +11,7 @@ import { ImagePicker, ImagePickerOptions } from '@ionic-native/image-picker/ngx'
 import { Camera, CameraResultType, CameraSource, ImageOptions } from '@capacitor/camera';
 import { LoadingController } from '@ionic/angular';
 import { ConsultationMedService } from '../services/consultation-med.service';
+import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-consultation',
@@ -102,7 +103,7 @@ export class ConsultationComponent implements OnInit {
   // }
 
 
-  constructor(private modalCtrl: ModalController, public photoService: PhotoService, public actionSheetController: ActionSheetController, public alertController: AlertController, public toastController: ToastController, private router: Router, private picker: ImagePicker, public loadingController: LoadingController, public ConsultationMedService: ConsultationMedService) { }
+  constructor(public sanitizer: DomSanitizer ,private modalCtrl: ModalController, public photoService: PhotoService, public actionSheetController: ActionSheetController, public alertController: AlertController, public toastController: ToastController, private router: Router, private picker: ImagePicker, public loadingController: LoadingController, public ConsultationMedService: ConsultationMedService) { }
   async presentToast() {
     const toast = await this.toastController.create({
       message: '5 élèments maximum,merci',

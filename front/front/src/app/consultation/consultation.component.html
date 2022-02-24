@@ -136,7 +136,7 @@
               ><ion-icon name="trash"></ion-icon
             ></ion-button>
             <img
-              [src]="imge.webviewPath"
+              [src]="sanitizer.bypassSecurityTrustUrl(imge.webviewPath) "
               onerror="this.src='assets/add.jpg'"
               alt="alternative"
               tappable
@@ -151,7 +151,7 @@
       size="large"
       class="AImodel"
       (click)="presentLoading()"
-      [class.button-disabled]="photoService.photos.length === 0"
+      [disabled]="(photoService.photos.length === 0 || ConsultationMedService.selected_users==null)"
       >AI Modal</ion-button
     >
   </ion-content>
