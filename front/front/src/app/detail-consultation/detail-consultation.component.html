@@ -1,0 +1,46 @@
+<ion-app>
+  <ion-header class="ion-no-border">
+    <ion-toolbar
+      color="favorite"
+      style="border-bottom-left-radius: 15px; border-bottom-right-radius: 15px"
+    >
+      <ion-buttons>
+        <ion-button class="bordered" fill="solid" color="light">
+          <ion-icon name="arrow-back-outline"></ion-icon
+        ></ion-button>
+      </ion-buttons>
+    </ion-toolbar>
+  </ion-header>
+  <ion-content>
+    <ion-item lines="none">
+      <ion-avatar slot="start">
+        <img src="{{ ConsultationMedService.pic }}" />
+      </ion-avatar>
+      <ion-label>
+        <p>Patient,</p>
+        <h3>{{ ConsultationMedService.selected_users.name }},</h3>
+        <h1>{{ ConsultationMedService.selected_users.id }}</h1>
+      </ion-label>
+    </ion-item>
+    <ion-card class="cardfull">
+      <swiper
+        [config]="config"
+        class="swiper-slide"
+        data-swiper-autoplay="2000"
+      >
+        <ng-template
+          swiperSlide
+          *ngFor="let imge of photoService.photos; let i = index"
+        >
+          <img
+            [src]="imge.webviewPath"
+            onerror="this.src='assets/add.jpg'"
+            alt="alternative"
+            tappable
+            (click)="ConsultationMedService.openPreview(imge.webviewPath)"
+          />
+        </ng-template>
+      </swiper>
+    </ion-card>
+  </ion-content>
+</ion-app>

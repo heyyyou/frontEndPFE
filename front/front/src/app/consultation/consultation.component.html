@@ -3,7 +3,8 @@
     <ion-toolbar
       color="favorite"
       style="border-bottom-left-radius: 22px; border-bottom-right-radius: 22px"
-      ><ion-buttons>
+    >
+      <ion-buttons>
         <ion-button class="bordered" fill="solid" color="light">
           <ion-icon name="arrow-back-outline"></ion-icon
         ></ion-button>
@@ -12,7 +13,7 @@
       <div class="image-cropper">
         <img
           class="rounded"
-          src="{{ pic }}"
+          src="{{ ConsultationMedService.pic }}"
           onerror="this.onerror=null;this.src='assets/123.jpg';"
         />
       </div>
@@ -23,13 +24,13 @@
           ><ion-text color="new2">choisissez un patient</ion-text>
         </ion-label>
         <ionic-selectable
-          [(ngModel)]="selected_users"
-          [items]="users"
+          [(ngModel)]="ConsultationMedService.selected_users"
+          [items]="ConsultationMedService.users"
           itemValueField="id"
           itemTextField="name"
           lines="none"
           style="border-radius: 15px"
-          (onChange)="choose()"
+          (onChange)="ConsultationMedService.choose()"
         >
           <ng-template ionicSelectableHeaderTemplate>
             <div class="class">
@@ -55,7 +56,11 @@
           </ng-template>
         </ionic-selectable>
 
-        <ion-button fill="outline" color="priamry" (click)="ajouter_patient()">
+        <ion-button
+          fill="outline"
+          color="priamry"
+          (click)="ConsultationMedService.ajouter_patient()"
+        >
           <ion-icon name="person-add-outline" color="primary"></ion-icon
         ></ion-button>
       </ion-item>
@@ -135,7 +140,7 @@
               onerror="this.src='assets/add.jpg'"
               alt="alternative"
               tappable
-              (click)="openPreview(imge.webviewPath)"
+              (click)="ConsultationMedService.openPreview(imge.webviewPath)"
             />
           </ng-template>
         </swiper>
@@ -145,6 +150,7 @@
       expand="block"
       size="large"
       class="AImodel"
+      (click)="presentLoading()"
       [class.button-disabled]="photoService.photos.length === 0"
       >AI Modal</ion-button
     >

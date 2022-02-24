@@ -1,3 +1,4 @@
+import { DetailConsultationComponent } from './detail-consultation/detail-consultation.component';
 import { ConsultationComponent } from './consultation/consultation.component';
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
@@ -14,7 +15,9 @@ const routes: Routes = [
     pathMatch: 'full'
   },
   { path: 'patient', component: PatientComponent },
-  { path: 'consultation', component: ConsultationComponent }
+  { path: 'consultation', component: ConsultationComponent },
+  { path: 'detailConsultation', component: DetailConsultationComponent }
+
 ];
 
 @NgModule({

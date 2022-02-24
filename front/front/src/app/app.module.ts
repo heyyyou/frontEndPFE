@@ -14,10 +14,12 @@ import { IonicSelectableModule } from 'ionic-selectable';
 import { SwiperModule } from 'swiper/angular';
 import { HttpClientModule } from '@angular/common/http';
 import { ImagePicker } from '@ionic-native/image-picker/ngx';
+import { DetailConsultationComponent } from './detail-consultation/detail-consultation.component';
+import { CommonModule } from '@angular/common';
 @NgModule({
-  declarations: [AppComponent, ModalImageComponent, PatientComponent, ConsultationComponent],
+  declarations: [AppComponent, ModalImageComponent, PatientComponent, ConsultationComponent, DetailConsultationComponent],
   entryComponents: [],
-  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, IonicSelectableModule, SwiperModule
+  imports: [BrowserModule, CommonModule, IonicModule.forRoot(), AppRoutingModule, IonicSelectableModule, SwiperModule
     , HttpClientModule, FormsModule],
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }, ImagePicker],
   bootstrap: [AppComponent],

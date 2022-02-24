@@ -45,12 +45,16 @@
     <div></div>
     <ion-card>
       <ion-item>
-        <ion-label position="stacked" class="text">CIN *</ion-label>
+        <ion-label position="stacked" class="text"
+          >CIN <ion-text color="danger">*</ion-text></ion-label
+        >
         <ion-input placeholder="réponse courte"></ion-input>
       </ion-item>
 
       <ion-item lines="none">
-        <ion-label position="stacked" class="text">Nom & Prénom</ion-label>
+        <ion-label position="stacked" class="text"
+          >Nom & Prénom<ion-text color="danger">*</ion-text></ion-label
+        >
         <ion-input placeholder="réponse courte"></ion-input> </ion-item
     ></ion-card>
 
@@ -84,7 +88,9 @@
           color="primary"
         ></ion-icon>
         <ion-label
-          ><ion-text class="date">Date de naissance</ion-text></ion-label
+          ><ion-text class="date"
+            >Date de naissance<ion-text color="danger">*</ion-text></ion-text
+          ></ion-label
         >
         <ion-text slot="end">{{ formattedString }}</ion-text>
       </ion-item>
@@ -106,7 +112,9 @@
     <ion-card>
       <ion-item>
         <ion-label position="stacked" class="text"
-          >Antécédents cardio-vasculaires</ion-label
+          >Antécédents cardio-vasculaires<ion-text color="danger"
+            >*</ion-text
+          ></ion-label
         >
 
         <ion-item lines="none">
