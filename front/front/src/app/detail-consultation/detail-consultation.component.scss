@@ -34,3 +34,24 @@ ion-item {
     --border-radius: 40%;
   }
 }
+.header {
+  background-color: #f5f4f4;
+  height: 170px;
+  padding-top: 1px;
+  margin-top: 7%;
+  margin-bottom: 10%;
+  margin-left: 7%;
+  margin-right: 7%;
+  --box-shadow: 6px 5px 10px #d1d1d1, -5px -5px 10px #ffffff;
+  border-radius: 12px;
+}
+ion-segment {
+  --background-checked: var(--ion-color-primary);
+  --color-checked: var(--ion-color-success-dark);
+}
+.segment {
+  background-color: #f7f7f7;
+  border-radius: 12px;
+  margin-left: 7%;
+  margin-right: 7%;
+}

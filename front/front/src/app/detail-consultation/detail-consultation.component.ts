@@ -37,7 +37,13 @@ export class DetailConsultationComponent implements OnInit {
     pagination: { clickable: true },
 
 
-  };
+  }
+  droite() {
+
+  }
+  gauche() {
+
+  }
 
 
 
