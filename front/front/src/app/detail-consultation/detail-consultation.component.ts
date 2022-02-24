@@ -38,6 +38,12 @@ export class DetailConsultationComponent implements OnInit {
 
 
   }
+  droite() {
+
+  }
+  gauche() {
+
+  }
 
 
 

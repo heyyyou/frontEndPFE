@@ -19,9 +19,41 @@
       <ion-label>
         <p>Patient,</p>
         <h3>{{ ConsultationMedService.selected_users.name }},</h3>
-        <h1>{{ ConsultationMedService.selected_users.id }}</h1>
       </ion-label>
     </ion-item>
+
+    <div class="header">
+      <ion-list lines="inset">
+        <ion-item>
+          <ion-label>Inset Lines Item 1</ion-label>
+        </ion-item>
+
+        <ion-item>
+          <ion-label>Inset Lines Item 2</ion-label>
+        </ion-item>
+      </ion-list>
+    </div>
+
+    <div class="segment">
+      <ion-segment
+        mode="ios"
+        [(ngModel)]="segment"
+        color="primary"
+        (ionChange)="segmentChanged($event)"
+      >
+        <ion-segment-button value="droite" (click)="droite()"
+          ><ion-icon name="eye-outline" color="favorites"></ion-icon
+          ><ion-text color="favorites"> Oeil Droite</ion-text>
+        </ion-segment-button>
+        <ion-segment-button value="gauche" (click)="gauche()">
+          <ion-icon name="eye-outline" color="favorites"></ion-icon>
+          <ion-text color="favorites">
+            Oeil Gauche</ion-text
+          ></ion-segment-button
+        >
+      </ion-segment>
+    </div>
+    <br />
     <ion-card class="cardfull">
       <swiper
         [config]="config"
