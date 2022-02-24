@@ -12,38 +12,38 @@ export class ConsultationMedService {
   users = [
     {
       id: 11828279,
-      name: "chelly mariem",
+      name: 'chelly mariem',
       num: 22205036,
-      adresse: "chellymariem01@gmail.com",
-      sexe: "femme",
+      adresse: 'chellymariem01@gmail.com',
+      sexe: 'femme',
       dateNaiss: '12/01/2000',
-      antecedent: "Tabac , Diabète",
-      url: "assets/1.jpg",
+      antecedent: 'Tabac , Diabète',
+      url: 'assets/1.jpg',
     },
     {
       id: 11828279,
-      name: "chelly fasma",
+      name: 'chelly fasma',
       num: 22205036,
-      adresse: "chellymariem01@gmail.com",
-      sexe: "femme",
+      adresse: 'chellymariem01@gmail.com',
+      sexe: 'femme',
       dateNaiss: '12/01/2000',
-      antecedent: "Tabac , Diabète",
-      url: "assets/fatma.jpg",
+      antecedent: 'Tabac , Diabète',
+      url: 'assets/fatma.jpg',
     },
     {
       id: 11822279,
-      name: "Derbali Sarra",
+      name: 'Derbali Sarra',
       num: 22205036,
-      adresse: "chellymariem01@gmail.com",
-      sexe: "femme",
+      adresse: 'chellymariem01@gmail.com',
+      sexe: 'femme',
       dateNaiss: '12/01/2000',
-      antecedent: "Tabac , Diabète,Cancer",
-      url: "assets/1.jpg",
+      antecedent: 'Tabac , Diabète,Cancer',
+      url: 'assets/1.jpg',
     },
   ]
     ;
   qs() {
-    return this.users
+    return this.users;
   }
   userchoisi() {
     this.selected_users;
@@ -52,7 +52,7 @@ export class ConsultationMedService {
   selected_users = null;
   public pic: string;
   choose() {
-    console.log(this.selected_users)
+    console.log(this.selected_users);
     this.pic = this.selected_users.url;
     console.log(this.pic);
   }
@@ -119,7 +119,7 @@ export class ConsultationMedService {
     // using the injected ModalController this page
     // can "dismiss" itself and optionally pass back data
     this.modalCtrl.dismiss({
-      'dismissed': true
+      dismissed: true
     });
   }
   ajouter_patient() {

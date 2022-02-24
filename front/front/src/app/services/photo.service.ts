@@ -9,7 +9,7 @@ import { Platform } from '@ionic/angular';
 })
 export class PhotoService {
   public photos: UserPhoto[] = [];
-  private PHOTO_STORAGE: string = 'photos';
+  private PHOTO_STORAGE = 'photos';
 
   constructor(private platform: Platform) { }
 
@@ -21,7 +21,7 @@ export class PhotoService {
     // If running on the web...
     if (!this.platform.is('hybrid')) {
       // Display the photo by reading into base64 format
-      for (let photo of this.photos) {
+      for (const photo of this.photos) {
         // Read each saved photo's data from the Filesystem
         const readFile = await Filesystem.readFile({
           path: photo.filepath,

@@ -58,10 +58,9 @@
 //   width: fit-content;
 // }
 .flex1 {
-  display: flex;
-  justify-content: center;
-  margin-top: -7%;
-  margin-left: 20%;
+  position: relative;
+  bottom: -93px;
+  left: -29px;
 }
 
 .date {

@@ -15,7 +15,7 @@ export class PatientComponent implements OnInit {
   modes = ['date', 'date-time', 'month', 'month-year', 'time', 'time-date', 'year'];
   selectedMode = 'month-year';
   showPicker = false;
-  dateValue = format(new Date(), 'yyyy-MM-dd') + 'T09:00:00.000Z'
+  dateValue = format(new Date(), 'yyyy-MM-dd') + 'T09:00:00.000Z';
   formattedString = '';
   constructor(private router: Router) {
     this.setToday();
@@ -26,24 +26,24 @@ export class PatientComponent implements OnInit {
 
   ngOnInit() { }
   dateChanged(value) {
-    this.dateValue = value // one way binding that s why
+    this.dateValue = value; // one way binding that s why
     this.formattedString = format(parseISO(value), 'MMM d,yyyy');
     this.showPicker = false;
   }
 
-  base64: string = "";
+  base64 = '';
 
   pickImageFromGallery() {
-    var options: ImageOptions = {
+    const options: ImageOptions = {
       source: CameraSource.Photos,
       resultType: CameraResultType.DataUrl
-    }
+    };
     Camera.getPhoto(options).then((result) => {
       this.base64 = result.dataUrl;
     }, (err) => {
       alert(err);
 
-    })
+    });
   }
 
 
@@ -53,6 +53,6 @@ export class PatientComponent implements OnInit {
   }
 
   consultation() {
-    this.router.navigate(['consultation'])
+    this.router.navigate(['consultation']);
   }
 }

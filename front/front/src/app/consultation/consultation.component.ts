@@ -7,7 +7,7 @@ import { UserPhoto, PhotoService } from '../services/photo.service';
 import { AlertController } from '@ionic/angular';
 import { ToastController } from '@ionic/angular';
 import { ChildrenOutletContexts, Router, RouterOutlet } from '@angular/router';
-import { ImagePicker, ImagePickerOptions } from "@ionic-native/image-picker/ngx"
+import { ImagePicker, ImagePickerOptions } from '@ionic-native/image-picker/ngx';
 import { Camera, CameraResultType, CameraSource, ImageOptions } from '@capacitor/camera';
 import { LoadingController } from '@ionic/angular';
 import { ConsultationMedService } from '../services/consultation-med.service';
@@ -18,7 +18,7 @@ import { ConsultationMedService } from '../services/consultation-med.service';
   styleUrls: ['./consultation.component.scss'],
 })
 export class ConsultationComponent implements OnInit {
-  base64: string = "";
+  base64 = '';
 
   async presentLoading() {
     const loading = await this.loadingController.create({
@@ -29,7 +29,7 @@ export class ConsultationComponent implements OnInit {
 
     const { role, data } = await loading.onDidDismiss();
     {
-      this.router.navigate(["detailConsultation"])
+      this.router.navigate(['detailConsultation']);
     }
 
     console.log('Loading dismissed!');
@@ -62,7 +62,7 @@ export class ConsultationComponent implements OnInit {
     pagination: { clickable: true },
 
 
-  }
+  };
 
 
   // users = [
@@ -158,7 +158,7 @@ export class ConsultationComponent implements OnInit {
     // using the injected ModalController this page
     // can "dismiss" itself and optionally pass back data
     this.modalCtrl.dismiss({
-      'dismissed': true
+      dismissed: true
     });
   }
   ajouter_patient() {

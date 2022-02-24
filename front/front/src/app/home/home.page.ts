@@ -28,27 +28,27 @@ export class HomePage {
     pagination: { clickable: true },
 
 
-  }
+  };
 
 
   users = [
     {
       id: 1,
-      name: "chelly mariem",
-      contry: "chebba",
-      url: "assets/1.jpg",
+      name: 'chelly mariem',
+      contry: 'chebba',
+      url: 'assets/1.jpg',
     },
     {
       id: 2,
-      name: "chelly fatma",
-      contry: "chebba",
-      url: "assets/fatma.jpg",
+      name: 'chelly fatma',
+      contry: 'chebba',
+      url: 'assets/fatma.jpg',
     },
     {
       id: 3,
-      name: "chelly sarra",
-      contry: "chebba",
-      url: "assets/ma.jpg",
+      name: 'chelly sarra',
+      contry: 'chebba',
+      url: 'assets/ma.jpg',
     },
   ]
     ;
@@ -56,7 +56,7 @@ export class HomePage {
   selected_users = null;
   public pic: string;
   choose() {
-    console.log(this.selected_users)
+    console.log(this.selected_users);
     this.pic = this.selected_users.url;
     console.log(this.pic);
   }
@@ -118,7 +118,7 @@ export class HomePage {
     // using the injected ModalController this page
     // can "dismiss" itself and optionally pass back data
     this.modalCtrl.dismiss({
-      'dismissed': true
+      dismissed: true
     });
   }
   ajouter_patient() {

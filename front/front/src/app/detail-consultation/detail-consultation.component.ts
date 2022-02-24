@@ -13,14 +13,14 @@ import { SwiperOptions } from 'swiper';
   styleUrls: ['./detail-consultation.component.scss'],
 })
 export class DetailConsultationComponent implements OnInit {
-  base64: string = "";
+  base64 = '';
 
 
   dismiss() {
     // using the injected ModalController this page
     // can "dismiss" itself and optionally pass back data
     this.modalCtrl.dismiss({
-      'dismissed': true
+      dismissed: true
     });
   }
   segment = 'all';
@@ -37,7 +37,7 @@ export class DetailConsultationComponent implements OnInit {
     pagination: { clickable: true },
 
 
-  }
+  };
 
 
 
@@ -57,7 +57,7 @@ export class DetailConsultationComponent implements OnInit {
 
   }
   bew() {
-    console.log(this.photoService.photos.length)
+    console.log(this.photoService.photos.length);
   }
 
 }
