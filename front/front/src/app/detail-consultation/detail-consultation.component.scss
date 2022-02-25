@@ -16,7 +16,6 @@ ion-toolbar {
   height: 100%;
   .bordered {
     --border-raduis: 20px;
-    --box-shadow: 6px 5px 10px #d1d1d1, -5px -5px 10px #ffffff;
   }
 }
 ion-item {
@@ -34,16 +33,40 @@ ion-item {
     --border-radius: 40%;
   }
 }
-.header {
-  background-color: #f5f4f4;
-  height: 170px;
+h5 {
+  font-weight: 700;
+  font-size: 18px;
+}
+.details {
+  margin-left: 7%;
+  margin-right: 7%;
   padding-top: 1px;
   margin-top: 7%;
   margin-bottom: 10%;
-  margin-left: 7%;
-  margin-right: 7%;
-  --box-shadow: 6px 5px 10px #d1d1d1, -5px -5px 10px #ffffff;
-  border-radius: 12px;
+
+  ion-icon {
+    height: 15px;
+    width: 15px;
+  }
+  ion-item {
+    margin-left: 7%;
+    margin-right: 7%;
+
+    h3 {
+      font-weight: 400;
+      font-size: 15px;
+      color: darkgrey;
+      margin-left: 5%;
+    }
+  }
+  .item1 {
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px;
+  }
+  .item4 {
+    border-bottom-left-radius: 12px;
+    border-bottom-right-radius: 12px;
+  }
 }
 ion-segment {
   --background-checked: var(--ion-color-primary);
@@ -52,6 +75,13 @@ ion-segment {
 .segment {
   background-color: #f7f7f7;
   border-radius: 12px;
-  margin-left: 7%;
-  margin-right: 7%;
+  margin-left: 9%;
+  margin-right: 9%;
+}
+.item1 {
+  background-color: #f5f4f4;
+}
+.AvisExpert {
+  margin-left: 10%;
+  margin-right: 10%;
 }

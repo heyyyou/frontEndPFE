@@ -70,20 +70,7 @@
     </ion-toolbar>
 
     <br />
-    <!-- <ion-segment
-      [(ngModel)]="segment"
-      style="border-radius: 30px"
-      color="primary"
-      size="small"
-    >
-      <ion-segment-button value="droite"
-        ><ion-icon name="eye-outline" color="favorites"></ion-icon
-        ><ion-text color="favorites"> Oeil Droite</ion-text>
-      </ion-segment-button>
-      <ion-segment-button value="gauche">
-        <ion-icon name="eye-outline" color="favorites"></ion-icon>
-        <ion-text color="favorites"> Oeil Gauche</ion-text></ion-segment-button
-      > </ion-segment -->
+
     <br />
   </ion-header>
   <div class="segment">
@@ -136,7 +123,7 @@
               ><ion-icon name="trash"></ion-icon
             ></ion-button>
             <img
-              [src]="sanitizer.bypassSecurityTrustUrl(imge.webviewPath) "
+              [src]="sanitizer.bypassSecurityTrustUrl(imge.webviewPath)"
               onerror="this.src='assets/add.jpg'"
               alt="alternative"
               tappable
@@ -151,7 +138,10 @@
       size="large"
       class="AImodel"
       (click)="presentLoading()"
-      [disabled]="(photoService.photos.length === 0 || ConsultationMedService.selected_users==null)"
+      [disabled]="
+        photoService.photos.length === 0 ||
+        ConsultationMedService.selected_users === null
+      "
       >AI Modal</ion-button
     >
   </ion-content>

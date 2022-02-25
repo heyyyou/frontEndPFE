@@ -3,7 +3,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { Input } from '@angular/core';
 import { ConsultationMedService } from '../services/consultation-med.service';
 import { ChildrenOutletContexts, Router, RouterOutlet } from '@angular/router';
-import { LoadingController, ModalController } from '@ionic/angular';
+import { AlertController, LoadingController, ModalController } from '@ionic/angular';
 import { SwiperOptions } from 'swiper';
 
 
@@ -44,10 +44,27 @@ export class DetailConsultationComponent implements OnInit {
   gauche() {
 
   }
+  async envoyerdossier() {
+
+    const alert = await this.alertController.create({
+      cssClass: 'my-custom-class',
+      header: 'Vous voulez avoir un avis ?',
+      subHeader: 'Expert en ophtalmologie',
+      message: '',
+      buttons: ['Cancel', 'OK']
+    });
+
+
+    await alert.present();
 
 
 
-  constructor(public ConsultationMedService: ConsultationMedService, public photoService: PhotoService, private router: Router, public loadingController: LoadingController, private modalCtrl: ModalController) {
+  }
+
+
+
+  constructor(public ConsultationMedService: ConsultationMedService, public photoService: PhotoService, private router: Router, public loadingController: LoadingController, private modalCtrl: ModalController,
+    public alertController: AlertController) {
   }
 
 
