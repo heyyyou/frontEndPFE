@@ -23,6 +23,11 @@ ion-item {
     font-weight: 700;
     font-size: 14px;
   }
+  h4 {
+    font-weight: 600;
+    font-size: 13px;
+    color: darkgrey;
+  }
 
   p {
     font-weight: 500;
@@ -84,4 +89,9 @@ ion-segment {
 .AvisExpert {
   margin-left: 10%;
   margin-right: 10%;
+}
+.calendar {
+  height: 18px;
+  width: 18px;
+  padding-right: 5px;
 }

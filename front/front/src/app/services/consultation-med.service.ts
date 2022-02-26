@@ -38,7 +38,7 @@ export class ConsultationMedService {
       sexe: 'Femme',
       dateNaiss: '12/01/2000',
       antecedent: 'Tabac , Diabète,Cancer',
-      url: 'assets/1.jpg',
+      url: 'assets/mama.jpg',
     },
   ]
     ;

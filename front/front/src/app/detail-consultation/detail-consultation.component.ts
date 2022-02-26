@@ -15,6 +15,10 @@ import { SwiperOptions } from 'swiper';
 export class DetailConsultationComponent implements OnInit {
   base64 = '';
 
+  myDate: String = new Date().toLocaleDateString();
+
+
+
 
   dismiss() {
     // using the injected ModalController this page
