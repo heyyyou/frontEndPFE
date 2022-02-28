@@ -1,0 +1,55 @@
+<ion-app class="content">
+  <div class="header">
+    <ion-buttons>
+      <ion-button class="bordered" fill="solid" color="light">
+        <ion-icon name="arrow-back-outline"></ion-icon
+      ></ion-button>
+      <ion-button
+        ion-button
+        class="bordered2"
+        fill="solid"
+        color="light"
+        (click)="ConsultationMedService.ajouter_patient()"
+      >
+        <ion-icon name="person-add-outline" color="dark"></ion-icon
+      ></ion-button>
+    </ion-buttons>
+    <h5 class="listepatient">Liste des patients</h5>
+    <ion-searchbar
+      class="searchBar"
+      placeholder="cherchez un patient"
+    ></ion-searchbar>
+  </div>
+  <ion-content class="contenue">
+    <ion-grid>
+      <ion-row *ngFor="let item of ConsultationMedService.users">
+        <ion-col size="6">
+          <div class="image-card">
+            <ion-grid>
+              <ion-row>
+                <ion-col>
+                  <ion-img [src]="item.url"></ion-img>
+                </ion-col>
+                <ion-col size="12">
+                  {{ item.name }}
+                </ion-col>
+              </ion-row>
+            </ion-grid>
+          </div>
+        </ion-col></ion-row
+      >
+    </ion-grid>
+  </ion-content>
+  <!-- <h4>Liste Patient</h4>
+    <div class="avatar">
+      <ion-img src="assets\fatma.jpg"></ion-img>
+    </div>
+  <ion-searchbar></ion-searchbar>
+  <div class="patient">
+    <ion-item *ngFor="let item of ConsultationMedService.users"> </ion-item>
+  </div>
+</ion-content> -->
+  <!-- </ion-item></ion-content
+    ></ion-app -->
+  <!-- ></ion-content -->
+</ion-app>

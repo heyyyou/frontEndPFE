@@ -3,6 +3,7 @@ import { ConsultationComponent } from './consultation/consultation.component';
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 import { PatientComponent } from './patient/patient.component';
+import { ListePatientComponent } from './liste-patient/liste-patient.component';
 
 const routes: Routes = [
   {
@@ -16,7 +17,9 @@ const routes: Routes = [
   },
   { path: 'patient', component: PatientComponent },
   { path: 'consultation', component: ConsultationComponent },
-  { path: 'detailConsultation', component: DetailConsultationComponent }
+  { path: 'detailConsultation', component: DetailConsultationComponent },
+  { path: 'ListePatient', component: ListePatientComponent }
+
 
 ];
 

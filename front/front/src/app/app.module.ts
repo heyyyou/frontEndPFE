@@ -16,8 +16,10 @@ import { HttpClientModule } from '@angular/common/http';
 import { ImagePicker } from '@ionic-native/image-picker/ngx';
 import { DetailConsultationComponent } from './detail-consultation/detail-consultation.component';
 import { CommonModule } from '@angular/common';
+
+import { ListePatientComponent } from './liste-patient/liste-patient.component';
 @NgModule({
-  declarations: [AppComponent, ModalImageComponent, PatientComponent, ConsultationComponent, DetailConsultationComponent],
+  declarations: [AppComponent, ModalImageComponent, PatientComponent, ConsultationComponent, DetailConsultationComponent, ListePatientComponent],
   entryComponents: [],
   imports: [BrowserModule, CommonModule, IonicModule.forRoot(), AppRoutingModule, IonicSelectableModule, SwiperModule
     , HttpClientModule, FormsModule],

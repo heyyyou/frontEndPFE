@@ -40,6 +40,16 @@ export class ConsultationMedService {
       antecedent: 'Tabac , Diabète,Cancer',
       url: 'assets/mama.jpg',
     },
+    {
+      id: 125822279,
+      name: 'Chelly Med',
+      num: 22205036,
+      adresse: 'chellymariem01@gmail.com',
+      sexe: 'Femme',
+      dateNaiss: '12/01/2000',
+      antecedent: 'Tabac,Diabète,Cancer',
+      url: 'assets/mama.jpg',
+    },
   ]
     ;
   qs() {
