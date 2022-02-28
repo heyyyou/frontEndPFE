@@ -1,19 +1,22 @@
 <ion-app class="content">
   <div class="header">
-    <ion-buttons>
-      <ion-button class="bordered" fill="solid" color="light">
+    <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button fill="solid" color="light">
         <ion-icon name="arrow-back-outline"></ion-icon
       ></ion-button>
-      <ion-button
-        ion-button
-        class="bordered2"
-        fill="solid"
-        color="light"
-        (click)="ConsultationMedService.ajouter_patient()"
-      >
-        <ion-icon name="person-add-outline" color="dark"></ion-icon
-      ></ion-button>
     </ion-buttons>
+    <ion-buttons slot="end">
+      <ion-button
+      ion-button
+      fill="solid"
+      color="light"
+      (click)="ConsultationMedService.ajouter_patient()"
+    >
+      <ion-icon name="person-add-outline" color="dark"></ion-icon
+    ></ion-button>
+    </ion-buttons>
+  </ion-toolbar>
     <h5 class="listepatient">Liste des patients</h5>
     <ion-searchbar
       class="searchBar"
@@ -29,17 +32,14 @@
               <ion-row>
                 <ion-col>
                   <ion-img class="image" [src]="item.url"></ion-img>
-                </ion-col>
-                <ion-col>
                   <ion-text class="name">{{ item.name }}</ion-text>
                 </ion-col>
-                <ion-col
-                  ><a [routerLink]="['home']"></a
-                  ><ion-text color="primary" class="consultation"
-                    >Consultations</ion-text
-                  >
-                </ion-col>
               </ion-row>
+             <a [routerLink]="['home']"></a
+                ><ion-text color="primary" class="consultation"
+                  >Consultations</ion-text
+                >
+
             </ion-grid>
           </div>
         </ion-col></ion-row
