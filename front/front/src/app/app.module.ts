@@ -18,8 +18,9 @@ import { DetailConsultationComponent } from './detail-consultation/detail-consul
 import { CommonModule } from '@angular/common';
 
 import { ListePatientComponent } from './liste-patient/liste-patient.component';
+import { ListeConsultationComponent } from './liste-consultation/liste-consultation.component';
 @NgModule({
-  declarations: [AppComponent, ModalImageComponent, PatientComponent, ConsultationComponent, DetailConsultationComponent, ListePatientComponent],
+  declarations: [AppComponent, ModalImageComponent, PatientComponent, ConsultationComponent, DetailConsultationComponent, ListePatientComponent, ListeConsultationComponent],
   entryComponents: [],
   imports: [BrowserModule, CommonModule, IonicModule.forRoot(), AppRoutingModule, IonicSelectableModule, SwiperModule
     , HttpClientModule, FormsModule],

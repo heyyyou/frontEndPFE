@@ -9,6 +9,10 @@ import { PhotoService, UserPhoto } from './photo.service';
   providedIn: 'root'
 })
 export class ConsultationMedService {
+  myDate: String = new Date().toLocaleDateString();
+  AIModel: String = " oeil droite le malade a la maladie de .. et oeil gauche a la maladie de..s "
+  avisExpert: boolean
+
   users = [
     {
       id: 11828279,
@@ -52,6 +56,7 @@ export class ConsultationMedService {
     },
   ]
     ;
+
   qs() {
     return this.users;
   }
@@ -66,6 +71,25 @@ export class ConsultationMedService {
     this.pic = this.selected_users.url;
     console.log(this.pic);
   }
+  consultation = [
+    {
+
+      users: this.users, // apres bel id fel api
+      date: this.myDate,
+      imgMedical: this.photoService.photos,
+      AImodel: this.AIModel,
+      avisExpert: true
+    }
+  ];
+  avis_Expert = [
+    {
+      id: 1,
+      id_expert: 2,
+      avis: "a la rhétinipskdosjd",
+
+
+    }
+  ]
 
 
   constructor(private modalCtrl: ModalController, public photoService: PhotoService, public actionSheetController: ActionSheetController, public alertController: AlertController, public toastController: ToastController, private router: Router, private picker: ImagePicker, public loadingController: LoadingController) { }

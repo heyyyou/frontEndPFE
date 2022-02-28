@@ -1,0 +1,29 @@
+<ion-app class="content">
+  <div class="header">
+    <ion-buttons>
+      <ion-button class="bordered" fill="solid" color="light">
+        <ion-icon name="arrow-back-outline"></ion-icon
+      ></ion-button>
+    </ion-buttons>
+    <h5 class="listepatient">Liste des Consultations</h5>
+    <ion-searchbar
+      class="searchBar"
+      placeholder="cherchez un patient"
+    ></ion-searchbar>
+  </div>
+  <ion-content class="contenue">
+    <ion-grid>
+      <ion-row>
+        <ion-col
+          size="6"
+          *ngFor="let item of ConsultationMedService.consultation"
+        >
+          <div class="image-card">
+            <ion-grid>
+              <ion-row>
+                <ion-col>
+                  <ion-img class="image" [src]="item.imgMedical"></ion-img>
+                </ion-col> </ion-row
+            ></ion-grid>
+          </div> </ion-col></ion-row></ion-grid></ion-content
+></ion-app>

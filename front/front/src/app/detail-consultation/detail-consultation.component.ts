@@ -18,7 +18,7 @@ export class DetailConsultationComponent implements OnInit {
 
   base64 = '';
 
-  myDate: String = new Date().toLocaleDateString();
+
   showLoader: boolean;
 
   displayProgress() {
