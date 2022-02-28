@@ -27,6 +27,11 @@
       ></ion-icon>
       <h4>{{ myDate }}</h4>
     </ion-item>
+    <!-- si je confirme pour l'avis d'un expert un ion-progress bar is here -->
+    <ion-progress-bar
+      *ngIf="showLoader"
+      [type]="'indeterminate'"
+    ></ion-progress-bar>
     <ion-list class="details">
       <!-- <div class="header"> -->
       <ion-item color="couleurbase" class="item1">

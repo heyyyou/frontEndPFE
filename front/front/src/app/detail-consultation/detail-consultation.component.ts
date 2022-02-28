@@ -3,8 +3,9 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { Input } from '@angular/core';
 import { ConsultationMedService } from '../services/consultation-med.service';
 import { ChildrenOutletContexts, Router, RouterOutlet } from '@angular/router';
-import { AlertController, LoadingController, ModalController } from '@ionic/angular';
+import { AlertController, IonContent, LoadingController, ModalController } from '@ionic/angular';
 import { SwiperOptions } from 'swiper';
+import { async } from 'rxjs';
 
 
 @Component({
@@ -13,12 +14,20 @@ import { SwiperOptions } from 'swiper';
   styleUrls: ['./detail-consultation.component.scss'],
 })
 export class DetailConsultationComponent implements OnInit {
+  @ViewChild(IonContent) private content: IonContent;
+
   base64 = '';
 
   myDate: String = new Date().toLocaleDateString();
+  showLoader: boolean;
 
+  displayProgress() {
+    this.showLoader = true;
 
-
+  }
+  // async routerHome() {
+  //   return await this.router.navigate(['home']);
+  // }
 
   dismiss() {
     // using the injected ModalController this page
@@ -55,7 +64,23 @@ export class DetailConsultationComponent implements OnInit {
       header: 'Vous voulez avoir un avis ?',
       subHeader: 'Expert en ophtalmologie',
       message: '',
-      buttons: ['Cancel', 'OK']
+      buttons: [{
+        text: 'Cancel',
+        role: 'cancel',
+        handler: () => {
+          console.log("dismiss")
+        }
+      },
+      {
+        text: 'Valider',
+        handler: () => {
+          this.content.scrollToTop(); // scroll to the top then progreess bars
+          this.displayProgress();
+        }
+      }
+      ]
+
+
     });
 
 
