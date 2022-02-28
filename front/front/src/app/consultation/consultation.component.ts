@@ -20,20 +20,16 @@ import { DomSanitizer } from '@angular/platform-browser';
 })
 export class ConsultationComponent implements OnInit {
   base64 = '';
+  isLoadingAI: boolean = false ;
 
   async presentLoading() {
-    const loading = await this.loadingController.create({
-      message: 'Dépistage En cours',
-      duration: 3000
-    });
-    await loading.present();
-
-    const { role, data } = await loading.onDidDismiss();
-    {
+    this.isLoadingAI=true ;
+    setTimeout(() => {
+      this.isLoadingAI=false ;
       this.router.navigate(['detailConsultation']);
-    }
 
-    console.log('Loading dismissed!');
+    }, 5000);
+
   }
 
   // pickImageFromGallery() {

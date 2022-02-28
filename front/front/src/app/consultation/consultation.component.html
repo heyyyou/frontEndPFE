@@ -19,7 +19,7 @@
       </div>
 
       <br />
-      <ion-item lines="none" style="border-radius: 15px">
+      <ion-item lines="none" style="border-radius: 15px" *ngIf="!isLoadingAI">
         <ion-label
           ><ion-text color="new2">choisissez un patient</ion-text>
         </ion-label>
@@ -73,25 +73,25 @@
 
     <br />
   </ion-header>
-  <div class="segment">
+  <div class="segment" *ngIf="!isLoadingAI">
     <ion-segment
       mode="ios"
       [(ngModel)]="segment"
       color="primary"
       (ionChange)="segmentChanged($event)"
     >
-      <ion-segment-button value="droite" (click)="droite()"
+      <ion-segment-button value="droite"
         ><ion-icon name="eye-outline" color="favorites"></ion-icon
         ><ion-text color="favorites"> Oeil Droite</ion-text>
       </ion-segment-button>
-      <ion-segment-button value="gauche" (click)="gauche()">
+      <ion-segment-button value="gauche" >
         <ion-icon name="eye-outline" color="favorites"></ion-icon>
         <ion-text color="favorites"> Oeil Gauche</ion-text></ion-segment-button
       >
     </ion-segment>
   </div>
   <br />
-  <ion-content>
+  <ion-content *ngIf="!isLoadingAI">
     <div class="ajouterdelet">
       <ion-button
         *ngIf="photoService.photos.length <= 4; else thenBlock"
@@ -143,6 +143,11 @@
         ConsultationMedService.selected_users === null
       "
       >AI Modal</ion-button
+
+
     >
+  </ion-content>
+  <ion-content *ngIf="isLoadingAI">
+    <app-loading-ai></app-loading-ai>
   </ion-content>
 </ion-app>
