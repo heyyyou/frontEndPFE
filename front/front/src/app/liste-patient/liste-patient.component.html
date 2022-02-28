@@ -22,16 +22,22 @@
   </div>
   <ion-content class="contenue">
     <ion-grid>
-      <ion-row *ngFor="let item of ConsultationMedService.users">
-        <ion-col size="6">
+      <ion-row>
+        <ion-col size="6" *ngFor="let item of ConsultationMedService.users">
           <div class="image-card">
             <ion-grid>
               <ion-row>
                 <ion-col>
-                  <ion-img [src]="item.url"></ion-img>
+                  <ion-img class="image" [src]="item.url"></ion-img>
                 </ion-col>
-                <ion-col size="12">
-                  {{ item.name }}
+                <ion-col>
+                  <ion-text class="name">{{ item.name }}</ion-text>
+                </ion-col>
+                <ion-col
+                  ><a [routerLink]="['home']"></a
+                  ><ion-text color="primary" class="consultation"
+                    >Consultations</ion-text
+                  >
                 </ion-col>
               </ion-row>
             </ion-grid>

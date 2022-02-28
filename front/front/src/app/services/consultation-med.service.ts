@@ -18,7 +18,7 @@ export class ConsultationMedService {
       sexe: 'Femme',
       dateNaiss: '12/01/2000',
       antecedent: 'Tabac , Diabète',
-      url: 'assets/1.jpg',
+      url: 'assets/mama.jpg',
     },
     {
       id: 11528279,
@@ -28,7 +28,7 @@ export class ConsultationMedService {
       sexe: 'Femme',
       dateNaiss: '12/01/2000',
       antecedent: 'Tabac , Diabète',
-      url: 'assets/fatma.jpg',
+      url: 'assets/mama.jpg',
     },
     {
       id: 11822279,
