@@ -16,14 +16,33 @@ import { HttpClientModule } from '@angular/common/http';
 import { ImagePicker } from '@ionic-native/image-picker/ngx';
 import { DetailConsultationComponent } from './detail-consultation/detail-consultation.component';
 import { CommonModule } from '@angular/common';
-
 import { ListePatientComponent } from './liste-patient/liste-patient.component';
+import { LoadingAIComponent } from './consultation/loading-ai/loading-ai.component';
 @NgModule({
-  declarations: [AppComponent, ModalImageComponent, PatientComponent, ConsultationComponent, DetailConsultationComponent, ListePatientComponent],
+  declarations: [
+    LoadingAIComponent,
+    AppComponent,
+    ModalImageComponent,
+    PatientComponent,
+    ConsultationComponent,
+    DetailConsultationComponent,
+    ListePatientComponent,
+  ],
   entryComponents: [],
-  imports: [BrowserModule, CommonModule, IonicModule.forRoot(), AppRoutingModule, IonicSelectableModule, SwiperModule
-    , HttpClientModule, FormsModule],
-  providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }, ImagePicker],
+  imports: [
+    BrowserModule,
+    CommonModule,
+    IonicModule.forRoot(),
+    AppRoutingModule,
+    IonicSelectableModule,
+    SwiperModule,
+    HttpClientModule,
+    FormsModule,
+  ],
+  providers: [
+    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
+    ImagePicker,
+  ],
   bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
