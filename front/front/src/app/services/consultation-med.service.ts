@@ -57,6 +57,7 @@ export class ConsultationMedService {
     },
   ]
     ;
+  static consultation_id: any;
 
   qs() {
     return this.users;
@@ -124,8 +125,9 @@ export class ConsultationMedService {
       imgMedical: "assets/7.jpg",
       AImodelD: "maladie de rhétinopathie ",
       AImodelG: "maladie de rhétinopathie ",
-      DemandeAvis: true,
+      DemandeAvis: false,
       avisExpert: false,
+      isExpert: true
 
     }
 

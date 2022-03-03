@@ -1,19 +1,19 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { IonicModule } from '@ionic/angular';
 
-import { ButtonDisabledComponent } from './button-disabled.component';
+import { ExpertConsultationComponent } from './expert-consultation.component';
 
-describe('ButtonDisabledComponent', () => {
-  let component: ButtonDisabledComponent;
-  let fixture: ComponentFixture<ButtonDisabledComponent>;
+describe('ExpertConsultationComponent', () => {
+  let component: ExpertConsultationComponent;
+  let fixture: ComponentFixture<ExpertConsultationComponent>;
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [ ButtonDisabledComponent ],
+      declarations: [ ExpertConsultationComponent ],
       imports: [IonicModule.forRoot()]
     }).compileComponents();
 
-    fixture = TestBed.createComponent(ButtonDisabledComponent);
+    fixture = TestBed.createComponent(ExpertConsultationComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   }));

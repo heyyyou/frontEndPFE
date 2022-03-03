@@ -20,8 +20,8 @@ import { CommonModule } from '@angular/common';
 import { ListePatientComponent } from './liste-patient/liste-patient.component';
 import { LoadingAIComponent } from './consultation/loading-ai/loading-ai.component';
 import { AvisExpertComponent } from './detail-consultation/avis_expert/avis-expert/avis-expert.component';
-import { ButtonDisabledComponent } from './detail-consultation/buttonDisabled/button-disabled/button-disabled.component';
 import { ConsultationAvisComponent } from './consultation-avis/consultation-avis.component';
+import { ExpertConsultationComponent } from './detail-consultation/expert-consultation/expert-consultation.component';
 @NgModule({
   declarations: [
     LoadingAIComponent,
@@ -33,8 +33,8 @@ import { ConsultationAvisComponent } from './consultation-avis/consultation-avis
     ListePatientComponent,
     ListeConsultationComponent,
     AvisExpertComponent,
-    ButtonDisabledComponent,
-    ConsultationAvisComponent
+    ConsultationAvisComponent,
+    ExpertConsultationComponent
 
   ],
   entryComponents: [],

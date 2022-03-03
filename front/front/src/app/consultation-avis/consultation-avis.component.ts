@@ -11,7 +11,7 @@ import { PhotoService } from '../services/photo.service';
   styleUrls: ['./consultation-avis.component.scss'],
 })
 export class ConsultationAvisComponent implements OnInit {
-
+  // eli fih button disabled w fih avis expert w expert consultation
   @ViewChild(IonContent) private content: IonContent;
 
   base64 = '';
@@ -119,6 +119,7 @@ export class ConsultationAvisComponent implements OnInit {
 
   async ngOnInit() {
     await this.photoService.loadSaved();
+
 
   }
   bew() {

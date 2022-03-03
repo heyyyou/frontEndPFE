@@ -6,6 +6,7 @@ import { PatientComponent } from './patient/patient.component';
 import { ListePatientComponent } from './liste-patient/liste-patient.component';
 import { ListeConsultationComponent } from './liste-consultation/liste-consultation.component';
 import { ConsultationAvisComponent } from './consultation-avis/consultation-avis.component';
+import { ExpertConsultationComponent } from './detail-consultation/expert-consultation/expert-consultation.component';
 
 const routes: Routes = [
   {
@@ -23,6 +24,7 @@ const routes: Routes = [
   { path: 'ListePatient', component: ListePatientComponent },
   { path: 'ListeConsultation', component: ListeConsultationComponent },
   { path: 'consultationAvis', component: ConsultationAvisComponent },
+  { path: 'ExpertConsultation', component: ExpertConsultationComponent },
 
 
 

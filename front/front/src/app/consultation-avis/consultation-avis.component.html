@@ -105,7 +105,9 @@
       </h6>
     </div>
     <ion-button
-      *ngIf="item.avisExpert === false && DemandeAvis === false"
+      *ngIf="
+        item.avisExpert === false && DemandeAvis === false && !item.isExpert
+      "
       color="primary"
       expand="block"
       size="large"
@@ -114,8 +116,12 @@
       [disabled]="item.avisExpert === false && item.DemandeAvis === true"
       >Avis Expert</ion-button
     >
+
+    <div *ngIf="item.avisExpert === true || DemandeAvis === true">
+      <app-avis-expert></app-avis-expert>
+    </div>
+    <div *ngIf="item.isExpert">
+      <app-expert-consultation></app-expert-consultation>
+    </div>
   </ion-content>
-  <div *ngIf="item.avisExpert === true || DemandeAvis === true">
-    <app-avis-expert></app-avis-expert>
-  </div>
 </ion-app>
