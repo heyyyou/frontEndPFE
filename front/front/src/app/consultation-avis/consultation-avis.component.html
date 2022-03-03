@@ -1,4 +1,4 @@
-<ion-app>
+<ion-app *ngFor="let item of ConsultationMedService.consultation_id">
   <ion-header class="ion-no-border">
     <ion-toolbar
       color="primary"
@@ -14,18 +14,18 @@
   <ion-content>
     <ion-item>
       <ion-avatar slot="start">
-        <img src="{{ ConsultationMedService.pic }}" />
+        <img src="{{ item.url }}" />
       </ion-avatar>
       <ion-label>
         <p>Patient,</p>
-        <h3>{{ ConsultationMedService.selected_users.name }},</h3>
+        <h3>{{ item.name }},</h3>
       </ion-label>
       <ion-icon
         class="calendar"
         name="calendar-outline"
         color="gris"
       ></ion-icon>
-      <h4>{{ ConsultationMedService.myDate }}</h4>
+      <h4>{{ item.dateConslt }}</h4>
     </ion-item>
     <!-- si je confirme pour l'avis d'un expert un ion-progress bar is here -->
 
@@ -33,25 +33,25 @@
       <!-- <div class="header"> -->
       <ion-item color="couleurbase" class="item1">
         <ion-icon name="transgender" color="primary"></ion-icon>
-        <h3>{{ ConsultationMedService.selected_users.sexe }}</h3></ion-item
+        <h3>{{ item.sexe }}</h3></ion-item
       >
 
       <ion-item color="couleurbase">
         <ion-icon name="call" color="primary"></ion-icon>
 
-        <h3>{{ ConsultationMedService.selected_users.num }}</h3>
+        <h3>{{ item.num }}</h3>
       </ion-item>
 
       <ion-item color="couleurbase">
         <ion-icon name="calendar-outline" color="primary"></ion-icon>
         <h3>
-          {{ ConsultationMedService.selected_users.dateNaiss }}
+          {{ item.dateNaiss }}
         </h3></ion-item
       >
 
       <ion-item lines="none" color="couleurbase" class="item4">
         <ion-icon name="medkit" color="primary"></ion-icon>
-        <h3>{{ ConsultationMedService.selected_users.antecedent }}</h3>
+        <h3>{{ item.antecedent }}</h3>
       </ion-item></ion-list
     >
     <!-- </div> -->
@@ -100,19 +100,22 @@
       <h5>AI Résultat</h5>
       <h6>
         Patient
-        <ion-text color="primary">{{
-          ConsultationMedService.selected_users.name
-        }}</ion-text>
+        <ion-text color="primary">{{ item.name }}</ion-text>
         a la maladie de la diabéte au niveau de l’oeil droite.
       </h6>
     </div>
     <ion-button
+      *ngIf="item.avisExpert === false && DemandeAvis === false"
       color="primary"
       expand="block"
       size="large"
       class="AvisExpert"
       (click)="DemanderAvis()"
+      [disabled]="item.avisExpert === false && item.DemandeAvis === true"
       >Avis Expert</ion-button
     >
   </ion-content>
+  <div *ngIf="item.avisExpert === true || DemandeAvis === true">
+    <app-avis-expert></app-avis-expert>
+  </div>
 </ion-app>

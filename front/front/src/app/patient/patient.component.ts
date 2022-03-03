@@ -55,4 +55,8 @@ export class PatientComponent implements OnInit {
   consultation() {
     this.router.navigate(['consultation']);
   }
+  ajouter() {
+    this.router.navigate(["ListePatient"]);
+    console.log("jksdh")
+  }
 }

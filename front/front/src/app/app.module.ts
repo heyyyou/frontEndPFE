@@ -1,3 +1,4 @@
+import { ListeConsultationComponent } from './liste-consultation/liste-consultation.component';
 
 import { ConsultationComponent } from './consultation/consultation.component';
 import { PatientComponent } from './patient/patient.component';
@@ -18,6 +19,9 @@ import { DetailConsultationComponent } from './detail-consultation/detail-consul
 import { CommonModule } from '@angular/common';
 import { ListePatientComponent } from './liste-patient/liste-patient.component';
 import { LoadingAIComponent } from './consultation/loading-ai/loading-ai.component';
+import { AvisExpertComponent } from './detail-consultation/avis_expert/avis-expert/avis-expert.component';
+import { ButtonDisabledComponent } from './detail-consultation/buttonDisabled/button-disabled/button-disabled.component';
+import { ConsultationAvisComponent } from './consultation-avis/consultation-avis.component';
 @NgModule({
   declarations: [
     LoadingAIComponent,
@@ -27,6 +31,11 @@ import { LoadingAIComponent } from './consultation/loading-ai/loading-ai.compone
     ConsultationComponent,
     DetailConsultationComponent,
     ListePatientComponent,
+    ListeConsultationComponent,
+    AvisExpertComponent,
+    ButtonDisabledComponent,
+    ConsultationAvisComponent
+
   ],
   entryComponents: [],
   imports: [

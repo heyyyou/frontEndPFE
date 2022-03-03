@@ -31,12 +31,19 @@
 //     background: #f5f0f0;
 //     padding: 2 15px;
 //   }
+.border-radius-bottom {
+  border-bottom-left-radius: 22px;
+  border-bottom-right-radius: 22px;
+}
 
 ion-toolbar {
   height: 90%;
   .bordered {
     --border-raduis: 20px;
-    --box-shadow: 6px 5px 10px #d1d1d1, -5px -5px 10px #ffffff;
+  }
+
+  .radius {
+    --border-radius: 12px;
   }
 
   .image-cropper {

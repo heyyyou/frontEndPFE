@@ -1,19 +1,17 @@
-import { PhotoService } from './../services/photo.service';
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { Input } from '@angular/core';
-import { ConsultationMedService } from '../services/consultation-med.service';
-import { ChildrenOutletContexts, Router, RouterOutlet } from '@angular/router';
+import { Router } from '@angular/router';
 import { AlertController, IonContent, LoadingController, ModalController } from '@ionic/angular';
 import { SwiperOptions } from 'swiper';
-import { async } from 'rxjs';
-
+import { ConsultationMedService } from '../services/consultation-med.service';
+import { PhotoService } from '../services/photo.service';
 
 @Component({
-  selector: 'app-detail-consultation',
-  templateUrl: './detail-consultation.component.html',
-  styleUrls: ['./detail-consultation.component.scss'],
+  selector: 'app-consultation-avis',
+  templateUrl: './consultation-avis.component.html',
+  styleUrls: ['./consultation-avis.component.scss'],
 })
-export class DetailConsultationComponent implements OnInit {
+export class ConsultationAvisComponent implements OnInit {
+
   @ViewChild(IonContent) private content: IonContent;
 
   base64 = '';
@@ -128,3 +126,4 @@ export class DetailConsultationComponent implements OnInit {
   }
 
 }
+

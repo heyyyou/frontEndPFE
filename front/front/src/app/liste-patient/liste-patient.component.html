@@ -1,23 +1,24 @@
 <ion-app class="content">
   <div class="header">
     <ion-toolbar>
-    <ion-buttons slot="start">
-      <ion-button fill="solid" color="light">
-        <ion-icon name="arrow-back-outline"></ion-icon
-      ></ion-button>
-    </ion-buttons>
-    <ion-buttons slot="end">
-      <ion-button
-      ion-button
-      fill="solid"
-      color="light"
-      (click)="ConsultationMedService.ajouter_patient()"
-    >
-      <ion-icon name="person-add-outline" color="dark"></ion-icon
-    ></ion-button>
-    </ion-buttons>
-  </ion-toolbar>
-    <h5 class="listepatient">Liste des patients</h5>
+      <ion-buttons slot="start" class="ion-margin">
+        <ion-button fill="solid" color="light">
+          <ion-icon name="arrow-back-outline"></ion-icon
+        ></ion-button>
+      </ion-buttons>
+      <ion-buttons slot="end" class="ion-margin">
+        <ion-button
+          ion-button
+          fill="solid"
+          color="light"
+          (click)="ConsultationMedService.ajouter_patient()"
+        >
+          <ion-icon name="person-add-outline" color="dark"></ion-icon
+        ></ion-button>
+      </ion-buttons>
+      <h5 class="ion-margin ion-padding">Liste des patients</h5>
+    </ion-toolbar>
+
     <ion-searchbar
       class="searchBar"
       placeholder="cherchez un patient"
@@ -26,36 +27,45 @@
   <ion-content class="contenue">
     <ion-grid>
       <ion-row>
-        <ion-col size="6" *ngFor="let item of ConsultationMedService.users">
+        <ion-col
+          size="6"
+          class="client-item"
+          *ngFor="let item of ConsultationMedService.users"
+        >
           <div class="image-card">
+            <ion-col class="params-icon">
+              <ion-icon
+                name="ellipsis-vertical-sharp"
+                (click)="openPopover($event)"
+              ></ion-icon>
+              <ion-popover trigger="trigger-button">
+                <ng-template>
+                  <ion-content><ion-item>heello</ion-item></ion-content>
+                </ng-template>
+              </ion-popover>
+            </ion-col>
             <ion-grid>
               <ion-row>
                 <ion-col>
-                  <ion-img class="image" [src]="item.url"></ion-img>
-                  <ion-text class="name">{{ item.name }}</ion-text>
+                  <ion-img class="image" [src]="item.url"></ion-img
+                ></ion-col>
+                <ion-col>
+                  <ion-text class="name">{{ item.name }}</ion-text></ion-col
+                >
+
+                <ion-col>
+                  <ion-text class="age">{{ item.dateNaiss }}</ion-text>
                 </ion-col>
               </ion-row>
-             <a [routerLink]="['home']"></a
+              <a routerLink="/ListeConsultation"
                 ><ion-text color="primary" class="consultation"
                   >Consultations</ion-text
                 >
-
+              </a>
             </ion-grid>
           </div>
         </ion-col></ion-row
       >
     </ion-grid>
   </ion-content>
-  <!-- <h4>Liste Patient</h4>
-    <div class="avatar">
-      <ion-img src="assets\fatma.jpg"></ion-img>
-    </div>
-  <ion-searchbar></ion-searchbar>
-  <div class="patient">
-    <ion-item *ngFor="let item of ConsultationMedService.users"> </ion-item>
-  </div>
-</ion-content> -->
-  <!-- </ion-item></ion-content
-    ></ion-app -->
-  <!-- ></ion-content -->
 </ion-app>

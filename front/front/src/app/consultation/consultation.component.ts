@@ -20,15 +20,16 @@ import { DomSanitizer } from '@angular/platform-browser';
 })
 export class ConsultationComponent implements OnInit {
   base64 = '';
-  isLoadingAI: boolean = false ;
+  isLoadingAI: boolean = false;
+
 
   async presentLoading() {
-    this.isLoadingAI=true ;
+    this.isLoadingAI = true;
     setTimeout(() => {
-      this.isLoadingAI=false ;
+      this.isLoadingAI = false;
       this.router.navigate(['detailConsultation']);
 
-    }, 5000);
+    }, 1000);
 
   }
 
@@ -99,7 +100,7 @@ export class ConsultationComponent implements OnInit {
   // }
 
 
-  constructor(public sanitizer: DomSanitizer ,private modalCtrl: ModalController, public photoService: PhotoService, public actionSheetController: ActionSheetController, public alertController: AlertController, public toastController: ToastController, private router: Router, private picker: ImagePicker, public loadingController: LoadingController, public ConsultationMedService: ConsultationMedService) { }
+  constructor(public sanitizer: DomSanitizer, private modalCtrl: ModalController, public photoService: PhotoService, public actionSheetController: ActionSheetController, public alertController: AlertController, public toastController: ToastController, private router: Router, private picker: ImagePicker, public loadingController: LoadingController, public ConsultationMedService: ConsultationMedService) { }
   async presentToast() {
     const toast = await this.toastController.create({
       message: '5 élèments maximum,merci',

@@ -63,7 +63,9 @@ export class HomePage {
   open() {
     this.router.navigate(['consultation']);
   }
-
+  open2() {
+    this.router.navigate(['ListePatient']);
+  }
 
   constructor(private modalCtrl: ModalController, public photoService: PhotoService, public actionSheetController: ActionSheetController, public alertController: AlertController, public toastController: ToastController, private router: Router) { }
   async presentToast() {

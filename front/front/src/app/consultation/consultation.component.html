@@ -1,10 +1,7 @@
 <ion-app>
   <ion-header class="ion-no-border">
-    <ion-toolbar
-      color="favorite"
-      style="border-bottom-left-radius: 22px; border-bottom-right-radius: 22px"
-    >
-      <ion-buttons>
+    <ion-toolbar class="border-radius-bottom" color="primary">
+      <ion-buttons class="ion-margin">
         <ion-button class="bordered" fill="solid" color="light">
           <ion-icon name="arrow-back-outline"></ion-icon
         ></ion-button>
@@ -19,7 +16,7 @@
       </div>
 
       <br />
-      <ion-item lines="none" style="border-radius: 15px" *ngIf="!isLoadingAI">
+      <ion-item lines="none" class="ion-margin radius" *ngIf="!isLoadingAI">
         <ion-label
           ><ion-text color="new2">choisissez un patient</ion-text>
         </ion-label>
@@ -84,7 +81,7 @@
         ><ion-icon name="eye-outline" color="favorites"></ion-icon
         ><ion-text color="favorites"> Oeil Droite</ion-text>
       </ion-segment-button>
-      <ion-segment-button value="gauche" >
+      <ion-segment-button value="gauche">
         <ion-icon name="eye-outline" color="favorites"></ion-icon>
         <ion-text color="favorites"> Oeil Gauche</ion-text></ion-segment-button
       >
@@ -143,8 +140,6 @@
         ConsultationMedService.selected_users === null
       "
       >AI Modal</ion-button
-
-
     >
   </ion-content>
   <ion-content *ngIf="isLoadingAI">

@@ -5,6 +5,7 @@ import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 import { PatientComponent } from './patient/patient.component';
 import { ListePatientComponent } from './liste-patient/liste-patient.component';
 import { ListeConsultationComponent } from './liste-consultation/liste-consultation.component';
+import { ConsultationAvisComponent } from './consultation-avis/consultation-avis.component';
 
 const routes: Routes = [
   {
@@ -20,7 +21,8 @@ const routes: Routes = [
   { path: 'consultation', component: ConsultationComponent },
   { path: 'detailConsultation', component: DetailConsultationComponent },
   { path: 'ListePatient', component: ListePatientComponent },
-  { path: 'ListeConsultation', component: ListeConsultationComponent }
+  { path: 'ListeConsultation', component: ListeConsultationComponent },
+  { path: 'consultationAvis', component: ConsultationAvisComponent },
 
 
 

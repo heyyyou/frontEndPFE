@@ -1,3 +1,7 @@
+// --- to change
+// .item-client {
+//   min-height: 50px;
+// }
 .content {
   background-color: rgb(248, 247, 247);
 
@@ -11,15 +15,13 @@
     margin-left: 14px;
     --border-radius: 10px;
   }
+
   .bordered2 {
     margin-top: 12px;
     padding-right: 12%;
     --border-radius: 10px;
   }
-  .listepatient {
-    margin-left: 34%;
-    margin-top: -6%;
-  }
+
   h5 {
     font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   }
@@ -45,6 +47,14 @@
       padding: 2rem;
       border-radius: 1.5rem;
       margin-bottom: 0.5rem;
+      position: relative;
+
+      .params-icon {
+        position: absolute;
+        top: 10px;
+        left: 37%;
+        width: 100%;
+      }
 
       .image {
         height: 70px;
@@ -59,12 +69,16 @@
         margin-right: auto;
       }
       .consultation {
-        font-weight: 700;
-        font-size: 13px;
+        font-weight: bold;
+        font-size: 15px;
       }
       .name {
         font-weight: bold;
+        font-size: 15px;
+      }
+      .age {
         font-size: 13px;
+        color: darkgray;
       }
     }
   }

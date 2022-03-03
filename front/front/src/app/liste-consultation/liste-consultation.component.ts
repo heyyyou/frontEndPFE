@@ -1,3 +1,5 @@
+import { ConsultationComponent } from './../consultation/consultation.component';
+import { Router } from '@angular/router';
 import { PhotoService } from './../services/photo.service';
 import { ConsultationMedService } from './../services/consultation-med.service';
 import { Component, OnInit } from '@angular/core';
@@ -8,9 +10,18 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./liste-consultation.component.scss'],
 })
 export class ListeConsultationComponent implements OnInit {
+  public avisExpert;
+  constructor(public ConsultationMedService: ConsultationMedService, public PhotoService: PhotoService, public router: Router) { }
 
-  constructor(public ConsultationMedService: ConsultationMedService, public PhotoService: PhotoService) { }
+  newConsultation() {
+    this.router.navigate(["consultation"])
+  }
+  ngOnInit() {
 
-  ngOnInit() { }
+
+  }
+  openDetail() {
+    this.router.navigate(["consultationAvis"])
+  }
 
 }
