@@ -4,8 +4,8 @@
       color="primary"
       style="border-bottom-left-radius: 15px; border-bottom-right-radius: 15px"
     >
-      <ion-buttons>
-        <ion-button class="bordered ion-margin" fill="solid" color="light">
+      <ion-buttons class="ion-margin">
+        <ion-button class="bordered" fill="solid" color="light">
           <ion-icon name="arrow-back-outline"></ion-icon
         ></ion-button>
       </ion-buttons>
@@ -130,8 +130,11 @@
     >
       <app-avis-expert></app-avis-expert>
     </div>
-    <div *ngIf="item.isExpert">
+    <div *ngIf="item.isExpert === true && item.avisExpert === false">
       <app-expert-consultation></app-expert-consultation>
+    </div>
+    <div *ngIf="item.isExpert === true && item.avisExpert === true">
+      <app-toast></app-toast>
     </div>
   </ion-content>
 </ion-app>

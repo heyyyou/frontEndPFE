@@ -8,6 +8,7 @@ import { ListeConsultationComponent } from './liste-consultation/liste-consultat
 import { ConsultationAvisComponent } from './consultation-avis/consultation-avis.component';
 import { ExpertConsultationComponent } from './detail-consultation/expert-consultation/expert-consultation.component';
 import { ParametreComponent } from './parametre/parametre.component';
+import { ToastComponent } from './toast/toast.component';
 
 const routes: Routes = [
   {
@@ -27,6 +28,10 @@ const routes: Routes = [
   { path: 'consultationAvis', component: ConsultationAvisComponent },
   { path: 'ExpertConsultation', component: ExpertConsultationComponent },
   { path: 'parametre', component: ParametreComponent },
+  { path: 'toastExpert', component: ToastComponent },
+
+
+
 
 
 

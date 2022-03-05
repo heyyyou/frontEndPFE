@@ -22,6 +22,8 @@ import { LoadingAIComponent } from './consultation/loading-ai/loading-ai.compone
 import { AvisExpertComponent } from './detail-consultation/avis_expert/avis-expert/avis-expert.component';
 import { ConsultationAvisComponent } from './consultation-avis/consultation-avis.component';
 import { ExpertConsultationComponent } from './detail-consultation/expert-consultation/expert-consultation.component';
+import { ParametreComponent } from './parametre/parametre.component';
+import { ToastComponent } from './toast/toast.component';
 @NgModule({
   declarations: [
     LoadingAIComponent,
@@ -34,7 +36,10 @@ import { ExpertConsultationComponent } from './detail-consultation/expert-consul
     ListeConsultationComponent,
     AvisExpertComponent,
     ConsultationAvisComponent,
-    ExpertConsultationComponent
+    ExpertConsultationComponent,
+    ParametreComponent,
+    ToastComponent
+
 
   ],
   entryComponents: [],

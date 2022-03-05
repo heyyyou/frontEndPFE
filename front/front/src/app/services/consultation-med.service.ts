@@ -86,7 +86,8 @@ export class ConsultationMedService {
       AImodelG: "saine ",
       DemandeAvis: true,
 
-      avisExpert: true
+      avisExpert: true,
+      isExpert: true
     },
     {
 
@@ -97,7 +98,8 @@ export class ConsultationMedService {
       AImodelG: "maladie de rhétinopathie ",
       DemandeAvis: true,
 
-      avisExpert: true
+      avisExpert: true,
+      isExpert: true
     },
     {
 
@@ -108,9 +110,11 @@ export class ConsultationMedService {
       AImodelG: "maladie de rhétinopathie ",
       DemandeAvis: true,
       rating: true,
-      avisExpert: false
+      avisExpert: false,
+      isExpert: true
     }
   ];
+  //consultationAvis window
   consultation_id = [ // i did it because i need only one when i ll do DB i ll sove the problem
     {
       id: 125822279,

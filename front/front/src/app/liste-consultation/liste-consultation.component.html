@@ -23,13 +23,27 @@
   <ion-content>
     <ion-card *ngFor="let item of ConsultationMedService.consultation">
       <img class="image" [src]="item.imgMedical" />
-
+      <ion-item lines="none" *ngIf="!item.isExpert">
+        <!-- <ion-col class="ion-margin"> -->
+        <ion-buttons slot="end">
+          <ion-button color="primary" (click)="editConsultation()"
+            ><ion-icon name="pencil"></ion-icon>
+          </ion-button>
+          <ion-button color="primary" (click)="suppConsultation()"
+            ><ion-icon name="trash"></ion-icon>
+          </ion-button> </ion-buttons
+      ></ion-item>
+      <ion-item lines="none" *ngIf="item.isExpert">
+        <!-- <ion-col class="ion-margin"> -->
+        <ion-text slot="end" color="gris">Médecin généraliste :</ion-text
+        ><ion-text slot="end" color="primary">Dr hela chelli</ion-text>
+      </ion-item>
       <ion-card-header>
         <ion-card-subtitle>Patient,</ion-card-subtitle>
 
         <ion-item lines="none">
           <ion-icon
-            *ngIf="item.rating"
+            *ngIf="!item.rating"
             name="star-sharp"
             slot="end"
             color="star"
