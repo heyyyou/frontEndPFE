@@ -107,7 +107,7 @@ export class ConsultationMedService {
       AImodelD: "maladie de rhétinopathie ",
       AImodelG: "maladie de rhétinopathie ",
       DemandeAvis: true,
-
+      rating: true,
       avisExpert: false
     }
   ];
@@ -120,14 +120,15 @@ export class ConsultationMedService {
       sexe: 'Femme',
       dateNaiss: '12/01/2000',
       antecedent: 'Tabac,Diabète,Cancer',
-      url: 'assets/mama.jpg',
+      url: 'assets/mama.jpg', // table user
       dateConslt: this.myDate,
-      imgMedical: "assets/7.jpg",
+      imgMedical: "assets/7.jpg", // table img med
       AImodelD: "maladie de rhétinopathie ",
       AImodelG: "maladie de rhétinopathie ",
-      DemandeAvis: false,
-      avisExpert: false,
-      isExpert: true
+      DemandeAvis: false, //ya une table avis BD
+      avisExpert: true, //si oui va etre affiche baed m table mtaa AVIs
+      isExpert: true,
+      // table avis BD
 
     }
 

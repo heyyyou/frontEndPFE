@@ -124,6 +124,23 @@
   --ion-color-shade: var(--ion-color-couleurbase-shade);
   --ion-color-tint: var(--ion-color-couleurbase-tint);
 }
+:root {
+  --ion-color-star: #f0f25f;
+  --ion-color-star-rgb: 240, 242, 95;
+  --ion-color-star-contrast: #000000;
+  --ion-color-star-contrast-rgb: 0, 0, 0;
+  --ion-color-star-shade: #d3d554;
+  --ion-color-star-tint: #f2f36f;
+}
+
+.ion-color-star {
+  --ion-color-base: var(--ion-color-star);
+  --ion-color-base-rgb: var(--ion-color-star-rgb);
+  --ion-color-contrast: var(--ion-color-star-contrast);
+  --ion-color-contrast-rgb: var(--ion-color-star-contrast-rgb);
+  --ion-color-shade: var(--ion-color-star-shade);
+  --ion-color-tint: var(--ion-color-star-tint);
+}
 
 /* Core CSS required for Ionic components to work properly */
 @import "~@ionic/angular/css/core.css";

@@ -17,6 +17,10 @@ ion-toolbar {
   .bordered {
     --border-raduis: 20px;
   }
+  .avatar {
+    height: 35px;
+    width: 35px;
+  }
 }
 ion-item {
   h3 {

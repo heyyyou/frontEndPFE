@@ -1,6 +1,79 @@
-<ion-app>
-  <ion-content>
-    <ion-button (click)="open()">open me </ion-button>
-    <ion-button (click)="open2()">open me patient </ion-button>
-  </ion-content>
-</ion-app>
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button menu="main-menu"></ion-menu-button>
+    </ion-buttons>
+    <ion-buttons slot="end">
+      <ion-icon
+        size="large"
+        color="primary"
+        name="notifications-sharp"
+      ></ion-icon>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content
+  [fullscreen]="true"
+  color="primary"
+  class="ion-margin"
+  style="border-radius: 12px"
+>
+  <ion-app>
+    <ion-header translucent>
+      <ion-toolbar>
+        <ion-title>Card</ion-title>
+      </ion-toolbar> </ion-header
+    >,
+    <ion-content fullscreen class="ion-padding">
+      <ion-card class="ion-margin">
+        <img src="assets/consultationn.jpg" />
+        <ion-card-header>
+          <ion-card-title color="primary"
+            >Consultation ophtalmologique</ion-card-title
+          >
+        </ion-card-header>
+        <ion-card-content>
+          Founded in 1829 on an isthmus between Lake Monona and Lake Mendota,
+          Madison was named the capital of the Wisconsin Territory in 1836.
+        </ion-card-content>
+        <ion-item>
+          <ion-button fill="outline" slot="end" (click)="listeConsultation()">
+            Liste Consultations</ion-button
+          ></ion-item
+        >
+      </ion-card>
+      <ion-card class="ion-margin">
+        <img src="assets/as.jpg" />
+        <ion-card-header>
+          <ion-card-title color="primary"
+            >Avis Expert ophtalmologue
+          </ion-card-title>
+        </ion-card-header>
+        <ion-card-content>
+          Founded in 1829 on an isthmus between Lake Monona and Lake Mendota,
+          Madison was named the capital of the Wisconsin Territory in 1836.
+        </ion-card-content>
+        <ion-item>
+          <ion-button fill="outline" slot="end" (click)="listeAvis()"
+            >Liste Avis</ion-button
+          ></ion-item
+        >
+      </ion-card>
+      <ion-card class="ion-margin">
+        <img src="assets/patient.jpg" />
+        <ion-card-header>
+          <ion-card-title color="primary">Les patients</ion-card-title>
+        </ion-card-header>
+        <ion-card-content>
+          Founded in 1829 on an isthmus between Lake Monona and Lake Mendota,
+          Madison was named the capital of the Wisconsin Territory in 1836.
+        </ion-card-content>
+        <ion-item>
+          <ion-button fill="outline" slot="end" (click)="patient()">
+            Liste Patients</ion-button
+          ></ion-item
+        >
+      </ion-card>
+    </ion-content>
+  </ion-app>
+</ion-content>

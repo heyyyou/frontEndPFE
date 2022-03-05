@@ -23,9 +23,20 @@
   <ion-content>
     <ion-card *ngFor="let item of ConsultationMedService.consultation">
       <img class="image" [src]="item.imgMedical" />
+
       <ion-card-header>
-        <ion-card-subtitle>Patient</ion-card-subtitle>
-        <ion-card-title>{{ item.Nameusers }}</ion-card-title>
+        <ion-card-subtitle>Patient,</ion-card-subtitle>
+
+        <ion-item lines="none">
+          <ion-icon
+            *ngIf="item.rating"
+            name="star-sharp"
+            slot="end"
+            color="star"
+          ></ion-icon>
+
+          <ion-card-title>{{ item.Nameusers }}</ion-card-title></ion-item
+        >
       </ion-card-header>
       <ion-card-content>
         <div class="droite">

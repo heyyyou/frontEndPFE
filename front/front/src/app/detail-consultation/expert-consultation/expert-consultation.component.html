@@ -1,28 +1,33 @@
-<div class="avis ion-padding">
+<div class="avis ion-padding ion-margin">
   <div>
     <ion-label class="avisExpert ion-margin">Donnez un avis</ion-label>
   </div>
   <div class="ion-margin">
-    <ion-item class="maldie">
-      <ion-label>choisissez une maladie</ion-label>
+    <ion-item class="itemborder">
+      <ion-label class="comments">choisissez une maladie</ion-label>
       <ion-select interface="popover">
-        <ion-select-option value="nes">NES</ion-select-option>
+        <ion-select-option value="nes">Diabète </ion-select-option>
+        <ion-select-option value="nes1">rhétinopathie </ion-select-option>
+        <ion-select-option value="nes2">surtension </ion-select-option>
       </ion-select>
     </ion-item>
-    <ion-item>
-      <ion-label>Gravité</ion-label>
+    <ion-item class="itemborder" lines="none">
+      <ion-label class="comments">Gravité</ion-label>
       <ion-select interface="popover">
-        <ion-select-option value="nes">NES</ion-select-option>
+        <ion-select-option value="nes">1</ion-select-option>
+        <ion-select-option value="nes1">2</ion-select-option>
+        <ion-select-option value="nes2">3</ion-select-option>
       </ion-select>
     </ion-item>
   </div>
-  <ion-item class="ion-padding">
-    <ion-icon name="trash" slot="end" color="primary"></ion-icon>
-    <ion-icon name="create-outline" slot="end" color="primary"></ion-icon>
-    <ion-label position="floating commentaire"
+  <ion-item class="itemborder">
+    <ion-label position="floating commentaire" class="comments"
       >ajoutez un commentaire</ion-label
     >
     <ion-input></ion-input>
   </ion-item>
-  <ion-button fill="outline">valider </ion-button>
 </div>
+<div class="div">
+  <ion-button size="Medium" class="ion-margin">valider </ion-button>
+</div>
+<!-- k yebda expert 7al -->

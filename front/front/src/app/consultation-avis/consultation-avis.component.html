@@ -9,6 +9,12 @@
           <ion-icon name="arrow-back-outline"></ion-icon
         ></ion-button>
       </ion-buttons>
+      <ion-avatar *ngIf="item.isExpert" slot="end" class="ion-margin avatar">
+        <img src="assets/mama.jpg"
+      /></ion-avatar>
+      <ion-avatar *ngIf="!item.isExpert" slot="end" class="ion-margin avatar">
+        <img src="assets/fatma.jpg"
+      /></ion-avatar>
     </ion-toolbar>
   </ion-header>
   <ion-content>
@@ -117,7 +123,11 @@
       >Avis Expert</ion-button
     >
 
-    <div *ngIf="item.avisExpert === true || DemandeAvis === true">
+    <div
+      *ngIf="
+        (!item.isExpert && item.avisExpert === true) || DemandeAvis === true
+      "
+    >
       <app-avis-expert></app-avis-expert>
     </div>
     <div *ngIf="item.isExpert">
