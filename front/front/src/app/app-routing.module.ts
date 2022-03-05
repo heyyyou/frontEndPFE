@@ -7,6 +7,7 @@ import { ListePatientComponent } from './liste-patient/liste-patient.component';
 import { ListeConsultationComponent } from './liste-consultation/liste-consultation.component';
 import { ConsultationAvisComponent } from './consultation-avis/consultation-avis.component';
 import { ExpertConsultationComponent } from './detail-consultation/expert-consultation/expert-consultation.component';
+import { ParametreComponent } from './parametre/parametre.component';
 
 const routes: Routes = [
   {
@@ -25,6 +26,8 @@ const routes: Routes = [
   { path: 'ListeConsultation', component: ListeConsultationComponent },
   { path: 'consultationAvis', component: ConsultationAvisComponent },
   { path: 'ExpertConsultation', component: ExpertConsultationComponent },
+  { path: 'parametre', component: ParametreComponent },
+
 
 
 
