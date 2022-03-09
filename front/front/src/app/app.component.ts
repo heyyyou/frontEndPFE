@@ -11,7 +11,7 @@ import { MenuController } from '@ionic/angular';
 })
 export class AppComponent implements OnInit {
   listeAvis() {
-    this.router.navigate(["listeAvis"]);
+    this.router.navigate(["reponseExpertNotif"]);
     this.menu.close();
 
   }

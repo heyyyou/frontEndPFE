@@ -12,6 +12,7 @@ import { ToastComponent } from './toast/toast.component';
 import { SignupComponent } from './signup/signup.component';
 import { LoginComponent } from './login/login.component';
 import { ListeAvisComponent } from './liste-avis/liste-avis.component';
+import { ReponseAvisNotifComponent } from './reponse-avis-notif/reponse-avis-notif.component';
 
 const routes: Routes = [
   {
@@ -35,6 +36,9 @@ const routes: Routes = [
   { path: 'parametre', component: ParametreComponent },
   { path: 'toastExpert', component: ToastComponent },
   { path: 'listeAvis', component: ListeAvisComponent },
+  { path: 'reponseExpertNotif', component: ReponseAvisNotifComponent },
+
+
 
 
 

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import { ChildrenOutletContexts, Router, RouterOutlet } from '@angular/router';
+import { ConsultationMedService } from '../services/consultation-med.service';
 
 import {
   ActionPerformed,
@@ -16,7 +17,7 @@ import { MenuController } from '@ionic/angular';
 })
 export class HomePage implements OnInit {
   ngOnInit() {
-    this.menu.enable(true);
+    // this.menu.enable(true);
     console.log('Initializing HomePage');
 
     // Request permission to use push notifications
@@ -63,13 +64,13 @@ export class HomePage implements OnInit {
 
 
 
-  constructor(public Router: Router, private menu: MenuController) { }
+  constructor(public Router: Router, private menu: MenuController, public ConsultationMedService: ConsultationMedService) { }
   listeConsultation() {
     this.Router.navigate(["ListeConsultation"])
 
   }
   listeAvis() {
-    this.Router.navigate(["ListeConsultation"]) //filter avis
+    this.Router.navigate(["listeAvis"]) //filter avis
 
   }
   patient() {
