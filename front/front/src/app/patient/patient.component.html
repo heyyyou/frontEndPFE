@@ -2,15 +2,9 @@
   <ion-content mode="ios">
     <div class="header">
       <h5>Nouveau patient</h5>
-
-      <ion-button
-        class="bordered"
-        fill="outline"
-        color="light"
-        (click)="consultation()"
-      >
-        <ion-icon name="arrow-back-outline"></ion-icon
-      ></ion-button>
+      <ion-buttons slot="start">
+        <ion-back-button defaultHref="home"></ion-back-button>
+      </ion-buttons>
     </div>
     <div></div>
     <div class="flex">

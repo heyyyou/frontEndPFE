@@ -2,10 +2,8 @@
   <ion-header class="ion-no-border">
     <ion-toolbar class="border-radius-bottom">
       <div class="flex-bloc">
-        <ion-buttons class="ion-margin" slot="start">
-          <ion-button fill="solid" color="light">
-            <ion-icon name="arrow-back-outline"></ion-icon
-          ></ion-button>
+        <ion-buttons slot="start">
+          <ion-back-button defaultHref="home"></ion-back-button>
         </ion-buttons>
 
         <h5>Liste des consultations</h5>
@@ -13,11 +11,11 @@
           <img src="assets/fatma.jpg" />
         </ion-avatar>
       </div>
-      <ion-searchbar
-        class="searchBar"
-        placeholder="cherchez un patient"
-      ></ion-searchbar>
     </ion-toolbar>
+    <ion-searchbar
+      class="searchBar ion-padding"
+      placeholder="cherchez un patient"
+    ></ion-searchbar>
   </ion-header>
 
   <ion-content>
@@ -74,7 +72,11 @@
             <ion-icon name="ellipse-sharp" color="Medium"></ion-icon>
           </div>
           <div class="details">
-            <ion-button slot="start" fill="outline" (click)="openDetail()"
+            <ion-button
+              slot="start"
+              fill="outline"
+              shape="round"
+              (click)="openDetail()"
               >Details</ion-button
             >
           </div>

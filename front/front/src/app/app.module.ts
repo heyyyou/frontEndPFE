@@ -1,5 +1,4 @@
 import { ListeConsultationComponent } from './liste-consultation/liste-consultation.component';
-
 import { ConsultationComponent } from './consultation/consultation.component';
 import { PatientComponent } from './patient/patient.component';
 import { ModalImageComponent } from './modal-image/modal-image.component';
@@ -24,6 +23,10 @@ import { ConsultationAvisComponent } from './consultation-avis/consultation-avis
 import { ExpertConsultationComponent } from './detail-consultation/expert-consultation/expert-consultation.component';
 import { ParametreComponent } from './parametre/parametre.component';
 import { ToastComponent } from './toast/toast.component';
+import { SignupComponent } from './signup/signup.component';
+import { LoginComponent } from './login/login.component';
+import { ListeAvisComponent } from './liste-avis/liste-avis.component';
+
 @NgModule({
   declarations: [
     LoadingAIComponent,
@@ -38,7 +41,10 @@ import { ToastComponent } from './toast/toast.component';
     ConsultationAvisComponent,
     ExpertConsultationComponent,
     ParametreComponent,
-    ToastComponent
+    ToastComponent,
+    SignupComponent,
+    LoginComponent,
+    ListeAvisComponent,
 
 
   ],
@@ -49,6 +55,7 @@ import { ToastComponent } from './toast/toast.component';
     IonicRatingModule,
     IonicModule.forRoot(),
     AppRoutingModule,
+
     IonicSelectableModule,
     SwiperModule,
     HttpClientModule,

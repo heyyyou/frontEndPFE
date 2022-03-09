@@ -83,3 +83,52 @@
     }
   }
 }
+ion-modal {
+  --background: rgba(44, 39, 45, 0.2);
+  &::part(content) {
+    backdrop-filter: blur(6px);
+  }
+  ion-content {
+    --background: transparent;
+    --padding-top: 25vh;
+    --padding-start: 20px;
+    --padding-end: 20px;
+  }
+}
+ion-item {
+  h3 {
+    font-weight: 700;
+    font-size: 18px;
+  }
+  h4 {
+    font-weight: 600;
+    font-size: 20px;
+    color: darkgrey;
+  }
+
+  p {
+    font-weight: 500;
+    font-size: 18px;
+  }
+
+  ion-avatar {
+    --border-radius: 40%;
+  }
+}
+h5 {
+  font-weight: 700;
+  font-size: 18px;
+}
+.details {
+  ion-icon {
+    height: 18px;
+    width: 18px;
+  }
+
+  h3 {
+    font-weight: 400;
+    font-size: 18px;
+    color: darkgrey;
+    margin-left: 5%;
+  }
+}

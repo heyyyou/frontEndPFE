@@ -1,11 +1,7 @@
 <ion-app>
   <ion-header class="ion-no-border">
     <ion-toolbar class="border-radius-bottom" color="primary">
-      <ion-buttons class="ion-margin">
-        <ion-button class="bordered" fill="solid" color="light">
-          <ion-icon name="arrow-back-outline"></ion-icon
-        ></ion-button>
-      </ion-buttons>
+      <ion-buttons class="ion-margin"> </ion-buttons>
 
       <div class="image-cropper">
         <img
@@ -36,6 +32,7 @@
                   class="bordered"
                   fill="solid"
                   color="light"
+                  shape="round"
                   (click)="dismiss()"
                 >
                   <ion-icon name="arrow-back-outline"></ion-icon
@@ -113,12 +110,15 @@
             swiperSlide
             *ngFor="let imge of photoService.photos; let i = index"
           >
-            <ion-button
-              fill="outline"
-              color="priamry"
-              (click)="showActionSheet(imge, i)"
-              ><ion-icon name="trash"></ion-icon
-            ></ion-button>
+            <div class="bouttontrash">
+              <ion-button
+                fill="outline"
+                color="priamry"
+                (click)="showActionSheet(imge, i)"
+                ><ion-icon name="trash"></ion-icon
+              ></ion-button>
+            </div>
+
             <img
               [src]="sanitizer.bypassSecurityTrustUrl(imge.webviewPath)"
               onerror="this.src='assets/add.jpg'"
@@ -134,6 +134,7 @@
       expand="block"
       size="large"
       class="AImodel"
+      shape="round"
       (click)="presentLoading()"
       [disabled]="
         photoService.photos.length === 0 ||

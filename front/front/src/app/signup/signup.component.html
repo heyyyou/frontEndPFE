@@ -1,0 +1,65 @@
+<ion-header>
+  <ion-toolbar
+    color="primary"
+    style="border-bottom-left-radius: 12px; border-bottom-right-radius: 12px"
+  ></ion-toolbar>
+</ion-header>
+<ion-content>
+  <div class="login-section ion-padding">
+    <div class="heading ion-padding">
+      <h1>Welcome Doctor !</h1>
+      <p>Login</p>
+    </div>
+    <div class="login-form ion-padding">
+      <div class="form-input">
+        <ion-icon color="primary" name="mail-outline"></ion-icon>
+        <ion-item>
+          <ion-label position="floating">Adresse e-mail</ion-label>
+          <ion-input type="email"></ion-input>
+        </ion-item>
+      </div>
+      <div class="form-input">
+        <ion-icon color="primary" name="lock-closed-outline"></ion-icon>
+        <ion-item>
+          <ion-label position="floating">Mot de passe</ion-label>
+          <ion-input type="password"></ion-input>
+        </ion-item>
+      </div>
+    </div>
+
+    <div class="action-buttons ion-padding">
+      <ion-button
+        size="medium"
+        shape="round"
+        class="login-button"
+        routerLink="/home"
+        >Se Connecter</ion-button
+      >
+      <ion-button
+        color="gris"
+        size="medium"
+        fill="outline"
+        shape="round"
+        class="login-button"
+        routerLink="/signup"
+        >S'inscrire</ion-button
+      >
+      <ion-button
+        class="signup-button"
+        size="large"
+        fill="outline"
+        shape="round"
+        routerLink=""
+        ><img src="https://img.icons8.com/fluency/35/000000/facebook-new.png" />
+      </ion-button>
+      <ion-button
+        class="signup-button"
+        size="large"
+        fill="outline"
+        shape="round"
+        routerLink=""
+        ><img src="https://img.icons8.com/color/35/000000/gmail-new.png" />
+      </ion-button>
+    </div>
+  </div>
+</ion-content>

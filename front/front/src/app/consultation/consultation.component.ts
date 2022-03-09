@@ -28,7 +28,7 @@ export class ConsultationComponent implements OnInit {
       this.isLoadingAI = false;
       this.router.navigate(['detailConsultation']);
 
-    }, 1000);
+    }, 5000);
 
   }
 

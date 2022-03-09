@@ -129,6 +129,7 @@ ion-avatar {
   margin-top: 5%;
   margin-bottom: 5%;
   background-color: #f7f7f7;
+  position: relative;
 }
 
 .addicon {
@@ -140,6 +141,7 @@ ion-avatar {
   margin-bottom: 10%;
   margin-left: 7%;
   margin-right: 7%;
+
   --box-shadow: 6px 5px 10px #d1d1d1, -5px -5px 10px #ffffff;
 }
 
@@ -169,4 +171,10 @@ ion-segment {
   border-radius: 12px;
   margin-left: 7%;
   margin-right: 7%;
+}
+.bouttontrash {
+  position: absolute;
+  top: 25px;
+  right: 39.5%;
+  width: 100%;
 }

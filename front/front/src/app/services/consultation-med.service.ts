@@ -87,7 +87,7 @@ export class ConsultationMedService {
       DemandeAvis: true,
 
       avisExpert: true,
-      isExpert: true
+      isExpert: false
     },
     {
 
@@ -129,9 +129,9 @@ export class ConsultationMedService {
       imgMedical: "assets/7.jpg", // table img med
       AImodelD: "maladie de rhétinopathie ",
       AImodelG: "maladie de rhétinopathie ",
-      DemandeAvis: false, //ya une table avis BD
+      DemandeAvis: true, //ya une table avis BD
       avisExpert: true, //si oui va etre affiche baed m table mtaa AVIs
-      isExpert: true,
+      isExpert: false,
       // table avis BD
 
     }

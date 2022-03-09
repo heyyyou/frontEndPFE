@@ -1,4 +1,4 @@
-import { ActionSheetController } from '@ionic/angular';
+import { ActionSheetController, ModalController } from '@ionic/angular';
 import { ConsultationMedService } from './../services/consultation-med.service';
 import { Component, OnInit } from '@angular/core';
 
@@ -9,7 +9,17 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./liste-patient.component.scss'],
 })
 export class ListePatientComponent implements OnInit {
-  constructor(public ConsultationMedService: ConsultationMedService, public actionSheetController: ActionSheetController) { }
+  constructor(public modalController: ModalController, public ConsultationMedService: ConsultationMedService, public actionSheetController: ActionSheetController) { }
+
+  dismissModal() {
+    // using the injected ModalController this page
+    // can "dismiss" itself and optionally pass back data
+    this.modalController.dismiss({
+      'dismissed': true
+    });
+  }
+
+
   public async showActionSheet() {
     const actionSheet = await this.actionSheetController.create({
       buttons: [{

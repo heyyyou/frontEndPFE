@@ -9,6 +9,9 @@ import { ConsultationAvisComponent } from './consultation-avis/consultation-avis
 import { ExpertConsultationComponent } from './detail-consultation/expert-consultation/expert-consultation.component';
 import { ParametreComponent } from './parametre/parametre.component';
 import { ToastComponent } from './toast/toast.component';
+import { SignupComponent } from './signup/signup.component';
+import { LoginComponent } from './login/login.component';
+import { ListeAvisComponent } from './liste-avis/liste-avis.component';
 
 const routes: Routes = [
   {
@@ -17,9 +20,11 @@ const routes: Routes = [
   },
   {
     path: '',
-    redirectTo: 'home',
+    redirectTo: 'login',
     pathMatch: 'full'
   },
+  { path: 'login', component: SignupComponent },
+  { path: 'signup', component: LoginComponent },
   { path: 'patient', component: PatientComponent },
   { path: 'consultation', component: ConsultationComponent },
   { path: 'detailConsultation', component: DetailConsultationComponent },
@@ -29,6 +34,9 @@ const routes: Routes = [
   { path: 'ExpertConsultation', component: ExpertConsultationComponent },
   { path: 'parametre', component: ParametreComponent },
   { path: 'toastExpert', component: ToastComponent },
+  { path: 'listeAvis', component: ListeAvisComponent },
+
+
 
 
 
