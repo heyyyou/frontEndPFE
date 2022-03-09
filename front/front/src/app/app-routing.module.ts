@@ -34,7 +34,11 @@ const routes: Routes = [
   { path: 'ExpertConsultation', component: ExpertConsultationComponent },
   { path: 'parametre', component: ParametreComponent },
   { path: 'toastExpert', component: ToastComponent },
-  { path: 'listeAvis', component: ListeAvisComponent },
+  { path: 'listeAvis', component: ListeAvisComponent },  {
+    path: 'rating',
+    loadChildren: () => import('./rating/rating.module').then( m => m.RatingPageModule)
+  },
+
 
 
 

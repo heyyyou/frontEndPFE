@@ -1,0 +1,11 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>rating</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+<stars (shareRatingValue)="showRating($event)"></stars> <br>
+
+<h4 *ngIf="currentRatingValue">The value selected from the stars component is <h2>{{currentRatingValue}}</h2></h4>
+</ion-content>
