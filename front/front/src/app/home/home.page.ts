@@ -77,5 +77,9 @@ export class HomePage implements OnInit {
     this.Router.navigate(["ListePatient"])
 
   }
+  notificationAvis() {
+    this.Router.navigate(["AvisnonExpert"])
+
+  }
 
 }

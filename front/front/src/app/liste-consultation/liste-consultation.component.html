@@ -45,16 +45,7 @@
       <ion-card-header>
         <ion-card-subtitle>Patient,</ion-card-subtitle>
 
-        <ion-item lines="none">
-          <ion-icon
-            *ngIf="!item.rating"
-            name="star-sharp"
-            slot="end"
-            color="star"
-          ></ion-icon>
-
-          <ion-card-title>{{ item.Nameusers }}</ion-card-title></ion-item
-        >
+        <ion-card-title>{{ item.Nameusers }}</ion-card-title>
       </ion-card-header>
       <ion-card-content>
         <div class="droite">
@@ -88,8 +79,19 @@
           </div>
         </ion-col>
       </ion-card-content>
+
+      <app-stars-rating
+        (shareRatingValue)="showRating($event)"
+      ></app-stars-rating>
+      <br />
+
+      <h4 *ngIf="currentRatingValue">
+        <!-- The value selected from the stars component is
+        <h2>{{ currentRatingValue }}</h2> -->
+      </h4>
     </ion-card>
   </ion-content>
+
   <ion-footer>
     <ion-fab-button color="primary" (click)="newConsultation()">
       <ion-icon name="add"></ion-icon>

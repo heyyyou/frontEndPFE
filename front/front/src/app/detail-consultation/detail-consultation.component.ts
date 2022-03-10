@@ -1,12 +1,11 @@
+import { StarsComponent } from './../rating/stars/stars.component';
 import { PhotoService } from './../services/photo.service';
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output, ViewChild } from '@angular/core';
 import { Input } from '@angular/core';
 import { ConsultationMedService } from '../services/consultation-med.service';
 import { ChildrenOutletContexts, Router, RouterOutlet } from '@angular/router';
 import { AlertController, IonContent, LoadingController, ModalController } from '@ionic/angular';
 import { SwiperOptions } from 'swiper';
-import { async } from 'rxjs';
-
 
 @Component({
   selector: 'app-detail-consultation',
@@ -14,8 +13,8 @@ import { async } from 'rxjs';
   styleUrls: ['./detail-consultation.component.scss'],
 })
 export class DetailConsultationComponent implements OnInit {
-  @ViewChild(IonContent) private content: IonContent;
 
+  @ViewChild(IonContent) private content: IonContent;
   base64 = '';
   DemandeAvis: boolean = false; // f details ya mariem demain
   Avis: boolean = false;

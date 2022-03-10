@@ -1,11 +1,12 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 
 @Component({
-  selector: 'app-avis-expert',
-  templateUrl: './avis-expert.component.html',
-  styleUrls: ['./avis-expert.component.scss'],
+  selector: 'app-stars-rating',
+  templateUrl: './stars-rating.component.html',
+  styleUrls: ['./stars-rating.component.scss'],
 })
-export class AvisExpertComponent implements OnInit {
+export class StarsRatingComponent implements OnInit {
+
   @Output() shareRatingValue: EventEmitter<number> = new EventEmitter();
   currentValue: number = null;
 
@@ -13,19 +14,13 @@ export class AvisExpertComponent implements OnInit {
     this.shareRatingValue.emit(value);
   }
 
-
-
   constructor() { }
-  avis_Expert = [
-    {
-      id: 111,
-      avis: "le malade est sain",
+
+  ngOnInit() {
+  }
 
 
-    }
-  ]
 
 
-  ngOnInit() { }
 
 }

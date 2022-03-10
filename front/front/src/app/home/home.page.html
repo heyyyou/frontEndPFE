@@ -3,13 +3,18 @@
     <ion-buttons slot="start">
       <ion-menu-button menu="main-menu"></ion-menu-button>
     </ion-buttons>
-    <ion-buttons slot="end">
-      <ion-icon
-        size="large"
-        color="primary"
-        name="notifications-sharp"
-      ></ion-icon>
-    </ion-buttons>
+    <div class="notification">
+      <ion-buttons slot="end">
+        <ion-icon
+          size="large"
+          color="primary"
+          name="notifications-sharp"
+          (click)="notificationAvis()"
+        >
+        </ion-icon>
+        <ion-badge color="danger" class="badge">5</ion-badge>
+      </ion-buttons>
+    </div>
   </ion-toolbar>
 </ion-header>
 <ion-content

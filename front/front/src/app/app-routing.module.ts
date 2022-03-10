@@ -1,3 +1,4 @@
+import { ExpertConsultationComponent } from './detail-consultation/expert-consultation/expert-consultation.component';
 import { DetailConsultationComponent } from './detail-consultation/detail-consultation.component';
 import { ConsultationComponent } from './consultation/consultation.component';
 import { NgModule } from '@angular/core';
@@ -6,13 +7,15 @@ import { PatientComponent } from './patient/patient.component';
 import { ListePatientComponent } from './liste-patient/liste-patient.component';
 import { ListeConsultationComponent } from './liste-consultation/liste-consultation.component';
 import { ConsultationAvisComponent } from './consultation-avis/consultation-avis.component';
-import { ExpertConsultationComponent } from './detail-consultation/expert-consultation/expert-consultation.component';
 import { ParametreComponent } from './parametre/parametre.component';
 import { ToastComponent } from './toast/toast.component';
 import { SignupComponent } from './signup/signup.component';
 import { LoginComponent } from './login/login.component';
 import { ListeAvisComponent } from './liste-avis/liste-avis.component';
+import { StatistiqueComponent } from './statistique/statistique.component';
 import { ReponseAvisNotifComponent } from './reponse-avis-notif/reponse-avis-notif.component';
+import { StarsComponent } from './rating/stars/stars.component';
+import { StarsRatingComponent } from './stars-rating/stars-rating.component';
 
 const routes: Routes = [
   {
@@ -36,7 +39,12 @@ const routes: Routes = [
   { path: 'parametre', component: ParametreComponent },
   { path: 'toastExpert', component: ToastComponent },
   { path: 'listeAvis', component: ListeAvisComponent },
-  { path: 'reponseExpertNotif', component: ReponseAvisNotifComponent },
+  { path: 'statistique', component: StatistiqueComponent },
+  { path: 'AvisnonExpert', component: ReponseAvisNotifComponent },
+
+
+
+
 
 
 

@@ -130,8 +130,8 @@ export class ConsultationMedService {
       AImodelD: "maladie de rhétinopathie ",
       AImodelG: "maladie de rhétinopathie ",
       DemandeAvis: true, //ya une table avis BD
-      avisExpert: true, //si oui va etre affiche baed m table mtaa AVIs
-      isExpert: false,
+      avisExpert: false, //si oui va etre affiche baed m table mtaa AVIs
+      isExpert: true,
       // table avis BD
 
     }

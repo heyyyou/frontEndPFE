@@ -27,6 +27,38 @@
   </ion-item>
 </div>
 <div class="div">
-  <ion-button size="Medium" class="ion-margin">valider </ion-button>
+  <ion-button size="Medium" class="ion-margin" id="trigger-button"
+    >valider
+  </ion-button>
+  <ion-modal trigger="trigger-button">
+    <ng-template>
+      <ion-header>
+        <ion-icon
+          name="close-outline"
+          (click)="dismissModal()"
+          class="closeModel"
+        ></ion-icon>
+      </ion-header>
+      <ion-content>
+        <ion-grid>
+          <ion-row>
+            <ion-col size="12" class="ion-padding">
+              <ion-text color="white" class="evaluer"
+                >veuillez évaluer la consultation avec AI Model</ion-text
+              >
+            </ion-col>
+
+            <ion-col size="12" class="ion-padding">
+              <app-stars-rating
+                (click)="Valider()"
+                class="starsModel"
+              ></app-stars-rating
+            ></ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-content>
+    </ng-template>
+  </ion-modal>
 </div>
+
 <!-- k yebda expert 7al -->

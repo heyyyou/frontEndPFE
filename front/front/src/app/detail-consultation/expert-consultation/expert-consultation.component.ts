@@ -1,4 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+
+
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+
+import { ModalController } from '@ionic/angular';
+
 
 @Component({
   selector: 'app-expert-consultation',
@@ -6,9 +11,33 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./expert-consultation.component.scss'],
 })
 export class ExpertConsultationComponent implements OnInit {
+  @Output() shareRatingValue: EventEmitter<number> = new EventEmitter();
+  currentValue: number = null;
 
-  constructor() { }
+  getValueSelected(value: number) {
+    this.shareRatingValue.emit(value);
+  }
 
-  ngOnInit() {}
+  constructor(public modalController: ModalController) { }
+
+  dismissModal() {
+    // using the injected ModalController this page
+    // can "dismiss" itself and optionally pass back data
+    this.modalController.dismiss({
+      'dismissed': true
+    });
+  }
+  Valider() {
+    //ici je vais valider forms apres dismiss model stars
+    this.modalController.dismiss({
+      'dismissed': true
+    });
+  }
+  ngOnInit() {
+  }
+
+
+
 
 }
+

@@ -2,3 +2,14 @@
   border-bottom-left-radius: 15px;
   border-bottom-right-radius: 15px;
 }
+.notification {
+  position: absolute;
+  top: 13px;
+  left: 317px;
+  .badge {
+    position: absolute;
+    left: 14px;
+    top: -1px;
+    height: 18px;
+  }
+}

@@ -27,6 +27,8 @@ import { SignupComponent } from './signup/signup.component';
 import { LoginComponent } from './login/login.component';
 import { ListeAvisComponent } from './liste-avis/liste-avis.component';
 import { ReponseAvisNotifComponent } from './reponse-avis-notif/reponse-avis-notif.component';
+import { StatistiqueComponent } from './statistique/statistique.component';
+import { StarsRatingComponent } from './stars-rating/stars-rating.component';
 
 @NgModule({
   declarations: [
@@ -47,6 +49,11 @@ import { ReponseAvisNotifComponent } from './reponse-avis-notif/reponse-avis-not
     SignupComponent,
     LoginComponent,
     ListeAvisComponent,
+    StatistiqueComponent,
+    StarsRatingComponent
+
+
+
 
 
   ],
