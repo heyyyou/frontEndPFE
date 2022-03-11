@@ -1,15 +1,18 @@
 <ion-app>
   <ion-header translucent>
     <ion-toolbar>
+      <ion-buttons slot="start">
+        <ion-back-button defaultHref="home"></ion-back-button>
+      </ion-buttons>
       <ion-title color="primary">Statistique</ion-title>
     </ion-toolbar>
     <ion-toolbar>
-      <ion-segment value="all">
+      <ion-segment [(ngModel)]="type">
         <ion-segment-button value="patient">
-          <ion-label>All</ion-label>
+          <ion-label>Patients</ion-label>
         </ion-segment-button>
         <ion-segment-button value="consultation">
-          <ion-label>Favorites</ion-label>
+          <ion-label>Consultations</ion-label>
         </ion-segment-button>
         <ion-segment-button value="avis">
           <ion-label>Avis</ion-label>
@@ -17,7 +20,13 @@
       </ion-segment>
     </ion-toolbar>
   </ion-header>
-
+  <ion-content [fullscreen]="true">
+    <ng-container [ngSwitch]="type">
+      <app-stat-patient *ngSwitchCase="'patient'"> </app-stat-patient>
+      <app-stat-consult *ngSwitchCase="'consultation'"></app-stat-consult>
+      <app-stat-avis *ngSwitchCase="'avis'"></app-stat-avis>
+    </ng-container>
+  </ion-content>
   <!-- <ion-header no-border>
     <ion-toolbar
       color="primary"
@@ -28,26 +37,4 @@
       </ion-buttons>
     </ion-toolbar>
   </ion-header> -->
-
-  <ion-content>
-    <ion-card class="ion-padding ion-margin">
-      <ion-card-header> Statistique </ion-card-header>
-      <ion-card-content>
-        <canvas
-          #doughnutCanvas
-          style="position: relative; height: 20vh; width: 40vw"
-        ></canvas>
-      </ion-card-content>
-    </ion-card>
-
-    <ion-card class="ion-padding ion-margin">
-      <ion-card-header> </ion-card-header>
-      <ion-card-content>
-        <canvas
-          #lineCanvas
-          style="position: relative; height: 20vh; width: 40vw"
-        ></canvas>
-      </ion-card-content>
-    </ion-card>
-  </ion-content>
 </ion-app>

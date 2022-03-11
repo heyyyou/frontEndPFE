@@ -29,6 +29,9 @@ import { ListeAvisComponent } from './liste-avis/liste-avis.component';
 import { ReponseAvisNotifComponent } from './reponse-avis-notif/reponse-avis-notif.component';
 import { StatistiqueComponent } from './statistique/statistique.component';
 import { StarsRatingComponent } from './stars-rating/stars-rating.component';
+import { StatPatientComponent } from './statistique/stat-patient/stat-patient.component';
+import { StatConsultComponent } from './statistique/stat-consult/stat-consult.component';
+import { StatAvisComponent } from './statistique/stat-avis/stat-avis.component';
 
 @NgModule({
   declarations: [
@@ -50,7 +53,10 @@ import { StarsRatingComponent } from './stars-rating/stars-rating.component';
     LoginComponent,
     ListeAvisComponent,
     StatistiqueComponent,
-    StarsRatingComponent
+    StarsRatingComponent,
+    StatPatientComponent,
+    StatAvisComponent,
+    StatConsultComponent
 
 
 

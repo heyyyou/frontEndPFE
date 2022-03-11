@@ -2,14 +2,5 @@
 	"appId": "ionic.com.ionic4capfcm",
 	"appName": "front",
 	"webDir": "www",
-	"bundledWebRuntime": false,
-	"plugins": {
-		"PushNotifications": {
-			"presentationOptions": [
-				"badge",
-				"sound",
-				"alert"
-			]
-		}
-	}
+	"bundledWebRuntime": false
 }

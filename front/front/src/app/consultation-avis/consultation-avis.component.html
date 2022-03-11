@@ -4,10 +4,8 @@
       color="primary"
       style="border-bottom-left-radius: 15px; border-bottom-right-radius: 15px"
     >
-      <ion-buttons class="ion-margin">
-        <ion-button class="bordered" fill="solid" color="light">
-          <ion-icon name="arrow-back-outline"></ion-icon
-        ></ion-button>
+      <ion-buttons slot="start">
+        <ion-back-button defaultHref="home"></ion-back-button>
       </ion-buttons>
       <ion-avatar *ngIf="item.isExpert" slot="end" class="ion-margin avatar">
         <img src="assets/mama.jpg"

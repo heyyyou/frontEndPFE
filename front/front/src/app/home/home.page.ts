@@ -9,7 +9,7 @@ import {
   PushNotifications,
   Token,
 } from '@capacitor/push-notifications';
-import { MenuController } from '@ionic/angular';
+import { MenuController, Platform } from '@ionic/angular';
 @Component({
   selector: 'app-home',
   templateUrl: 'home.page.html',
@@ -63,8 +63,17 @@ export class HomePage implements OnInit {
 
 
 
+  subscribe: any;
+  constructor(public Router: Router, private menu: MenuController, public ConsultationMedService: ConsultationMedService, public platform: Platform) {
+    this.subscribe = this.platform.backButton.subscribeWithPriority(666666, () => {
 
-  constructor(public Router: Router, private menu: MenuController, public ConsultationMedService: ConsultationMedService) { }
+      if (this.constructor.name == "HomePage") {
+        if (window.confirm("do you want to exit app")) {
+          navigator["app"].exitApp();
+        }
+      }
+    })
+  }
   listeConsultation() {
     this.Router.navigate(["ListeConsultation"])
 
