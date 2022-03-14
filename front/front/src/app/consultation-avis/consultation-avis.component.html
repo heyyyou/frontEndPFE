@@ -1,4 +1,4 @@
-<ion-app *ngFor="let item of ConsultationMedService.consultation_id">
+<ion-app>
   <ion-header class="ion-no-border">
     <ion-toolbar
       color="primary"
@@ -7,10 +7,18 @@
       <ion-buttons slot="start">
         <ion-back-button defaultHref="home"></ion-back-button>
       </ion-buttons>
-      <ion-avatar *ngIf="item.isExpert" slot="end" class="ion-margin avatar">
+      <ion-avatar
+        *ngIf="ConsultationMedService.consultation_id.isExpert"
+        slot="end"
+        class="ion-margin avatar"
+      >
         <img src="assets/mama.jpg"
       /></ion-avatar>
-      <ion-avatar *ngIf="!item.isExpert" slot="end" class="ion-margin avatar">
+      <ion-avatar
+        *ngIf="!ConsultationMedService.consultation_id.isExpert"
+        slot="end"
+        class="ion-margin avatar"
+      >
         <img src="assets/fatma.jpg"
       /></ion-avatar>
     </ion-toolbar>
@@ -18,18 +26,18 @@
   <ion-content>
     <ion-item>
       <ion-avatar slot="start">
-        <img src="{{ item.url }}" />
+        <img src="{{ ConsultationMedService.consultation_id.url }}" />
       </ion-avatar>
       <ion-label>
         <p>Patient,</p>
-        <h3>{{ item.name }},</h3>
+        <h3>{{ ConsultationMedService.consultation_id.name }},</h3>
       </ion-label>
       <ion-icon
         class="calendar"
         name="calendar-outline"
         color="gris"
       ></ion-icon>
-      <h4>{{ item.dateConslt }}</h4>
+      <h4>{{ ConsultationMedService.consultation_id.dateConslt }}</h4>
     </ion-item>
     <!-- si je confirme pour l'avis d'un expert un ion-progress bar is here -->
 
@@ -37,25 +45,25 @@
       <!-- <div class="header"> -->
       <ion-item color="couleurbase" class="item1">
         <ion-icon name="transgender" color="primary"></ion-icon>
-        <h3>{{ item.sexe }}</h3></ion-item
+        <h3>{{ ConsultationMedService.consultation_id.sexe }}</h3></ion-item
       >
 
       <ion-item color="couleurbase">
         <ion-icon name="call" color="primary"></ion-icon>
 
-        <h3>{{ item.num }}</h3>
+        <h3>{{ ConsultationMedService.consultation_id.num }}</h3>
       </ion-item>
 
       <ion-item color="couleurbase">
         <ion-icon name="calendar-outline" color="primary"></ion-icon>
         <h3>
-          {{ item.dateNaiss }}
+          {{ ConsultationMedService.consultation_id.dateNaiss }}
         </h3></ion-item
       >
 
       <ion-item lines="none" color="couleurbase" class="item4">
         <ion-icon name="medkit" color="primary"></ion-icon>
-        <h3>{{ item.antecedent }}</h3>
+        <h3>{{ ConsultationMedService.consultation_id.antecedent }}</h3>
       </ion-item></ion-list
     >
     <!-- </div> -->
@@ -103,14 +111,19 @@
     <div class="details">
       <h5>AI Résultat</h5>
       <h6>
-        Patient
-        <ion-text color="primary">{{ item.name }}</ion-text>
-        a la maladie de la diabéte au niveau de l’oeil droite.
+        <ion-text color="primary">Maladie : </ion-text>
+        Oeil Droite :{{
+          ConsultationMedService.consultation_id.oeil_droiteAI.maladie
+        }}
       </h6>
+      <ion-text color="primary">Gravitè :</ion-text>
+      {{ ConsultationMedService.consultation_id.oeil_droiteAI.gravite }}
     </div>
     <ion-button
       *ngIf="
-        item.avisExpert === false && DemandeAvis === false && !item.isExpert
+        ConsultationMedService.consultation_id.avisExpert === false &&
+        DemandeAvis === false &&
+        !ConsultationMedService.consultation_id.isExpert
       "
       color="primary"
       expand="block"
@@ -118,21 +131,36 @@
       size="large"
       class="AvisExpert"
       (click)="DemanderAvis()"
-      [disabled]="item.avisExpert === false && item.DemandeAvis === true"
+      [disabled]="
+        ConsultationMedService.consultation_id.avisExpert === false &&
+        ConsultationMedService.consultation_id.DemandeAvis === true
+      "
       >Avis Expert</ion-button
     >
 
     <div
       *ngIf="
-        (!item.isExpert && item.avisExpert === true) || DemandeAvis === true
+        (!ConsultationMedService.consultation_id.isExpert &&
+          ConsultationMedService.consultation_id.avisExpert === true) ||
+        DemandeAvis === true
       "
     >
       <app-avis-expert></app-avis-expert>
     </div>
-    <div *ngIf="item.isExpert === true && item.avisExpert === false">
+    <div
+      *ngIf="
+        ConsultationMedService.consultation_id.isExpert === true &&
+        ConsultationMedService.consultation_id.avisExpert === false
+      "
+    >
       <app-expert-consultation></app-expert-consultation>
     </div>
-    <div *ngIf="item.isExpert === true && item.avisExpert === true">
+    <div
+      *ngIf="
+        ConsultationMedService.consultation_id.isExpert === true &&
+        ConsultationMedService.consultation_id.avisExpert === true
+      "
+    >
       <app-toast></app-toast>
     </div>
   </ion-content>

@@ -1,4 +1,4 @@
-import { ActionSheetController, ModalController } from '@ionic/angular';
+import { ActionSheetController, ModalController, AlertController } from '@ionic/angular';
 import { ConsultationMedService } from './../services/consultation-med.service';
 import { Component, OnInit } from '@angular/core';
 
@@ -9,7 +9,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./liste-patient.component.scss'],
 })
 export class ListePatientComponent implements OnInit {
-  constructor(public modalController: ModalController, public ConsultationMedService: ConsultationMedService, public actionSheetController: ActionSheetController) { }
+  constructor(public modalController: ModalController, public AlertController: AlertController, public ConsultationMedService: ConsultationMedService, public actionSheetController: ActionSheetController) { }
 
   dismissModal() {
     // using the injected ModalController this page
@@ -18,6 +18,42 @@ export class ListePatientComponent implements OnInit {
       'dismissed': true
     });
   }
+  async suppConsultation() {
+
+
+    const alert = await this.AlertController.create({
+      cssClass: 'my-custom-class',
+      header: 'Êtes-vous sûr de vouloir supprimer ce patient ',
+
+      message: '',
+      buttons: [{
+        text: 'Cancel',
+        role: 'cancel',
+        handler: () => {
+          console.log("dismiss")
+        }
+      },
+      {
+        text: 'Valider',
+        handler: () => {
+          // from data base delete person API ya mariem
+        }
+      }
+      ]
+
+
+    });
+
+
+    await alert.present();
+
+
+
+  }
+
+
+
+
 
 
   public async showActionSheet() {
@@ -27,7 +63,8 @@ export class ListePatientComponent implements OnInit {
         role: 'destructive',
         icon: 'trash',
 
-        handler: () => { // from data base delete person API ya mariem
+        handler: () => {
+          this.suppConsultation();
         }
       },
       {

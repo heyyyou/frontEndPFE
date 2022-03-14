@@ -10,8 +10,6 @@ export class StatPatientComponent {
 
 
 
-
-  @ViewChild('barCanvas') private barCanvas: ElementRef;
   @ViewChild('doughnutCanvas') private doughnutCanvas: ElementRef;
   @ViewChild('lineCanvas') private lineCanvas: ElementRef;
 
@@ -40,11 +38,8 @@ export class StatPatientComponent {
           label: '# of Votes',
           data: [50, 29],
           backgroundColor: [
-            'rgba(255, 159, 64, 0.2)',
-            'rgba(255, 99, 132, 0.2)',
-            'rgba(54, 162, 235, 0.2)',
-            'rgba(255, 206, 86, 0.2)',
-            'rgba(75, 192, 192, 0.2)'
+            '#FFCE56',
+            '#FF6384',
           ],
           hoverBackgroundColor: [
             '#FFCE56',

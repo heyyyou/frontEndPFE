@@ -2,7 +2,7 @@ import { Component, OnInit, QueryList, ViewChildren } from '@angular/core';
 import { Router } from '@angular/router';
 import { AlertController, IonRouterOutlet, MenuController, Platform } from '@ionic/angular';
 import { Location } from '@angular/common';
-
+import { ConsultationMedService } from './services/consultation-med.service';
 
 @Component({
   selector: 'app-root',
@@ -10,6 +10,10 @@ import { Location } from '@angular/common';
   styleUrls: ['app.component.scss'],
 })
 export class AppComponent implements OnInit {
+
+  public isExpert: any;
+
+
   @ViewChildren(IonRouterOutlet) routerOutlets: QueryList<IonRouterOutlet>;
 
   lastTimeBackPress = 0;
@@ -28,10 +32,20 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
   }
+  medecin() {
+    for (var index in ConsultationMedService.doctors)
+      if (ConsultationMedService.doctors.isExpert === true) {
+        this.isExpert = true
+      }
+      else {
+        this.isExpert = false
+      }
+
+  }
 
   constructor(public router: Router, private menu: MenuController, private platform: Platform,
     private alertController: AlertController,
-    private location: Location) { this.backButtonEvent(); }
+    private location: Location, public ConsultationMedService: ConsultationMedService) { this.backButtonEvent(); }
 
 
   backButtonEvent() {
@@ -88,5 +102,16 @@ export class AppComponent implements OnInit {
     this.router.navigate(['login']);
     this.menu.close();
   }
-
+  patient() {
+    this.router.navigate(['ListePatient']);
+    this.menu.close();
+  }
+  home() {
+    this.router.navigate(['home']);
+    this.menu.close();
+  }
+  notification() {
+    this.router.navigate(['AvisnonExpert']);
+    this.menu.close();
+  }
 }

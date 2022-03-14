@@ -1,4 +1,6 @@
+import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
+import { MenuController } from '@ionic/angular';
 
 @Component({
   selector: 'app-reponse-avis-notif',
@@ -6,9 +8,13 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./reponse-avis-notif.component.scss'],
 })
 export class ReponseAvisNotifComponent implements OnInit {
+  reponseDetails() {
+    this.router.navigate(["consultationAvis"]);
+    this.menu.close();
+  }
 
-  constructor() { }
+  constructor(public router: Router, private menu: MenuController) { }
 
-  ngOnInit() {}
+  ngOnInit() { }
 
 }

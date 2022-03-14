@@ -3,15 +3,14 @@
     <ion-toolbar class="border-radius-bottom">
       <div class="flex-bloc">
         <ion-buttons slot="start">
-          <ion-back-button defaultHref="home"></ion-back-button>
+          <ion-header [translucent]="true">
+            <ion-toolbar>
+              <ion-buttons slot="start">
+                <ion-menu-button menu="main-menu"></ion-menu-button>
+              </ion-buttons> </ion-toolbar
+          ></ion-header>
         </ion-buttons>
 
-        <h5 *ngIf="ConsultationMedService.consultation.length === 0">
-          Ajouter une consultation
-        </h5>
-        <h5 *ngIf="ConsultationMedService.consultation.length !== 0">
-          Liste Des Consultations
-        </h5>
         <ion-avatar slot="end" class="ion-margin avatar">
           <img src="assets/fatma.jpg" />
         </ion-avatar>
@@ -81,6 +80,7 @@
       </ion-card-content>
 
       <app-stars-rating
+        *ngIf="item.isExpert"
         (shareRatingValue)="showRating($event)"
       ></app-stars-rating>
       <br />

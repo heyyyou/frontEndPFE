@@ -1,46 +1,78 @@
 <!-- ya mariem rak bsh dji text mn table avisExpert -->
 <div class="avis ion-margin ion-padding">
-  <div><ion-label class="avisExpert ion-margin">avis expert :</ion-label></div>
+  <div>
+    <ion-label class="avisExpert ion-margin">avis expert :</ion-label>
+  </div>
   <div class="text">
     <div class="ion-margin">
       <ion-label class="oeil">Oeil Droite :</ion-label
-      ><ion-text class="ion-margin">saine</ion-text>
+      ><ion-text class="ion-margin"
+        >{{ ConsultationMedService.consultation_id.oeil_droite.maladie }}
+      </ion-text>
+
+      <ion-text
+        >niveau :
+        {{
+          ConsultationMedService.consultation_id.oeil_droite.gravite
+        }}</ion-text
+      >
     </div>
     <div class="ion-margin">
-      <ion-label class="oeil">Oeil Gauche :</ion-label
-      ><ion-text class="ion-margin">Diabète </ion-text>
+      <ion-label class="oeil">Oeil Gauche:</ion-label
+      ><ion-text class="ion-margin"
+        >{{ ConsultationMedService.consultation_id.oeil_gauche.maladie }}
+      </ion-text>
+
+      <ion-text
+        >niveau :
+        {{
+          ConsultationMedService.consultation_id.oeil_gauche.gravite
+        }}</ion-text
+      >
     </div>
+    <ion-item
+      lines="none"
+      color="aviscolor"
+      *ngIf="
+        ConsultationMedService.consultation_id.commentaire.length;
+        is: null
+      "
+    >
+      <ion-icon
+        size="large"
+        slot="end"
+        color="primary"
+        name="chatbox-ellipses-outline"
+        id="trigger-button"
+      ></ion-icon>
+    </ion-item>
+
+    <ion-modal trigger="trigger-button" mode="md">
+      <ng-template>
+        <ion-header>
+          <ion-icon
+            name="close-outline"
+            (click)="dismissModal()"
+            size="large"
+          ></ion-icon>
+        </ion-header>
+        <ion-content>
+          <ion-item>
+            <ion-avatar slot="start">
+              <img src="assets/fatma.jpg" />
+            </ion-avatar>
+            <ion-label>
+              <p>Expert Ophtalmologue,</p>
+              <h3>Mariem Chelli,</h3>
+            </ion-label>
+          </ion-item>
+          <ion-list class="details ion-padding">
+            <div class="comm">Commentaire Expert</div>
+            <h5>{{ ConsultationMedService.consultation_id.commentaire }}</h5>
+          </ion-list>
+          <!-- </div> -->
+        </ion-content>
+      </ng-template>
+    </ion-modal>
   </div>
 </div>
-<fieldset class="rating">
-  <input
-    type="radio"
-    id="star5"
-    name="rating"
-    (click)="getValueSelected(5)"
-  /><label class="full" for="star5" title="Awesome - 5 stars"></label>
-  <input
-    type="radio"
-    id="star4"
-    name="rating"
-    (click)="getValueSelected(4)"
-  /><label class="full" for="star4" title="Pretty good - 4 stars"></label>
-  <input
-    type="radio"
-    id="star3"
-    name="rating"
-    (click)="getValueSelected(3)"
-  /><label class="full" for="star3" title="Meh - 3 stars"></label>
-  <input
-    type="radio"
-    id="star2"
-    name="rating"
-    (click)="getValueSelected(2)"
-  /><label class="full" for="star2" title="Kinda bad - 2 stars"></label>
-  <input
-    type="radio"
-    id="star1"
-    name="rating"
-    (click)="getValueSelected(1)"
-  /><label class="full" for="star1" title="Sucks big time - 1 star"></label>
-</fieldset>

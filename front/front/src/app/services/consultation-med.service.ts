@@ -14,6 +14,24 @@ export class ConsultationMedService {
   avisExpert: boolean
   demandeAvis: boolean
 
+  static doctors: any
+  public doctors = [
+    {
+      id: 11828279,
+      name: 'Aymen Tbib',
+      isExpert: 'false ',
+      url: 'assets/doctour.png',
+    },
+
+  ]
+
+
+
+
+
+
+
+
   users = [
     {
       id: 11828279,
@@ -58,6 +76,7 @@ export class ConsultationMedService {
   ]
     ;
   static consultation_id: any;
+  static avisexpert: any;
 
   qs() {
     return this.users;
@@ -99,7 +118,7 @@ export class ConsultationMedService {
       DemandeAvis: true,
 
       avisExpert: true,
-      isExpert: true
+      isExpert: false
     },
     {
 
@@ -115,7 +134,7 @@ export class ConsultationMedService {
     }
   ];
   //consultationAvis window
-  consultation_id = [ // i did it because i need only one when i ll do DB i ll sove the problem
+  consultation_id =  // i did it because i need only one when i ll do DB i ll sove the problem
     {
       id: 125822279,
       name: 'Chelly Med',
@@ -129,16 +148,43 @@ export class ConsultationMedService {
       imgMedical: "assets/7.jpg", // table img med
       AImodelD: "maladie de rhétinopathie ",
       AImodelG: "maladie de rhétinopathie ",
-      DemandeAvis: true, //ya une table avis BD
+      DemandeAvis: false, //ya une table avis BD
       avisExpert: false, //si oui va etre affiche baed m table mtaa AVIs
       isExpert: true,
-      // table avis BD
+      oeil_droite: // for expert
+      {
+        maladie: "diabète",
+        gravite: 3,
+
+      },
+      oeil_gauche: {
+        maladie: "saine",
+        gravite: 3,
+
+      },
+      commentaire: "Diabète au niveau oeil Droite ",
+      oeil_droiteAI: // for expert
+      {
+        maladie: "diabète",
+        gravite: 3,
+
+      },
+      oeil_gaucheAI: {
+        maladie: "saine",
+        gravite: 3,
+
+      },
 
     }
+  // tous ds table consultation
 
 
 
-  ]
+
+
+
+
+
 
 
   constructor(private modalCtrl: ModalController, public photoService: PhotoService, public actionSheetController: ActionSheetController, public alertController: AlertController, public toastController: ToastController, private router: Router, private picker: ImagePicker, public loadingController: LoadingController) { }

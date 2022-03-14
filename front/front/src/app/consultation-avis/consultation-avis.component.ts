@@ -5,6 +5,7 @@ import { SwiperOptions } from 'swiper';
 import { ConsultationMedService } from '../services/consultation-med.service';
 import { PhotoService } from '../services/photo.service';
 
+
 @Component({
   selector: 'app-consultation-avis',
   templateUrl: './consultation-avis.component.html',
@@ -34,7 +35,7 @@ export class ConsultationAvisComponent implements OnInit {
       dismissed: true
     });
   }
-  segment = 'all';
+  segment = 'droite';
   segmentChanged(ev: any) {
 
 

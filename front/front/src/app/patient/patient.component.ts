@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { format } from 'date-fns';
 import { parseISO } from 'date-fns/esm';
 import { Camera, CameraResultType, CameraSource, ImageOptions } from '@capacitor/camera';
+import { ActionSheetController } from '@ionic/angular';
 
 @Component({
   selector: 'app-patient',
@@ -17,7 +18,7 @@ export class PatientComponent implements OnInit {
   showPicker = false;
   dateValue = format(new Date(), 'yyyy-MM-dd') + 'T09:00:00.000Z';
   formattedString = '';
-  constructor(private router: Router) {
+  constructor(private router: Router, public actionSheetController: ActionSheetController) {
     this.setToday();
   }
   setToday() {
@@ -44,6 +45,30 @@ export class PatientComponent implements OnInit {
       alert(err);
 
     });
+  }
+  public async showActionSheet() {
+    const actionSheet = await this.actionSheetController.create({
+      buttons: [{
+        text: 'Choisir une photo existante',
+        role: 'destructive',
+        icon: 'camera',
+
+        handler: () => {
+          this.pickImageFromGallery();
+        }
+      },
+      {
+        text: 'Supprimer photo',
+        icon: 'trash',
+        role: 'update',
+        handler: () => {
+          // Nothing to do, action sheet is automatically closed
+        }
+
+
+      }]
+    });
+    await actionSheet.present();
   }
 
 

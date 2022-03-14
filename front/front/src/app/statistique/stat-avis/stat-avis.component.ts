@@ -97,11 +97,8 @@ export class StatAvisComponent {
           label: '# of Votes',
           data: [20, 5],
           backgroundColor: [
-            'rgba(0, 145, 255, 0.2)',
-            'rgba(70, 128, 0, 0.2)',
-            'rgba(54, 162, 235, 0.2)',
-            'rgba(255, 206, 86, 0.2)',
-            'rgba(75, 192, 192, 0.2)'
+            '#0091ff',
+            '#468000',
           ],
           hoverBackgroundColor: [
             '#0091ff',

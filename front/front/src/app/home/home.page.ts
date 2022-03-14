@@ -3,13 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { ChildrenOutletContexts, Router, RouterOutlet } from '@angular/router';
 import { ConsultationMedService } from '../services/consultation-med.service';
 
-import {
-  ActionPerformed,
-  PushNotificationSchema,
-  PushNotifications,
-  Token,
-} from '@capacitor/push-notifications';
-import { MenuController, Platform } from '@ionic/angular';
+import { MenuController } from '@ionic/angular';
 @Component({
   selector: 'app-home',
   templateUrl: 'home.page.html',
@@ -17,63 +11,12 @@ import { MenuController, Platform } from '@ionic/angular';
 })
 export class HomePage implements OnInit {
   ngOnInit() {
-    // this.menu.enable(true);
-    console.log('Initializing HomePage');
-
-    // Request permission to use push notifications
-    // iOS will prompt user and return if they granted permission or not
-    // Android will just grant without prompting
-    PushNotifications.requestPermissions().then(result => {
-      if (result.receive === 'granted') {
-        // Register with Apple / Google to receive push via APNS/FCM
-        PushNotifications.register();
-      } else {
-        // Show some error
-      }
-    });
-
-    // On success, we should be able to receive notifications
-    PushNotifications.addListener('registration',
-      (token: Token) => {
-        alert('Push registration success, token: ' + token.value);
-      }
-    );
-
-    // Some issue with our setup and push will not work
-    PushNotifications.addListener('registrationError',
-      (error: any) => {
-        alert('Error on registration: ' + JSON.stringify(error));
-      }
-    );
-
-    // Show us the notification payload if the app is open on our device
-    PushNotifications.addListener('pushNotificationReceived',
-      (notification: PushNotificationSchema) => {
-        alert('Push received: ' + JSON.stringify(notification));
-      }
-    );
-
-    // Method called when tapping on a notification
-    PushNotifications.addListener('pushNotificationActionPerformed',
-      (notification: ActionPerformed) => {
-        alert('Push action performed: ' + JSON.stringify(notification));
-      }
-    );
   }
 
 
 
-  subscribe: any;
-  constructor(public Router: Router, private menu: MenuController, public ConsultationMedService: ConsultationMedService, public platform: Platform) {
-    this.subscribe = this.platform.backButton.subscribeWithPriority(666666, () => {
 
-      if (this.constructor.name == "HomePage") {
-        if (window.confirm("do you want to exit app")) {
-          navigator["app"].exitApp();
-        }
-      }
-    })
-  }
+  constructor(public Router: Router, private menu: MenuController, public ConsultationMedService: ConsultationMedService) { }
   listeConsultation() {
     this.Router.navigate(["ListeConsultation"])
 

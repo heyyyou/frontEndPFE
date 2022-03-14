@@ -10,17 +10,25 @@
         </ion-label>
       </div>
       <ion-list class="menu-items ion-margin" lines="none">
+        <ion-item>
+          <ion-icon name="person-outline" class="active ion-padding"></ion-icon>
+          <ion-text>Profil</ion-text>
+        </ion-item>
+        <ion-item (click)="patient()">
+          <ion-icon name="people-outline" class="ion-padding"></ion-icon>
+          <ion-text>Vos Patients</ion-text>
+        </ion-item>
+        <ion-item (click)="home()">
+          <ion-icon name="clipboard-outline" class="ion-padding"></ion-icon>
+          <ion-text>Vos Consultations</ion-text>
+        </ion-item>
+        <ion-item (click)="notification()">
+          <ion-icon name="notifications-outline" class="ion-padding"></ion-icon>
+          <ion-text>notifications</ion-text>
+        </ion-item>
         <ion-item (click)="statistique()">
           <ion-icon name="pie-chart-outline" class="ion-padding"></ion-icon>
           <ion-text>Statistique</ion-text>
-        </ion-item>
-        <ion-item (click)="listeAvis()">
-          <ion-icon name="bulb-outline" class="ion-padding"></ion-icon>
-          <ion-text>Avis</ion-text>
-        </ion-item>
-        <ion-item>
-          <ion-icon name="person-outline" class="active ion-padding"></ion-icon>
-          <ion-text>Profile</ion-text>
         </ion-item>
 
         <ion-item (click)="parametre()">

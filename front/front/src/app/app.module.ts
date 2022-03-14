@@ -1,10 +1,11 @@
+import { HomePage } from './home/home.page';
 import { ListeConsultationComponent } from './liste-consultation/liste-consultation.component';
 import { ConsultationComponent } from './consultation/consultation.component';
 import { PatientComponent } from './patient/patient.component';
 import { ModalImageComponent } from './modal-image/modal-image.component';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { RouteReuseStrategy } from '@angular/router';
+import { RouteReuseStrategy, RouterModule } from '@angular/router';
 import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
 import { FormsModule } from '@angular/forms';
 import { IonicRatingModule } from 'ionic-rating';
@@ -32,7 +33,6 @@ import { StarsRatingComponent } from './stars-rating/stars-rating.component';
 import { StatPatientComponent } from './statistique/stat-patient/stat-patient.component';
 import { StatConsultComponent } from './statistique/stat-consult/stat-consult.component';
 import { StatAvisComponent } from './statistique/stat-avis/stat-avis.component';
-
 @NgModule({
   declarations: [
     ReponseAvisNotifComponent,
@@ -56,7 +56,8 @@ import { StatAvisComponent } from './statistique/stat-avis/stat-avis.component';
     StarsRatingComponent,
     StatPatientComponent,
     StatAvisComponent,
-    StatConsultComponent
+
+    StatConsultComponent, HomePage,
 
 
 

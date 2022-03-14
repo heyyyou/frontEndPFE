@@ -5,29 +5,37 @@
   <div class="ion-margin">
     <ion-item class="itemborder">
       <ion-label class="comments">choisissez une maladie</ion-label>
-      <ion-select interface="popover">
-        <ion-select-option value="nes">Diabète </ion-select-option>
-        <ion-select-option value="nes1">rhétinopathie </ion-select-option>
-        <ion-select-option value="nes2">surtension </ion-select-option>
+      <ion-select
+        interface="popover"
+        [(ngModel)]="selected_maladie"
+        (ionChange)="choose()"
+      >
+        <ion-select-option *ngFor="let item of maladie" value="{{ item.value }}"
+          >{{ item.nom }}
+        </ion-select-option>
       </ion-select>
     </ion-item>
     <ion-item class="itemborder" lines="none">
       <ion-label class="comments">Gravité</ion-label>
       <ion-select interface="popover">
-        <ion-select-option value="nes">1</ion-select-option>
-        <ion-select-option value="nes1">2</ion-select-option>
-        <ion-select-option value="nes2">3</ion-select-option>
+        <ion-select-option *ngFor="let item of gravite">{{
+          item.valeur
+        }}</ion-select-option>
       </ion-select>
     </ion-item>
   </div>
   <ion-item class="itemborder">
     <ion-item>
-      <ion-textarea placeholder="Enter more information here..."></ion-textarea>
+      <ion-textarea placeholder="ajouter un commentaire..."></ion-textarea>
     </ion-item>
   </ion-item>
 </div>
 <div class="div">
-  <ion-button size="Medium" class="ion-margin" id="trigger-button"
+  <ion-button
+    size="Medium"
+    class="ion-margin"
+    id="trigger-button"
+    [disabled]="choixMaladie === null"
     >valider
   </ion-button>
   <ion-modal trigger="trigger-button">
@@ -50,7 +58,7 @@
 
             <ion-col size="12" class="ion-padding">
               <app-stars-rating
-                (click)="Valider()"
+                (click)="dismissModal()"
                 class="starsModel"
               ></app-stars-rating
             ></ion-col>
