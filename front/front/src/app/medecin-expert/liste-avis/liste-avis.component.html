@@ -7,7 +7,6 @@
           <ion-back-button defaultHref="#"></ion-back-button>
         </ion-buttons>
 
-        <h5>Notifications Avis</h5>
         <ion-avatar slot="end" class="ion-margin avatar">
           <img src="assets/fatma.jpg" />
         </ion-avatar>
@@ -16,14 +15,17 @@
   </ion-header>
 
   <ion-content class="ion-padding ion-margin" color="light">
+    <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+      <ion-refresher-content></ion-refresher-content>
+    </ion-refresher>
     <ion-item-sliding id="item100">
-      <ion-item href="/consultationAvis">
+      <ion-item (click)="details()">
         <ion-item lines="none">
           <ion-avatar slot="start">
             <img src="assets/fatma.jpg" />
           </ion-avatar>
           <ion-label>
-            <p>Patient,</p>
+            <p>Docteur,</p>
             <h3>Meriem Chelli,</h3>
             <ion-text color="danger" style="font-weight: bold; font-size: 14px"
               >Demande Avis</ion-text
@@ -31,9 +33,9 @@
           </ion-label>
         </ion-item>
         <ion-note slot="end">
-          <ion-chip color="tertiary">
+          <ion-chip color="dark">
             <ion-label>
-              <ion-icon color="primary" name="notifications-outline"></ion-icon>
+              <ion-icon color="dark" name="notifications-outline"></ion-icon>
             </ion-label> </ion-chip
         ></ion-note>
       </ion-item>
@@ -46,13 +48,13 @@
     </ion-item-sliding>
 
     <ion-item-sliding id="item100">
-      <ion-item href="/consultationAvis">
+      <ion-item (click)="details()">
         <ion-item lines="none">
           <ion-avatar slot="start">
             <img src="assets/mama.jpg" />
           </ion-avatar>
           <ion-label>
-            <p>Patient,</p>
+            <p>Docteur,</p>
             <h3>Meriem Chelli,</h3>
             <ion-text color="danger" style="font-weight: bold; font-size: 14px"
               >Demande Avis</ion-text
@@ -60,9 +62,9 @@
           </ion-label>
         </ion-item>
         <ion-note slot="end">
-          <ion-chip color="tertiary">
+          <ion-chip color="dark">
             <ion-label>
-              <ion-icon color="primary" name="notifications-outline"></ion-icon>
+              <ion-icon color="dark" name="notifications-outline"></ion-icon>
             </ion-label> </ion-chip
         ></ion-note>
       </ion-item>
@@ -74,13 +76,13 @@
       </ion-item-options>
     </ion-item-sliding>
     <ion-item-sliding id="item100">
-      <ion-item href="/consultationAvis">
+      <ion-item (click)="details()">
         <ion-item lines="none">
           <ion-avatar slot="start">
             <img src="assets/mer.jpg" />
           </ion-avatar>
           <ion-label>
-            <p>Patient,</p>
+            <p>Docteur,</p>
             <h3>Meriem Chelli,</h3>
             <ion-text color="danger" style="font-weight: bold; font-size: 14px"
               >Demande Avis</ion-text
@@ -88,9 +90,9 @@
           </ion-label>
         </ion-item>
         <ion-note slot="end">
-          <ion-chip color="tertiary">
+          <ion-chip color="dark">
             <ion-label>
-              <ion-icon color="primary" name="notifications-outline"></ion-icon>
+              <ion-icon color="dark" name="notifications-outline"></ion-icon>
             </ion-label> </ion-chip
         ></ion-note>
       </ion-item>
@@ -102,13 +104,13 @@
       </ion-item-options>
     </ion-item-sliding>
     <ion-item-sliding id="item100">
-      <ion-item href="/consultationAvis">
+      <ion-item (click)="details()">
         <ion-item lines="none">
           <ion-avatar slot="start">
             <img src="assets/123.jpg" />
           </ion-avatar>
           <ion-label>
-            <p>Patient,</p>
+            <p>Docteur,</p>
             <h3>Meriem Chelli,</h3>
             <ion-text color="danger" style="font-weight: bold; font-size: 14px"
               >Demande Avis</ion-text
@@ -116,9 +118,9 @@
           </ion-label>
         </ion-item>
         <ion-note slot="end">
-          <ion-chip color="tertiary">
+          <ion-chip color="dark">
             <ion-label>
-              <ion-icon color="primary" name="notifications-outline"></ion-icon>
+              <ion-icon color="dark" name="notifications-outline"></ion-icon>
             </ion-label> </ion-chip
         ></ion-note>
       </ion-item>
@@ -130,13 +132,13 @@
       </ion-item-options>
     </ion-item-sliding>
     <ion-item-sliding id="item100">
-      <ion-item href="/consultationAvis">
+      <ion-item (click)="details()">
         <ion-item lines="none">
           <ion-avatar slot="start">
             <img src="assets/123.jpg" />
           </ion-avatar>
           <ion-label>
-            <p>Patient,</p>
+            <p>Docteur,</p>
             <h3>Meriem Chelli,</h3>
             <ion-text color="danger" style="font-weight: bold; font-size: 14px"
               >Demande Avis</ion-text
@@ -144,9 +146,9 @@
           </ion-label>
         </ion-item>
         <ion-note slot="end">
-          <ion-chip color="tertiary">
+          <ion-chip color="dark">
             <ion-label>
-              <ion-icon color="primary" name="notifications-outline"></ion-icon>
+              <ion-icon color="dark" name="notifications-outline"></ion-icon>
             </ion-label> </ion-chip
         ></ion-note>
       </ion-item>
@@ -158,13 +160,13 @@
       </ion-item-options>
     </ion-item-sliding>
     <ion-item-sliding id="item100">
-      <ion-item href="/consultationAvis">
+      <ion-item (click)="details()">
         <ion-item lines="none">
           <ion-avatar slot="start">
             <img src="assets/123.jpg" />
           </ion-avatar>
           <ion-label>
-            <p>Patient,</p>
+            <p>Docteur,</p>
             <h3>Meriem Chelli,</h3>
             <ion-text color="danger" style="font-weight: bold; font-size: 14px"
               >Demande Avis</ion-text
@@ -172,9 +174,9 @@
           </ion-label>
         </ion-item>
         <ion-note slot="end">
-          <ion-chip color="tertiary">
+          <ion-chip color="dark">
             <ion-label>
-              <ion-icon color="primary" name="notifications-outline"></ion-icon>
+              <ion-icon color="dark" name="notifications-outline"></ion-icon>
             </ion-label> </ion-chip
         ></ion-note>
       </ion-item>

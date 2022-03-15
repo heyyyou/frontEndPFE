@@ -15,15 +15,33 @@
         <ion-icon color="primary" name="mail-outline"></ion-icon>
         <ion-item>
           <ion-label position="floating">Adresse e-mail</ion-label>
-          <ion-input type="email"></ion-input>
+          <ion-input
+            type="email"
+            id="email"
+            name="email"
+            [(ngModel)]="user.email"
+            #email="ngModel"
+            required
+            pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
+          ></ion-input>
         </ion-item>
+        <div *ngIf="email.invalid && email.touched"></div>
       </div>
       <div class="form-input">
         <ion-icon color="primary" name="lock-closed-outline"></ion-icon>
         <ion-item>
           <ion-label position="floating">Mot de passe</ion-label>
-          <ion-input type="password"></ion-input>
+          <ion-input
+            type="password"
+            id="password"
+            name="password"
+            [(ngModel)]="user.password"
+            #password="ngModel"
+            required
+            maxlength="10"
+          ></ion-input>
         </ion-item>
+        <div *ngIf="email.invalid && email.touched"></div>
       </div>
     </div>
 
@@ -32,7 +50,7 @@
         size="medium"
         shape="round"
         class="login-button"
-        routerLink="/home"
+        (click)="onClickMe()"
         >Se Connecter</ion-button
       >
       <ion-button

@@ -1,8 +1,9 @@
 
 
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Router } from '@angular/router';
 
-import { ModalController } from '@ionic/angular';
+import { ModalController, ToastController } from '@ionic/angular';
 
 
 @Component({
@@ -18,6 +19,10 @@ export class ExpertConsultationComponent implements OnInit {
 
   public gravite = [
     {
+      id: 0,
+      valeur: 0
+    },
+    {
       id: 1,
       valeur: 1
     },
@@ -31,22 +36,26 @@ export class ExpertConsultationComponent implements OnInit {
     }
 
   ]
-  public maladie = [
-    {
-      id: 1,
-      nom: "diabète",
-      value: "diab",
+  public maladie = [{
+    id: 0,
+    nom: "saine",
+    value: "saine",
+  },
+  {
+    id: 1,
+    nom: "diabète",
+    value: "diab",
 
 
-    }, {
-      id: 2,
-      nom: "rhétino",
-      value: "rhét"
-    }, {
-      id: 3,
-      nom: "surtension",
-      value: "surt"
-    },
+  }, {
+    id: 2,
+    nom: "rhétino",
+    value: "rhét"
+  }, {
+    id: 3,
+    nom: "surtension",
+    value: "surt"
+  },
 
   ]
   choose() {
@@ -62,7 +71,8 @@ export class ExpertConsultationComponent implements OnInit {
     this.shareRatingValue.emit(value);
   }
 
-  constructor(public modalController: ModalController) { }
+  constructor(public modalController: ModalController,
+    public router: Router, public ToastController: ToastController) { }
 
   dismissModal() {
     // using the injected ModalController this page
@@ -70,16 +80,29 @@ export class ExpertConsultationComponent implements OnInit {
     this.modalController.dismiss({
       'dismissed': true
     });
+    this.presentToast()
+
   }
   Valider() {
     //ici je vais valider forms apres dismiss model stars
     this.modalController.dismiss({
       'dismissed': true
     });
+
   }
   ngOnInit() {
   }
+  async presentToast() {
+    const toast = await this.ToastController.create({
+      message: 'votre Avis a été envoyé avec succès ',
+      duration: 6000
+    });
+    toast.present();
+    this.router.navigate(["listeConsultExpert"]) //redirect to the current  consultation(filter ) eli hia f liste
 
+
+
+  }
 
 
 

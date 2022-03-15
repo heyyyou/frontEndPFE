@@ -1,7 +1,6 @@
 import { Component, OnInit, QueryList, ViewChildren } from '@angular/core';
 import { Router } from '@angular/router';
 import { AlertController, IonRouterOutlet, MenuController, Platform } from '@ionic/angular';
-import { Location } from '@angular/common';
 import { ConsultationMedService } from './services/consultation-med.service';
 
 @Component({
@@ -32,39 +31,23 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
   }
-  medecin() {
-    for (var index in ConsultationMedService.doctors)
-      if (ConsultationMedService.doctors.isExpert === true) {
-        this.isExpert = true
-      }
-      else {
-        this.isExpert = false
-      }
+  // medecin() {
+  //   for (var index in ConsultationMedService.doctors)
+  //     if (ConsultationMedService.doctors.isExpert === true) {
+  //       this.isExpert = true
+  //     }
+  //     else {
+  //       this.isExpert = false
+  //     }
 
-  }
+  // }
 
   constructor(public router: Router, private menu: MenuController, private platform: Platform,
-    private alertController: AlertController,
-    private location: Location, public ConsultationMedService: ConsultationMedService) { this.backButtonEvent(); }
+    private alertController: AlertController, public ConsultationMedService: ConsultationMedService) { }
 
 
-  backButtonEvent() {
-    this.platform.backButton.subscribeWithPriority(0, () => {
-      this.routerOutlets.forEach(async (outlet: IonRouterOutlet) => {
-        if (this.router.url != '/home') {
-          // await this.router.navigate(['/']);
-          await this.location.back();
-        } else if (this.router.url === '/home') {
-          if (new Date().getTime() - this.lastTimeBackPress >= this.timePeriodToExit) {
-            this.lastTimeBackPress = new Date().getTime();
-            this.presentAlertConfirm();
-          } else {
-            navigator['app'].exitApp();
-          }
-        }
-      });
-    });
-  }
+
+
 
   async presentAlertConfirm() {
     const alert = await this.alertController.create({
@@ -115,3 +98,4 @@ export class AppComponent implements OnInit {
     this.menu.close();
   }
 }
+

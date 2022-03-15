@@ -1,0 +1,112 @@
+<ion-app>
+  <!-- k nodkhol details consultation mtaaa expert nal9a avis mtaaou bech naaml get avis w najm naaml modif w supression bien sur k naaml ay haja fehom bsh tussl notif l generaliste -->
+  <ion-header class="ion-no-border">
+    <ion-toolbar
+      color="primary2"
+      style="border-bottom-left-radius: 15px; border-bottom-right-radius: 15px"
+    >
+      <ion-buttons slot="start">
+        <ion-back-button defaultHref="home"></ion-back-button>
+      </ion-buttons>
+
+      <ion-avatar slot="end" class="ion-margin avatar">
+        <img src="assets/doctour.png"
+      /></ion-avatar>
+    </ion-toolbar>
+  </ion-header>
+  <ion-content>
+    <ion-item>
+      <ion-avatar slot="start">
+        <img src="{{ consultationMedService.consultation_id.url }}" />
+      </ion-avatar>
+      <ion-label>
+        <p>Patient,</p>
+        <h3>{{ consultationMedService.consultation_id.name }},</h3>
+      </ion-label>
+      <ion-icon
+        class="calendar"
+        name="calendar-outline"
+        color="gris"
+      ></ion-icon>
+      <h4>{{ consultationMedService.consultation_id.dateConslt }}</h4>
+    </ion-item>
+    <!-- si je confirme pour l'avis d'un expert un ion-progress bar is here -->
+
+    <ion-list class="details">
+      <!-- <div class="header"> -->
+      <ion-item color="couleurbase" class="item1">
+        <ion-icon name="transgender" color="primary2"></ion-icon>
+        <h3>{{ consultationMedService.consultation_id.sexe }}</h3></ion-item
+      >
+
+      <ion-item color="couleurbase">
+        <ion-icon name="call" color="primary2"></ion-icon>
+
+        <h3>{{ consultationMedService.consultation_id.num }}</h3>
+      </ion-item>
+
+      <ion-item color="couleurbase">
+        <ion-icon name="calendar-outline" color="primary2"></ion-icon>
+        <h3>
+          {{ consultationMedService.consultation_id.dateNaiss }}
+        </h3></ion-item
+      >
+
+      <ion-item lines="none" color="couleurbase" class="item4">
+        <ion-icon name="medkit" color="primary2"></ion-icon>
+        <h3>{{ consultationMedService.consultation_id.antecedent }}</h3>
+      </ion-item></ion-list
+    >
+    <!-- </div> -->
+
+    <div class="segment">
+      <ion-segment
+        mode="ios"
+        [(ngModel)]="segment"
+        color="primary2"
+        (ionChange)="segmentChanged($event)"
+      >
+        <ion-segment-button value="droite" (click)="droite()"
+          ><ion-icon name="eye-outline" color="primary2"></ion-icon
+          ><ion-text color="primary2"> Oeil Droite</ion-text>
+        </ion-segment-button>
+        <ion-segment-button value="gauche" (click)="gauche()">
+          <ion-icon name="eye-outline" color="primary2"></ion-icon>
+          <ion-text color="primary2"> Oeil Gauche</ion-text></ion-segment-button
+        >
+      </ion-segment>
+    </div>
+    <br />
+    <ion-card class="cardfull">
+      <swiper
+        [config]="config"
+        class="swiper-slide"
+        data-swiper-autoplay="2000"
+      >
+        <ng-template
+          swiperSlide
+          *ngFor="let imge of photoService.photos; let i = index"
+        >
+          <img
+            [src]="imge.webviewPath"
+            onerror="this.src='assets/add.jpg'"
+            alt="alternative"
+            tappable
+            (click)="consultationMedService.openPreview(imge.webviewPath)"
+          />
+        </ng-template>
+      </swiper>
+    </ion-card>
+    <div class="details">
+      <h5>AI Résultat</h5>
+      <h6>
+        <ion-text color="primary2">Maladie : </ion-text>
+        Oeil Droite :{{
+          consultationMedService.consultation_id.oeil_droiteAI.maladie
+        }}
+      </h6>
+      <ion-text color="primary2">Gravitè :</ion-text>
+      {{ consultationMedService.consultation_id.oeil_droiteAI.gravite }}
+    </div>
+    <app-gestion-avis></app-gestion-avis> </ion-content
+></ion-app>

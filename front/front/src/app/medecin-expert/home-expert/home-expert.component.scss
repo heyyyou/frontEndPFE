@@ -1,0 +1,21 @@
+.content {
+  background-color: rgb(248, 247, 247);
+
+  .border-radius-bottom {
+    border-bottom-left-radius: 22px;
+    border-bottom-right-radius: 22px;
+    // height: 100px;
+  }
+  ion-toolbar {
+    --background: #198f0a;
+    .avatar {
+      height: 35px;
+      width: 35px;
+    }
+  }
+  .flex-bloc {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+}

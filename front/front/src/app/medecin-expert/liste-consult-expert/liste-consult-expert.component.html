@@ -1,0 +1,84 @@
+<ion-app class="content">
+  <ion-header class="ion-no-border">
+    <ion-toolbar class="border-radius-bottom">
+      <div class="flex-bloc">
+        <ion-buttons slot="start">
+          <ion-header [translucent]="true">
+            <ion-toolbar>
+              <ion-buttons>
+                <ion-back-button></ion-back-button>
+              </ion-buttons> </ion-toolbar
+          ></ion-header>
+        </ion-buttons>
+
+        <ion-avatar slot="end" class="ion-margin avatar">
+          <img src="assets/doctour.png" />
+        </ion-avatar>
+      </div>
+    </ion-toolbar>
+    <ion-searchbar
+      class="searchBar ion-padding"
+      placeholder="cherchez un patient"
+    ></ion-searchbar>
+  </ion-header>
+
+  <ion-content>
+    <ion-card *ngFor="let item of ConsultationMedService.consultation">
+      <img class="image" [src]="item.imgMedical" />
+
+      <ion-item lines="none">
+        <!-- <ion-col class="ion-margin"> -->
+        <ion-text slot="end" color="gris">Consultation assitée par :</ion-text
+        ><ion-text slot="end" color="primary2">Dr hela chelli</ion-text>
+      </ion-item>
+      <ion-card-header>
+        <ion-card-subtitle>Patient,</ion-card-subtitle>
+
+        <ion-card-title>{{ item.Nameusers }}</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <div class="droite">
+          <ion-text color="primary2">oeil droite :</ion-text>
+          {{ item.AImodelD }}
+        </div>
+        <div class="gauche">
+          <ion-text color="primary2">oeil gauche :</ion-text>
+          {{ item.AImodelG }}
+        </div>
+        <br />
+        <ion-col>
+          <div class="date">
+            <ion-icon name="calendar-outline" class="calendar"> </ion-icon>
+            {{ item.date }}
+          </div>
+        </ion-col>
+        <ion-col class="flex-bloc">
+          <div>
+            <ion-icon name="ellipse-sharp" color="success"></ion-icon>
+          </div>
+
+          <div class="details">
+            <ion-button
+              color="primary2"
+              slot="start"
+              fill="outline"
+              shape="round"
+              (click)="openDetail()"
+              >Details</ion-button
+            >
+          </div>
+        </ion-col>
+      </ion-card-content>
+
+      <app-stars-rating
+        (shareRatingValue)="showRating($event)"
+      ></app-stars-rating>
+      <br />
+
+      <h4 *ngIf="currentRatingValue">
+        <!-- The value selected from the stars component is
+        <h2>{{ currentRatingValue }}</h2> -->
+      </h4>
+    </ion-card>
+  </ion-content></ion-app
+>

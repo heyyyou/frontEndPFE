@@ -1,4 +1,4 @@
-import { ExpertConsultationComponent } from './detail-consultation/expert-consultation/expert-consultation.component';
+import { ExpertConsultationComponent } from './medecin-expert/expert-consultation/expert-consultation.component';
 import { DetailConsultationComponent } from './detail-consultation/detail-consultation.component';
 import { ConsultationComponent } from './consultation/consultation.component';
 import { NgModule } from '@angular/core';
@@ -8,14 +8,18 @@ import { ListePatientComponent } from './liste-patient/liste-patient.component';
 import { ListeConsultationComponent } from './liste-consultation/liste-consultation.component';
 import { ConsultationAvisComponent } from './consultation-avis/consultation-avis.component';
 import { ParametreComponent } from './parametre/parametre.component';
-import { ToastComponent } from './toast/toast.component';
-import { SignupComponent } from './signup/signup.component';
-import { LoginComponent } from './login/login.component';
-import { ListeAvisComponent } from './liste-avis/liste-avis.component';
+import { ToastComponent } from './medecin-expert/toast/toast.component';
+import { SignupComponent } from './shared/signup/signup.component';
+import { LoginComponent } from './shared/login/login.component';
+import { ListeAvisComponent } from './medecin-expert/liste-avis/liste-avis.component';
 import { StatistiqueComponent } from './statistique/statistique.component';
 import { ReponseAvisNotifComponent } from './reponse-avis-notif/reponse-avis-notif.component';
 import { StarsComponent } from './rating/stars/stars.component';
 import { StarsRatingComponent } from './stars-rating/stars-rating.component';
+import { HomeExpertComponent } from './medecin-expert/home-expert/home-expert.component';
+import { AjouterAvisComponent } from './medecin-expert/ajouter-avis/ajouter-avis.component';
+import { ListeConsultExpertComponent } from './medecin-expert/liste-consult-expert/liste-consult-expert.component';
+import { DetailsConsultAvisComponent } from './medecin-expert/details-consult-avis/details-consult-avis.component';
 
 const routes: Routes = [
   {
@@ -41,20 +45,14 @@ const routes: Routes = [
   { path: 'listeAvis', component: ListeAvisComponent },
   { path: 'statistique', component: StatistiqueComponent },
   { path: 'AvisnonExpert', component: ReponseAvisNotifComponent },
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+  { path: 'homeExpert', component: HomeExpertComponent },
+  { path: 'detailsnotif', component: AjouterAvisComponent },
+  {
+    path: 'listeConsultExpert', component: ListeConsultExpertComponent
+  },
+  {
+    path: 'DetailsConsultExpert', component: DetailsConsultAvisComponent
+  }
 
 ];
 

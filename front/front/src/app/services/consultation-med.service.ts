@@ -106,7 +106,7 @@ export class ConsultationMedService {
       DemandeAvis: true,
 
       avisExpert: true,
-      isExpert: false
+      // isExpert: false
     },
     {
 
@@ -118,7 +118,7 @@ export class ConsultationMedService {
       DemandeAvis: true,
 
       avisExpert: true,
-      isExpert: false
+      // isExpert: false
     },
     {
 
@@ -130,7 +130,7 @@ export class ConsultationMedService {
       DemandeAvis: true,
       rating: true,
       avisExpert: false,
-      isExpert: true
+      // isExpert: true
     }
   ];
   //consultationAvis window
@@ -150,7 +150,7 @@ export class ConsultationMedService {
       AImodelG: "maladie de rhétinopathie ",
       DemandeAvis: false, //ya une table avis BD
       avisExpert: false, //si oui va etre affiche baed m table mtaa AVIs
-      isExpert: true,
+      // isExpert: false,
       oeil_droite: // for expert
       {
         maladie: "diabète",
