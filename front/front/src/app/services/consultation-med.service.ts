@@ -135,6 +135,7 @@ export class ConsultationMedService {
   ];
   //consultationAvis window
   consultation_id =  // i did it because i need only one when i ll do DB i ll sove the problem
+    // bsh nzid commentaire tbib generaliste bsh yekt anhy 3in eli yhb ykhtrha bsh yekhu avis aleha
     {
       id: 125822279,
       name: 'Chelly Med',
@@ -148,7 +149,7 @@ export class ConsultationMedService {
       imgMedical: "assets/7.jpg", // table img med
       AImodelD: "maladie de rhétinopathie ",
       AImodelG: "maladie de rhétinopathie ",
-      DemandeAvis: false, //ya une table avis BD
+      DemandeAvis: true, //ya une table avis BD
       avisExpert: false, //si oui va etre affiche baed m table mtaa AVIs
       // isExpert: false,
       oeil_droite: // for expert
@@ -159,7 +160,7 @@ export class ConsultationMedService {
       },
       oeil_gauche: {
         maladie: "saine",
-        gravite: 3,
+        gravite: 0,
 
       },
       commentaire: "Diabète au niveau oeil Droite ",

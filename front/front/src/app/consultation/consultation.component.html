@@ -1,8 +1,6 @@
 <ion-app>
   <ion-header class="ion-no-border">
     <ion-toolbar class="border-radius-bottom" color="primary">
-      <ion-buttons class="ion-margin"> </ion-buttons>
-
       <div class="image-cropper">
         <img
           class="rounded"
@@ -11,7 +9,6 @@
         />
       </div>
 
-      <br />
       <ion-item lines="none" class="ion-margin radius" *ngIf="!isLoadingAI">
         <ion-label
           ><ion-text color="new2">choisissez un patient</ion-text>
@@ -58,34 +55,32 @@
           <ion-icon name="person-add-outline" color="primary"></ion-icon
         ></ion-button>
       </ion-item>
-
-      <br />
-      <br />
     </ion-toolbar>
-
-    <br />
-
-    <br />
   </ion-header>
-  <div class="segment" *ngIf="!isLoadingAI">
-    <ion-segment
-      mode="ios"
-      [(ngModel)]="segment"
-      color="primary"
-      (ionChange)="segmentChanged($event)"
-    >
-      <ion-segment-button value="droite"
-        ><ion-icon name="eye-outline" color="favorites"></ion-icon
-        ><ion-text color="favorites"> Oeil Droite</ion-text>
-      </ion-segment-button>
-      <ion-segment-button value="gauche">
-        <ion-icon name="eye-outline" color="favorites"></ion-icon>
-        <ion-text color="favorites"> Oeil Gauche</ion-text></ion-segment-button
-      >
-    </ion-segment>
-  </div>
-  <br />
-  <ion-content *ngIf="!isLoadingAI">
+  <ion-content>
+    <div class="segment">
+      <ion-segment mode="ios" [(ngModel)]="segment" color="primary">
+        <ion-segment-button value="droite"
+          ><ion-icon name="eye-outline" color="favorites"></ion-icon
+          ><ion-text color="favorites"> Oeil Droite</ion-text>
+        </ion-segment-button>
+        <ion-segment-button value="gauche">
+          <ion-icon name="eye-outline" color="favorites"></ion-icon>
+          <ion-text color="favorites">
+            Oeil Gauche</ion-text
+          ></ion-segment-button
+        >
+      </ion-segment>
+    </div>
+
+    <ng-container [ngSwitch]="segment">
+      <app-depistage-gauche *ngSwitchCase="'gauche'"> </app-depistage-gauche>
+      <app-depistage-droite *ngSwitchCase="'droite'"> </app-depistage-droite>
+    </ng-container>
+
+    <br />
+  </ion-content>
+  <!-- <ion-content *ngIf="!isLoadingAI">
     <div class="ajouterdelet">
       <ion-button
         *ngIf="photoService.photos.length <= 4; else thenBlock"
@@ -145,5 +140,6 @@
   </ion-content>
   <ion-content *ngIf="isLoadingAI">
     <app-loading-ai></app-loading-ai>
-  </ion-content>
+  </ion-content> -->
 </ion-app>
+<!-- behy huni lezm button mtaa tbib yetsaker k yetaada l details khater ken nsa oeil droite maamlch dépistage bsh yrja mynjmch yaawed wla nkhlih mahlul ?  -->

@@ -1,21 +1,16 @@
-import { StarsComponent } from './../rating/stars/stars.component';
-import { PhotoService } from './../services/photo.service';
-import { Component, EventEmitter, OnInit, Output, ViewChild } from '@angular/core';
-import { Input } from '@angular/core';
-import { ConsultationMedService } from '../services/consultation-med.service';
-import { ChildrenOutletContexts, Router, RouterOutlet } from '@angular/router';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { Router } from '@angular/router';
 import { AlertController, IonContent, LoadingController, ModalController } from '@ionic/angular';
+import { ConsultationMedService } from 'src/app/services/consultation-med.service';
+import { PhotoService } from 'src/app/services/photo.service';
 import { SwiperOptions } from 'swiper';
-import { JSXBase } from '@ionic/pwa-elements/dist/types/stencil.core';
-interface AlertTextareaAttributes extends JSXBase.TextareaHTMLAttributes<HTMLTextAreaElement> { }
-
 
 @Component({
-  selector: 'app-detail-consultation',
-  templateUrl: './detail-consultation.component.html',
-  styleUrls: ['./detail-consultation.component.scss'],
+  selector: 'app-details-gauche',
+  templateUrl: './details-gauche.component.html',
+  styleUrls: ['./details-gauche.component.scss'],
 })
-export class DetailConsultationComponent implements OnInit {
+export class DetailsGaucheComponent implements OnInit {
 
   @ViewChild(IonContent) private content: IonContent;
   base64 = '';
@@ -38,7 +33,7 @@ export class DetailConsultationComponent implements OnInit {
       dismissed: true
     });
   }
-  segment = 'droite';
+  segment = 'all';
   segmentChanged(ev: any) {
 
 
@@ -78,16 +73,7 @@ export class DetailConsultationComponent implements OnInit {
     const alert = await this.alertController.create({
       cssClass: 'my-custom-class',
       header: 'Vous voulez avoir un avis ?',
-      inputs: [
-        {
-          name: 'name1',
-          type: 'text',
-          placeholder: 'Saisissez un Commentaire'
-        },
-
-      ],
       subHeader: 'Expert en ophtalmologie',
-
       message: '',
       buttons: [{
         text: 'Cancel',
@@ -118,7 +104,9 @@ export class DetailConsultationComponent implements OnInit {
 
 
 
-  constructor(public ConsultationMedService: ConsultationMedService, public photoService: PhotoService, private router: Router, public loadingController: LoadingController, private modalCtrl: ModalController,
+  constructor(public ConsultationMedService: ConsultationMedService,
+    public photoService: PhotoService, private router: Router, public loadingController: LoadingController,
+    private modalCtrl: ModalController,
     public alertController: AlertController) {
   }
 

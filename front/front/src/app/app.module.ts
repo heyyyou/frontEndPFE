@@ -40,6 +40,10 @@ import { AjouterAvisComponent } from './medecin-expert/ajouter-avis/ajouter-avis
 import { ListeConsultExpertComponent } from './medecin-expert/liste-consult-expert/liste-consult-expert.component';
 import { DetailsConsultAvisComponent } from './medecin-expert/details-consult-avis/details-consult-avis.component';
 import { GestionAvisComponent } from './medecin-expert/details-consult-avis/gestion-avis/gestion-avis.component';
+import { DepistageGaucheComponent } from './consultation/depistage-gauche/depistage-gauche.component';
+import { DepistageDroiteComponent } from './consultation/depistage-droite/depistage-droite.component';
+import { DetailsDroiteComponent } from './consultation/details-droite/details-droite.component';
+import { DetailsGaucheComponent } from './consultation/details-gauche/details-gauche.component';
 
 @NgModule({
   declarations: [
@@ -70,7 +74,11 @@ import { GestionAvisComponent } from './medecin-expert/details-consult-avis/gest
     AjouterAvisComponent,
     ListeConsultExpertComponent,
     DetailsConsultAvisComponent,
-    GestionAvisComponent
+    GestionAvisComponent,
+    DepistageGaucheComponent,
+    DepistageDroiteComponent,
+    DetailsGaucheComponent,
+    DetailsDroiteComponent
   ],
   entryComponents: [],
   imports: [

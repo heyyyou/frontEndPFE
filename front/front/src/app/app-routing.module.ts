@@ -20,6 +20,7 @@ import { HomeExpertComponent } from './medecin-expert/home-expert/home-expert.co
 import { AjouterAvisComponent } from './medecin-expert/ajouter-avis/ajouter-avis.component';
 import { ListeConsultExpertComponent } from './medecin-expert/liste-consult-expert/liste-consult-expert.component';
 import { DetailsConsultAvisComponent } from './medecin-expert/details-consult-avis/details-consult-avis.component';
+import { DepistageGaucheComponent } from './consultation/depistage-gauche/depistage-gauche.component';
 
 const routes: Routes = [
   {
@@ -52,7 +53,11 @@ const routes: Routes = [
   },
   {
     path: 'DetailsConsultExpert', component: DetailsConsultAvisComponent
+  },
+  {
+    path: 'depistageGauche', component: DepistageGaucheComponent
   }
+
 
 ];
 

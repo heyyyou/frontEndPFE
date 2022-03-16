@@ -7,18 +7,8 @@
       <ion-buttons slot="start">
         <ion-back-button defaultHref="home"></ion-back-button>
       </ion-buttons>
-      <ion-avatar
-        *ngIf="ConsultationMedService.consultation_id.isExpert"
-        slot="end"
-        class="ion-margin avatar"
-      >
-        <img src="assets/mama.jpg"
-      /></ion-avatar>
-      <ion-avatar
-        *ngIf="!ConsultationMedService.consultation_id.isExpert"
-        slot="end"
-        class="ion-margin avatar"
-      >
+
+      <ion-avatar slot="end" class="ion-margin avatar">
         <img src="assets/fatma.jpg"
       /></ion-avatar>
     </ion-toolbar>
@@ -122,8 +112,7 @@
     <ion-button
       *ngIf="
         ConsultationMedService.consultation_id.avisExpert === false &&
-        DemandeAvis === false &&
-        !ConsultationMedService.consultation_id.isExpert
+        DemandeAvis === false
       "
       color="primary"
       expand="block"
@@ -140,28 +129,11 @@
 
     <div
       *ngIf="
-        (!ConsultationMedService.consultation_id.isExpert &&
-          ConsultationMedService.consultation_id.avisExpert === true) ||
+        ConsultationMedService.consultation_id.avisExpert === true ||
         DemandeAvis === true
       "
     >
       <app-avis-expert></app-avis-expert>
-    </div>
-    <div
-      *ngIf="
-        ConsultationMedService.consultation_id.isExpert === true &&
-        ConsultationMedService.consultation_id.avisExpert === false
-      "
-    >
-      <app-expert-consultation></app-expert-consultation>
-    </div>
-    <div
-      *ngIf="
-        ConsultationMedService.consultation_id.isExpert === true &&
-        ConsultationMedService.consultation_id.avisExpert === true
-      "
-    >
-      <app-toast></app-toast>
     </div>
   </ion-content>
 </ion-app>

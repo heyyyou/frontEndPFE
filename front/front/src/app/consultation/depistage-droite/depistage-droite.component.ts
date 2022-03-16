@@ -1,23 +1,21 @@
-import { Component, OnInit } from '@angular/core';
-import { ModalController } from '@ionic/angular';
-import { SwiperOptions, Pagination } from 'swiper';
-import { ActionSheetController } from '@ionic/angular';
-import { ModalImageComponent } from '../modal-image/modal-image.component';
-import { UserPhoto, PhotoService } from '../services/photo.service';
-import { AlertController } from '@ionic/angular';
-import { ToastController } from '@ionic/angular';
-import { ChildrenOutletContexts, Router, RouterOutlet } from '@angular/router';
-import { ImagePicker, ImagePickerOptions } from '@ionic-native/image-picker/ngx';
-import { Camera, CameraResultType, CameraSource, ImageOptions } from '@capacitor/camera';
-import { LoadingController } from '@ionic/angular';
-import { ConsultationMedService } from '../services/consultation-med.service';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
+import { Router } from '@angular/router';
+import { ImagePicker } from '@ionic-native/image-picker/ngx';
+import { ActionSheetController, AlertController, IonContent, LoadingController, ModalController, ToastController } from '@ionic/angular';
+import { ConsultationMedService } from 'src/app/services/consultation-med.service';
+import { PhotoService, UserPhoto } from 'src/app/services/photo.service';
+import { SwiperOptions } from 'swiper';
+
 @Component({
-  selector: 'app-consultation',
-  templateUrl: './consultation.component.html',
-  styleUrls: ['./consultation.component.scss'],
+  selector: 'app-depistage-droite',
+  templateUrl: './depistage-droite.component.html',
+  styleUrls: ['./depistage-droite.component.scss'],
 })
-export class ConsultationComponent implements OnInit {
+export class DepistageDroiteComponent implements OnInit {
+  @ViewChild(IonContent) private content: IonContent;
+
+
   base64 = '';
   isLoadingAI: boolean = false;
 
@@ -99,8 +97,11 @@ export class ConsultationComponent implements OnInit {
   // }
 
 
-  constructor(public sanitizer: DomSanitizer, private modalCtrl: ModalController, public photoService: PhotoService, public actionSheetController: ActionSheetController, public alertController: AlertController,
-    public toastController: ToastController, private router: Router, private picker: ImagePicker, public loadingController: LoadingController, public ConsultationMedService: ConsultationMedService,
+  constructor(public sanitizer: DomSanitizer, private modalCtrl: ModalController, public photoService: PhotoService,
+    public actionSheetController: ActionSheetController,
+    public alertController: AlertController,
+    public toastController: ToastController, private router: Router, private picker: ImagePicker,
+    public loadingController: LoadingController, public ConsultationMedService: ConsultationMedService,
   ) { }
   async presentToast() {
     const toast = await this.toastController.create({
