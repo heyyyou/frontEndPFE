@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 import { PhotoService } from './../services/photo.service';
 import { ConsultationMedService } from './../services/consultation-med.service';
 import { Component, OnInit } from '@angular/core';
-import { AlertController } from '@ionic/angular';
+import { AlertController, MenuController } from '@ionic/angular';
 @Component({
   selector: 'app-liste-consultation',
   templateUrl: './liste-consultation.component.html',
@@ -13,7 +13,8 @@ import { AlertController } from '@ionic/angular';
 export class ListeConsultationComponent implements OnInit {
   currentRatingValue: number = null;
   public avisExpert;
-  constructor(public ConsultationMedService: ConsultationMedService, public PhotoService: PhotoService, public router: Router, public alertController: AlertController) { }
+  constructor(public ConsultationMedService: ConsultationMedService, public menu: MenuController,
+    public PhotoService: PhotoService, public router: Router, public alertController: AlertController) { }
 
   newConsultation() {
     this.router.navigate(["consultation"])
@@ -24,6 +25,43 @@ export class ListeConsultationComponent implements OnInit {
     this.currentRatingValue = (rating);
 
   }
+  listeAvis() {
+    this.router.navigate(["AvisnonExpert"]);
+    this.menu.close();
+
+  }
+  statistique() {
+    this.router.navigate(["statistique"]);
+    this.menu.close();
+
+  }
+  parametre() {
+    this.router.navigate(['parametre']);
+    this.menu.close();
+  }
+  logout() {
+    this.router.navigate(['login']);
+    this.menu.close();
+  }
+  patient() {
+    this.router.navigate(['ListePatient']);
+    this.menu.close();
+  }
+  profil() {
+    this.router.navigate(['profil']);
+    this.menu.close();
+  }
+  home() {
+    this.router.navigate(['home']);
+    this.menu.close();
+  }
+  notification() {
+    this.router.navigate(['AvisnonExpert']);
+    this.menu.close();
+  }
+
+
+
 
   async suppConsultation() {
 

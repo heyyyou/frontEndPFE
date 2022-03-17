@@ -129,7 +129,7 @@ export class ConsultationMedService {
       AImodelG: "maladie de rhétinopathie ",
       DemandeAvis: true,
       rating: true,
-      avisExpert: false,
+      avisExpert: true,
       // isExpert: true
     }
   ];

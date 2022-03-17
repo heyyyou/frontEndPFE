@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
-import { MenuController } from '@ionic/angular';
-
+import { MenuController, NavController, AlertController } from '@ionic/angular';
+import { Button } from 'protractor';
 
 @Component({
   selector: 'app-signup',
@@ -10,18 +10,32 @@ import { MenuController } from '@ionic/angular';
   styleUrls: ['./signup.component.scss'],
 })
 export class SignupComponent {
-
-  constructor(private menu: MenuController, private route: Router) { }
-
-
   user = {
     email: "",
-    password: "",
-
+    password: ""
   }
+
+
+  async presentAlert() {
+    const alert = await this.alertCtrl.create({
+      cssClass: 'my-custom-class',
+      header: 'Alert',
+      subHeader: 'Login failed',
+      message: 'Please check your credentials',
+      buttons: ['OK']
+    });
+
+    await alert.present();
+  }
+
+  constructor(private menu: MenuController, private route: Router, private alertCtrl: AlertController) { }
+
+
+
+
   Router: any;
 
-  onClickMe() {
+  loginUser() {
 
     console.log(this.user)
     if ((this.user.email == "ss@gmail.com") && (this.user.password == "mariem")) {

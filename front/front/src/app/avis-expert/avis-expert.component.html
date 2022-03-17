@@ -38,23 +38,15 @@
         is: null
       "
     >
-      <ion-icon
-        size="large"
-        slot="end"
-        color="primary"
-        name="chatbox-ellipses-outline"
-        id="trigger-button"
-      ></ion-icon>
+      <ion-button id="trigger-button" slot="end" fill="primary"
+        ><ion-icon name="chatbox-outline" color="primary"></ion-icon>
+      </ion-button>
     </ion-item>
 
     <ion-modal trigger="trigger-button" mode="md">
       <ng-template>
         <ion-header>
-          <ion-icon
-            name="close-outline"
-            (click)="dismissModal()"
-            size="large"
-          ></ion-icon>
+          <ion-icon name="close-outline" (click)="dismissModal()"></ion-icon>
         </ion-header>
         <ion-content>
           <ion-item>

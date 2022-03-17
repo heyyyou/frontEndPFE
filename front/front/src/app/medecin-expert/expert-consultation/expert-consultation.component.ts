@@ -15,7 +15,11 @@ export class ExpertConsultationComponent implements OnInit {
   public selected_maladie = null
 
   public choixMaladie = null
+  public disableButton = false;
 
+  truthClick() {
+    this.disableButton = true;
+  }
 
   public gravite = [
     {

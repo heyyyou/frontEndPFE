@@ -1,0 +1,20 @@
+<ion-app class="content">
+  <div class="header">
+    <ion-toolbar>
+      <ion-buttons slot="start" class="ion-margin">
+        <ion-button fill="solid" color="light" (click)="backhome()">
+          <ion-icon name="arrow-back-outline"></ion-icon
+        ></ion-button>
+      </ion-buttons>
+      <h5 class="ion-margin ion-padding">Les paramètres</h5>
+    </ion-toolbar>
+  </div>
+  <ion-content [fullscreen]="true">
+    <ion-item>
+      <ion-icon slot="start" name="contrast-sharp"></ion-icon>
+      <ion-label>Apparence</ion-label>
+
+      <ion-toggle slot="end" (ionChange)="toggleTheme($event)"> </ion-toggle>
+    </ion-item>
+  </ion-content>
+</ion-app>

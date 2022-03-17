@@ -1,3 +1,5 @@
+import { EditProfilExpertComponent } from './medecin-expert/edit-profil-expert/edit-profil-expert.component';
+import { ProfilExpertComponent } from './medecin-expert/profil-expert/profil-expert.component';
 import { ExpertConsultationComponent } from './medecin-expert/expert-consultation/expert-consultation.component';
 import { DetailConsultationComponent } from './detail-consultation/detail-consultation.component';
 import { ConsultationComponent } from './consultation/consultation.component';
@@ -21,18 +23,27 @@ import { AjouterAvisComponent } from './medecin-expert/ajouter-avis/ajouter-avis
 import { ListeConsultExpertComponent } from './medecin-expert/liste-consult-expert/liste-consult-expert.component';
 import { DetailsConsultAvisComponent } from './medecin-expert/details-consult-avis/details-consult-avis.component';
 import { DepistageGaucheComponent } from './consultation/depistage-gauche/depistage-gauche.component';
+import { ProfilMedcinComponent } from './profil-medcin/profil-medcin.component';
+import { EditProfilMedecinComponent } from './edit-profil-medecin/edit-profil-medecin.component';
+import { ListeConsultationPerComponent } from './liste-consultation-per/liste-consultation-per.component';
+import { Parametre2Component } from './medecin-expert/parametre2/parametre2.component';
+import { SplashScreenComponent } from './shared/splash-screen/splash-screen.component';
 
 const routes: Routes = [
+
   {
     path: 'home',
     loadChildren: () => import('./home/home.module').then(m => m.HomePageModule)
   },
   {
     path: '',
-    redirectTo: 'login',
+    redirectTo: 'splashScreen',
     pathMatch: 'full'
   },
   { path: 'login', component: SignupComponent },
+  { path: 'splashScreen', component: SplashScreenComponent },
+
+
   { path: 'signup', component: LoginComponent },
   { path: 'patient', component: PatientComponent },
   { path: 'consultation', component: ConsultationComponent },
@@ -56,7 +67,43 @@ const routes: Routes = [
   },
   {
     path: 'depistageGauche', component: DepistageGaucheComponent
+  },
+  {
+    path: 'profil', component: ProfilMedcinComponent
+
+  },
+  {
+    path: 'edit', component: EditProfilMedecinComponent
+
+
+  },
+  {
+    path: 'ConsultationPatient', component: ListeConsultationPerComponent
+
+
+
+  },
+  {
+    path: 'parametre2', component: Parametre2Component
+
+
+
+
+  },
+  {
+    path: 'profilExpert', component: ProfilExpertComponent
+
+
+  },
+  {
+    path: 'EditExpert', component: EditProfilExpertComponent
+
+
   }
+
+
+
+
 
 
 ];

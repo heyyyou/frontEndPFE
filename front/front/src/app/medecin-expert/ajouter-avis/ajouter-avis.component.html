@@ -5,60 +5,80 @@
       style="border-bottom-left-radius: 15px; border-bottom-right-radius: 15px"
     >
       <ion-buttons slot="start">
-        <ion-back-button defaultHref="home"></ion-back-button>
+        <ion-back-button defaultHref="homeExpert"></ion-back-button>
       </ion-buttons>
 
-      <ion-avatar slot="end" class="ion-margin avatar">
-        <img src="assets/doctour.png"
-      /></ion-avatar>
+      <img
+        slot="end"
+        class="ion-margin avatar"
+        id="trigger-button1"
+        src="assets/mess.png"
+      />
     </ion-toolbar>
   </ion-header>
-  <ion-content>
-    <ion-item>
-      <ion-avatar slot="start">
-        <img src="{{ consultationMedService.consultation_id.url }}" />
-      </ion-avatar>
-      <ion-label>
-        <p>Patient,</p>
-        <h3>{{ consultationMedService.consultation_id.name }},</h3>
-      </ion-label>
-      <ion-icon
-        class="calendar"
-        name="calendar-outline"
-        color="gris"
-      ></ion-icon>
-      <h4>{{ consultationMedService.consultation_id.dateConslt }}</h4>
-    </ion-item>
-    <!-- si je confirme pour l'avis d'un expert un ion-progress bar is here -->
 
-    <ion-list class="details">
-      <!-- <div class="header"> -->
-      <ion-item color="couleurbase" class="item1">
-        <ion-icon name="transgender" color="primary2"></ion-icon>
-        <h3>{{ consultationMedService.consultation_id.sexe }}</h3></ion-item
-      >
+  <ion-modal
+    trigger="trigger-button1"
+    [isOpen]="true"
+    [breakpoints]="[0.1, 0.5, 1]"
+    [initialBreakpoint]="0.2"
+  >
+    <ng-template>
+      <ion-header lines="none"></ion-header>
+      <ion-grid>
+        <ion-row>
+          <ion-col class="ion-padding">
+            <h5 class="ion-padding">Commentaire Docteur Meriem</h5>
+            <ion-text class="ion-padding commentaire">
+              Je veux avoir un avis à propos les deux yeux</ion-text
+            ></ion-col
+          >
+        </ion-row>
+      </ion-grid>
+    </ng-template>
+  </ion-modal>
 
-      <ion-item color="couleurbase">
-        <ion-icon name="call" color="primary2"></ion-icon>
+  <ion-item>
+    <ion-avatar slot="start">
+      <img src="{{ consultationMedService.consultation_id.url }}" />
+    </ion-avatar>
+    <ion-label>
+      <p>Patient,</p>
+      <h3>{{ consultationMedService.consultation_id.name }},</h3>
+    </ion-label>
+    <ion-icon class="calendar" name="calendar-outline" color="gris"></ion-icon>
+    <h4>{{ consultationMedService.consultation_id.dateConslt }}</h4>
+  </ion-item>
+  <!-- si je confirme pour l'avis d'un expert un ion-progress bar is here -->
 
-        <h3>{{ consultationMedService.consultation_id.num }}</h3>
-      </ion-item>
-
-      <ion-item color="couleurbase">
-        <ion-icon name="calendar-outline" color="primary2"></ion-icon>
-        <h3>
-          {{ consultationMedService.consultation_id.dateNaiss }}
-        </h3></ion-item
-      >
-
-      <ion-item lines="none" color="couleurbase" class="item4">
-        <ion-icon name="medkit" color="primary2"></ion-icon>
-        <h3>{{ consultationMedService.consultation_id.antecedent }}</h3>
-      </ion-item></ion-list
+  <ion-list class="details">
+    <!-- <div class="header"> -->
+    <ion-item color="couleurbase" class="item1">
+      <ion-icon name="transgender" color="primary2"></ion-icon>
+      <h3>{{ consultationMedService.consultation_id.sexe }}</h3></ion-item
     >
-    <!-- </div> -->
 
-    <div class="segment">
+    <ion-item color="couleurbase">
+      <ion-icon name="call" color="primary2"></ion-icon>
+
+      <h3>{{ consultationMedService.consultation_id.num }}</h3>
+    </ion-item>
+
+    <ion-item color="couleurbase">
+      <ion-icon name="calendar-outline" color="primary2"></ion-icon>
+      <h3>
+        {{ consultationMedService.consultation_id.dateNaiss }}
+      </h3></ion-item
+    >
+
+    <ion-item lines="none" color="couleurbase" class="item4">
+      <ion-icon name="medkit" color="primary2"></ion-icon>
+      <h3>{{ consultationMedService.consultation_id.antecedent }}</h3>
+    </ion-item></ion-list
+  >
+  <!-- </div> -->
+
+  <!-- <div class="segment">
       <ion-segment
         mode="ios"
         [(ngModel)]="segment"
@@ -106,7 +126,29 @@
       </h6>
       <ion-text color="primary2">Gravitè :</ion-text>
       {{ consultationMedService.consultation_id.oeil_droiteAI.gravite }}
+    </div> -->
+  <ion-content>
+    <div class="segment">
+      <ion-segment
+        mode="ios"
+        [(ngModel)]="segment"
+        color="primary"
+        (ionChange)="segmentChanged($event)"
+      >
+        <ion-segment-button value="droite" (click)="droite()"
+          ><ion-icon name="eye-outline" color="primary2"></ion-icon
+          ><ion-text color="primary2"> Oeil Droite</ion-text>
+        </ion-segment-button>
+        <ion-segment-button value="gauche" (click)="gauche()">
+          <ion-icon name="eye-outline" color="primary2"></ion-icon>
+          <ion-text color="primary2"> Oeil Gauche</ion-text></ion-segment-button
+        >
+      </ion-segment>
     </div>
+    <ng-container [ngSwitch]="segment">
+      <app-details-gauche *ngSwitchCase="'gauche'"> </app-details-gauche>
+      <app-details-droite *ngSwitchCase="'droite'"> </app-details-droite>
+    </ng-container>
 
     <div *ngIf="consultationMedService.consultation_id.avisExpert === false">
       <app-expert-consultation></app-expert-consultation>

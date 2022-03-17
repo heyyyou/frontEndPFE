@@ -80,7 +80,7 @@
                   <ion-text class="age">{{ item.dateNaiss }}</ion-text>
                 </ion-col>
               </ion-row>
-              <a routerLink="/ListeConsultation"
+              <a routerLink="/ConsultationPatient"
                 ><ion-text color="primary" class="consultation"
                   >Consultations</ion-text
                 >
@@ -91,19 +91,10 @@
       >
     </ion-grid>
 
-
-
-
-
-    
     <ion-modal trigger="trigger-button" mode="md">
       <ng-template>
         <ion-header>
-          <ion-icon
-            name="close-outline"
-            (click)="dismissModal()"
-            size="large"
-          ></ion-icon>
+          <ion-icon name="close-outline" (click)="dismissModal()"></ion-icon>
         </ion-header>
         <ion-content>
           <ion-item>

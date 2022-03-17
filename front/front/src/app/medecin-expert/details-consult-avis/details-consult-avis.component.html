@@ -6,7 +6,7 @@
       style="border-bottom-left-radius: 15px; border-bottom-right-radius: 15px"
     >
       <ion-buttons slot="start">
-        <ion-back-button defaultHref="home"></ion-back-button>
+        <ion-back-button defaultHref="homeExpert"></ion-back-button>
       </ion-buttons>
 
       <ion-avatar slot="end" class="ion-margin avatar">
@@ -14,51 +14,48 @@
       /></ion-avatar>
     </ion-toolbar>
   </ion-header>
-  <ion-content>
-    <ion-item>
-      <ion-avatar slot="start">
-        <img src="{{ consultationMedService.consultation_id.url }}" />
-      </ion-avatar>
-      <ion-label>
-        <p>Patient,</p>
-        <h3>{{ consultationMedService.consultation_id.name }},</h3>
-      </ion-label>
-      <ion-icon
-        class="calendar"
-        name="calendar-outline"
-        color="gris"
-      ></ion-icon>
-      <h4>{{ consultationMedService.consultation_id.dateConslt }}</h4>
-    </ion-item>
-    <!-- si je confirme pour l'avis d'un expert un ion-progress bar is here -->
 
-    <ion-list class="details">
-      <!-- <div class="header"> -->
-      <ion-item color="couleurbase" class="item1">
-        <ion-icon name="transgender" color="primary2"></ion-icon>
-        <h3>{{ consultationMedService.consultation_id.sexe }}</h3></ion-item
-      >
+  <ion-item>
+    <ion-avatar slot="start">
+      <img src="{{ consultationMedService.consultation_id.url }}" />
+    </ion-avatar>
+    <ion-label>
+      <p>Patient,</p>
+      <h3>{{ consultationMedService.consultation_id.name }},</h3>
+    </ion-label>
+    <ion-icon class="calendar" name="calendar-outline" color="gris"></ion-icon>
+    <h4>{{ consultationMedService.consultation_id.dateConslt }}</h4>
+  </ion-item>
+  <!-- si je confirme pour l'avis d'un expert un ion-progress bar is here -->
 
-      <ion-item color="couleurbase">
-        <ion-icon name="call" color="primary2"></ion-icon>
-
-        <h3>{{ consultationMedService.consultation_id.num }}</h3>
-      </ion-item>
-
-      <ion-item color="couleurbase">
-        <ion-icon name="calendar-outline" color="primary2"></ion-icon>
-        <h3>
-          {{ consultationMedService.consultation_id.dateNaiss }}
-        </h3></ion-item
-      >
-
-      <ion-item lines="none" color="couleurbase" class="item4">
-        <ion-icon name="medkit" color="primary2"></ion-icon>
-        <h3>{{ consultationMedService.consultation_id.antecedent }}</h3>
-      </ion-item></ion-list
+  <ion-list class="details">
+    <!-- <div class="header"> -->
+    <ion-item color="couleurbase" class="item1">
+      <ion-icon name="transgender" color="primary2"></ion-icon>
+      <h3>{{ consultationMedService.consultation_id.sexe }}</h3></ion-item
     >
-    <!-- </div> -->
 
+    <ion-item color="couleurbase">
+      <ion-icon name="call" color="primary2"></ion-icon>
+
+      <h3>{{ consultationMedService.consultation_id.num }}</h3>
+    </ion-item>
+
+    <ion-item color="couleurbase">
+      <ion-icon name="calendar-outline" color="primary2"></ion-icon>
+      <h3>
+        {{ consultationMedService.consultation_id.dateNaiss }}
+      </h3></ion-item
+    >
+
+    <ion-item lines="none" color="couleurbase" class="item4">
+      <ion-icon name="medkit" color="primary2"></ion-icon>
+      <h3>{{ consultationMedService.consultation_id.antecedent }}</h3>
+    </ion-item></ion-list
+  >
+  <!-- </div> -->
+
+  <ion-content>
     <div class="segment">
       <ion-segment
         mode="ios"
@@ -76,8 +73,11 @@
         >
       </ion-segment>
     </div>
-    <br />
-    <ion-card class="cardfull">
+    <ng-container [ngSwitch]="segment">
+      <app-details-gauche *ngSwitchCase="'gauche'"> </app-details-gauche>
+      <app-details-droite *ngSwitchCase="'droite'"> </app-details-droite>
+    </ng-container>
+    <!-- <ion-card class="cardfull">
       <swiper
         [config]="config"
         class="swiper-slide"
@@ -108,5 +108,9 @@
       <ion-text color="primary2">Gravitè :</ion-text>
       {{ consultationMedService.consultation_id.oeil_droiteAI.gravite }}
     </div>
-    <app-gestion-avis></app-gestion-avis> </ion-content
-></ion-app>
+
+ -->
+
+    <app-gestion-avis></app-gestion-avis>
+  </ion-content>
+</ion-app>

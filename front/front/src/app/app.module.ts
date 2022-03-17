@@ -1,5 +1,3 @@
-import { SharedModule } from './shared/shared.module';
-// import { SideBarComponent } from './shared/side-bar/side-bar.component';
 import { HomeExpertComponent } from './medecin-expert/home-expert/home-expert.component';
 import { HomePage } from './home/home.page';
 import { ListeConsultationComponent } from './liste-consultation/liste-consultation.component';
@@ -44,6 +42,13 @@ import { DepistageGaucheComponent } from './consultation/depistage-gauche/depist
 import { DepistageDroiteComponent } from './consultation/depistage-droite/depistage-droite.component';
 import { DetailsDroiteComponent } from './consultation/details-droite/details-droite.component';
 import { DetailsGaucheComponent } from './consultation/details-gauche/details-gauche.component';
+import { ProfilMedcinComponent } from './profil-medcin/profil-medcin.component';
+import { EditProfilMedecinComponent } from './edit-profil-medecin/edit-profil-medecin.component';
+import { ListeConsultationPerComponent } from './liste-consultation-per/liste-consultation-per.component';
+import { Parametre2Component } from './medecin-expert/parametre2/parametre2.component';
+import { EditProfilExpertComponent } from './medecin-expert/edit-profil-expert/edit-profil-expert.component';
+import { ProfilExpertComponent } from './medecin-expert/profil-expert/profil-expert.component';
+import { SplashScreenComponent } from './shared/splash-screen/splash-screen.component';
 
 @NgModule({
   declarations: [
@@ -78,7 +83,15 @@ import { DetailsGaucheComponent } from './consultation/details-gauche/details-ga
     DepistageGaucheComponent,
     DepistageDroiteComponent,
     DetailsGaucheComponent,
-    DetailsDroiteComponent
+    DetailsDroiteComponent,
+    ProfilMedcinComponent,
+    EditProfilMedecinComponent,
+    ListeConsultationPerComponent,
+    Parametre2Component,
+    EditProfilExpertComponent,
+    ProfilExpertComponent,
+    SplashScreenComponent
+
   ],
   entryComponents: [],
   imports: [
@@ -91,7 +104,7 @@ import { DetailsGaucheComponent } from './consultation/details-gauche/details-ga
     SwiperModule,
     HttpClientModule,
     FormsModule,
-    SharedModule,
+
     RouterModule.forRoot([])
   ],
   providers: [

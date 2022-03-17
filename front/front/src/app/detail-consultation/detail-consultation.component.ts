@@ -53,12 +53,7 @@ export class DetailConsultationComponent implements OnInit {
 
 
   }
-  droite() {
 
-  }
-  gauche() {
-
-  }
   async presentLoading() {
     const loading = await this.loadingController.create({
       cssClass: 'my-custom-class',
@@ -69,12 +64,12 @@ export class DetailConsultationComponent implements OnInit {
 
     const { role, data } = await loading.onDidDismiss();
 
-    this.router.navigate(["ListeConsultation"])
+    this.router.navigate(["home"])
   }
 
 
   async DemanderAvis() {
-
+    console.log("???")
     const alert = await this.alertController.create({
       cssClass: 'my-custom-class',
       header: 'Vous voulez avoir un avis ?',

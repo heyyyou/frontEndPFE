@@ -36,7 +36,8 @@
     size="Medium"
     class="ion-margin"
     id="trigger-button"
-    [disabled]="choixMaladie === null"
+    (click)="truthClick()"
+    [disabled]="disableButton || choixMaladie === null"
     >valider
   </ion-button>
   <ion-modal trigger="trigger-button">

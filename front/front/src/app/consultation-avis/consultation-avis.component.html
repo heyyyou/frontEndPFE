@@ -5,7 +5,7 @@
       style="border-bottom-left-radius: 15px; border-bottom-right-radius: 15px"
     >
       <ion-buttons slot="start">
-        <ion-back-button defaultHref="home"></ion-back-button>
+        <ion-back-button defaultHref="AvisnonExpert"></ion-back-button>
       </ion-buttons>
 
       <ion-avatar slot="end" class="ion-margin avatar">
@@ -58,82 +58,32 @@
     >
     <!-- </div> -->
 
-    <div class="segment">
-      <ion-segment
-        mode="ios"
-        [(ngModel)]="segment"
-        color="primary"
-        (ionChange)="segmentChanged($event)"
-      >
-        <ion-segment-button value="droite" (click)="droite()"
-          ><ion-icon name="eye-outline" color="favorites"></ion-icon
-          ><ion-text color="favorites"> Oeil Droite</ion-text>
-        </ion-segment-button>
-        <ion-segment-button value="gauche" (click)="gauche()">
-          <ion-icon name="eye-outline" color="favorites"></ion-icon>
-          <ion-text color="favorites">
-            Oeil Gauche</ion-text
-          ></ion-segment-button
+    <ion-content>
+      <div class="segment">
+        <ion-segment
+          mode="ios"
+          [(ngModel)]="segment"
+          color="primary"
+          (ionChange)="segmentChanged($event)"
         >
-      </ion-segment>
-    </div>
-    <br />
-    <ion-card class="cardfull">
-      <swiper
-        [config]="config"
-        class="swiper-slide"
-        data-swiper-autoplay="2000"
-      >
-        <ng-template
-          swiperSlide
-          *ngFor="let imge of photoService.photos; let i = index"
-        >
-          <img
-            [src]="imge.webviewPath"
-            onerror="this.src='assets/add.jpg'"
-            alt="alternative"
-            tappable
-            (click)="ConsultationMedService.openPreview(imge.webviewPath)"
-          />
-        </ng-template>
-      </swiper>
-    </ion-card>
-    <div class="details">
-      <h5>AI Résultat</h5>
-      <h6>
-        <ion-text color="primary">Maladie : </ion-text>
-        Oeil Droite :{{
-          ConsultationMedService.consultation_id.oeil_droiteAI.maladie
-        }}
-      </h6>
-      <ion-text color="primary">Gravitè :</ion-text>
-      {{ ConsultationMedService.consultation_id.oeil_droiteAI.gravite }}
-    </div>
-    <ion-button
-      *ngIf="
-        ConsultationMedService.consultation_id.avisExpert === false &&
-        DemandeAvis === false
-      "
-      color="primary"
-      expand="block"
-      shape="round"
-      size="large"
-      class="AvisExpert"
-      (click)="DemanderAvis()"
-      [disabled]="
-        ConsultationMedService.consultation_id.avisExpert === false &&
-        ConsultationMedService.consultation_id.DemandeAvis === true
-      "
-      >Avis Expert</ion-button
-    >
+          <ion-segment-button value="droite" (click)="droite()"
+            ><ion-icon name="eye-outline" color="favorites"></ion-icon
+            ><ion-text color="favorites"> Oeil Droite</ion-text>
+          </ion-segment-button>
+          <ion-segment-button value="gauche" (click)="gauche()">
+            <ion-icon name="eye-outline" color="favorites"></ion-icon>
+            <ion-text color="favorites">
+              Oeil Gauche</ion-text
+            ></ion-segment-button
+          >
+        </ion-segment>
+      </div>
+      <ng-container [ngSwitch]="segment">
+        <app-details-gauche *ngSwitchCase="'gauche'"> </app-details-gauche>
+        <app-details-droite *ngSwitchCase="'droite'"> </app-details-droite>
+      </ng-container>
 
-    <div
-      *ngIf="
-        ConsultationMedService.consultation_id.avisExpert === true ||
-        DemandeAvis === true
-      "
-    >
       <app-avis-expert></app-avis-expert>
-    </div>
+    </ion-content>
   </ion-content>
 </ion-app>

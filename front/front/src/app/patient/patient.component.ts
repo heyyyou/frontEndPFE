@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 import { format } from 'date-fns';
 import { parseISO } from 'date-fns/esm';
 import { Camera, CameraResultType, CameraSource, ImageOptions } from '@capacitor/camera';
-import { ActionSheetController } from '@ionic/angular';
+import { ActionSheetController, MenuController } from '@ionic/angular';
 
 @Component({
   selector: 'app-patient',
@@ -18,11 +18,24 @@ export class PatientComponent implements OnInit {
   showPicker = false;
   dateValue = format(new Date(), 'yyyy-MM-dd') + 'T09:00:00.000Z';
   formattedString = '';
-  constructor(private router: Router, public actionSheetController: ActionSheetController) {
+  constructor(private router: Router, public actionSheetController: ActionSheetController, private menu: MenuController) {
     this.setToday();
   }
   setToday() {
     this.formattedString = format(parseISO(format(new Date(), 'yyyy-MM-dd')), 'MMM d,yyyy');
+  }
+  openFirst() {
+    this.menu.enable(true, 'first');
+    this.menu.open('first');
+  }
+
+  openEnd() {
+    this.menu.open('end');
+  }
+
+  openCustom() {
+    this.menu.enable(true, 'custom');
+    this.menu.open('custom');
   }
 
   ngOnInit() { }
