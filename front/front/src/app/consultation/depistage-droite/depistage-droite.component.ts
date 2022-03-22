@@ -14,6 +14,8 @@ import { SwiperOptions } from 'swiper';
 })
 export class DepistageDroiteComponent implements OnInit {
   @ViewChild(IonContent) private content: IonContent;
+  public disableButton = false;
+
 
 
   base64 = '';
@@ -22,6 +24,8 @@ export class DepistageDroiteComponent implements OnInit {
 
   async presentLoading() {
     this.isLoadingAI = true;
+    this.disableButton = true;
+
     setTimeout(() => {
       this.isLoadingAI = false;
       this.router.navigate(['detailConsultation']);

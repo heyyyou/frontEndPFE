@@ -34,19 +34,26 @@
         </ion-item>
       </div>
       <div class="form-input">
+        <ion-icon color="primary" name="call-outline"></ion-icon>
+        <ion-item>
+          <ion-label position="floating">numéro de Téléphone</ion-label>
+          <ion-input required></ion-input>
+        </ion-item>
+      </div>
+      <div class="form-input">
         <ion-icon color="primary" name="lock-closed-outline"></ion-icon>
         <ion-item>
           <ion-label position="floating">Mot de passe</ion-label>
           <ion-input type="password" required maxlength="10"></ion-input>
         </ion-item>
       </div>
-      <div class="form-input">
+      <!-- <div class="form-input">
         <ion-icon color="primary" name="lock-closed-outline"></ion-icon>
         <ion-item>
           <ion-label position="floating">Confirmer mot de passe</ion-label>
           <ion-input type="password" required maxlength="10"></ion-input>
         </ion-item>
-      </div>
+      </div> -->
 
       <ion-item>
         <ion-label>Choisissez votre spécialité</ion-label>
@@ -60,14 +67,20 @@
     </div>
 
     <ion-item lines="none">
-      <ion-text
-        >Justificatif de votre statut de professionel de santé
-      </ion-text>
+      <ion-radio-group value="biff">
+        <ion-list-header>
+          <ion-label>Sexe</ion-label>
+        </ion-list-header>
 
-      <ion-button color="gris" slot="end" class="signup-button">
-        Parcourir...
-      </ion-button>
-    </ion-item>
+        <ion-item lines="none">
+          <ion-label>femme</ion-label>
+          <ion-radio slot="start" value="femme"></ion-radio>
+        </ion-item>
+        <ion-item lines="none">
+          <ion-label>homme</ion-label>
+          <ion-radio slot="start" value="homme"></ion-radio>
+        </ion-item> </ion-radio-group
+    ></ion-item>
     <br />
     <div class="action-buttons ion-padding">
       <ion-button
@@ -97,7 +110,7 @@
       </ion-button> -->
 
       <ion-text>Vous avez déjà un compte ?</ion-text
-      ><a routerLink="/signup">cliquez ici</a>
+      ><a routerLink="/login">cliquez ici</a>
     </div>
   </div>
 </ion-content>

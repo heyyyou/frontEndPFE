@@ -8,12 +8,9 @@
         <ion-back-button defaultHref="homeExpert"></ion-back-button>
       </ion-buttons>
 
-      <img
-        slot="end"
-        class="ion-margin avatar"
-        id="trigger-button1"
-        src="assets/mess.png"
-      />
+      <ion-avatar slot="end" class="ion-margin avatar">
+        <img src="assets/doctour.png" />
+      </ion-avatar>
     </ion-toolbar>
   </ion-header>
 
@@ -21,16 +18,20 @@
     trigger="trigger-button1"
     [isOpen]="true"
     [breakpoints]="[0.1, 0.5, 1]"
-    [initialBreakpoint]="0.2"
+    [initialBreakpoint]="0.25"
   >
     <ng-template>
       <ion-header lines="none"></ion-header>
       <ion-grid>
         <ion-row>
           <ion-col class="ion-padding">
-            <h5 class="ion-padding">Commentaire Docteur Meriem</h5>
+            <h5 class="ion-padding">Images ne sont pas lisibles?</h5>
             <ion-text class="ion-padding commentaire">
-              Je veux avoir un avis à propos les deux yeux</ion-text
+              Si les images ne sont pas visibles vous pouvez alerter le médecin
+            </ion-text>
+
+            <ion-button color="danger" fill="outline" shape="round"
+              >Cliquez ICI</ion-button
             ></ion-col
           >
         </ion-row>
@@ -156,5 +157,16 @@
     <div *ngIf="consultationMedService.consultation_id.avisExpert === true">
       <app-toast></app-toast>
     </div>
+    <ion-item lines="none">
+      <ion-fab-button
+        size="small"
+        slot="end"
+        id="trigger-button1"
+        color="danger"
+        (click)="newConsultation()"
+      >
+        <ion-icon name="alert-outline"></ion-icon>
+      </ion-fab-button>
+    </ion-item>
   </ion-content>
 </ion-app>

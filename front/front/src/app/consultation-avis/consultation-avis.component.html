@@ -82,8 +82,22 @@
         <app-details-gauche *ngSwitchCase="'gauche'"> </app-details-gauche>
         <app-details-droite *ngSwitchCase="'droite'"> </app-details-droite>
       </ng-container>
-
-      <app-avis-expert></app-avis-expert>
+      <div *ngIf="ConsultationMedService.consultation_id.avisExpert">
+        <app-avis-expert></app-avis-expert>
+      </div>
+      <div *ngIf="!ConsultationMedService.consultation_id.avisExpert">
+        <ion-button
+          class="ion-padding ion-margin"
+          expand="block"
+          size="large"
+          class="AImodel"
+          shape="round"
+          [disabled]="
+            ConsultationMedService.consultation_id.DemandeAvis === true
+          "
+          >avis Expert</ion-button
+        >
+      </div>
     </ion-content>
   </ion-content>
 </ion-app>

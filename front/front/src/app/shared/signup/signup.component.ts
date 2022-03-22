@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
-import { MenuController, NavController, AlertController } from '@ionic/angular';
+import { MenuController, NavController, AlertController, ModalController } from '@ionic/angular';
 import { Button } from 'protractor';
 
 @Component({
@@ -28,13 +28,15 @@ export class SignupComponent {
     await alert.present();
   }
 
-  constructor(private menu: MenuController, private route: Router, private alertCtrl: AlertController) { }
+  constructor(private menu: MenuController, private route: Router, private alertCtrl: AlertController, public modal: ModalController) { }
 
 
 
 
   Router: any;
-
+  dismiss() {
+    this.modal.dismiss();
+  }
   loginUser() {
 
     console.log(this.user)
@@ -54,6 +56,7 @@ export class SignupComponent {
       alert("password or email not valid")
 
     }
+
 
   }
 

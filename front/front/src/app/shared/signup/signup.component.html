@@ -44,11 +44,30 @@
         <div *ngIf="email.invalid && email.touched"></div>
       </div>
     </div>
-    <ion-item lines="none"
+    <ion-item lines="none" id="open-modal"
       ><ion-router-link slot="end"
         >mot de passe oubliè?</ion-router-link
       ></ion-item
     >
+    <ion-modal trigger="open-modal" mode="md">
+      <ng-template>
+        <ion-content>
+          <ion-card>
+            <ion-item>
+              <p class="ion-padding instruction">Instruction envoyées</p>
+            </ion-item>
+            <ion-item>
+              <ion-text class="ion-padding">
+                Nous t'avons envoyé des instructions pour changer ton mot de
+                passe à l'adresse "ss@gmail.com" . Consulte ta boite de
+                réception et tes courriers indésirables pour les retrouver
+              </ion-text>
+            </ion-item>
+            <ion-button expand="block" (click)="dismiss()">OK</ion-button>
+          </ion-card>
+        </ion-content>
+      </ng-template>
+    </ion-modal>
 
     <br />
 

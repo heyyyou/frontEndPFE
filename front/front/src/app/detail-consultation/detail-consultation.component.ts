@@ -22,6 +22,7 @@ export class DetailConsultationComponent implements OnInit {
   DemandeAvis: boolean = false; // f details ya mariem demain
   Avis: boolean = false;
   showLoader: boolean;
+  disableButton = true;
 
   displayProgress() {
     this.showLoader = true;
@@ -61,26 +62,24 @@ export class DetailConsultationComponent implements OnInit {
       duration: 3000
     });
     await loading.present();
+    this.disableButton = true;
 
     const { role, data } = await loading.onDidDismiss();
 
     this.router.navigate(["home"])
   }
+  hey() {
+    this.disableButton = true;
 
-
+  }
   async DemanderAvis() {
     console.log("???")
     const alert = await this.alertController.create({
       cssClass: 'my-custom-class',
       header: 'Vous voulez avoir un avis ?',
-      inputs: [
-        {
-          name: 'name1',
-          type: 'text',
-          placeholder: 'Saisissez un Commentaire'
-        },
 
-      ],
+
+
       subHeader: 'Expert en ophtalmologie',
 
       message: '',
@@ -96,6 +95,7 @@ export class DetailConsultationComponent implements OnInit {
         handler: () => {
           // this.DemandeAvis = true;
           // this.Avis = false;
+
           this.presentLoading();
         }
       }

@@ -15,6 +15,8 @@ import { SwiperOptions } from 'swiper';
 export class DepistageGaucheComponent implements OnInit {
   @ViewChild(IonContent) private content: IonContent; //acces child component
 
+  public disableButton = false;
+
 
   base64 = '';
   isLoadingAI: boolean = false;
@@ -22,6 +24,8 @@ export class DepistageGaucheComponent implements OnInit {
 
   async presentLoading() {
     this.isLoadingAI = true;
+    this.disableButton = true;
+
     setTimeout(() => {
       this.isLoadingAI = false;
       this.router.navigate(['detailConsultation']);
