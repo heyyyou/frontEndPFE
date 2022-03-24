@@ -8,10 +8,14 @@ import { Router } from '@angular/router';
   styleUrls: ['./home-expert.component.scss'],
 })
 export class HomeExpertComponent implements OnInit {
-
+  user: any = {};
   constructor(public router: Router, public menu: MenuController) { }
+  public name = localStorage.getItem("name");
 
-  ngOnInit() { }
+  ngOnInit() {
+
+  }
+
   logout() {
     this.router.navigate(['login']);
     this.menu.close();

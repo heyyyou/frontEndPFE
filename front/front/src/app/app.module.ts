@@ -1,3 +1,4 @@
+import { AuthInterceptor } from './shared/auth.interceptor';
 import { HomeExpertComponent } from './medecin-expert/home-expert/home-expert.component';
 import { HomePage } from './home/home.page';
 import { ListeConsultationComponent } from './liste-consultation/liste-consultation.component';
@@ -8,13 +9,13 @@ import { NgModule, NO_ERRORS_SCHEMA } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouteReuseStrategy, RouterModule } from '@angular/router';
 import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { IonicRatingModule } from 'ionic-rating';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { IonicSelectableModule } from 'ionic-selectable';
 import { SwiperModule } from 'swiper/angular';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ImagePicker } from '@ionic-native/image-picker/ngx';
 import { DetailConsultationComponent } from './detail-consultation/detail-consultation.component';
 import { CommonModule } from '@angular/common';
@@ -49,6 +50,8 @@ import { Parametre2Component } from './medecin-expert/parametre2/parametre2.comp
 import { EditProfilExpertComponent } from './medecin-expert/edit-profil-expert/edit-profil-expert.component';
 import { ProfilExpertComponent } from './medecin-expert/profil-expert/profil-expert.component';
 import { SplashScreenComponent } from './shared/splash-screen/splash-screen.component';
+import { IonicStorageModule } from '@ionic/storage-angular';
+
 
 @NgModule({
   declarations: [
@@ -68,6 +71,10 @@ import { SplashScreenComponent } from './shared/splash-screen/splash-screen.comp
     ToastComponent,
     SignupComponent,
     LoginComponent,
+
+
+
+
     ListeAvisComponent,
     StatistiqueComponent,
     StarsRatingComponent,
@@ -95,8 +102,12 @@ import { SplashScreenComponent } from './shared/splash-screen/splash-screen.comp
   ],
   entryComponents: [],
   imports: [
+    IonicStorageModule.forRoot(),
+
     BrowserModule,
     CommonModule,
+    ReactiveFormsModule,
+    FormsModule,
     IonicRatingModule,
     IonicModule.forRoot(),
     AppRoutingModule,
@@ -110,6 +121,11 @@ import { SplashScreenComponent } from './shared/splash-screen/splash-screen.comp
   providers: [
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
     ImagePicker,
+    {
+      provide: HTTP_INTERCEPTORS,// to which injection token do we want to associate our class with
+      useClass: AuthInterceptor,
+      multi: true //multiple http interceptor orginized in a chain
+    }
   ],
   bootstrap: [AppComponent],
   schemas: [NO_ERRORS_SCHEMA],

@@ -166,6 +166,30 @@
   --ion-color-primary2-shade: #439a46;
   --ion-color-primary2-tint: #5eb762;
 }
+.customToast {
+  text-align: center !important;
+  --button-color: #ffffff;
+  --max-height: 70px;
+  --background: #56c000e8;
+  --border-style: solid;
+  --border-width: 1px;
+  --border-color: #56c000e8;
+  // SHOULD be button color
+  --color: #ffffff !important;
+  color: #ffffff !important;
+}
+.customToaste {
+  text-align: center !important;
+  --button-color: #ffffff;
+  --max-height: 70px;
+  --background: #fa0303e8;
+  --border-style: solid;
+  --border-width: 1px;
+  --border-color: #fc0101e8;
+  // SHOULD be button color
+  --color: #ffffff !important;
+  color: #ffffff !important;
+}
 
 .ion-color-primary2 {
   --ion-color-base: var(--ion-color-primary2);
