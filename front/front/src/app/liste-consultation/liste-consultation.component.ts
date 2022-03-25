@@ -11,6 +11,7 @@ import { AlertController, MenuController } from '@ionic/angular';
   styleUrls: ['./liste-consultation.component.scss'],
 })
 export class ListeConsultationComponent implements OnInit {
+  public name = localStorage.getItem("name");
   currentRatingValue: number = null;
   public avisExpert;
   constructor(public ConsultationMedService: ConsultationMedService, public menu: MenuController,

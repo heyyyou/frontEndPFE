@@ -52,12 +52,11 @@ export class SignupComponent implements OnInit {
         localStorage.setItem("name", this.user.username);
         localStorage.setItem("role", this.user.role);
         localStorage.setItem("email", this.user.email);
-
+        localStorage.setItem("id", this.user.id);
 
         let accessToken = "Bearer " + this.user.accessToken;
         localStorage.setItem("token", accessToken)
         // when we do login token in jwt mtaa user
-
         this.service.islogin = true;
         if (this.user.role == "generaliste") {
           this.service.generaliste = true;

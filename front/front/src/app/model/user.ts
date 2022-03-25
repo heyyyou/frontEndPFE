@@ -1,5 +1,5 @@
 export class User {
-  id: number;
+  id: Number;
   username: string;
   role: string;
   email: string;
@@ -10,3 +10,5 @@ export class User {
   accessToken: string;
 
 }
+
+

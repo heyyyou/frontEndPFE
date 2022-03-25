@@ -9,6 +9,7 @@ import { Observable } from 'rxjs';
 export class UserService {
   private baseUrl = "http://localhost:8080/api/users/signup";
   private baseUrl1 = "http://localhost:8080/api/users/login";
+  private baseUrl2 = "http://localhost:8080/api/users";
   islogin = false;
   generaliste = false;
   expert = false;
@@ -20,7 +21,7 @@ export class UserService {
   }
 
   getData(id: number): Observable<Object> {
-    return this.http.get(`${this.baseUrl}/${id}`);
+    return this.http.get(`${this.baseUrl2}/${localStorage.getItem("id")}`);
   }
 
   createData(info: Object): Observable<Object> {

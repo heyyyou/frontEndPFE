@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { ChildrenOutletContexts, Router, RouterOutlet } from '@angular/router';
 import { ConsultationMedService } from '../services/consultation-med.service';
 
-import { MenuController } from '@ionic/angular';
+import { MenuController, ToastController } from '@ionic/angular';
 @Component({
   selector: 'app-home',
   templateUrl: 'home.page.html',
@@ -11,12 +11,23 @@ import { MenuController } from '@ionic/angular';
 })
 export class HomePage implements OnInit {
   ngOnInit() {
+    this.presentToast()
   }
 
 
 
+  constructor(public Router: Router, private menu: MenuController, public toastController: ToastController,
+    public ConsultationMedService: ConsultationMedService) { }
+  async presentToast() {
+    const toast = await this.toastController.create({
+      message: 'Welcome Doctor' + " " + localStorage.getItem("name"),
+      duration: 3000,
+      position: 'top',
+      cssClass: "customToast"
+    });
+    toast.present();
+  }
 
-  constructor(public Router: Router, private menu: MenuController, public ConsultationMedService: ConsultationMedService) { }
   listeConsultation() {
     this.Router.navigate(["ListeConsultation"])
 

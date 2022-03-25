@@ -1,7 +1,9 @@
-import { Router } from '@angular/router';
+import { User } from './../model/user';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { Camera, CameraResultType, CameraSource, ImageOptions } from '@capacitor/camera';
 import { ActionSheetController } from '@ionic/angular';
+import { UserService } from '../services/user.service';
 
 @Component({
   selector: 'app-profil-medcin',
@@ -10,10 +12,21 @@ import { ActionSheetController } from '@ionic/angular';
 })
 export class ProfilMedcinComponent implements OnInit {
   base64: string;
+  user: any;
+  constructor(public route: Router, private ar: ActivatedRoute,
+    public actionSheetController: ActionSheetController, public service: UserService) { }
 
-  constructor(public route: Router, public actionSheetController: ActionSheetController) { }
+  ngOnInit(): void {
+    let id: number
+    this.ar.paramMap.subscribe((params) => {
+      id = +params.get('id')
+      this.service.getData(id).subscribe(data => {
+        this.user = data;
+        console.log(this.user)
 
-  ngOnInit() { }
+      });
+    })
+  }
   pickImageFromGallery() {
     const options: ImageOptions = {
       source: CameraSource.Photos,
