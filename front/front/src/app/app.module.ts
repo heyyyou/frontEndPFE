@@ -1,4 +1,4 @@
-import { AuthInterceptor } from './shared/auth.interceptor';
+import { AuthInterceptor } from './auth.interceptor';
 import { HomeExpertComponent } from './medecin-expert/home-expert/home-expert.component';
 import { HomePage } from './home/home.page';
 import { ListeConsultationComponent } from './liste-consultation/liste-consultation.component';
@@ -51,7 +51,6 @@ import { EditProfilExpertComponent } from './medecin-expert/edit-profil-expert/e
 import { ProfilExpertComponent } from './medecin-expert/profil-expert/profil-expert.component';
 import { SplashScreenComponent } from './shared/splash-screen/splash-screen.component';
 import { IonicStorageModule } from '@ionic/storage-angular';
-
 
 @NgModule({
   declarations: [

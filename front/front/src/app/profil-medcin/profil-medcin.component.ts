@@ -12,11 +12,14 @@ import { UserService } from '../services/user.service';
 })
 export class ProfilMedcinComponent implements OnInit {
   base64: string;
-  user: any;
+  public user: any;
   constructor(public route: Router, private ar: ActivatedRoute,
     public actionSheetController: ActionSheetController, public service: UserService) { }
 
   ngOnInit(): void {
+    this.here()
+  }
+  here() {
     let id: number
     this.ar.paramMap.subscribe((params) => {
       id = +params.get('id')
@@ -27,6 +30,7 @@ export class ProfilMedcinComponent implements OnInit {
       });
     })
   }
+
   pickImageFromGallery() {
     const options: ImageOptions = {
       source: CameraSource.Photos,

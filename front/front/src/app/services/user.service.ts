@@ -16,6 +16,15 @@ export class UserService {
   choixmenu: string = 'A';
   listData: User[];
   constructor(private http: HttpClient) { }
+  fetch() {
+    return this.http.get("https://jsonplaceholder.typicode.com/todos/1");
+  }
+
+
+
+  getToken() {
+    return localStorage.getItem('token')
+  }
   login(username, password) {
     return this.http.post(`${this.baseUrl1}`, { username, password });
   }

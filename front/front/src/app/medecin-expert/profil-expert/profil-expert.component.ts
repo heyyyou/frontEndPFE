@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Camera, CameraResultType, CameraSource, ImageOptions } from '@capacitor/camera';
 import { ActionSheetController } from '@ionic/angular';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-profil-expert',
@@ -10,9 +11,21 @@ import { ActionSheetController } from '@ionic/angular';
 })
 export class ProfilExpertComponent implements OnInit {
   base64: string;
-  constructor(public route: Router, public actionSheetController: ActionSheetController) { }
+  user: any;
+  constructor(public route: Router, private ar: ActivatedRoute, public service: UserService,
+    public actionSheetController: ActionSheetController) { }
+  here() {
+    let id: number
+    this.ar.paramMap.subscribe((params) => {
+      id = +params.get('id')
+      this.service.getData(id).subscribe(data => {
+        this.user = data;
+        console.log(this.user)
 
-  ngOnInit() { }
+      });
+    })
+  }
+  ngOnInit() { this.here(); }
   pickImageFromGallery() {
     const options: ImageOptions = {
       source: CameraSource.Photos,

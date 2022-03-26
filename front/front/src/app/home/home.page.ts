@@ -1,3 +1,4 @@
+import { UserService } from 'src/app/services/user.service';
 import { Component, OnInit } from '@angular/core';
 
 import { ChildrenOutletContexts, Router, RouterOutlet } from '@angular/router';
@@ -17,7 +18,10 @@ export class HomePage implements OnInit {
 
 
   constructor(public Router: Router, private menu: MenuController, public toastController: ToastController,
-    public ConsultationMedService: ConsultationMedService) { }
+    public ConsultationMedService: ConsultationMedService, private test: UserService) { }
+  // fetch() {
+  //   this.test.fetch().subscribe(data => console.log(data))
+  // }
   async presentToast() {
     const toast = await this.toastController.create({
       message: 'Welcome Doctor' + " " + localStorage.getItem("name"),
