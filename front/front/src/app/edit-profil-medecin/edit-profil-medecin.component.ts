@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { NgForm } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Camera, CameraResultType, CameraSource, ImageOptions } from '@capacitor/camera';
 import { ActionSheetController } from '@ionic/angular';
+import { UserService } from '../services/user.service';
 
 @Component({
   selector: 'app-edit-profil-medecin',
@@ -9,10 +12,34 @@ import { ActionSheetController } from '@ionic/angular';
 })
 export class EditProfilMedecinComponent implements OnInit {
   base64: string;
+  user: any;
+  id: any;
 
-  constructor(public actionSheetController: ActionSheetController) { }
+  constructor(public actionSheetController: ActionSheetController, private ar: ActivatedRoute,
+    public service: UserService, private router: Router) { }
 
-  ngOnInit() { }
+  ngOnInit() {
+    let id: number
+    this.ar.paramMap.subscribe((params) => {
+      id = +params.get('id')
+      this.service.getData(id).subscribe(data => {
+        this.user = data;
+        console.log(this.user)
+
+      });
+    })
+  }
+  modifierProfil(f: NgForm) {
+    this.id = localStorage.getItem("id")
+    this.service.updatedata(this.id, f.value).subscribe(() => {
+      this.router.navigate(["/profil"]);
+      console.log("id =" + this.id);
+      console.log(this.user)
+    });
+  }
+
+
+
   pickImageFromGallery() {
     const options: ImageOptions = {
       source: CameraSource.Photos,
