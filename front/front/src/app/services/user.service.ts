@@ -11,6 +11,8 @@ export class UserService {
   private baseUrl1 = "http://localhost:8080/api/users/login";
   private baseUrl2 = "http://localhost:8080/api/users";
   private baseUrl3 = "http://localhost:8080/api/users";
+  private imageProfil = "http://localhost:8080/api/image";
+
   islogin = false;
   generaliste = false;
   expert = false;
@@ -40,6 +42,9 @@ export class UserService {
 
   updatedata(id: number, value: any): Observable<Object> {
     return this.http.put(`${this.baseUrl3}/${localStorage.getItem("id")}`, value);
+  }
+  getImage(id: number): Observable<Object> {
+    return this.http.get(`${this.imageProfil}/${localStorage.getItem("id")}`)
   }
 
   deleteData(id: number): Observable<any> {

@@ -46,6 +46,21 @@
   <ion-button
     expand="block"
     size="large"
+    fill="outline"
+    class="AImodel"
+    shape="round"
+    (click)="presentLoading()"
+    [disabled]="
+      disableButton ||
+      photoService.photos.length === 0 ||
+      ConsultationMedService.selected_users === null
+    "
+    >Ajouter Consultation</ion-button
+  >
+
+  <ion-button
+    expand="block"
+    size="large"
     class="AImodel"
     shape="round"
     (click)="presentLoading()"

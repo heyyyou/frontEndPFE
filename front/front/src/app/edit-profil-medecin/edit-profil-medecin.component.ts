@@ -39,18 +39,23 @@ export class EditProfilMedecinComponent implements OnInit {
   }
 
 
-
-  pickImageFromGallery() {
+  f: NgForm
+  pickImageFromGallery(f: NgForm) {
     const options: ImageOptions = {
       source: CameraSource.Photos,
       resultType: CameraResultType.DataUrl
     };
     Camera.getPhoto(options).then((result) => {
-      this.base64 = result.dataUrl;
-    }, (err) => {
-      alert(err);
+      this.service.updatedata(this.id, f.value).subscribe(() => {
+        this.router.navigate(["/profil"]);
+        console.log("id =" + this.id);
+        console.log(this.user)
+      });
+    }
+      , (err) => {
+        alert(err);
 
-    });
+      });
   }
   public async showActionSheet() {
     const actionSheet = await this.actionSheetController.create({
@@ -60,7 +65,7 @@ export class EditProfilMedecinComponent implements OnInit {
         icon: 'camera',
 
         handler: () => {
-          this.pickImageFromGallery();
+          this.pickImageFromGallery(this.f);
         }
       },
       {

@@ -5,24 +5,27 @@
       <ion-back-button defaultHref="profil"> </ion-back-button>
     </ion-buttons>
   </ion-toolbar>
-  <ion-grid class="main-header">
-    <div align="center">
-      <ion-icon
-        class="edit"
-        color="light"
-        name="pencil"
-        (click)="showActionSheet()"
-      ></ion-icon>
 
-      <ion-avatar>
-        <img
-          [src]="base64"
-          onerror="this.onerror=null;this.src='assets/123.jpg';"
-        />
-      </ion-avatar>
-    </div>
-  </ion-grid>
   <form (ngSubmit)="modifierProfil(f)" #f="ngForm">
+    <ion-grid class="main-header">
+      <div align="center">
+        <ion-icon
+          class="edit"
+          color="light"
+          name="pencil"
+          (click)="showActionSheet()"
+        ></ion-icon>
+
+        <ion-avatar>
+          <img
+            id="image"
+            name="image"
+            [src]="user?.image"
+            onerror="this.onerror=null;this.src='assets/123.jpg';"
+          />
+        </ion-avatar>
+      </div>
+    </ion-grid>
     <ion-list>
       <ion-item>
         <ion-label>
@@ -30,7 +33,6 @@
           <p>
             <ion-input
               color="dark"
-              id="telephone"
               id="telephone"
               [ngModel]="user?.telephone"
               #telephone="ngModel"
