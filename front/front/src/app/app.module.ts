@@ -1,4 +1,3 @@
-import { AuthInterceptor } from './auth.interceptor';
 import { HomeExpertComponent } from './medecin-expert/home-expert/home-expert.component';
 import { HomePage } from './home/home.page';
 import { ListeConsultationComponent } from './liste-consultation/liste-consultation.component';
@@ -51,6 +50,8 @@ import { EditProfilExpertComponent } from './medecin-expert/edit-profil-expert/e
 import { ProfilExpertComponent } from './medecin-expert/profil-expert/profil-expert.component';
 import { SplashScreenComponent } from './shared/splash-screen/splash-screen.component';
 import { IonicStorageModule } from '@ionic/storage-angular';
+import { AuthInterceptor } from './auth.interceptor';
+import { AuthGuard } from './shared/auth-guard';
 
 @NgModule({
   declarations: [
@@ -119,12 +120,14 @@ import { IonicStorageModule } from '@ionic/storage-angular';
   ],
   providers: [
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
-    ImagePicker,
+    ImagePicker, AuthGuard,
     {
       provide: HTTP_INTERCEPTORS,// to which injection token do we want to associate our class with
       useClass: AuthInterceptor,
       multi: true //multiple http interceptor orginized in a chain
-    }
+    },
+    Storage
+
   ],
   bootstrap: [AppComponent],
   schemas: [NO_ERRORS_SCHEMA],

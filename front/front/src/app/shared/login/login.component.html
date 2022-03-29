@@ -29,6 +29,9 @@
               #username="ngModel"
             ></ion-input>
           </ion-item>
+          <span style="color: red" *ngIf="!username.valid && username.touched"
+            >Entrer username
+          </span>
         </div>
         <div class="form-input">
           <ion-icon color="primary" name="mail-outline"></ion-icon>
@@ -44,6 +47,9 @@
               pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
             ></ion-input>
           </ion-item>
+          <span style="color: red" *ngIf="!email.valid && email.touched"
+            >Entrer email
+          </span>
         </div>
         <div class="form-input">
           <ion-icon color="primary" name="call-outline"></ion-icon>
@@ -57,6 +63,9 @@
               #telephone="ngModel"
             ></ion-input>
           </ion-item>
+          <span style="color: red" *ngIf="!telephone.valid && telephone.touched"
+            >Entrer password
+          </span>
         </div>
         <div class="form-input">
           <ion-icon color="primary" name="lock-closed-outline"></ion-icon>
@@ -71,6 +80,9 @@
               required
               maxlength="10"
             ></ion-input>
+            <span style="color: red" *ngIf="!password.valid && password.touched"
+              >Entrer password
+            </span>
           </ion-item>
         </div>
         <!-- <div class="form-input">

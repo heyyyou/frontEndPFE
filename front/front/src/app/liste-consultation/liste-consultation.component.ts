@@ -41,6 +41,7 @@ export class ListeConsultationComponent implements OnInit {
     this.menu.close();
   }
   logout() {
+    localStorage.removeItem('token');
     this.router.navigate(['login']);
     this.menu.close();
   }

@@ -26,6 +26,7 @@ export class EditProfilMedecinComponent implements OnInit {
         this.user = data;
         console.log(this.user)
 
+
       });
     })
   }
@@ -37,6 +38,7 @@ export class EditProfilMedecinComponent implements OnInit {
       console.log(this.user)
     });
   }
+
 
 
   f: NgForm

@@ -7,7 +7,7 @@ import { Observable } from "rxjs";
 //we did it because chaque requete doit etre authorized
 //send token from browser to server by interceptor
 // yjib token mn back yhotu f local storage baed ujibu m local storage w yhotu al ay requete besh tmchi ll back :)
-@Injectable()
+// @Injectable()
 export class AuthInterceptor implements HttpInterceptor {
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
