@@ -7,10 +7,14 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class UserService {
-  private baseUrl = "http://localhost:8080/api/users/signup";
+  private baseUrl = "http://localhost:8080/api/users/signupGen";
+  private baseUrll = "http://localhost:8080/api/users/signupExpert"
   private baseUrl1 = "http://localhost:8080/api/users/login";
-  private baseUrl2 = "http://localhost:8080/api/users";
-  private baseUrl3 = "http://localhost:8080/api/users";
+  private getGen = "http://localhost:8080/api/generaliste";
+  private getExpert = "http://localhost:8080/api/expert"
+  private updateGen = "http://localhost:8080/api/Generaliste";
+  private updateExpert = "http://localhost:8080/api/expert";
+
   private imageProfil = "http://localhost:8080/api/image";
 
   islogin = false;
@@ -33,15 +37,27 @@ export class UserService {
   }
 
   getData(id: number): Observable<Object> {
-    return this.http.get(`${this.baseUrl2}/${localStorage.getItem("id")}`);
+    return this.http.get(`${this.getGen}/${localStorage.getItem("id")}`);
+  }
+  getDataExpert(id: number): Observable<Object> {
+    return this.http.get(`${this.getExpert}/${localStorage.getItem("id")}`);
   }
 
-  createData(info: Object): Observable<Object> {
+  registerMed(info: Object): Observable<Object> {
+    this.generaliste = true;
     return this.http.post(`${this.baseUrl}`, info);
+
+  }
+  registerExpert(info: Object): Observable<Object> {
+    this.expert = true;
+    return this.http.post(`${this.baseUrll}`, info);
   }
 
-  updatedata(id: number, value: any): Observable<Object> {
-    return this.http.put(`${this.baseUrl3}/${localStorage.getItem("id")}`, value);
+  updatedataGeneraliste(id: number, value: any): Observable<Object> {
+    return this.http.put(`${this.updateGen}/${localStorage.getItem("id")}`, value);
+  }
+  updatedataExpert(id: number, value: any): Observable<Object> {
+    return this.http.put(`${this.updateExpert}/${localStorage.getItem("id")}`, value);
   }
   getImage(id: number): Observable<Object> {
     return this.http.get(`${this.imageProfil}/${localStorage.getItem("id")}`)

@@ -7,7 +7,7 @@
     // height: 100px;
   }
   ion-toolbar {
-    --background: #3e64ff;
+    --background: #2183ac;
     .avatar {
       height: 35px;
       width: 35px;
@@ -127,8 +127,8 @@ ion-footer {
   .menu-header-bg {
     height: 180px;
     width: 350px;
-    background: #3e64ff;
-    background: linear-gradient(99deg, #3e64ff 0%, #3e64ff 100%);
+    background: #2183ac;
+    background: linear-gradient(99deg, #2183ac 0%, #2183ac 100%);
     box-shadow: 0px 1px 10px rgba(98, 140, 255, 0.5);
     border-radius: 10px;
   }
@@ -142,7 +142,7 @@ ion-footer {
       width: 80px;
       height: 80px;
       border-radius: 50%;
-      border: 7px solid #5e7ccc;
+      border: 7px solid #a7afc4;
       margin-right: 14px;
     }
     h2 {
@@ -169,10 +169,10 @@ ion-footer {
     }
     .active {
       border-left: 5px solid;
-      color: #3e64ff;
+      color: #2183ac;
       padding-left: 15px;
       ion-icon {
-        color: #3e64ff;
+        color: #2183ac;
       }
     }
     .logout {
@@ -188,8 +188,8 @@ ion-footer {
   .menu-header-bg2 {
     height: 180px;
     width: 350px;
-    background: #3e64ff;
-    background: linear-gradient(99deg, #3e64ff 0%, #3e64ff 100%);
+    background: #2183ac;
+    background: linear-gradient(99deg, #2183ac 0%, #2183ac 100%);
     box-shadow: 0px 1px 10px rgba(98, 140, 255, 0.5);
     border-radius: 10px;
   }
@@ -230,16 +230,16 @@ ion-footer {
     }
     .active {
       border-left: 5px solid;
-      color: #3e64ff;
+      color: #2183ac;
       padding-left: 15px;
       ion-icon {
-        color: #3e64ff;
+        color: #2183ac;
       }
     }
     .logout {
       margin-top: 242px;
 
-      background: #3e64ff;
+      background: #2183ac;
     }
   }
 }

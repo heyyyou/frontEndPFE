@@ -32,7 +32,7 @@ export class EditProfilMedecinComponent implements OnInit {
   }
   modifierProfil(f: NgForm) {
     this.id = localStorage.getItem("id")
-    this.service.updatedata(this.id, f.value).subscribe(() => {
+    this.service.updatedataGeneraliste(this.id, f.value).subscribe(() => {
       this.router.navigate(["/profil"]);
       console.log("id =" + this.id);
       console.log(this.user)
@@ -48,7 +48,7 @@ export class EditProfilMedecinComponent implements OnInit {
       resultType: CameraResultType.DataUrl
     };
     Camera.getPhoto(options).then((result) => {
-      this.service.updatedata(this.id, f.value).subscribe(() => {
+      this.service.updatedataGeneraliste(this.id, f.value).subscribe(() => {
         this.router.navigate(["/profil"]);
         console.log("id =" + this.id);
         console.log(this.user)

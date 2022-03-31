@@ -52,6 +52,8 @@ import { SplashScreenComponent } from './shared/splash-screen/splash-screen.comp
 import { IonicStorageModule } from '@ionic/storage-angular';
 import { AuthInterceptor } from './auth.interceptor';
 import { AuthGuard } from './shared/auth-guard';
+import { SignupexpertComponent } from './shared/login/signupexpert/signupexpert.component';
+import { SignupmedComponent } from './shared/login/signupmed/signupmed.component';
 
 @NgModule({
   declarations: [
@@ -71,8 +73,8 @@ import { AuthGuard } from './shared/auth-guard';
     ToastComponent,
     SignupComponent,
     LoginComponent,
-
-
+    SignupexpertComponent,
+    SignupmedComponent,
 
 
     ListeAvisComponent,

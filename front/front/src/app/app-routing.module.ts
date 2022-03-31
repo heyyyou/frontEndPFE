@@ -44,8 +44,8 @@ const routes: Routes = [
   { path: 'login', component: SignupComponent },
   { path: 'splashScreen', component: SplashScreenComponent },
 
-
   { path: 'signup', component: LoginComponent },
+
   { path: 'patient', component: PatientComponent, canActivate: [AuthGuard] },
   { path: 'consultation', component: ConsultationComponent, canActivate: [AuthGuard] },
   { path: 'detailConsultation', component: DetailConsultationComponent, canActivate: [AuthGuard] },

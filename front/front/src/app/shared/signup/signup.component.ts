@@ -37,9 +37,7 @@ export class SignupComponent implements OnInit {
 
 
   ngOnInit() {
-    this.service.islogin = false;
-    this.service.generaliste = false;
-    this.service.expert = false;
+
   }
   Router: any;
   dismiss() {
@@ -50,20 +48,18 @@ export class SignupComponent implements OnInit {
       res => {
         this.user = res;
         localStorage.setItem("name", this.user.username);
-        localStorage.setItem("role", this.user.role);
         localStorage.setItem("email", this.user.email);
         localStorage.setItem("id", this.user.id);
 
         let accessToken = "Bearer " + this.user.accessToken;
         localStorage.setItem("token", accessToken)
         // when we do login token in jwt mtaa user
-        this.service.islogin = true;
-        if (this.user.role == "generaliste") {
-          this.service.generaliste = true;
+        //   this.service.islogin = true;
+        if (localStorage.getItem("role") == "generaliste") {
           this.route.navigate(['/home']);
         }
         else {
-          this.service.expert = true;
+
 
           this.route.navigate(['/homeExpert']);
         }

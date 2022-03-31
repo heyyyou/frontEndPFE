@@ -1,40 +1,38 @@
-import { UserService } from './../../services/user.service';
-import { FormBuilder, FormControl, FormGroup, NgForm, Validators } from '@angular/forms';
-import { MenuController, ToastController } from '@ionic/angular';
 import { Component, OnInit } from '@angular/core';
-import SwiperCore, { Autoplay, Keyboard, Pagination, Scrollbar, Zoom } from 'swiper';
+import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
-SwiperCore.use([Autoplay, Keyboard, Pagination, Scrollbar, Zoom]);
+import { ToastController } from '@ionic/angular';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
-  selector: 'app-login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss'],
+  selector: 'app-signupmed',
+  templateUrl: './signupmed.component.html',
+  styleUrls: ['./signupmed.component.scss'],
 })
-export class LoginComponent implements OnInit {
-  resgisterationForm: FormGroup;
+export class SignupmedComponent implements OnInit {
+
   user: any = {};
   segment = 'droite';
-  // constructor(private router: Router, private service: UserService,
-  //   private toastController: ToastController, private fb: FormBuilder) { }
+  constructor(private router: Router, private service: UserService,
+    private toastController: ToastController) { }
 
 
-  // signup(f: NgForm) {
-  //   this.service.registerMed(f.value).subscribe(() => {
+  signup(f: NgForm) {
+    this.service.registerMed(f.value).subscribe(() => {
+      localStorage.setItem("role", "generaliste"); // lorsque je fais sign up j vais store l data d woslt local bsh nestaaml baed role f login f root ;)
+      this.router.navigate(['/login'])
+      this.presentToast();
+    })
+  }
+  async presentToast() {
+    const toast = await this.toastController.create({
+      message: 'inscription effectuée avec succès',
+      duration: 3000,
+      cssClass: "customToast",
 
-  //     this.router.navigate(['/login'])
-  //     this.presentToast();
-  //   })
-  // }
-  // async presentToast() {
-  //   const toast = await this.toastController.create({
-  //     message: 'inscription effectuée avec succès',
-  //     duration: 3000,
-  //     cssClass: "customToast",
-
-  //   });
-  //   toast.present();
-  // }
+    });
+    toast.present();
+  }
   ngOnInit(): void {
     // this.createRegisterationForm();
   }
