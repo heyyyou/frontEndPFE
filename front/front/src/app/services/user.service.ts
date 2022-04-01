@@ -12,9 +12,9 @@ export class UserService {
   private baseUrl1 = "http://localhost:8080/api/users/login";
   private getGen = "http://localhost:8080/api/generaliste";
   private getExpert = "http://localhost:8080/api/expert"
-  private updateGen = "http://localhost:8080/api/Generaliste";
-  private updateExpert = "http://localhost:8080/api/expert";
-
+  private updateGen = "http://localhost:8080/medecins/update";
+  private updateExpert = "http://localhost:8080/expert/update";
+  private uploadImage = "http://localhost:8080/api/upload/"
   private imageProfil = "http://localhost:8080/api/image";
 
   islogin = false;
@@ -51,6 +51,11 @@ export class UserService {
   registerExpert(info: Object): Observable<Object> {
     this.expert = true;
     return this.http.post(`${this.baseUrll}`, info);
+  }
+
+  uploadimage(info: Object): Observable<Object> {
+    this.expert = true;
+    return this.http.post(`${this.uploadImage}`, info);
   }
 
   updatedataGeneraliste(id: number, value: any): Observable<Object> {

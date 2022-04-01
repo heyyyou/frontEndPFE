@@ -38,6 +38,8 @@ export class ProfilMedcinComponent implements OnInit {
     };
     Camera.getPhoto(options).then((result) => {
       this.base64 = result.dataUrl;
+      localStorage.setItem("image", this.base64)
+
     }, (err) => {
       alert(err);
 

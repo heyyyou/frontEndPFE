@@ -1,6 +1,7 @@
 <div *ngIf="!isLoadingAI">
   <div class="ajouterdelet">
     <ion-button
+      type="file"
       *ngIf="photoService.photos.length <= 4; else thenBlock"
       fill="solid"
       color="primary"

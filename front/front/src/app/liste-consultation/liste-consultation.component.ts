@@ -14,6 +14,7 @@ export class ListeConsultationComponent implements OnInit {
   public name = localStorage.getItem("name");
   currentRatingValue: number = null;
   public avisExpert;
+  public images = localStorage.getItem("image")
   constructor(public ConsultationMedService: ConsultationMedService, public menu: MenuController,
     public PhotoService: PhotoService, public router: Router, public alertController: AlertController) { }
 
@@ -40,6 +41,7 @@ export class ListeConsultationComponent implements OnInit {
     this.router.navigate(['parametre']);
     this.menu.close();
   }
+
   logout() {
     localStorage.removeItem('token');
     this.router.navigate(['login']);
@@ -61,7 +63,6 @@ export class ListeConsultationComponent implements OnInit {
     this.router.navigate(['AvisnonExpert']);
     this.menu.close();
   }
-
 
 
 
