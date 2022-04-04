@@ -1,4 +1,5 @@
-export class User {
+
+export interface Generaliste {
   id: Number;
   username: string;
   roles: string;
@@ -8,6 +9,7 @@ export class User {
   gender: string;
   image: string;
   accessToken: string;
+
 
 }
 

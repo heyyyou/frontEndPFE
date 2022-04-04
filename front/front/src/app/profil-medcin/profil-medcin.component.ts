@@ -1,4 +1,3 @@
-import { User } from './../model/user';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { Camera, CameraResultType, CameraSource, ImageOptions } from '@capacitor/camera';

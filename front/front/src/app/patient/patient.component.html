@@ -37,112 +37,163 @@
     </div>
 
     <div></div>
-    <ion-card>
-      <ion-item>
-        <ion-label position="stacked" class="text"
-          >CIN <ion-text color="danger">*</ion-text></ion-label
-        >
-        <ion-input placeholder="réponse courte"></ion-input>
-      </ion-item>
+    <form #f="ngForm">
+      <ion-card>
+        <ion-item>
+          <ion-label position="stacked" class="text"
+            >CIN <ion-text color="danger">*</ion-text></ion-label
+          >
+          <ion-input
+            placeholder="réponse courte"
+            type="text"
+            required
+            id="cin"
+            ngModel
+            name="cin"
+            #cin="ngModel"
+          ></ion-input>
+        </ion-item>
+        <span style="color: red" *ngIf="!cin.valid && cin.touched"
+          >Entrer CIN
+        </span>
 
-      <ion-item lines="none">
-        <ion-label position="stacked" class="text"
-          >Nom & Prénom<ion-text color="danger">*</ion-text></ion-label
-        >
-        <ion-input placeholder="réponse courte"></ion-input> </ion-item
-    ></ion-card>
-
-    <ion-card>
-      <ion-item>
-        <ion-label position="stacked" class="text"
-          >Numéro de téléphone</ion-label
-        >
-        <ion-input placeholder="réponse courte"></ion-input>
-      </ion-item>
-      <ion-item lines="none">
-        <ion-label position="stacked" class="text">Adresse mail</ion-label>
-        <ion-input placeholder="réponse courte"></ion-input>
-      </ion-item>
-    </ion-card>
-    <ion-card>
-      <ion-item>
-        <ion-label position="stacked" class="text">Sexe</ion-label>
-
-        <ion-item> <ion-checkbox color="primary"></ion-checkbox>Femme</ion-item>
         <ion-item lines="none">
-          <ion-checkbox color="primary"></ion-checkbox>Homme</ion-item
-        >
-      </ion-item>
-    </ion-card>
-    <ion-card>
-      <ion-item id="open-modal" lines="none">
-        <ion-icon
-          icon="calendar-outline"
-          slot="start"
-          color="primary"
-        ></ion-icon>
-        <ion-label
-          ><ion-text class="date"
-            >Date de naissance<ion-text color="danger">*</ion-text></ion-text
-          ></ion-label
-        >
-        <ion-text slot="end">{{ formattedString }}</ion-text>
-      </ion-item>
-      <ion-modal trigger="open-modal" mode="md">
-        <ng-template>
-          <ion-content>
-            <ion-datetime
-              #date
-              [value]="dateValue"
-              size="cover"
-              (ionChange)="dateChanged(date.value)"
-              showDefaultButtons="true"
-              (ionCancel)="showPicker = false"
-            ></ion-datetime>
-          </ion-content>
-        </ng-template>
-      </ion-modal>
-    </ion-card>
-    <ion-card>
-      <ion-item>
-        <ion-label position="stacked" class="text"
+          <ion-label position="stacked" class="text"
+            >Nom & Prénom<ion-text color="danger">*</ion-text></ion-label
+          >
+          <ion-input
+            placeholder="réponse courte"
+            type="text"
+            required
+            id="username"
+            ngModel
+            name="username"
+            #username="ngModel"
+          ></ion-input>
+        </ion-item>
+        <span style="color: red" *ngIf="!username.valid && username.touched"
+          >Entrer nom & prenom
+        </span>
+      </ion-card>
+
+      <ion-card>
+        <ion-item>
+          <ion-label position="stacked" class="text"
+            >Numéro de téléphone</ion-label
+          >
+          <ion-input
+            placeholder="réponse courte"
+            type="text"
+            required
+            id="telephone"
+            ngModel
+            name="telephone"
+            #telephone="ngModel"
+          ></ion-input>
+        </ion-item>
+        <span style="color: red" *ngIf="!telephone.valid && telephone.touched"
+          >Entrer Télephone
+        </span>
+
+        <ion-item lines="none">
+          <ion-label position="stacked" class="text">Adresse mail</ion-label>
+          <ion-input
+            placeholder="réponse courte"
+            type="text"
+            required
+            id="email"
+            ngModel
+            name="email"
+            #email="ngModel"
+          ></ion-input>
+        </ion-item>
+        <span style="color: red" *ngIf="!telephone.valid && telephone.touched"
+          >Entrer Email
+        </span>
+      </ion-card>
+      <ion-card>
+        <ion-item lines="none">
+          <ion-label position="stacked" class="text">Gender</ion-label>
+
+          <ion-radio-group id="gender" ngModel name="gender" #gender="ngModel">
+            <ion-item lines="none">
+              <ion-label color="primary1">femme</ion-label>
+              <ion-radio slot="start" value="femme"></ion-radio>
+            </ion-item>
+            <ion-item lines="none">
+              <ion-label color="primary1">homme</ion-label>
+              <ion-radio slot="start" value="homme"></ion-radio>
+            </ion-item> </ion-radio-group
+        ></ion-item>
+      </ion-card>
+      <ion-card>
+        <ion-item id="open-modal" lines="none">
+          <ion-icon
+            icon="calendar-outline"
+            slot="start"
+            color="primary"
+          ></ion-icon>
+          <ion-label
+            ><ion-text class="date"
+              >Date de naissance<ion-text color="danger">*</ion-text></ion-text
+            ></ion-label
+          >
+          <ion-text slot="end">{{ formattedString }}</ion-text>
+        </ion-item>
+        <ion-modal trigger="open-modal" mode="md">
+          <ng-template>
+            <ion-content>
+              <ion-datetime
+                id="dateNaiss"
+                ngModel
+                name="dateNaiss"
+                #dateNaiss="ngModel"
+                [value]="dateValue"
+                size="cover"
+                (ionChange)="dateChanged(dateNaiss.value)"
+                showDefaultButtons="true"
+                (ionCancel)="showPicker = false"
+              ></ion-datetime>
+            </ion-content>
+          </ng-template>
+        </ion-modal>
+      </ion-card>
+      <ion-card>
+        <br />
+        <ion-label position="stacked" class="text ion-padding"
           >Antécédents cardio-vasculaires<ion-text color="danger"
             >*</ion-text
           ></ion-label
         >
 
-        <ion-item lines="none">
-          <ion-checkbox color="primary" mode="md"></ion-checkbox
-          ><ion-text class="espace">HTA</ion-text></ion-item
-        >
-        <ion-item lines="none">
-          <ion-checkbox color="primary" mode="md"></ion-checkbox
-          ><ion-text class="espace">Dyslipidémie</ion-text></ion-item
-        >
-        <ion-item lines="none">
-          <ion-checkbox color="primary" mode="md"></ion-checkbox
-          ><ion-text class="espace">Tabac</ion-text></ion-item
-        >
-        <ion-item lines="none">
-          <ion-checkbox color="primary" mode="md"></ion-checkbox
-          ><ion-text class="espace">Cancer</ion-text></ion-item
-        >
-
-        <ion-item lines="none">
-          <ion-checkbox color="primary" mode="md"></ion-checkbox
-          ><ion-text class="espace">Diabète</ion-text></ion-item
-        >
-      </ion-item>
-    </ion-card>
-    <ion-button
-      color="primary"
-      fill="outline"
-      class="valider"
-      size="large"
-      expand="block"
-      (click)="ajouter()"
-      >Valider</ion-button
-    >
+        <ion-list>
+          <ion-item lines="none" *ngFor="let entry of form">
+            <ion-label>{{ entry.val }}</ion-label>
+            <ion-checkbox
+              mode="md"
+              id="antecedant"
+              ngModel
+              name="antecedant"
+              #antecedant="ngModel"
+              slot="end"
+              [(ngModel)]="entry.isChecked"
+              (click)="getSelectedItem(entry)"
+              [ngModelOptions]="{ standalone: true }"
+            ></ion-checkbox>
+          </ion-item>
+        </ion-list>
+      </ion-card>
+      <ion-button
+        color="primary"
+        fill="outline"
+        class="valider"
+        size="large"
+        expand="block"
+        (click)="ajouterPatient(f)"
+        [disabled]="!f.valid"
+        >Valider</ion-button
+      >
+    </form>
     <!-- EDit -->
   </ion-content>
 </ion-app>

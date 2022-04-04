@@ -54,7 +54,6 @@ import { AuthInterceptor } from './auth.interceptor';
 import { AuthGuard } from './shared/auth-guard';
 import { SignupexpertComponent } from './shared/login/signupexpert/signupexpert.component';
 import { SignupmedComponent } from './shared/login/signupmed/signupmed.component';
-
 @NgModule({
   declarations: [
     ReponseAvisNotifComponent,
@@ -75,6 +74,7 @@ import { SignupmedComponent } from './shared/login/signupmed/signupmed.component
     LoginComponent,
     SignupexpertComponent,
     SignupmedComponent,
+
 
 
     ListeAvisComponent,

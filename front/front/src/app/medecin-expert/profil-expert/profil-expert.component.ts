@@ -18,7 +18,7 @@ export class ProfilExpertComponent implements OnInit {
     let id: number
     this.ar.paramMap.subscribe((params) => {
       id = +params.get('id')
-      this.service.getData(id).subscribe(data => {
+      this.service.getDataExpert(id).subscribe(data => {
         this.user = data;
         console.log(this.user)
 
