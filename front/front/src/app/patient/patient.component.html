@@ -3,22 +3,20 @@
     <ion-buttons slot="start">
       <ion-back-button defaultHref="ListePatient"></ion-back-button>
     </ion-buttons>
+    <ion-text>Nouveau patient</ion-text>
+    <!-- <ion-avatar slot="end" class="ion-margin avatar">
+      <img src="{{ imagePath }}" />
+    </ion-avatar> -->
   </ion-toolbar>
   <ion-content mode="ios">
-    <div class="header"></div>
-    <div></div>
-    <div class="flex">
-      <div class="border-blue">
-        <div class="border-white">
-          <div class="img-box">
-            <img
-              [src]="base64"
-              onerror="this.onerror=null;this.src='assets/123.jpg';"
-            />
-          </div>
-        </div>
+    <div class="main-header">
+      <div align="center">
+        <ion-avatar>
+          <img src="assets/123.jpg" height="150px" width="150px" /> <br />
+        </ion-avatar>
       </div>
-      <div class="flex1">
+    </div>
+    <!-- <div class="flex1">
         <div class="border-blue1">
           <div class="border-white1">
             <div class="img-box1">
@@ -34,7 +32,7 @@
           </div>
         </div>
       </div>
-    </div>
+    </div> -->
 
     <div></div>
     <form #f="ngForm">

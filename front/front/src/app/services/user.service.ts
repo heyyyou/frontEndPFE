@@ -18,6 +18,7 @@ export class UserService {
   private uploadImage = "http://localhost:8080/api/upload/"
   private imageProfil = "http://localhost:8080/api/image";
   private ajoutPatient = "http://localhost:8080/api/addpatient"
+  private imagePatient = "http://localhost:8080/api/updateImage"
   // private getImage = 'http://localhost:8080/api/getImageGeneraliste';
   private updateExpertt = 'http://localhost:8080/expert/update';
   // private getImage = 'http://localhost:8080/expert/getImage';
@@ -42,7 +43,9 @@ export class UserService {
   updateImageGen(id: number, file: File): Observable<any> {
     return this.http.put(`${this.imageGen}/${id}`, file);
   }
-
+  updateImagePatient(cin: number, file: File): Observable<any> {
+    return this.http.put(`${this.imagePatient}/${cin}`, file)
+  }
 
   fetch() {
     return this.http.get("https://jsonplaceholder.typicode.com/todos/1");

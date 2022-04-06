@@ -1,7 +1,7 @@
 import { Patient } from './../model/patient';
 import { UserService } from 'src/app/services/user.service';
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { format } from 'date-fns';
 import { parseISO } from 'date-fns/esm';
 import { Camera, CameraResultType, CameraSource, ImageOptions } from '@capacitor/camera';
@@ -15,6 +15,7 @@ import { id } from 'date-fns/locale';
   styleUrls: ['./patient.component.scss'],
 })
 export class PatientComponent implements OnInit {
+  base64: string;
   uploadImageData: any
   selectedFile: File;
   retrievedImage: any;
@@ -23,7 +24,7 @@ export class PatientComponent implements OnInit {
   message: string;
   imageName: any;
   url: any;
-  imagePath: string = null;
+  imagePath: any; //string=null;
   user: any;
   id: number;
   gender: string = "";
@@ -47,7 +48,7 @@ export class PatientComponent implements OnInit {
   showPicker = false;
   dateValue = format(new Date(), 'yyyy-MM-dd') + 'T09:00:00.000Z';
   formattedString = '';
-  constructor(private router: Router, public actionSheetController: ActionSheetController, private menu: MenuController, private service: UserService) {
+  constructor(private router: Router, public actionSheetController: ActionSheetController, private menu: MenuController, private service: UserService, private ar: ActivatedRoute) {
     this.setToday();
   }
   setToday() {
@@ -80,49 +81,47 @@ export class PatientComponent implements OnInit {
 
   }
 
-  base64 = '';
-
-  pickImageFromGallery() {
-    const options: ImageOptions = {
-      source: CameraSource.Photos,
-      resultType: CameraResultType.DataUrl
-    };
-    Camera.getPhoto(options).then((result) => {
-      this.base64 = result.dataUrl;
-    }, (err) => {
-      alert(err);
-
-    });
-  }
-  public async showActionSheet() {
-    const actionSheet = await this.actionSheetController.create({
-      buttons: [{
-        text: 'Choisir une photo existante',
-        role: 'destructive',
-        icon: 'camera',
-
-        handler: () => {
-          this.pickImageFromGallery();
-        }
-      },
-      {
-        text: 'Supprimer photo',
-        icon: 'trash',
-        role: 'update',
-        handler: () => {
-          // Nothing to do, action sheet is automatically closed
-        }
 
 
-      }]
-    });
-    await actionSheet.present();
-  }
+  // pickImageFromGallery() {
+  //   const options: ImageOptions = {
+  //     source: CameraSource.Photos,
+  //     resultType: CameraResultType.DataUrl
+  //   };
+  //   Camera.getPhoto(options).then((result) => {
+  //     this.base64 = result.dataUrl;
+  //   }, (err) => {
+  //     alert(err);
+
+  //   });
+  // }
+  // public async showActionSheet() {
+  //   const actionSheet = await this.actionSheetController.create({
+  //     buttons: [{
+  //       text: 'Choisir une photo existante',
+  //       role: 'destructive',
+  //       icon: 'camera',
+
+  //       handler: () => {
+  //         this.pickImageFromGallery();
+  //       }
+  //     },
+  //     {
+  //       text: 'Supprimer photo',
+  //       icon: 'trash',
+  //       role: 'update',
+  //       handler: () => {
+  //         // Nothing to do, action sheet is automatically closed
+  //       }
+
+
+  //     }]
+  //   });
+  //   await actionSheet.present();
+  // }
 
 
 
-  modifier() {
-  }
 
   getSelectedItem(selectedItem) {
     /* console.log(selectedItem);
@@ -146,8 +145,14 @@ export class PatientComponent implements OnInit {
     f.value.antecedant = localStorage.getItem("item");
     console.log(f.value.antecedant)
     console.log("fffff", f.value);
-    this.ide = localStorage.getItem("id");
+    this.ide = parseInt(localStorage.getItem("id"));
     this.service.ajouterPatient(f.value, this.ide).subscribe(() => {
+
+
+      err => {
+        alert(" proléme dans modifier l'image ")
+      }
+
       this.router.navigate(["ListePatient"]);
 
     })
@@ -157,4 +162,74 @@ export class PatientComponent implements OnInit {
     this.router.navigate(['consultation']);
   }
 
+
+
+  // here() {
+  //   let id: number
+  //   this.ar.paramMap.subscribe((params) => {
+  //     id = +params.get('id')
+  //     this.service.getData(id).subscribe(data => {
+  //       this.user = data
+  //       console.log(this.user.image)
+  //       if (this.user.image == null) {
+  //         this.imagePath = "assets/123.jpg"
+  //       }
+  //       else {
+  //         this.retrieveResponse = this.user;
+  //         this.base64Data = this.retrieveResponse.image;
+  //         this.imagePath = 'data:image/jpeg;base64,' + this.base64Data;
+  //       }
+
+  //     });
+
+  //     console.log(this.user)
+
+  //   });
+
+  // }
+
+
+
+
+
+
+  f: NgForm
+
+
+  // onSelectFile(event) {
+  //   if (event.target.files && event.target.files[0]) {
+  //     var reader = new FileReader();
+
+  //     reader.readAsDataURL(event.target.files[0]); // read file as data url
+  //     this.selectedFile = event.target.files[0];
+  //     reader.onload = (event) => { // called once readAsDataURL is completed
+  //       this.imagePath = reader.result;
+  //     }
+  //   }
 }
+
+  //   modifierProfile(f: NgForm) {
+
+  //     this.service.updatedataGeneraliste(parseInt(localStorage.getItem("id")), f.value).subscribe(() => {
+  //       console.log(f.value)
+  //       console.log(this.selectedFile);
+  //       this.uploadImageData = new FormData();
+  //       this.uploadImageData.append('imageFile', this.selectedFile);
+  //       console.log(this.selectedFile)
+  //       this.service.updateImageGen(parseInt(localStorage.getItem("id")), this.uploadImageData).subscribe(
+
+  //         err => {
+  //           alert(" proléme dans modifier l'image ")
+  //         }
+  //       );
+  //       this.router.navigate(['profil'])
+
+  //     });
+  //   }
+
+
+
+
+  // }
+
+
