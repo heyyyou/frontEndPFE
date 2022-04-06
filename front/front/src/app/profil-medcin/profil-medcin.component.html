@@ -9,18 +9,7 @@
   </ion-toolbar>
   <ion-grid class="main-header">
     <div align="center">
-      <ion-icon
-        class="edit"
-        color="light"
-        name="pencil"
-        (click)="showActionSheet()"
-      ></ion-icon>
-      <ion-avatar>
-        <img
-          [src]="base64"
-          onerror="this.onerror=null;this.src='assets/123.jpg';"
-        />
-      </ion-avatar>
+      <ion-avatar> <img src="{{ imagePath }}" /> <br /> </ion-avatar>
     </div>
   </ion-grid>
 

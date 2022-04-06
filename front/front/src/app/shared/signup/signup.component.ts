@@ -38,6 +38,7 @@ export class SignupComponent implements OnInit {
 
   ngOnInit() {
 
+
   }
   Router: any;
   dismiss() {
@@ -50,6 +51,7 @@ export class SignupComponent implements OnInit {
         localStorage.setItem("name", this.user.username);
         localStorage.setItem("email", this.user.email);
         localStorage.setItem("id", this.user.id);
+        localStorage.setItem("role", this.user.role);
 
         let accessToken = "Bearer " + this.user.accessToken;
         localStorage.setItem("token", accessToken)
@@ -57,11 +59,15 @@ export class SignupComponent implements OnInit {
         //   this.service.islogin = true;
         if (localStorage.getItem("role") == "generaliste") {
           this.route.navigate(['/home']);
-        }
-        else {
 
+
+
+        }
+        else if (localStorage.getItem("role") == "expert") {
 
           this.route.navigate(['/homeExpert']);
+
+
         }
       },
       error =>

@@ -11,68 +11,139 @@ import { UserService } from '../services/user.service';
 })
 export class ProfilMedcinComponent implements OnInit {
   base64: string;
-  public user: any;
-  constructor(public route: Router, private ar: ActivatedRoute,
-    public actionSheetController: ActionSheetController, public service: UserService) { }
+  uploadImageData: any
+  selectedFile: File;
+  retrievedImage: any;
+  base64Data: any;
+  retrieveResponse: any;
+  message: string;
+  imageName: any;
+  url: any;
+  imagePath: any; //string=null;
+  user: any;
+  id: number;
+  gender: string = "";
 
-  ngOnInit(): void {
-    this.here()
-  }
-  here() {
+  constructor(public route: Router, private ar: ActivatedRoute,
+    public actionSheetController: ActionSheetController, public service: UserService) {
     let id: number
     this.ar.paramMap.subscribe((params) => {
       id = +params.get('id')
       this.service.getData(id).subscribe(data => {
-        this.user = data;
-        console.log(this.user)
+        this.user = data
+        console.log(this.user.image)
+        if (this.user.image == null) {
+          this.imagePath = "assets/123.jpg"
+        }
+        else {
+          this.retrieveResponse = this.user;
+          this.base64Data = this.retrieveResponse.image;
+          this.imagePath = 'data:image/jpeg;base64,' + this.base64Data;
+        }
 
       });
-    })
-  }
 
-  pickImageFromGallery() {
-    const options: ImageOptions = {
-      source: CameraSource.Photos,
-      resultType: CameraResultType.DataUrl
-    };
-    Camera.getPhoto(options).then((result) => {
-      this.base64 = result.dataUrl;
-      localStorage.setItem("image", this.base64)
-
-    }, (err) => {
-      alert(err);
+      console.log(this.user)
 
     });
+
   }
-  public async showActionSheet() {
-    const actionSheet = await this.actionSheetController.create({
-      buttons: [{
-        text: 'Choisir une photo existante',
-        role: 'destructive',
-        icon: 'camera',
 
-        handler: () => {
-          this.pickImageFromGallery();
+
+  ngOnInit(): void {
+    let id: number
+    this.ar.paramMap.subscribe((params) => {
+      id = +params.get('id')
+      this.service.getData(id).subscribe(data => {
+        this.user = data
+        console.log(this.user.image)
+        if (this.user.image == null) {
+          this.imagePath = "assets/123.jpg"
         }
-      },
-      {
-        text: 'Supprimer photo',
-        icon: 'trash',
-        role: 'update',
-        handler: () => {
-          // Nothing to do, action sheet is automatically closed
+        else {
+          this.retrieveResponse = this.user;
+          this.base64Data = this.retrieveResponse.image;
+          this.imagePath = 'data:image/jpeg;base64,' + this.base64Data;
         }
 
+      });
 
-      }]
+      console.log(this.user)
+
     });
-    await actionSheet.present();
+
   }
-
-
-
 
   edit() {
     this.route.navigate(['edit'])
   }
+  //   here() {
+  //     let id: number
+  //     this.ar.paramMap.subscribe((params) => {
+  //       id = +params.get('id')
+  //       this.service.getData(id).subscribe(data => {
+  //         this.user = data
+  //         console.log(this.user.image)
+  //         if (this.user.image == null) {
+  //           this.imagePath = "assets/123.jpg"
+  //         }
+  //         else {
+  //           this.retrieveResponse = this.user;
+  //           this.base64Data = this.retrieveResponse.image;
+  //           this.imagePath = 'data:image/jpeg;base64,' + this.base64Data;
+  //         }
+
+  //       });
+
+  //       console.log(this.user)
+
+  //     });
+
+  //   }
+  // }
+
+  // pickImageFromGallery() {
+  //   const options: ImageOptions = {
+  //     source: CameraSource.Photos,
+  //     resultType: CameraResultType.DataUrl
+  //   };
+  //   Camera.getPhoto(options).then((result) => {
+  //     this.base64 = result.dataUrl;
+  //     localStorage.setItem("image", this.base64)
+
+  //   }, (err) => {
+  //     alert(err);
+
+  //   });
+  // }
+  // public async showActionSheet() {
+  //   const actionSheet = await this.actionSheetController.create({
+  //     buttons: [{
+  //       text: 'Choisir une photo existante',
+  //       role: 'destructive',
+  //       icon: 'camera',
+
+  //       handler: () => {
+  //         this.pickImageFromGallery();
+  //       }
+  //     },
+  //     {
+  //       text: 'Supprimer photo',
+  //       icon: 'trash',
+  //       role: 'update',
+  //       handler: () => {
+  //         // Nothing to do, action sheet is automatically closed
+  //       }
+
+
+  //     }]
+  //   });
+  //   await actionSheet.present();
+  // }
+
+
+
+
+
+
 }

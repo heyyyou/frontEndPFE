@@ -6,22 +6,16 @@
     </ion-buttons>
   </ion-toolbar>
 
-  <form (ngSubmit)="modifierProfil(f)" #f="ngForm">
+  <form (ngSubmit)="modifierProfile(f)" #f="ngForm">
     <ion-grid class="main-header">
       <div align="center">
-        <ion-icon
-          class="edit"
-          color="light"
-          name="pencil"
-          (click)="showActionSheet()"
-        ></ion-icon>
-
         <ion-avatar>
-          <img
-            id="image"
-            name="image"
-            [src]="user?.image"
-            onerror="this.onerror=null;this.src='assets/123.jpg';"
+          <img src="{{ imagePath }}" /> <br />
+          <input
+            type="file"
+            (change)="onSelectFile($event)"
+            class="select-profile-picture custom-file-input"
+            accept=".png, .jpg, .jpeg"
           />
         </ion-avatar>
       </div>
