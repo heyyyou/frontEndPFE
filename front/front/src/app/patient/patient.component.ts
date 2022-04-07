@@ -8,6 +8,7 @@ import { Camera, CameraResultType, CameraSource, ImageOptions } from '@capacitor
 import { ActionSheetController, MenuController } from '@ionic/angular';
 import { NgForm } from '@angular/forms';
 import { id } from 'date-fns/locale';
+import { threadId } from 'worker_threads';
 
 @Component({
   selector: 'app-patient',
@@ -15,6 +16,23 @@ import { id } from 'date-fns/locale';
   styleUrls: ['./patient.component.scss'],
 })
 export class PatientComponent implements OnInit {
+  _antecedantlist: antecedant[];
+
+  getAntecedant() {
+    this._antecedantlist = [
+      { name: 'HTA', isSelected: false },
+      { name: 'Dyslipidémie', isSelected: false },
+      { name: 'Tabac', isSelected: false },
+      { name: 'Cancer', isSelected: false },
+      { name: 'Diabète', isSelected: false },
+    ]
+
+
+  }
+  onchange() {
+    console.log(this._antecedantlist);
+
+  }
   base64: string;
   uploadImageData: any
   selectedFile: File;
@@ -29,13 +47,13 @@ export class PatientComponent implements OnInit {
   id: number;
   gender: string = "";
 
-  public form = [
-    { val: 'HTA', isChecked: false },
-    { val: 'Dyslipidémie', isChecked: false },
-    { val: 'Tabac', isChecked: false },
-    { val: 'Cancer', isChecked: false },
-    { val: 'Diabète', isChecked: false }
-  ];
+  // public form = [
+  //   { val: 'HTA', isChecked: false },
+  //   { val: 'Dyslipidémie', isChecked: false },
+  //   { val: 'Tabac', isChecked: false },
+  //   { val: 'Cancer', isChecked: false },
+  //   { val: 'Diabète', isChecked: false }
+  // ];
 
 
 
@@ -69,7 +87,7 @@ export class PatientComponent implements OnInit {
   }
 
   ngOnInit() {
-
+    this.getAntecedant();
   }
 
 
@@ -141,10 +159,15 @@ export class PatientComponent implements OnInit {
   ajouterPatient(f: NgForm) {
     console.log("jksdh", f);
     f.value.dateNaiss = this.formattedString
-    console.log(this.form.values);
+    // console.log(this.form.values);
     f.value.antecedant = localStorage.getItem("item");
-    console.log(f.value.antecedant)
+    console.log(this.getSelectedItem(f.value));
+    f.value.antecedant = this._antecedantlist.filter(x => x.isSelected === true).map(x => x.name).join(",").toString();
+    console.log(f.value.antecedant);
+
     console.log("fffff", f.value);
+
+
     this.ide = parseInt(localStorage.getItem("id"));
     this.service.ajouterPatient(f.value, this.ide).subscribe(() => {
 
@@ -157,6 +180,8 @@ export class PatientComponent implements OnInit {
 
     })
   }
+
+
 
   consultation() {
     this.router.navigate(['consultation']);
@@ -206,6 +231,10 @@ export class PatientComponent implements OnInit {
   //       this.imagePath = reader.result;
   //     }
   //   }
+}
+class antecedant {
+  name: String;
+  isSelected: boolean
 }
 
   //   modifierProfile(f: NgForm) {

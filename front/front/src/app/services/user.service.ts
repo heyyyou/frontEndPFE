@@ -18,6 +18,8 @@ export class UserService {
   private uploadImage = "http://localhost:8080/api/upload/"
   private imageProfil = "http://localhost:8080/api/image";
   private ajoutPatient = "http://localhost:8080/api/addpatient"
+  private ajoutAntecedant = "http://localhost:8080/api/addAntecedant"
+
   private imagePatient = "http://localhost:8080/api/updateImage"
   // private getImage = 'http://localhost:8080/api/getImageGeneraliste';
   private updateExpertt = 'http://localhost:8080/expert/update';
@@ -33,6 +35,7 @@ export class UserService {
 
 
   constructor(private http: HttpClient) { }
+
 
   updatedata(id: number, value: any): Observable<Object> {
     return this.http.put(`${this.updateExpertt}/${id}`, value);
