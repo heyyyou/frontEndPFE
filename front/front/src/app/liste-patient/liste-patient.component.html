@@ -48,35 +48,26 @@
   <ion-content class="contenue">
     <ion-grid>
       <ion-row>
-        <ion-col
-          size="6"
-          class="client-item"
-          *ngFor="let item of ConsultationMedService.users"
-        >
+        <ion-col size="6" class="client-item" *ngFor="let item of patient">
           <div class="image-card">
             <ion-col class="params-icon">
               <ion-icon
                 name="ellipsis-vertical-sharp"
-                (click)="showActionSheet()"
+                (click)="showActionSheet(item.cin)"
               ></ion-icon>
-              <!-- <ion-popover trigger="trigger-button">
-                <ng-template>
-                  <ion-content><ion-item>heello</ion-item></ion-content>
-                </ng-template>
-              </ion-popover> -->
             </ion-col>
             <ion-grid>
               <ion-row>
-                <ion-col>
-                  <ion-img class="image" [src]="item.url"></ion-img
+                <ion-col size="12">
+                  <ion-img class="image" src="assets/123.jpg"></ion-img
                 ></ion-col>
-                <ion-col>
+                <ion-col size="12">
                   <ion-text class="name" color="dark" id="trigger-button">{{
-                    item.name
+                    item.username
                   }}</ion-text>
                 </ion-col>
 
-                <ion-col>
+                <ion-col size="12">
                   <ion-text class="age">{{ item.dateNaiss }}</ion-text>
                 </ion-col>
               </ion-row>
