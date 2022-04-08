@@ -26,26 +26,9 @@ export class ProfilMedcinComponent implements OnInit {
 
   constructor(public route: Router, private ar: ActivatedRoute,
     public actionSheetController: ActionSheetController, public service: UserService) {
-    let id: number
-    this.ar.paramMap.subscribe((params) => {
-      id = +params.get('id')
-      this.service.getData(id).subscribe(data => {
-        this.user = data
-        console.log(this.user.image)
-        if (this.user.image == null) {
-          this.imagePath = "assets/123.jpg"
-        }
-        else {
-          this.retrieveResponse = this.user;
-          this.base64Data = this.retrieveResponse.image;
-          this.imagePath = 'data:image/jpeg;base64,' + this.base64Data;
-        }
-
-      });
-
-      console.log(this.user)
-
-    });
+    ar.params.subscribe(val => {
+      this.ngOnInit();
+    })
 
   }
 

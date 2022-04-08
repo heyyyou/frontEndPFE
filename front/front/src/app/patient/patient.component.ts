@@ -176,7 +176,7 @@ export class PatientComponent implements OnInit {
         alert(" proléme dans modifier l'image ")
       }
 
-      this.router.navigate(["ListePatient"]);
+      this.router.navigate(["ListePatient"])
 
     })
   }

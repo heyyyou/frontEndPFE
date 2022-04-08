@@ -3,7 +3,7 @@
     <ion-buttons slot="start">
       <ion-back-button defaultHref="ListePatient"></ion-back-button>
     </ion-buttons>
-    <ion-text>Nouveau patient</ion-text>
+    <ion-text>modifier patient</ion-text>
     <!-- <ion-avatar slot="end" class="ion-margin avatar">
       <img src="{{ imagePath }}" />
     </ion-avatar> -->
@@ -37,7 +37,7 @@
     <div></div>
     <form #f="ngForm">
       <ion-card>
-        <ion-item>
+        <!-- <ion-item>
           <ion-label position="stacked" class="text"
             >CIN <ion-text color="danger">*</ion-text></ion-label
           >
@@ -46,6 +46,7 @@
             type="text"
             required
             id="cin"
+            [ngModel]="patientid?.cin"
             ngModel
             name="cin"
             #cin="ngModel"
@@ -53,7 +54,7 @@
         </ion-item>
         <span style="color: red" *ngIf="!cin.valid && cin.touched"
           >Entrer CIN
-        </span>
+        </span> -->
 
         <ion-item lines="none">
           <ion-label position="stacked" class="text"
@@ -65,6 +66,7 @@
             required
             id="username"
             ngModel
+            [ngModel]="patientid?.username"
             name="username"
             #username="ngModel"
           ></ion-input>
@@ -85,6 +87,7 @@
             required
             id="telephone"
             ngModel
+            [ngModel]="patientid?.telephone"
             name="telephone"
             #telephone="ngModel"
           ></ion-input>
@@ -101,6 +104,7 @@
             required
             id="email"
             ngModel
+            [ngModel]="patientid?.email"
             name="email"
             #email="ngModel"
           ></ion-input>
@@ -113,7 +117,13 @@
         <ion-item lines="none">
           <ion-label position="stacked" class="text">Gender</ion-label>
 
-          <ion-radio-group id="gender" ngModel name="gender" #gender="ngModel">
+          <ion-radio-group
+            id="gender"
+            ngModel
+            name="gender"
+            #gender="ngModel"
+            [ngModel]="patientid?.gender"
+          >
             <ion-item lines="none">
               <ion-label color="primary1">femme</ion-label>
               <ion-radio slot="start" value="femme"></ion-radio>
@@ -174,6 +184,7 @@
               name="{{ entry.name }}"
               #antecedant="ngModel"
               slot="end"
+              [ngModel]="patientid?.antecedant"
               [(ngModel)]="entry.isSelected"
               (click)="onchange()"
               [ngModelOptions]="{ standalone: true }"
@@ -187,9 +198,9 @@
         class="valider"
         size="large"
         expand="block"
-        (click)="ajouterPatient(f)"
+        (click)="updatePatient(f)"
         [disabled]="!f.valid"
-        >Valider</ion-button
+        >Modifier</ion-button
       >
     </form>
     <!-- EDit -->

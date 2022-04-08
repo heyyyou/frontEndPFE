@@ -99,6 +99,9 @@ export class EditProfilMedecinComponent implements OnInit {
         }
       );
       this.router.navigate(['profil'])
+      // this.router.navigate(['profil']).then(() => {
+      //   window.location.reload();
+      // });
 
     });
   }

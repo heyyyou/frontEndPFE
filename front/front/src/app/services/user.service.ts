@@ -28,7 +28,8 @@ export class UserService {
   private imageGen = 'http://localhost:8080/medecin/updateImage';
   private getPAtient = 'http://localhost:8080/api/patiente'
   private deletePatientd = 'http://localhost:8080/api/deletepatient'
-
+  private getPatientByID = 'http://localhost:8080/api/patient'
+  private updatePatient = "http://localhost:8080/api/updatePatient"
   islogin = false;
   generaliste = false;
   expert = false;
@@ -44,6 +45,19 @@ export class UserService {
     });
 
   }
+  patientID(id: number, cin: number): Observable<Object> {
+    return this.http.get(`${this.getPatientByID}/${id}/${cin}`, {
+
+    });
+  }
+  updatepatient(id: number, cin: number, value: any): Observable<Object> {
+    return this.http.put(`${this.updatePatient}/${id}/${cin}`, value)
+
+
+  }
+
+
+
   deletePatient(id: number, cin: number): Observable<Object> {
     return this.http.delete(`${this.deletePatientd}/${id}/${cin}`, {
 
@@ -68,7 +82,7 @@ export class UserService {
   }
 
   getImageGen(id: number): Observable<Object> {
-    return this.http.get(`${this.imageGen}/${localStorage.getItem("id")}`);
+    return this.http.get(`${this.imageGen}/${parseInt(localStorage.getItem("id"))}`);
   }
 
   getToken() {

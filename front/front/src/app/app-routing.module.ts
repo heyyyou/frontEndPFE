@@ -1,3 +1,5 @@
+import { EditPatientComponent } from './liste-patient/edit-patient/edit-patient.component';
+import { ModalDetailsComponent } from './liste-patient/modal-details/modal-details.component';
 import { EditProfilExpertComponent } from './medecin-expert/edit-profil-expert/edit-profil-expert.component';
 import { ProfilExpertComponent } from './medecin-expert/profil-expert/profil-expert.component';
 import { ExpertConsultationComponent } from './medecin-expert/expert-consultation/expert-consultation.component';
@@ -29,6 +31,7 @@ import { ListeConsultationPerComponent } from './liste-consultation-per/liste-co
 import { Parametre2Component } from './medecin-expert/parametre2/parametre2.component';
 import { SplashScreenComponent } from './shared/splash-screen/splash-screen.component';
 import { AuthGuard } from './shared/auth-guard';
+
 
 const routes: Routes = [
 
@@ -100,7 +103,9 @@ const routes: Routes = [
     path: 'EditExpert', component: EditProfilExpertComponent, canActivate: [AuthGuard]
 
 
-  }
+  },
+  { path: 'patient-details/:id', component: ModalDetailsComponent },
+  { path: 'patient-update/:id', component: EditPatientComponent }
 
 
 

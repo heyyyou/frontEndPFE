@@ -54,6 +54,8 @@ import { AuthInterceptor } from './auth.interceptor';
 import { AuthGuard } from './shared/auth-guard';
 import { SignupexpertComponent } from './shared/login/signupexpert/signupexpert.component';
 import { SignupmedComponent } from './shared/login/signupmed/signupmed.component';
+import { ModalDetailsComponent } from './liste-patient/modal-details/modal-details.component';
+import { EditPatientComponent } from './liste-patient/edit-patient/edit-patient.component';
 @NgModule({
   declarations: [
     ReponseAvisNotifComponent,
@@ -74,9 +76,9 @@ import { SignupmedComponent } from './shared/login/signupmed/signupmed.component
     LoginComponent,
     SignupexpertComponent,
     SignupmedComponent,
+    ModalDetailsComponent,
 
-
-
+    EditPatientComponent,
     ListeAvisComponent,
     StatistiqueComponent,
     StarsRatingComponent,

@@ -1,7 +1,9 @@
 import { UserService } from 'src/app/services/user.service';
-import { ActionSheetController, ModalController, AlertController } from '@ionic/angular';
+import { ActionSheetController, ModalController, AlertController, NavParams } from '@ionic/angular';
 import { ConsultationMedService } from './../services/consultation-med.service';
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import { ModalDetailsComponent } from './modal-details/modal-details.component';
 
 
 @Component({
@@ -10,23 +12,13 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./liste-patient.component.scss'],
 })
 export class ListePatientComponent implements OnInit {
-  constructor(public modalController: ModalController, public AlertController: AlertController, public ConsultationMedService: ConsultationMedService, public actionSheetController: ActionSheetController, public service: UserService) {
-
-    this.service.getPatient(parseInt(localStorage.getItem("id"))).subscribe((params) => {
-      this.patient = params;
-      this.nbrPatient = this.patient.length;
-      console.log(this.patient.length);
-      this.name = this.patient.name
+  constructor(public router: Router, public modalCtrl: ModalController, route: ActivatedRoute, public modalController: ModalController, public AlertController: AlertController, public ConsultationMedService: ConsultationMedService, public actionSheetController: ActionSheetController, public service: UserService) {
+    route.params.subscribe(val => {
+      this.ngOnInit();
+    })
 
 
 
-
-      err => {
-        alert(" proléme dans modifier l'image ")
-      }
-    }
-
-    )
 
   }
   patient: any;
@@ -35,6 +27,8 @@ export class ListePatientComponent implements OnInit {
   id: any
   listePatient() {
     this.service.getPatient(parseInt(localStorage.getItem("id"))).subscribe((params) => {
+      console.log(params);
+
       this.patient = params;
       this.nbrPatient = this.patient.length;
       console.log(this.patient.length);
@@ -47,10 +41,12 @@ export class ListePatientComponent implements OnInit {
     }
 
     )
+
   }
 
   suppPatient(id: number, cin: number) {
     this.service.deletePatient(parseInt(localStorage.getItem("id")), cin).subscribe((params) => {
+      this.listePatient()
     })
   }
 
@@ -61,7 +57,7 @@ export class ListePatientComponent implements OnInit {
       'dismissed': true
     });
   }
-  async suppConsultation(id: number) {
+  async suppConsultation(cin: number) {
 
 
     const alert = await this.AlertController.create({
@@ -83,7 +79,7 @@ export class ListePatientComponent implements OnInit {
           ;
           console.log(this.id);
 
-          this.suppPatient(parseInt(localStorage.getItem("id")), id)
+          this.suppPatient(parseInt(localStorage.getItem("id")), cin)
 
         }
       }
@@ -113,16 +109,10 @@ export class ListePatientComponent implements OnInit {
 
         handler: () => {
           this.suppConsultation(id);
+          this.ngOnInit();
         }
       },
-      {
-        text: 'modifier',
-        icon: 'pencil',
-        role: 'update',
-        handler: () => {
-          // Nothing to do, action sheet is automatically closed
-        }
-      },
+
       {
         text: 'Cancel',
         icon: 'close',
@@ -136,15 +126,15 @@ export class ListePatientComponent implements OnInit {
   }
 
   ngOnInit() {
+    console.log("wooooooh");
+
     this.service.getPatient(parseInt(localStorage.getItem("id"))).subscribe((params) => {
+      console.log(params);
+
       this.patient = params;
       this.nbrPatient = this.patient.length;
       console.log(this.patient.length);
       this.name = this.patient.name
-
-
-
-
 
 
       err => {
@@ -153,6 +143,9 @@ export class ListePatientComponent implements OnInit {
     }
 
     )
+
   }
+
+
 }
 
