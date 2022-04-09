@@ -1,9 +1,11 @@
+import { Patient } from './../model/patient';
 import { UserService } from 'src/app/services/user.service';
 import { ActionSheetController, ModalController, AlertController, NavParams } from '@ionic/angular';
 import { ConsultationMedService } from './../services/consultation-med.service';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ModalDetailsComponent } from './modal-details/modal-details.component';
+import { unwatchFile } from 'fs';
 
 
 @Component({
@@ -21,7 +23,11 @@ export class ListePatientComponent implements OnInit {
 
 
   }
-  patient: any;
+  patient: any[];
+  patientF: any;
+  product: any[];
+  atient: any[];
+  patiente: any;
   nbrPatient: any
   name: any
   id: any
@@ -32,7 +38,7 @@ export class ListePatientComponent implements OnInit {
       this.patient = params;
       this.nbrPatient = this.patient.length;
       console.log(this.patient.length);
-      this.name = this.patient.name
+      // this.name = this.patient.username
 
 
       err => {
@@ -43,6 +49,11 @@ export class ListePatientComponent implements OnInit {
     )
 
   }
+
+
+
+
+
 
   suppPatient(id: number, cin: number) {
     this.service.deletePatient(parseInt(localStorage.getItem("id")), cin).subscribe((params) => {
@@ -127,25 +138,45 @@ export class ListePatientComponent implements OnInit {
 
   ngOnInit() {
     console.log("wooooooh");
+    this.id = parseInt(localStorage.getItem("id"))
+    this.service.getPatient(this.id).subscribe((params) => { this.patient = params; this.patientF = params; })
+    // console.log(params);
 
-    this.service.getPatient(parseInt(localStorage.getItem("id"))).subscribe((params) => {
-      console.log(params);
+    // this.patient = params;
+    // this.patientF = params;
+    // console.log("mememememememe", this.patient);
 
-      this.patient = params;
-      this.nbrPatient = this.patient.length;
-      console.log(this.patient.length);
-      this.name = this.patient.name
+    // this.nbrPatient = this.patient.length;
+    // console.log(this.patient.length);
+    // this.name = this.patient.name
+    // console.log("heheheh", this.patientF);
 
 
-      err => {
-        alert(" proléme dans modifier l'image ")
-      }
+
+    err => {
+      alert(" proléme dans modifier l'image ")
     }
+  }
 
-    )
+
+
+
+  set texte(chaine: string) {
+
+    this.patient = this.filtrer(chaine);
 
   }
 
+
+
+  filtrer(sousChaine: string) {
+
+    console.log(this.patientF.filter(e => e.cin.toString().indexOf(sousChaine) != -1));
+
+    return this.patientF.filter(e => e.username.indexOf(sousChaine) != -1 || e.gender.indexOf(sousChaine) != -1 || e.cin.toString().indexOf(sousChaine) != -1 || e.telephone.toString().indexOf(sousChaine) != -1);
+
+
+  }
 
 }
 

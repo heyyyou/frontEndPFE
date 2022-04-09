@@ -39,14 +39,14 @@ export class UserService {
 
   constructor(private http: HttpClient) { }
   getPatient
-    (id: number): Observable<Object> {
-    return this.http.get(`${this.getPAtient}/${id}`, {
+    (id: number): Observable<Object[]> {
+    return this.http.get<Object[]>(`${this.getPAtient}/${id}`, {
 
     });
 
   }
-  patientID(id: number, cin: number): Observable<Object> {
-    return this.http.get(`${this.getPatientByID}/${id}/${cin}`, {
+  patientID(id: number, cin: number): Observable<Object[]> {
+    return this.http.get<Object[]>(`${this.getPatientByID}/${id}/${cin}`, {
 
     });
   }
