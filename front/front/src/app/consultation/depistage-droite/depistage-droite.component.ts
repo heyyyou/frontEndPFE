@@ -16,7 +16,7 @@ export class DepistageDroiteComponent implements OnInit {
   @ViewChild(IonContent) private content: IonContent;
   public disableButton = false;
 
-
+  dd: any;
 
   base64 = '';
   isLoadingAI: boolean = false;
@@ -118,6 +118,8 @@ export class DepistageDroiteComponent implements OnInit {
   async ngOnInit() {
     // Camera.requestPermissions({ permissions: ['photos'] })
     await this.photoService.loadSaved();
+    this.dd = localStorage.getItem('port')
+
   }
 
 

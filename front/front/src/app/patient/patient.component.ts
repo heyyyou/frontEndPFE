@@ -64,7 +64,7 @@ export class PatientComponent implements OnInit {
   modes = ['date', 'date-time', 'month', 'month-year', 'time', 'time-date', 'year'];
   selectedMode = 'month-year';
   showPicker = false;
-  dateValue = format(new Date(), 'yyyy-MM-dd') + 'T09:00:00.000Z';
+  dateValue = format(new Date(), 'yyyy-MM-dd');
   formattedString = '';
   constructor(private router: Router, public actionSheetController: ActionSheetController, private menu: MenuController, private service: UserService, private ar: ActivatedRoute) {
     this.setToday();

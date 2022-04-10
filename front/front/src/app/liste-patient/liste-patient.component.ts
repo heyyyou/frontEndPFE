@@ -60,6 +60,9 @@ export class ListePatientComponent implements OnInit {
       this.listePatient()
     })
   }
+  // onChange($event) {
+  //   console.log($event.target.value);
+  // }
 
   dismissModal() {
     // using the injected ModalController this page

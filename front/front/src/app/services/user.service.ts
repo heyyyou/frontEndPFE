@@ -45,6 +45,13 @@ export class UserService {
     });
 
   }
+  getPatientConsult
+    (id: number): Observable<Patient> {
+    return this.http.get<Patient>(`${this.getPAtient}/${id}`, {
+
+    });
+
+  }
   patientID(id: number, cin: number): Observable<Object[]> {
     return this.http.get<Object[]>(`${this.getPatientByID}/${id}/${cin}`, {
 

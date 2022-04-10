@@ -51,9 +51,7 @@
     shape="round"
     (click)="presentLoading()"
     [disabled]="
-      disableButton ||
-      photoService.photos.length === 0 ||
-      ConsultationMedService.selected_users === null
+      disableButton || photoService.photos.length === 0 || dd === null
     "
     >Ajouter Consultation</ion-button
   >
@@ -65,9 +63,7 @@
     shape="round"
     (click)="presentLoading()"
     [disabled]="
-      disableButton ||
-      photoService.photos.length === 0 ||
-      ConsultationMedService.selected_users === null
+      disableButton || photoService.photos.length === 0 || dd === null
     "
     >AI Modal</ion-button
   >

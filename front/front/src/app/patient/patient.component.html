@@ -125,8 +125,8 @@
         ></ion-item>
       </ion-card>
       <ion-card>
-        <ion-item id="open-modal" lines="none">
-          <ion-icon
+        <ion-item lines="none">
+          <!-- <ion-icon
             icon="calendar-outline"
             slot="start"
             color="primary"
@@ -136,9 +136,21 @@
               >Date de naissance<ion-text color="danger">*</ion-text></ion-text
             ></ion-label
           >
-          <ion-text slot="end">{{ formattedString }}</ion-text>
+          <ion-text slot="end">{{ formattedString }}</ion-text> -->
+          <ion-datetime
+            displayFormat="MMM DD,YYYY"
+            id="dateNaiss"
+            showDefaultButtons="false;"
+            show-default-time-label="false"
+            ngModel
+            name="dateNaiss"
+            #dateNaiss="ngModel"
+            [value]="dateValue"
+            size="cover"
+            (ionChange)="dateChanged(dateNaiss.value)"
+          ></ion-datetime>
         </ion-item>
-        <ion-modal trigger="open-modal" mode="md">
+        <!-- <ion-modal trigger="open-modal" mode="md">
           <ng-template>
             <ion-content>
               <ion-datetime
@@ -154,7 +166,7 @@
               ></ion-datetime>
             </ion-content>
           </ng-template>
-        </ion-modal>
+        </ion-modal> -->
       </ion-card>
 
       <ion-card>

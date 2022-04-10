@@ -16,7 +16,7 @@ export class DepistageGaucheComponent implements OnInit {
   @ViewChild(IonContent) private content: IonContent; //acces child component
 
   public disableButton = false;
-
+  dd: any
 
   base64 = '';
   isLoadingAI: boolean = false;
@@ -117,6 +117,8 @@ export class DepistageGaucheComponent implements OnInit {
   async ngOnInit() {
     // Camera.requestPermissions({ permissions: ['photos'] })
     await this.photoService.loadSaved();
+    this.dd = localStorage.getItem('port')
+
   }
 
 

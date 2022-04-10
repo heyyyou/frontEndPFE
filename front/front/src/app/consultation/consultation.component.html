@@ -17,13 +17,14 @@
           ><ion-text color="new2">choisissez un patient</ion-text>
         </ion-label>
         <ionic-selectable
-          [(ngModel)]="ConsultationMedService.selected_users"
-          [items]="ConsultationMedService.users"
-          itemValueField="id"
-          itemTextField="name"
+          [(ngModel)]="patient"
+          [items]="patients"
+          itemValueField="cin"
+          itemTextField="username"
           lines="none"
           style="border-radius: 15px"
-          (onChange)="ConsultationMedService.choose()"
+          (onChange)="portChange($event)"
+          [canSearch]="true"
         >
           <ng-template ionicSelectableHeaderTemplate>
             <div class="class">
@@ -38,14 +39,6 @@
                   <ion-icon name="arrow-back-outline"></ion-icon
                 ></ion-button>
               </ion-buttons>
-              <ion-searchbar
-                mode="ios"
-                color="light"
-                class="cancel-button-icon"
-                placeholder="cherchez un patient"
-                style="border-radius: 111px"
-                lines="none"
-              ></ion-searchbar>
             </div>
           </ng-template>
         </ionic-selectable>

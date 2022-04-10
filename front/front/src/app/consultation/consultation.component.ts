@@ -1,3 +1,5 @@
+import { Patient } from './../model/patient';
+import { UserService } from './../services/user.service';
 import { Component, OnInit } from '@angular/core';
 import { ModalController } from '@ionic/angular';
 import { SwiperOptions, Pagination } from 'swiper';
@@ -12,15 +14,23 @@ import { Camera, CameraResultType, CameraSource, ImageOptions } from '@capacitor
 import { LoadingController } from '@ionic/angular';
 import { ConsultationMedService } from '../services/consultation-med.service';
 import { DomSanitizer } from '@angular/platform-browser';
+import { Key } from 'protractor';
+import { IonicSelectableComponent } from 'ionic-selectable';
 @Component({
   selector: 'app-consultation',
   templateUrl: './consultation.component.html',
   styleUrls: ['./consultation.component.scss'],
 })
 export class ConsultationComponent implements OnInit {
+
   base64 = '';
   isLoadingAI: boolean = false;
+  patients: Patient[];
+  patient: Patient
 
+  patientF: any;
+  user: String;
+  username: String
 
   async presentLoading() {
     this.isLoadingAI = true;
@@ -62,45 +72,10 @@ export class ConsultationComponent implements OnInit {
   };
 
 
-  // users = [
-  //   {
-  //     id: 1,
-  //     name: "chelly mariem",
-  //     contry: "chebba",
-  //     url: "assets/1.jpg",
-  //   },
-  //   {
-  //     id: 2,
-  //     name: "chelly fatma",
-  //     contry: "chebba",
-  //     url: "assets/fatma.jpg",
-  //   },
-  //   {
-  //     id: 3,
-  //     name: "chelly sarra",
-  //     contry: "chebba",
-  //     url: "assets/ma.jpg",
-  //   },
-  // ]
-  //   ;
-  // qs() {
-  //   return this.users
-  // }
-  // userchoisi() {
-  //   this.selected_users;
-  // }
-
-  // selected_users = null;
-  // public pic: string;
-  // choose() {
-  //   console.log(this.selected_users)
-  //   this.pic = this.selected_users.url;
-  //   console.log(this.pic);
-  // }
 
 
   constructor(public sanitizer: DomSanitizer, private modalCtrl: ModalController, public photoService: PhotoService, public actionSheetController: ActionSheetController, public alertController: AlertController,
-    public toastController: ToastController, private router: Router, private picker: ImagePicker, public loadingController: LoadingController, public ConsultationMedService: ConsultationMedService,
+    public toastController: ToastController, private router: Router, private picker: ImagePicker, public loadingController: LoadingController, public ConsultationMedService: ConsultationMedService, public service: UserService
   ) { }
   async presentToast() {
     const toast = await this.toastController.create({
@@ -111,6 +86,20 @@ export class ConsultationComponent implements OnInit {
   }
 
   async ngOnInit() {
+    this.service.getPatientConsult(parseInt(localStorage.getItem("id"))).subscribe((params: any) => {
+      console.log(params);
+
+      this.patients = params;
+
+
+      err => {
+        alert(" proléme dans modifier l'image ")
+      }
+    }
+
+    )
+
+
     // Camera.requestPermissions({ permissions: ['photos'] })
     await this.photoService.loadSaved();
   }
@@ -139,6 +128,13 @@ export class ConsultationComponent implements OnInit {
     await actionSheet.present();
   }
 
+  portChange(event: {
+    component: IonicSelectableComponent,
+    value: any
+  }) {
+    console.log('port:', event.value);
+    localStorage.setItem('port', event.value);
+  }
 
 
   // async openPreview(imge) {
@@ -165,8 +161,13 @@ export class ConsultationComponent implements OnInit {
 
 
   }
-  openProgress() {
-
+  searchPorts(event: {
+    component: IonicSelectableComponent,
+    text: string
+  }) {
+    let text = event.text.trim().toLowerCase();
+    event.component.startSearch();
   }
+
 
 }
