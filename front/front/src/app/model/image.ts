@@ -1,10 +1,15 @@
 
-export interface Image {
+export interface Consultation {
   id: Number;
-  data: Blob;
-  file_name: String;
-  file_type: String;
-  type: String;
-
+  image1D: any
+  image2D: any
+  image3D: any
+  image4D: any
+  image5D: any
+  image1G: any
+  image2G: any
+  image3G: any
+  image4G: any
+  image5G: any
 
 }

@@ -1,4 +1,4 @@
-import { Image } from './../../model/image';
+import { id } from 'date-fns/locale';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -26,7 +26,8 @@ export class DepistageGaucheComponent implements OnInit {
   myFiles: string[] = [];
   index: number = 1;
   base64: string;
-  uploadImageData: any
+  idConsult: any
+  uploadImageData1: any
   uploadImageData2: any
   uploadImageData3: any
   uploadImageData4: any
@@ -40,9 +41,8 @@ export class DepistageGaucheComponent implements OnInit {
   base64Data: any;
   retrieveResponse: any
   isLoadingAI: boolean = false;
-  public photos: Image[] = [];
   images: any[] = [];
-  consultation: any[];
+  consultation: any;
   const: any
 
   src: string
@@ -66,16 +66,22 @@ export class DepistageGaucheComponent implements OnInit {
     this.idGen = parseInt(localStorage.getItem('id'));
 
     this.service.ajouterDataConsultation(this.idGen, this.cinPatient).subscribe((params) => {
+      this.consultation = params
+      console.log(this.consultation);
+
+      this.idConsult = this.consultation.id
+      console.log(this.idConsult);
+
       this.presentLoadingh();
 
 
       console.log(this.selectedFile1);
-      this.uploadImageData = new FormData();
+      this.uploadImageData1 = new FormData();
       this.uploadImageData2 = new FormData();
       this.uploadImageData3 = new FormData();
       this.uploadImageData4 = new FormData();
       this.uploadImageData5 = new FormData();
-      this.uploadImageData.append('image1', this.selectedFile1);
+      this.uploadImageData1.append('image1', this.selectedFile1);
       this.uploadImageData2.append('image2', this.selectedFile2);
       this.uploadImageData3.append('image3', this.selectedFile3);
       this.uploadImageData4.append('image4', this.selectedFile4);
@@ -84,43 +90,57 @@ export class DepistageGaucheComponent implements OnInit {
 
 
       console.log(this.selectedFile1)
-      this.service.updateImage1G(12, this.uploadImageData).subscribe(
+      if (this.selectedFile1 !== null) {
+        this.service.updateImage1G(this.idConsult, this.uploadImageData1).subscribe(
 
-        err => {
-          alert(" proléme dans modifier l'image ")
-        }
-      );
-      this.service.updateImage2G(12, this.uploadImageData2).subscribe(
+          err => {
+            alert(" proléme dans modifier l'image ")
+          }
+        );
+      }
+      if (this.selectedFile2 !== null) {
 
-        err => {
-          alert(" proléme dans modifier l'image ")
-        }
-      );
-      this.service.updateImage3G(12, this.uploadImageData3).subscribe(
+        this.service.updateImage2G(this.idConsult, this.uploadImageData2).subscribe(
 
-        err => {
-          alert(" proléme dans modifier l'image ")
-        }
-      );
-      this.service.updateImage4G(12, this.uploadImageData4).subscribe(
+          err => {
+            alert(" proléme dans modifier l'image ")
+          }
+        );
+      }
+      if (this.selectedFile3 !== null) {
 
-        err => {
-          alert(" proléme dans modifier l'image ")
-        }
-      );
-      this.service.updateImage5G(12, this.uploadImageData5).subscribe(
+        this.service.updateImage3G(this.idConsult, this.uploadImageData3).subscribe(
 
-        err => {
-          alert(" proléme dans modifier l'image ")
-        }
-      );
+          err => {
+            alert(" proléme dans modifier l'image ")
+          }
+        );
+      }
+      if (this.selectedFile4 !== null) {
 
+        this.service.updateImage4G(this.idConsult, this.uploadImageData4).subscribe(
 
+          err => {
+            alert(" proléme dans modifier l'image ")
+          }
+        );
+      }
+      if (this.selectedFile5 !== null) {
+
+        this.service.updateImage5G(this.idConsult, this.uploadImageData5).subscribe(
+
+          err => {
+            alert(" proléme dans modifier l'image ")
+          }
+        );
+
+      }
     })
 
 
 
   }
+
 
   async presentLoadingh() {
     const loading = await this.loadingController.create({
@@ -179,16 +199,6 @@ export class DepistageGaucheComponent implements OnInit {
 
 
 
-    this.service.getConsultationID(parseInt(localStorage.getItem("id")), 1).subscribe(data => {
-      this.const = data
-      console.log(this.const.image1_Gauche)
-
-      this.retrieveResponse = this.const;
-      this.base64Data = this.retrieveResponse.image;
-      this.imagePath = 'data:image/jpeg;base64,' + this.base64Data;
-    }
-
-    );
   }
 
   public async showActionSheet(name: number) {
@@ -277,7 +287,7 @@ export class DepistageGaucheComponent implements OnInit {
       var reader = new FileReader();
 
       reader.readAsDataURL(event.target.files[0]); // read file as data url
-      this.selectedFile3 = event.target.files[0];
+      this.selectedFile2 = event.target.files[0];
       reader.onload = (event) => { // called once readAsDataURL is completed
         this.imagePath = reader.result;
         this.images[2] = this.imagePath;
@@ -290,7 +300,7 @@ export class DepistageGaucheComponent implements OnInit {
       var reader = new FileReader();
 
       reader.readAsDataURL(event.target.files[0]); // read file as data url
-      this.selectedFile4 = event.target.files[0];
+      this.selectedFile3 = event.target.files[0];
       reader.onload = (event) => { // called once readAsDataURL is completed
         this.imagePath = reader.result;
         this.images[3] = this.imagePath;
@@ -306,7 +316,7 @@ export class DepistageGaucheComponent implements OnInit {
       var reader = new FileReader();
 
       reader.readAsDataURL(event.target.files[0]); // read file as data url
-      this.selectedFile5 = event.target.files[0];
+      this.selectedFile4 = event.target.files[0];
       reader.onload = (event) => { // called once readAsDataURL is completed
         this.imagePath = reader.result;
         this.images[4] = this.imagePath;
