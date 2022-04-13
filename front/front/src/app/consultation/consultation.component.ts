@@ -133,7 +133,10 @@ export class ConsultationComponent implements OnInit {
     value: any
   }) {
     console.log('port:', event.value);
-    localStorage.setItem('port', event.value);
+    console.log('port:', event.value.cin);
+    console.log('port:', localStorage.getItem("id"));
+    localStorage.setItem('port', event.value.cin);
+
   }
 
 
