@@ -28,8 +28,22 @@ export class SignupexpertComponent implements OnInit {
       //  this.user.roles=="expert"
       this.router.navigate(['/login'])
       this.presentToast();
-    })
+    },
+      err => {
+        this.presentToastError();
+      }
+    )
   }
+  async presentToastError() {
+    const toast = await this.toastController.create({
+      message: 'Email or username already exist',
+      duration: 3000,
+      cssClass: "customToastaya",
+
+    });
+    toast.present();
+  }
+
   async presentToast() {
     const toast = await this.toastController.create({
       message: 'inscription effectuée avec succès',

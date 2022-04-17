@@ -212,6 +212,18 @@
   --color: #ffffff !important;
   color: #ffffff !important;
 }
+.customToastaya {
+  text-align: center !important;
+  --button-color: #ffffff;
+  --max-height: 70px;
+  --background: #ec0808e8;
+  --border-style: solid;
+  --border-width: 1px;
+  --border-color: #f30808e8;
+  // SHOULD be button color
+  --color: #ffffff !important;
+  color: #ffffff !important;
+}
 
 .customToaste {
   text-align: center !important;

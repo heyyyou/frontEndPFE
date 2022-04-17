@@ -1,13 +1,8 @@
 <div *ngIf="!isLoadingAI">
   <div class="ajouterdelet">
-    <ion-button
-      type="file"
-      *ngIf="photoService.photos.length <= 4; else thenBlock"
-      fill="solid"
-      color="primary"
-      (click)="photoService.addNewToGallery()"
-      ><ion-icon name="add-outline"></ion-icon
-    ></ion-button>
+    <!-- <ion-button
+      *ngIf="photoService.photos.length <= 4; else thenBlock" -->
+
     <ng-template #thenBlock>
       <ion-button fill="solid" color="primary" (click)="presentToast()"
         >+</ion-button
@@ -16,29 +11,39 @@
   </div>
   <div>
     <ion-card class="cardfull">
-      <div *ngIf="photoService.photos.length === 0">
+      <input
+        type="file"
+        accept="image/*"
+        multiple
+        class="select-profile-picture custom-file-input"
+        (change)="selectFiles($event)"
+        [disabled]="images.length != 0"
+      />
+      <div class="trash" style="text-align: center" *ngIf="images.length != 0">
+        <ion-button fill="outline" color="priamry" (click)="showActionSheet()"
+          ><ion-icon name="trash"></ion-icon
+        ></ion-button>
+      </div>
+
+      <div *ngIf="images.length === 0">
         <img [src]="'assets/add.jpg'" />
       </div>
       <swiper [config]="config" class="swiper-slide">
-        <ng-template
-          swiperSlide
-          *ngFor="let imge of photoService.photos; let i = index"
-        >
-          <div class="bouttontrash">
+        <ng-template swiperSlide *ngFor="let file of images; let i = index">
+          <!-- <div class="bouttontrash">
             <ion-button
               fill="outline"
               color="priamry"
-              (click)="showActionSheet(imge, i)"
+              (click)="showActionSheet(i)"
               ><ion-icon name="trash"></ion-icon
-            ></ion-button>
-          </div>
+            ></ion-button> -->
 
           <img
-            [src]="sanitizer.bypassSecurityTrustUrl(imge.webviewPath)"
+            [src]="file"
             onerror="this.src='assets/add.jpg'"
             alt="alternative"
             tappable
-            (click)="ConsultationMedService.openPreview(imge.webviewPath)"
+            (click)="openPreview(file)"
           />
         </ng-template>
       </swiper>
@@ -50,7 +55,8 @@
     fill="outline"
     class="AImodel"
     shape="round"
-    (click)="presentLoading()"
+    [disabled]="service.selectedPatient === null"
+    (click)="uploadFiles()"
     >Ajouter Consultation</ion-button
   >
 
@@ -60,6 +66,7 @@
     class="AImodel"
     shape="round"
     (click)="presentLoading()"
+    [disabled]="service.selectedPatient === null"
     >AI Modal</ion-button
   >
 </div>

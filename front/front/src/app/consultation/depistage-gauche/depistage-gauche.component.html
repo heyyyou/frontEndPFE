@@ -13,52 +13,30 @@
     <ion-card class="cardfull">
       <input
         type="file"
-        (change)="onSelectFile($event)"
+        accept="image/*"
+        multiple
         class="select-profile-picture custom-file-input"
-        accept=".png, .jpg, .jpeg"
-        [disabled]="images.length !== 0"
+        (change)="selectFiles($event)"
+        [disabled]="images.length != 0"
       />
-      <input
-        type="file"
-        (change)="onSelectFile1($event)"
-        class="select-profile-picture custom-file-input"
-        accept=".png, .jpg, .jpeg"
-        [disabled]="images.length !== 1"
-      />
-      <input
-        type="file"
-        (change)="onSelectFile2($event)"
-        class="select-profile-picture custom-file-input"
-        accept=".png, .jpg, .jpeg"
-        [disabled]="images.length !== 2"
-      />
-      <input
-        type="file"
-        (change)="onSelectFile3($event)"
-        class="select-profile-picture custom-file-input"
-        accept=".png, .jpg, .jpeg"
-        [disabled]="images.length !== 3"
-      />
-      <input
-        type="file"
-        (change)="onSelectFile4($event)"
-        class="select-profile-picture custom-file-input"
-        accept=".png, .jpg, .jpeg"
-        [disabled]="images.length !== 4"
-      />
+      <div class="trash" style="text-align: center" *ngIf="images.length != 0">
+        <ion-button fill="outline" color="priamry" (click)="showActionSheet()"
+          ><ion-icon name="trash"></ion-icon
+        ></ion-button>
+      </div>
+
       <div *ngIf="images.length === 0">
         <img [src]="'assets/add.jpg'" />
       </div>
       <swiper [config]="config" class="swiper-slide">
         <ng-template swiperSlide *ngFor="let file of images; let i = index">
-          <div class="bouttontrash">
+          <!-- <div class="bouttontrash">
             <ion-button
               fill="outline"
               color="priamry"
               (click)="showActionSheet(i)"
               ><ion-icon name="trash"></ion-icon
-            ></ion-button>
-          </div>
+            ></ion-button> -->
 
           <img
             [src]="file"
@@ -77,7 +55,8 @@
     fill="outline"
     class="AImodel"
     shape="round"
-    (click)="ajouterData()"
+    [disabled]="service.selectedPatient === null"
+    (click)="uploadFiles()"
     >Ajouter Consultation</ion-button
   >
 

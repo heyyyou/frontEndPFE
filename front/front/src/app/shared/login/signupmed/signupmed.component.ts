@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ToastController } from '@ionic/angular';
+import { lastDayOfDecade } from 'date-fns';
 import { UserService } from 'src/app/services/user.service';
 
 @Component({
@@ -13,18 +14,36 @@ export class SignupmedComponent implements OnInit {
 
   user: any = {};
   segment = 'droite';
-  constructor(private router: Router, private service: UserService,
+  constructor(private router: Router, private service: UserService, private ar: ActivatedRoute,
     private toastController: ToastController) { }
 
 
   signup(f: NgForm) {
     this.service.registerMed(f.value).subscribe(() => {
-      // localStorage.setItem("role", "generaliste"); // lorsque je fais sign up j vais store l data d woslt local bsh nestaaml baed role f login f root ;)
-      this.router.navigate(['/login'])
+      console.log(this.user);
 
+      // localStorage.setItem("ids", "generaliste"); // lorsque je fais sign up j vais store l data d woslt local bsh nestaaml baed role f login f root ;)
+      this.router.navigate(['/login'])
       this.presentToast();
-    })
+    },
+      err => {
+        this.presentToastError();
+      }
+
+    )
+
   }
+
+  async presentToastError() {
+    const toast = await this.toastController.create({
+      message: 'Email or username already exist',
+      duration: 3000,
+      cssClass: "customToastaya",
+
+    });
+    toast.present();
+  }
+
   async presentToast() {
     const toast = await this.toastController.create({
       message: 'inscription effectuée avec succès',

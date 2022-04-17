@@ -2,12 +2,15 @@ import { Patient } from './../model/patient';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { IonicSelectableComponent } from 'ionic-selectable';
 
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
+  patients: Patient[];
+  public selectedPatient: any = null;
   private baseUrl = "http://localhost:8080/medecin/signup";
   private baseUrll = "http://localhost:8080/expert/signup"
   private baseUrl1 = "http://localhost:8080/api/login";
@@ -206,37 +209,101 @@ export class UserService {
   // IMAGES CONSULTATION
   //droite
   updateImage2D(id: number, file: File): Observable<any> {
-    return this.http.put(`${this.updateimg2D}/${id}`, file);
+    const formData: FormData = new FormData();
+    formData.append('image2', file);
+    return this.http.put(`${this.updateimg2D}/${id}`, formData, {
+      responseType: 'text',
+    });
   }
   updateImage1D(id: number, file: File): Observable<any> {
-    return this.http.put(`${this.updateimg1D}/${id}`, file);
+    const formData: FormData = new FormData();
+    formData.append('image1', file);
+    return this.http.put(`${this.updateimg1D}/${id}`, formData, {
+      responseType: 'text',
+    });
   }
   updateImage3D(id: number, file: File): Observable<any> {
-    return this.http.put(`${this.updateimg3D}/${id}`, file);
+    const formData: FormData = new FormData();
+    formData.append('image3', file);
+    return this.http.put(`${this.updateimg3D}/${id}`, formData, {
+      responseType: 'text'
+    });
   }
   updateImage4D(id: number, file: File): Observable<any> {
-    return this.http.put(`${this.updateimg4D}/${id}`, file);
+    const formData: FormData = new FormData();
+    formData.append('image4', file);
+    return this.http.put(`${this.updateimg4D}/${id}`, formData, {
+      responseType: 'text'
+    });
   }
   updateImage5D(id: number, file: File): Observable<any> {
-    return this.http.put(`${this.updateimg5D}/${id}`, file);
+    const formData: FormData = new FormData();
+    formData.append('image5', file);
+    return this.http.put(`${this.updateimg5D}/${id}`, formData, {
+      responseType: 'text'
+    });
   }
   //GAUCHE
 
   updateImage1G(id: number, file: File): Observable<any> {
-    return this.http.put(`${this.updateimg1G}/${id}`, file);
+    const formData: FormData = new FormData();
+    formData.append('image1', file);
+    return this.http.put(`${this.updateimg1G}/${id}`, formData, {
+      responseType: 'text',
+    });
   }
   updateImage2G(id: number, file: File): Observable<any> {
-    return this.http.put(`${this.updateimg2G}/${id}`, file);
+    const formData: FormData = new FormData();
+    formData.append('image2', file);
+    return this.http.put(`${this.updateimg2G}/${id}`, formData, {
+      responseType: 'text',
+    });
   }
   updateImage3G(id: number, file: File): Observable<any> {
-    return this.http.put(`${this.updateimg3G}/${id}`, file);
+    const formData: FormData = new FormData();
+    formData.append('image3', file);
+    return this.http.put(`${this.updateimg3G}/${id}`, formData, {
+      responseType: 'text',
+    });
   }
   updateImage4G(id: number, file: File): Observable<any> {
-    return this.http.put(`${this.updateimg4G}/${id}`, file);
+    const formData: FormData = new FormData();
+    formData.append('image4', file);
+    return this.http.put(`${this.updateimg4G}/${id}`, formData, {
+      responseType: 'text',
+    });
   }
   updateImage5G(id: number, file: File): Observable<any> {
-    return this.http.put(`${this.updateimg5G}/${id}`, file);
+    const formData: FormData = new FormData();
+    formData.append('image5', file);
+    return this.http.put(`${this.updateimg5G}/${id}`, formData, {
+      responseType: 'text',
+    });
+
+  }
+  hey() {
+    this.getPatientConsult(parseInt(localStorage.getItem("id"))).subscribe((params: any) => {
+      console.log(params);
+
+      this.patients = params;
+      err => {
+        alert("sdfsd")
+      }
+    }
+    )
   }
 
+
+  portChange(event: {
+    component: IonicSelectableComponent,
+    value: any
+  }) {
+    console.log('port:', event.value);
+    console.log('port:', event.value.cin);
+    this.selectedPatient = event.value.cin
+    localStorage.setItem("idpatient", event.value.cin)
+    console.log("hahahaha", this.selectedPatient);
+
+  }
 
 }

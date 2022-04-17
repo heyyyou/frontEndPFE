@@ -45,6 +45,8 @@
           ngModel
           name="telephone"
           #telephone="ngModel"
+          pattern="^((\\+91-?)|0)?[0-8]{8}$"
+          maxlength="10"
         ></ion-input>
       </ion-item>
       <span style="color: red" *ngIf="!telephone.valid && telephone.touched"
@@ -64,7 +66,6 @@
           required
           maxlength="10"
         ></ion-input>
-        <routerLink id="toggle" href="#">Toggle visibility</routerLink>
         <span style="color: red" *ngIf="!password.valid && password.touched"
           >Entrer password
         </span>

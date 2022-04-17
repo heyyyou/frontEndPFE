@@ -42,25 +42,17 @@
             </div>
           </ng-template>
         </ionic-selectable>
-
-        <ion-button
-          fill="outline"
-          color="priamry"
-          (click)="ConsultationMedService.ajouter_patient()"
-        >
-          <ion-icon name="person-add-outline" color="primary"></ion-icon
-        ></ion-button>
       </ion-item>
     </ion-toolbar>
   </ion-header>
-  <ion-content>
+  <ion-content *ngIf="!isLoadingAI">
     <div class="segment">
       <ion-segment mode="ios" [(ngModel)]="segment" color="primary">
         <ion-segment-button value="droite"
           ><ion-icon name="eye-outline" color="favorites"></ion-icon
           ><ion-text color="favorites"> Oeil Droite</ion-text>
         </ion-segment-button>
-        <ion-segment-button value="gauche">
+        <ion-segment-button value="gauche" (click)="what()">
           <ion-icon name="eye-outline" color="favorites"></ion-icon>
           <ion-text color="favorites">
             Oeil Gauche</ion-text
@@ -68,74 +60,151 @@
         >
       </ion-segment>
     </div>
+    <!-- bdit lahna -->
 
     <ng-container [ngSwitch]="segment">
-      <app-depistage-gauche *ngSwitchCase="'gauche'"> </app-depistage-gauche>
-      <app-depistage-droite *ngSwitchCase="'droite'"> </app-depistage-droite>
+      <!-- <app-depistage-droite *ngSwitchCase="'droite'"> </app-depistage-droite>
+      <app-depistage-droite *ngSwitchCase="'gauche'"> </app-depistage-droite> -->
     </ng-container>
 
-    <br />
-  </ion-content>
-  <!-- <ion-content *ngIf="!isLoadingAI">
-    <div class="ajouterdelet">
-      <ion-button
-        *ngIf="photoService.photos.length <= 4; else thenBlock"
-        fill="solid"
-        color="primary"
-        (click)="photoService.addNewToGallery()"
-        ><ion-icon name="add-outline"></ion-icon
-      ></ion-button>
-      <ng-template #thenBlock>
-        <ion-button fill="solid" color="primary" (click)="presentToast()"
-          >+</ion-button
-        ></ng-template
-      >
-    </div>
-    <div>
-      <ion-card class="cardfull">
-        <div *ngIf="photoService.photos.length === 0">
-          <img [src]="'assets/add.jpg'" />
-        </div>
-        <swiper [config]="config" class="swiper-slide">
-          <ng-template
-            swiperSlide
-            *ngFor="let imge of photoService.photos; let i = index"
+    <div *ngIf="!isLoadingAI">
+      <div class="ajouterdelet">
+        <!-- <ion-button
+          *ngIf="photoService.photos.length <= 4; else thenBlock" -->
+      </div>
+      <div>
+        <ion-card class="cardfull">
+          <input
+            type="file"
+            accept="image/*"
+            multiple
+            class="select-profile-picture custom-file-input"
+            (change)="selectFiles($event)"
+            [disabled]="images.length != 0"
+          />
+          <div
+            class="trash"
+            style="text-align: center"
+            *ngIf="images.length != 0"
           >
-            <div class="bouttontrash">
+            <ion-button
+              fill="outline"
+              color="priamry"
+              (click)="showActionSheet()"
+              ><ion-icon name="trash"></ion-icon
+            ></ion-button>
+          </div>
+
+          <div *ngIf="images.length === 0">
+            <img [src]="'assets/add.jpg'" />
+          </div>
+          <swiper [config]="config" class="swiper-slide">
+            <ng-template swiperSlide *ngFor="let file of images; let i = index">
+              <!-- <div class="bouttontrash">
+                <ion-button
+                  fill="outline"
+                  color="priamry"
+                  (click)="showActionSheet(i)"
+                  ><ion-icon name="trash"></ion-icon
+                ></ion-button> -->
+
+              <img
+                [src]="file"
+                onerror="this.src='assets/add.jpg'"
+                alt="alternative"
+                tappable
+                (click)="openPreview(file)"
+              />
+            </ng-template>
+          </swiper>
+        </ion-card>
+      </div>
+
+      <!-- now gauche -->
+
+      <div *ngIf="!isLoadingAI">
+        <div class="ajouterdelet">
+          <!-- <ion-button
+            *ngIf="photoService.photos.length <= 4; else thenBlock" -->
+        </div>
+        <div>
+          <ion-card class="cardfull">
+            <input
+              type="file"
+              accept="image/*"
+              multiple
+              class="select-profile-picture custom-file-input"
+              (change)="selectFiles2($event)"
+              [disabled]="images2.length != 0"
+            />
+            <div
+              class="trash"
+              style="text-align: center"
+              *ngIf="images2.length != 0"
+            >
               <ion-button
                 fill="outline"
                 color="priamry"
-                (click)="showActionSheet(imge, i)"
+                (click)="showActionSheet2()"
                 ><ion-icon name="trash"></ion-icon
               ></ion-button>
             </div>
 
-            <img
-              [src]="sanitizer.bypassSecurityTrustUrl(imge.webviewPath)"
-              onerror="this.src='assets/add.jpg'"
-              alt="alternative"
-              tappable
-              (click)="ConsultationMedService.openPreview(imge.webviewPath)"
-            />
-          </ng-template>
-        </swiper>
-      </ion-card>
-    </div>
-    <ion-button
-      expand="block"
-      size="large"
-      class="AImodel"
-      shape="round"
-      (click)="presentLoading()"
-      [disabled]="
-        photoService.photos.length === 0 ||
-        ConsultationMedService.selected_users === null
-      "
-      >AI Modal</ion-button
-    >
-  </ion-content>
+            <div *ngIf="images2.length === 0">
+              <img [src]="'assets/add.jpg'" />
+            </div>
+            <swiper [config]="config" class="swiper-slide">
+              <ng-template
+                swiperSlide
+                *ngFor="let file of images2; let i = index"
+              >
+                <!-- <div class="bouttontrash">
+                  <ion-button
+                    fill="outline"
+                    color="priamry"
+                    (click)="showActionSheet(i)"
+                    ><ion-icon name="trash"></ion-icon
+                  ></ion-button> -->
+
+                <img
+                  [src]="file"
+                  onerror="this.src='assets/add.jpg'"
+                  alt="alternative"
+                  tappable
+                  (click)="openPreview2(file)"
+                />
+              </ng-template>
+            </swiper>
+          </ion-card>
+        </div>
+
+        <ion-button
+          #btn
+          expand="block"
+          size="large"
+          fill="outline"
+          class="AImodel"
+          [disabled]="
+            cinPatient === 0 || (images.length === 0 && images2.length === 0)
+          "
+          shape="round"
+          (click)="uploadFiles(); btn.disabled = true"
+          >Ajouter Consultation</ion-button
+        >
+
+        <ion-button
+          expand="block"
+          size="large"
+          class="AImodel"
+          shape="round"
+          (click)="presentLoading()"
+          [disabled]="this.var === 0"
+          >AI Modal</ion-button
+        >
+      </div>
+    </div></ion-content
+  >
   <ion-content *ngIf="isLoadingAI">
     <app-loading-ai></app-loading-ai>
-  </ion-content> -->
+  </ion-content>
 </ion-app>
-<!-- behy huni lezm button mtaa tbib yetsaker k yetaada l details khater ken nsa oeil droite maamlch dépistage bsh yrja mynjmch yaawed wla nkhlih mahlul ?  -->

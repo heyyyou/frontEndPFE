@@ -45,10 +45,12 @@
           ngModel
           name="telephone"
           #telephone="ngModel"
+          pattern="^((\\+91-?)|0)?[0-8]{8}$"
+          maxlength="10"
         ></ion-input>
       </ion-item>
       <span style="color: red" *ngIf="!telephone.valid && telephone.touched"
-        >Entrer password
+        >Entrer Téléphone
       </span>
     </div>
     <div class="form-input">
@@ -92,6 +94,27 @@
           <ion-radio slot="start" value="homme"></ion-radio>
         </ion-item> </ion-radio-group
     ></ion-item>
+    <ion-item>
+      <ion-label>Specialité</ion-label>
+      <ion-select
+        interface="popover"
+        id="specialite"
+        ngModel
+        name="specialite"
+        #specialite="ngModel"
+      >
+        <ion-select-option value="Médecin génèraliste"
+          >Médecin génèraliste</ion-select-option
+        >
+        <ion-select-option value="endocrinologue"
+          >endocrinologue</ion-select-option
+        >
+        <ion-select-option value="Cardiologue">Cardiologue</ion-select-option>
+      </ion-select>
+    </ion-item>
+    <span style="color: red" *ngIf="!specialite.valid && specialite.touched"
+      >Entrer username
+    </span>
     <br />
     <div class="action-buttons ion-padding">
       <ion-button
