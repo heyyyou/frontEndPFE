@@ -86,34 +86,34 @@ export class ProfilExpertComponent implements OnInit {
   //   });
   // }
 
-  onSelectFile(event) {
-    if (event.target.files && event.target.files[0]) {
-      var reader = new FileReader();
+  // onSelectFile(event) {
+  //   if (event.target.files && event.target.files[0]) {
+  //     var reader = new FileReader();
 
-      reader.readAsDataURL(event.target.files[0]); // read file as data url
-      this.selectedFile = event.target.files[0];
-      reader.onload = (event) => { // called once readAsDataURL is completed
-        this.imagePath = reader.result;
-      }
-    }
-  }
-  modifierProfile(f: NgForm) {
-    this.service.updatedata(this.id, f.value).subscribe(() => {
-      console.log(f.value)
-      console.log(this.selectedFile);
-      this.uploadImageData = new FormData();
-      this.uploadImageData.append('imageFile', this.selectedFile);
-      console.log(this.selectedFile)
-      this.service.updateImage(this.id, this.uploadImageData).subscribe(
+  //     reader.readAsDataURL(event.target.files[0]); // read file as data url
+  //     this.selectedFile = event.target.files[0];
+  //     reader.onload = (event) => { // called once readAsDataURL is completed
+  //       this.imagePath = reader.result;
+  //     }
+  //   }
+  // }
+  // modifierProfile(f: NgForm) {
+  //   this.service.updatedata(this.id, f.value).subscribe(() => {
+  //     console.log(f.value)
+  //     console.log(this.selectedFile);
+  //     this.uploadImageData = new FormData();
+  //     this.uploadImageData.append('imageFile', this.selectedFile);
+  //     console.log(this.selectedFile)
+  //     this.service.updateImage(this.id, this.uploadImageData).subscribe(
 
-        err => {
-          alert(" proléme dans modifier l'image ")
-        }
-      );
-      this.route.navigate(['/PageProfile/' + this.id])
+  //       err => {
+  //         alert(" proléme dans modifier l'image ")
+  //       }
+  //     );
+  //     this.route.navigate(['/PageProfile/' + this.id])
 
-    });
-  }
+  //   });
+  // }
 
   // public async showActionSheet() {
   //   const actionSheet = await this.actionSheetController.create({

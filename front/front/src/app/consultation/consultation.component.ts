@@ -43,6 +43,11 @@ export class ConsultationComponent implements OnInit {
   idConsult: any
   selectedFiles: FileList;
   selectedFile: any;
+
+
+  selectedFiles2: FileList;
+  values: any = []
+  selectedFile2: any;
   imagee: any;
   imageee: any;
   progressInfos = [];
@@ -70,7 +75,7 @@ export class ConsultationComponent implements OnInit {
     this.disableButton = true;
     setTimeout(() => {
       this.isLoadingAI = false;
-      this.router.navigate(['detailConsultation']);
+      this.router.navigate(['detailConsultation', this.idConsult, this.patient.cin]);
 
     }, 4000);
 
@@ -266,6 +271,7 @@ export class ConsultationComponent implements OnInit {
   selectFiles(event) {
 
     const files = event.target.files;
+    ;
     let isImage = true;
     for (let i = 0; i < files.length; i++) {
       if (files.item(i).type.match('image.*')) {
@@ -331,6 +337,8 @@ export class ConsultationComponent implements OnInit {
     } else {
       this.selectedFiles = undefined;
     }
+
+
   }
 
 
@@ -340,7 +348,7 @@ export class ConsultationComponent implements OnInit {
 
   }
   deletePic2() {
-    this.images2.splice(0, this.images.length)
+    this.images2.splice(0, this.images2.length)
 
 
   }
@@ -358,7 +366,7 @@ export class ConsultationComponent implements OnInit {
 
 
   upload(idx, file) {
-    for (let i = 0; i < this.selectedFiles.length; i++) {
+    for (let i = 0; i < this.selectedFiles2.length; i++) {
       if (i == 0) {
         this.service.updateImage1G(this.idConsult/* id consu */, file).subscribe(
           event => {
@@ -404,11 +412,29 @@ export class ConsultationComponent implements OnInit {
       console.log(this.idConsult);
       // api consultation  bch tt7at lahneee  , subscribe ttsaker fi commentaire  num2 --> post
       this.message = '';
-      for (let i = 0; i < this.selectedFiles.length; i++) {
-        this.upload(i, this.selectedFiles[i]);
-        this.upload2(i, this.selectedFiles[i]);
-      }
-    })
+      this.ekhdem()
+    }
+    )
+
+    // console.log("bellehy", this.selectedFiles2.length);
+    // if (this.selectedFiles.length !== 0) {
+    //   for (let i = 0; i < this.selectedFiles2.length; i++) {
+    //     this.upload(i, this.selectedFiles2[i]);
+    //   }
+    // }
+
+
+    // // console.log(this.selectedFiles.length);
+    // if (this.selectedFiles2.length !== 0) {
+    //   for (let i = 0; i < this.selectedFiles.length; i++) {
+    //     console.log("ekhdem", this.selectedFiles.length);
+
+    //     this.upload2(i, this.selectedFiles[i]);
+    //   }
+
+    // }
+
+
     // commentaire num2
     this.presentToastError()
 
@@ -416,7 +442,27 @@ export class ConsultationComponent implements OnInit {
 
 
 
+  ekhdem() {
+    // BUGGGGGGGGGGGGGGGGGGGGGGGGGG HEREEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE
+    for (let i = 0; i < this.selectedFiles2.length; i++) {
+      this.upload(i, this.selectedFiles2[i]);
 
+    }
+    //TEKHDEM KEN LULAAAA WLA LES DEUX
+    for (let i = 0; i < this.selectedFiles.length; i++) {
+      this.upload2(i, this.selectedFiles[i]);
+
+
+
+    }
+    // if (this.images.length !== 0) {
+    //   for (let i = 0; i < this.selectedFiles.length; i++) {
+
+    //     this.upload2(i, this.selectedFiles[i]);
+    //   }
+    // }
+
+  }
 
 
 
@@ -443,59 +489,63 @@ export class ConsultationComponent implements OnInit {
     }
 
     if (isImage) {
-      this.selectedFiles = event.target.files;
+      this.selectedFiles2 = event.target.files;
       var reader = new FileReader();
       var reader1 = new FileReader();
       var reader2 = new FileReader();
       var reader3 = new FileReader();
       var reader4 = new FileReader();
       var reader5 = new FileReader();
-      for (let i = 0; i < this.selectedFiles.length; i++) {
-        this.selectedFile = this.selectedFiles[i];
+      for (let i = 0; i < this.selectedFiles2.length; i++) {
+        this.selectedFile2 = this.selectedFiles2[i];
         if (i == 0) {
-          reader1.readAsDataURL(this.selectedFiles[i]);
+          reader1.readAsDataURL(this.selectedFiles2[i]);
           reader1.onload = (event) => {
             this.imagee = reader1.result;
             this.images2[i] = this.imagee;
-            console.log(this.images[i])
+            console.log(this.images2[i])
           }
         }
         if (i == 1) {
-          reader2.readAsDataURL(this.selectedFiles[i]);
+          reader2.readAsDataURL(this.selectedFiles2[i]);
           reader2.onload = (event) => {
             this.imagee = reader2.result;
             this.images2[i] = this.imagee;
-            console.log(this.images[i])
+            console.log(this.images2[i])
           }
         }
         if (i == 2) {
-          reader3.readAsDataURL(this.selectedFiles[i]);
+          reader3.readAsDataURL(this.selectedFiles2[i]);
           reader3.onload = (event) => {
             this.imagee = reader3.result;
             this.images2[i] = this.imagee;
-            console.log(this.images[i])
+            console.log(this.images2[i])
           }
         }
         if (i == 3) {
-          reader4.readAsDataURL(this.selectedFiles[i]);
+          reader4.readAsDataURL(this.selectedFiles2[i]);
           reader4.onload = (event) => {
             this.imagee = reader4.result;
             this.images2[i] = this.imagee;
-            console.log(this.images[i])
+            console.log(this.images2[i])
           }
         }
         if (i == 4) {
-          reader5.readAsDataURL(this.selectedFiles[i]);
+          reader5.readAsDataURL(this.selectedFiles2[i]);
           reader5.onload = (event) => {
             this.imagee = reader5.result;
             this.images2[i] = this.imagee;
-            console.log(this.images[i])
+            console.log(this.images2[i])
+            // console.log("pleaseeeeeeeeeeeeeeeeeeeeeeee", this.values.push(this.selectedFiles.length));
+
           }
         }
+        // console.log("pleaseeeeeeeeeeeeeeeeeeeeeeee", this.values.push(this.selectedFiles.length));
       }
     } else {
-      this.selectedFiles = undefined;
+      this.selectedFiles2 = undefined;
     }
+
   }
 
 
@@ -512,7 +562,7 @@ export class ConsultationComponent implements OnInit {
   }
 
 
-  upload2(idx, file) {
+  upload2(idx, file) { //ll droite
     for (let i = 0; i < this.selectedFiles.length; i++) {
       if (i == 0) {
         this.service.updateImage1D(this.idConsult/* id consu */, file).subscribe(
@@ -548,22 +598,23 @@ export class ConsultationComponent implements OnInit {
     }
   }
 
-  uploadFiles2() {
+  // uploadFiles2() {
 
-    this.service.ajouterDataConsultation(this.idGen, this.cinPatient).subscribe((params) => {
-      this.consultation = params
+  //   this.service.ajouterDataConsultation(this.idGen, this.cinPatient).subscribe((params) => {
+  //     this.consultation = params
 
-      this.idConsult = this.consultation.id
-      console.log(this.idConsult);
-      // api consultation  bch tt7at lahneee  , subscribe ttsaker fi commentaire  num2 --> post
-      this.message = '';
-      for (let i = 0; i < this.selectedFiles.length; i++) {
-        this.upload2(i, this.selectedFiles[i]);
-      }
-    })
-    // commentaire num2
+  //     this.idConsult = this.consultation.id
+  //     console.log(this.idConsult);
+  //     // api consultation  bch tt7at lahneee  , subscribe ttsaker fi commentaire  num2 --> post
+  //     this.message = '';
+  //     for (let i = 0; i < this.selectedFiles.length; i++) {
+  //       this.upload2(i, this.selectedFiles[i]);
+  //     }
+  //   })
+  // commentaire num2
 
-  }
+
+
 
 
 

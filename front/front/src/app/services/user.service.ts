@@ -85,8 +85,8 @@ export class UserService {
 
     });
   }
-  getConsultationID(id: number, idConsult: number): Observable<Object[]> {
-    return this.http.get<Object[]>(`${this.getconsultationID}/${id}/${idConsult}`, {
+  getConsultationID(id: number, idConsult: number, idPatient: number): Observable<Object[]> {
+    return this.http.get<Object[]>(`${this.getconsultationID}/${id}/${idConsult}/${idPatient}`, {
 
     });
   }
@@ -281,29 +281,8 @@ export class UserService {
     });
 
   }
-  hey() {
-    this.getPatientConsult(parseInt(localStorage.getItem("id"))).subscribe((params: any) => {
-      console.log(params);
-
-      this.patients = params;
-      err => {
-        alert("sdfsd")
-      }
-    }
-    )
-  }
 
 
-  portChange(event: {
-    component: IonicSelectableComponent,
-    value: any
-  }) {
-    console.log('port:', event.value);
-    console.log('port:', event.value.cin);
-    this.selectedPatient = event.value.cin
-    localStorage.setItem("idpatient", event.value.cin)
-    console.log("hahahaha", this.selectedPatient);
 
-  }
 
 }
