@@ -1,8 +1,10 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { AlertController, IonContent, LoadingController, ModalController } from '@ionic/angular';
+import { ModalImageComponent } from 'src/app/modal-image/modal-image.component';
 import { ConsultationMedService } from 'src/app/services/consultation-med.service';
 import { PhotoService } from 'src/app/services/photo.service';
+import { UserService } from 'src/app/services/user.service';
 import { SwiperOptions } from 'swiper';
 
 @Component({
@@ -13,10 +15,21 @@ import { SwiperOptions } from 'swiper';
 export class DetailsGaucheComponent implements OnInit {
 
   @ViewChild(IonContent) private content: IonContent;
+  idConsult: any;
+  idPatient: any;
+  private sub: any;
+  patient: any
   base64 = '';
+  images2: any[] = [];
+
+  consultation: any
+
   DemandeAvis: boolean = false; // f details ya mariem demain
   Avis: boolean = false;
   showLoader: boolean;
+  retrieveResponse: any
+  imagePath: any; //string=null;
+  base64Data: any;
 
   displayProgress() {
     this.showLoader = true;
@@ -107,11 +120,22 @@ export class DetailsGaucheComponent implements OnInit {
   constructor(public ConsultationMedService: ConsultationMedService,
     public photoService: PhotoService, private router: Router, public loadingController: LoadingController,
     private modalCtrl: ModalController,
-    public alertController: AlertController) {
+    public alertController: AlertController, private route: ActivatedRoute, public service: UserService) {
   }
 
 
 
+  async openPreview(imge) {
+    const modal = await this.modalCtrl.create({
+      component: ModalImageComponent,
+      componentProps: {
+        imge
+      },
+      cssClass: 'transparent-modal'
+    });
+    modal.present();
+
+  }
 
 
 
@@ -119,9 +143,87 @@ export class DetailsGaucheComponent implements OnInit {
 
 
   async ngOnInit() {
-    await this.photoService.loadSaved();
+    this.sub = this.route.params.subscribe(params => {
+      this.idConsult = +params['id'];
+      this.idPatient = +params['idp'];
+      console.log("baaaaaa3", this.idPatient);
+      console.log("boooooooooooooooooooooooo", this.idConsult);
+      this.service.patientID(parseInt(localStorage.getItem("id")), this.idPatient).subscribe((params) => {
+        this.patient = params;
+        console.log(params);
+      })
+    })
+    this.service.getConsultationID(parseInt(localStorage.getItem("id")), this.idConsult, this.idPatient).subscribe((params => {
+      this.consultation = params;
+      console.log(this.consultation)
+      if (this.consultation.image1_Gauche == null) {
+        this.imagePath = "assets/123.jpg"
+      }
+      else {
 
+        this.retrieveResponse = this.consultation;
+        this.base64Data = this.retrieveResponse.image1_Gauche;
+        this.imagePath = 'data:image/jpeg;base64,' + this.base64Data;
+        this.images2[0] = this.imagePath;
+        console.log("lulaa", this.images2[0]);
+      }
+
+
+
+      if (this.consultation.image2_Gauche == null) {
+        this.imagePath = "assets/123.jpg"
+      }
+      else {
+
+        this.retrieveResponse = this.consultation;
+        this.base64Data = this.retrieveResponse.image2_Gauche;
+        this.imagePath = 'data:image/jpeg;base64,' + this.base64Data;
+        this.images2[1] = this.imagePath;
+        console.log("tableee 2", this.images2[1]);
+      }
+
+
+      if (this.consultation.image3_Gauche == null) {
+        this.imagePath = "assets/123.jpg"
+      }
+      else {
+
+        this.retrieveResponse = this.consultation;
+        this.base64Data = this.retrieveResponse.image3_Gauche;
+        this.imagePath = 'data:image/jpeg;base64,' + this.base64Data;
+        this.images2[2] = this.imagePath;
+        console.log("tableee 2", this.images2[2]);
+      }
+
+
+      if (this.consultation.image4_Gauche == null) {
+        this.imagePath = "assets/123.jpg"
+      }
+      else {
+
+        this.retrieveResponse = this.consultation;
+        this.base64Data = this.retrieveResponse.image4_Gauche;
+        this.imagePath = 'data:image/jpeg;base64,' + this.base64Data;
+        this.images2[3] = this.imagePath;
+        console.log("tableee 2", this.images2[3]);
+      }
+
+      if (this.consultation.image5_Gauche == null) {
+        this.imagePath = "assets/123.jpg"
+      }
+      else {
+
+        this.retrieveResponse = this.consultation;
+        this.base64Data = this.retrieveResponse.image5_Gauche;
+        this.imagePath = 'data:image/jpeg;base64,' + this.base64Data;
+        this.images2[4] = this.imagePath;
+        console.log("tableee 2", this.images2[4]);
+      }
+    })
+
+    )
   }
+
   bew() {
     console.log(this.photoService.photos.length);
   }

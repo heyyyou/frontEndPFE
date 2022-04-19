@@ -79,49 +79,57 @@
         </div>
       </ion-toolbar>
       <ion-searchbar
-        *ngIf="ConsultationMedService.consultation.length !== 0"
         class="searchBar ion-padding"
-        placeholder="cherchez un patient"
+        placeholder="cherchez une consultation"
+        [(ngModel)]="texte"
       ></ion-searchbar>
     </ion-header>
 
     <ion-content>
-      <ion-card *ngFor="let item of ConsultationMedService.consultation">
-        <img class="image" [src]="item.imgMedical" />
+      <ion-card *ngFor="let item of consultation">
+        <img class="image" src="assets/6.jpg" />
         <ion-item lines="none">
           <!-- <ion-col class="ion-margin"> -->
           <ion-buttons slot="end">
             <ion-button color="primary" (click)="editConsultation()"
               ><ion-icon name="pencil"></ion-icon>
             </ion-button>
-            <ion-button color="primary" (click)="suppConsultation()"
+            <ion-button color="primary" (click)="suppConsultation(item.id)"
               ><ion-icon name="trash"></ion-icon>
             </ion-button> </ion-buttons
         ></ion-item>
-        <ion-item lines="none">
-          <!-- <ion-col class="ion-margin"> -->
-          <ion-text slot="end" color="gris">Médecin généraliste :</ion-text
-          ><ion-text slot="end" color="primary">Dr hela chelli</ion-text>
-        </ion-item>
-        <ion-card-header>
-          <ion-card-subtitle>Patient,</ion-card-subtitle>
 
-          <ion-card-title>{{ item.Nameusers }}</ion-card-title>
+        <ion-card-header>
+          <h4>Patient,</h4>
+
+          <ion-card-title>{{ item.patient.username }}</ion-card-title>
         </ion-card-header>
         <ion-card-content>
-          <div class="droite">
+          <div>
+            <ion-text color="primary">CIN :</ion-text>
+            {{ item.patient.cin }}
+          </div>
+          <div>
+            <ion-text color="primary">Antécèdant :</ion-text>
+            {{ item.patient.antecedant }}
+          </div>
+          <div>
+            <ion-text color="primary">Date de Naissance :</ion-text>
+            {{ item.patient.dateNaiss }}
+          </div>
+          <!-- <div class="droite">
             <ion-text color="primary">oeil droite :</ion-text>
             {{ item.AImodelD }}
           </div>
           <div class="gauche">
             <ion-text color="primary">oeil gauche :</ion-text>
             {{ item.AImodelG }}
-          </div>
+          </div> -->
           <br />
           <ion-col>
             <div class="date">
               <ion-icon name="calendar-outline" class="calendar"> </ion-icon>
-              {{ item.date }}
+              {{ item.dateConsult }}
             </div>
           </ion-col>
           <ion-col class="flex-bloc">
@@ -131,12 +139,22 @@
             <div *ngIf="item.avisExpert === false">
               <ion-icon name="ellipse-sharp" color="Medium"></ion-icon>
             </div>
-            <div class="details">
+
+            <div class="details" *ngIf="item.autoDetection?.id === null">
+              <ion-button fill="outline" shape="round" (click)="openDetail()"
+                >Details</ion-button
+              >
+            </div>
+            <div class="details" *ngIf="item?.autoDetection?.id !== null">
               <ion-button
-                slot="start"
                 fill="outline"
                 shape="round"
-                (click)="openDetail()"
+                [routerLink]="[
+                  '/detailConsultation',
+                  item?.id,
+                  item.patient?.cin,
+                  item.autoDetection?.id
+                ]"
                 >Details</ion-button
               >
             </div>

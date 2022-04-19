@@ -1,3 +1,5 @@
+import { Patient } from './../model/patient';
+import { Consultation } from './../model/image';
 import { UserService } from 'src/app/services/user.service';
 import { StarsComponent } from './../rating/stars/stars.component';
 import { ConsultationComponent } from './../consultation/consultation.component';
@@ -5,13 +7,19 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { PhotoService } from './../services/photo.service';
 import { ConsultationMedService } from './../services/consultation-med.service';
 import { Component, OnInit } from '@angular/core';
-import { AlertController, MenuController } from '@ionic/angular';
+import { AlertController, MenuController, ToastController } from '@ionic/angular';
+import { NgZone } from '@angular/core';
+import { Platform } from '@ionic/angular'
 @Component({
   selector: 'app-liste-consultation',
   templateUrl: './liste-consultation.component.html',
   styleUrls: ['./liste-consultation.component.scss'],
 })
 export class ListeConsultationComponent implements OnInit {
+  consultation: any[];
+  ConsultationF: any
+  nbrConsultation: any
+  consult: any
   base64: string;
   uploadImageData: any
   selectedFile: File;
@@ -29,13 +37,61 @@ export class ListeConsultationComponent implements OnInit {
   currentRatingValue: number = null;
   public avisExpert;
   public images = localStorage.getItem("image")
-  constructor(public ConsultationMedService: ConsultationMedService, public menu: MenuController,
-    public PhotoService: PhotoService, public router: Router, public alertController: AlertController, public service: UserService, private ar: ActivatedRoute) { }
-
+  constructor(public ConsultationMedService: ConsultationMedService, public menu: MenuController, public plt: Platform,
+    public PhotoService: PhotoService, public toastController: ToastController, public zone: NgZone, public router: Router, public alertController: AlertController, route: ActivatedRoute, public service: UserService, private ar: ActivatedRoute) {
+    route.params.subscribe(val => {
+      this.ngOnInit();
+    })
+  }
   newConsultation() {
     this.router.navigate(["consultation"])
   }
+  suppConsultatiown(id: number, idConsult: number) {
+    this.service.deleteConsultation(parseInt(localStorage.getItem("id")), idConsult).subscribe((params) => {
+      this.presentToast()
+      this.getAllconsultation();
+    })
+  }
+
+  // listeConsultation() {
+  // this.service.getallConsultation(parseInt(localStorage.getItem("id"))).subscribe((params) => {
+  //     console.log(params);
+
+  //     this.consultation = params;
+  //     this.nbrConsultation = this.consultation.length;
+  //     console.log(this.consultation.length);
+  //     // this.name = this.patient.username
+
+
+  //     err => {
+  //       alert(" proléme dans modifier l'image ")
+  //     }
+  //   }
+
+  //   )
+
+  // }
+  async presentToast() {
+    const toast = await this.toastController.create({
+      message: 'suppression avec succées',
+      duration: 3000,
+      position: 'top',
+
+    });
+    toast.present();
+  }
+
+
+
+  getAllconsultation() {
+    console.log("wooooooh");
+    this.id = parseInt(localStorage.getItem("id"))
+    this.service.getallConsultation(this.id).subscribe((params) => { this.consultation = params; this.ConsultationF = params; this.consult = params })
+  }
+
+
   ngOnInit() {
+    this.getAllconsultation()
     let id: number
     this.ar.paramMap.subscribe((params) => {
       id = +params.get('id')
@@ -103,7 +159,7 @@ export class ListeConsultationComponent implements OnInit {
 
 
 
-  async suppConsultation() {
+  async suppConsultation(id: number) {
 
 
     const alert = await this.alertController.create({
@@ -121,7 +177,7 @@ export class ListeConsultationComponent implements OnInit {
       {
         text: 'Valider',
         handler: () => {
-          //api suppression consultation
+          this.suppConsultatiown(parseInt(localStorage.getItem("id")), id)
         }
       }
       ]
@@ -135,16 +191,40 @@ export class ListeConsultationComponent implements OnInit {
 
 
   }
+  set texte(chaine: string) {
+
+    this.consultation = this.filtrer(chaine);
+
+  }
+
+
+
+  filtrer(sousChaine: string) {
+
+    console.log(this.ConsultationF.filter(e => e.patient.cin.toString().indexOf(sousChaine) != -1));
+
+    return this.ConsultationF.filter(e => e.patient.username.indexOf(sousChaine) != -1 || e.patient.cin.toString().indexOf(sousChaine) != -1);
+
+
+  }
 
 
 
 
 
   openDetail() {
-    this.router.navigate(["consultationAvis"])
+
+    this.router.navigate(["consultation"]) // api update consultation
+
+    // this.router.navigate(["consultationAvis"])
   }
   editConsultation() {
     this.router.navigate(["consultation"]) // api update consultation
+  }
+  openDetail2() {
+    this.router.navigate(["consultationAvis"]) // api update consultation
+
+    // this.router.navigate(["consultationAvis"])
   }
 
 }

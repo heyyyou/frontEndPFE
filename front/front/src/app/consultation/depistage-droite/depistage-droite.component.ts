@@ -226,16 +226,16 @@ export class DepistageDroiteComponent implements OnInit {
     console.log("cin patient", this.cinPatient);
     this.idGen = parseInt(localStorage.getItem('id'));
 
-    this.service.ajouterDataConsultation(this.idGen, this.cinPatient).subscribe((params) => {
-      this.consultation = params
-      console.log(this.consultation);
+    // this.service.ajouterDataConsultation(this.idGen, this.cinPatient).subscribe((params) => {
+    //   this.consultation = params
+    //   console.log(this.consultation);
 
-      this.idConsult = this.consultation.id
-      console.log(this.idConsult);
+    //   this.idConsult = this.consultation.id
+    //   console.log(this.idConsult);
 
-      this.presentLoadingh();
-    }
-    )
+    //   this.presentLoadingh();
+    // }
+    // )
   }
 
   async presentLoadingh() {
@@ -458,17 +458,17 @@ export class DepistageDroiteComponent implements OnInit {
 
   uploadFiles() {
 
-    this.service.ajouterDataConsultation(this.idGen, this.cinPatient).subscribe((params) => {
-      this.consultation = params
+    // this.service.ajouterDataConsultation(this.idGen, this.cinPatient).subscribe((params) => {
+    //   this.consultation = params
 
-      this.idConsult = this.consultation.id
-      console.log(this.idConsult);
-      // api consultation  bch tt7at lahneee  , subscribe ttsaker fi commentaire  num2 --> post
-      this.message = '';
-      for (let i = 0; i < this.selectedFiles.length; i++) {
-        this.upload(i, this.selectedFiles[i]);
-      }
-    })
+    //   this.idConsult = this.consultation.id
+    //   console.log(this.idConsult);
+    //   // api consultation  bch tt7at lahneee  , subscribe ttsaker fi commentaire  num2 --> post
+    //   this.message = '';
+    //   for (let i = 0; i < this.selectedFiles.length; i++) {
+    //     this.upload(i, this.selectedFiles[i]);
+    //   }
+    // })
     // commentaire num2
 
   }

@@ -14,7 +14,7 @@ import { unwatchFile } from 'fs';
   styleUrls: ['./liste-patient.component.scss'],
 })
 export class ListePatientComponent implements OnInit {
-  constructor(public router: Router, public modalCtrl: ModalController, route: ActivatedRoute, public modalController: ModalController, public AlertController: AlertController, public ConsultationMedService: ConsultationMedService, public actionSheetController: ActionSheetController, public service: UserService) {
+  constructor(public router: Router, public modalCtrl: ModalController, route: ActivatedRoute, public modalController: ModalController, public AlertController: AlertController, public ConsultationMedService: ConsultationMedService, public actionSheetController: ActionSheetController, public service: UserService, private alertCtrl: AlertController) {
     route.params.subscribe(val => {
       this.ngOnInit();
     })
@@ -58,6 +58,7 @@ export class ListePatientComponent implements OnInit {
   suppPatient(id: number, cin: number) {
     this.service.deletePatient(parseInt(localStorage.getItem("id")), cin).subscribe((params) => {
       this.listePatient()
+
     })
   }
   // onChange($event) {
@@ -94,6 +95,8 @@ export class ListePatientComponent implements OnInit {
           console.log(this.id);
 
           this.suppPatient(parseInt(localStorage.getItem("id")), cin)
+
+
 
         }
       }

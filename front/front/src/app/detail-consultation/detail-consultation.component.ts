@@ -10,6 +10,7 @@ import { SwiperOptions } from 'swiper';
 import { JSXBase } from '@ionic/pwa-elements/dist/types/stencil.core';
 import { UserService } from '../services/user.service';
 import { DomSanitizer } from '@angular/platform-browser';
+import { ModalImageComponent } from '../modal-image/modal-image.component';
 interface AlertTextareaAttributes extends JSXBase.TextareaHTMLAttributes<HTMLTextAreaElement> { }
 
 
@@ -27,8 +28,7 @@ export class DetailConsultationComponent implements OnInit {
   patient: any
   consultation: any
   images: any[] = [];
-  images2: any[] = [];
-
+  idAutoDetection: any
   retrieveResponse: any;
   retrieveResponse2: any
   imagePath: any; //string=null;
@@ -142,7 +142,17 @@ export class DetailConsultationComponent implements OnInit {
 
 
 
+  async openPreview(imge) {
+    const modal = await this.modalCtrl.create({
+      component: ModalImageComponent,
+      componentProps: {
+        imge
+      },
+      cssClass: 'transparent-modal'
+    });
+    modal.present();
 
+  }
 
 
 
@@ -150,11 +160,14 @@ export class DetailConsultationComponent implements OnInit {
     this.sub = this.route.params.subscribe(params => {
       this.idConsult = +params['id'];
       this.idPatient = +params['idp'];
+      this.idAutoDetection = +params['idA']
       this.service.patientID(parseInt(localStorage.getItem("id")), this.idPatient).subscribe((params) => {
         this.patient = params;
         console.log(params);
       })
     })
+    this.service.updateIdAutoDetection(parseInt(localStorage.getItem("id")), this.idConsult, this.idAutoDetection).subscribe(event => { })
+
     this.service.getConsultationID(parseInt(localStorage.getItem("id")), this.idConsult, this.idPatient).subscribe((params => {
       this.consultation = params;
       console.log(this.consultation)
@@ -216,83 +229,13 @@ export class DetailConsultationComponent implements OnInit {
         this.images[4] = this.imagePath;
         console.log("lqqsulaa", this.images[4]);
       }
-      this.getGauche();
+
     }
 
     )
     )
   }
-  getGauche() {
-    this.service.getConsultationID(parseInt(localStorage.getItem("id")), this.idConsult, this.idPatient).subscribe((params => {
-      this.consultation = params;
-      console.log(this.consultation)
-      if (this.consultation.image1_Gauche == null) {
-        this.imagePath1 = "assets/123.jpg"
-      }
-      else {
 
-        this.retrieveResponse2 = this.consultation;
-        this.base64Data2 = this.retrieveResponse2.image1_Gauche;
-        this.imagePath1 = 'data:image/jpeg;base64,' + this.base64Data2;
-        this.images2[0] = this.imagePath1;
-        console.log("lulaa", this.images2[0]);
-      }
-
-
-
-      if (this.consultation.image2_Gauche == null) {
-        this.imagePath1 = "assets/123.jpg"
-      }
-      else {
-
-        this.retrieveResponse2 = this.consultation;
-        this.base64Data2 = this.retrieveResponse2.image2_Gauche;
-        this.imagePath1 = 'data:image/jpeg;base64,' + this.base64Data2;
-        this.images2[1] = this.imagePath1;
-        console.log("tableee 2", this.images2[1]);
-      }
-
-
-      if (this.consultation.image3_Gauche == null) {
-        this.imagePath1 = "assets/123.jpg"
-      }
-      else {
-
-        this.retrieveResponse2 = this.consultation;
-        this.base64Data2 = this.retrieveResponse2.image3_Gauche;
-        this.imagePath1 = 'data:image/jpeg;base64,' + this.base64Data2;
-        this.images2[2] = this.imagePath1;
-        console.log("tableee 2", this.images2[2]);
-      }
-
-
-      if (this.consultation.image4_Gauche == null) {
-        this.imagePath1 = "assets/123.jpg"
-      }
-      else {
-
-        this.retrieveResponse2 = this.consultation;
-        this.base64Data2 = this.retrieveResponse2.image4_Gauche;
-        this.imagePath1 = 'data:image/jpeg;base64,' + this.base64Data;
-        this.images2[3] = this.imagePath1;
-        console.log("tableee 2", this.images2[3]);
-      }
-
-      if (this.consultation.image5_Gauche == null) {
-        this.imagePath1 = "assets/123.jpg"
-      }
-      else {
-
-        this.retrieveResponse2 = this.consultation;
-        this.base64Data2 = this.retrieveResponse2.image5_Gauche;
-        this.imagePath1 = 'data:image/jpeg;base64,' + this.base64Data2;
-        this.images2[4] = this.imagePath1;
-        console.log("tableee 2", this.images2[4]);
-      }
-    })
-
-    )
-  }
 }
 
 

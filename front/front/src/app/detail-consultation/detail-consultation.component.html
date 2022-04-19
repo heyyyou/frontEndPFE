@@ -19,7 +19,7 @@
       <h3>{{ patient?.username }}</h3>
     </ion-label>
     <ion-icon class="calendar" name="calendar-outline" color="gris"></ion-icon>
-    <h4></h4>
+    <h4>{{ consultation?.dateConsult }}</h4>
   </ion-item>
   <!-- si je confirme pour l'avis d'un expert un ion-progress bar is here -->
 
@@ -83,7 +83,7 @@
             onerror="this.src='assets/add.jpg'"
             alt="alternative"
             tappable
-            (click)="ConsultationMedService.openPreview(imge.webviewPath)"
+            (click)="openPreview(imge)"
           />
         </ng-template>
       </swiper>
@@ -101,7 +101,7 @@
       {{ ConsultationMedService.consultation_id.oeil_gaucheAI.gravite }}
     </div>
     <!-- gauche -->
-    <ion-card class="cardfull">
+    <!-- <ion-card class="cardfull">
       <swiper
         [config]="config"
         class="swiper-slide"
@@ -131,8 +131,12 @@
 
     <br />
 
-    <br />
-    <!-- <ion-card class="cardfull">
+    <br /> -->
+    <ng-container [ngSwitch]="segment">
+      <app-details-gauche *ngSwitchCase="'gauche'"> </app-details-gauche>
+    </ng-container>
+  </ion-content>
+  <!-- <ion-card class="cardfull">
       <swiper
         [config]="config"
         class="swiper-slide"
@@ -162,14 +166,13 @@
         a la maladie de la diabéte au niveau de l’oeil droite.
       </h6>
     </div>-->
-    <ion-button
-      color="primary"
-      expand="block"
-      size="large"
-      shape="round"
-      class="AvisExpert"
-      (click)="DemanderAvis()"
-      >Avis Expert</ion-button
-    >
-  </ion-content>
+  <ion-button
+    color="primary"
+    expand="block"
+    size="large"
+    shape="round"
+    class="AvisExpert"
+    (click)="DemanderAvis()"
+    >Avis Expert</ion-button
+  >
 </ion-app>

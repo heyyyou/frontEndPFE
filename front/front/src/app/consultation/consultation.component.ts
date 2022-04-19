@@ -1,6 +1,6 @@
 import { Patient } from './../model/patient';
 import { UserService } from './../services/user.service';
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, Inject, OnInit, ViewChild } from '@angular/core';
 import { ModalController } from '@ionic/angular';
 import { SwiperOptions, Pagination } from 'swiper';
 import { ActionSheetController } from '@ionic/angular';
@@ -8,7 +8,8 @@ import { ModalImageComponent } from '../modal-image/modal-image.component';
 import { UserPhoto, PhotoService } from '../services/photo.service';
 import { AlertController } from '@ionic/angular';
 import { ToastController } from '@ionic/angular';
-import { ChildrenOutletContexts, Router, RouterOutlet } from '@angular/router';
+
+import { ActivatedRoute, ChildrenOutletContexts, Router, RouterOutlet } from '@angular/router';
 import { ImagePicker, ImagePickerOptions } from '@ionic-native/image-picker/ngx';
 import { Camera, CameraResultType, CameraSource, ImageOptions } from '@capacitor/camera';
 import { LoadingController } from '@ionic/angular';
@@ -25,6 +26,8 @@ import { IonContent } from '@ionic/angular';
 export class ConsultationComponent implements OnInit {
   @ViewChild(IonContent) private contente: IonContent;
   public disableButton = false;
+
+  myDate: String = new Date().toLocaleDateString();
 
 
 
@@ -59,7 +62,7 @@ export class ConsultationComponent implements OnInit {
   isLoadingAI: boolean = false;
   consultation: any;
   const: any
-
+  autoDetection: any
   var: any = 0;
 
   patients: Patient[];
@@ -75,27 +78,22 @@ export class ConsultationComponent implements OnInit {
     this.disableButton = true;
     setTimeout(() => {
       this.isLoadingAI = false;
-      this.router.navigate(['detailConsultation', this.idConsult, this.patient.cin]);
+      this.service.ajouterAutoDetection(parseInt(localStorage.getItem("id")), this.idConsult).subscribe((params) => {
+        this.autoDetection = params
+        console.log("ba333333333333333333", this.autoDetection.id)
+        console.log("rahmaaaaaaaaaaaaaaaaaaaa", this.consultation);
+        this.router.navigate(['detailConsultation', this.idConsult, this.patient.cin, this.autoDetection.id]);
+      })
+
 
     }, 4000);
 
   }
+  // description : kifeh amlt autoDetectio w hatitha f id mtaa l consultation
+  //wawel haja amlt post mtaa AutoDetection k nenzel al Ai model : biensur déja andi consultation men 9bal
+  // une fois t3amlt => hatit f router navigate id mtaa autodetection khater post mtaai f back yrajaa objet
+  // ya3ni grace a params 3adit les 3 id => f details consultation amlt put ll consultation (image et id autotdetection)
 
-  // ajouterData() {
-
-  //   this.idGen = parseInt(localStorage.getItem('id'));
-
-  //   this.service.ajouterDataConsultation(this.idGen, this.cinPatient).subscribe((params) => {
-  //     this.consultation = params
-  //     console.log("ssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss", this.consultation);
-
-  //     this.idConsult = this.consultation.id
-  //     console.log(this.idConsult);
-
-  //     this.presentLoadingh();
-  //   }
-  //   )
-  // }
 
   async presentLoadingh() {
     const loading = await this.loadingController.create({
@@ -140,8 +138,12 @@ export class ConsultationComponent implements OnInit {
 
 
   constructor(public sanitizer: DomSanitizer, private modalCtrl: ModalController, public photoService: PhotoService, public actionSheetController: ActionSheetController, public alertController: AlertController,
-    public toastController: ToastController, private router: Router, private picker: ImagePicker, public loadingController: LoadingController, public ConsultationMedService: ConsultationMedService, public service: UserService
-  ) { }
+    public toastController: ToastController, route: ActivatedRoute, private router: Router, private picker: ImagePicker, public loadingController: LoadingController, public ConsultationMedService: ConsultationMedService, public service: UserService,
+  ) {
+    route.params.subscribe(val => {
+      this.ngOnInit();
+    })
+  }
   async presentToastError() {
     const toast = await this.toastController.create({
       message: 'Consultation ajoutée avec succèes',
@@ -410,6 +412,7 @@ export class ConsultationComponent implements OnInit {
 
       this.idConsult = this.consultation.id
       console.log(this.idConsult);
+      // this.service.updateIdAutoDetection(this.idGen, this.idConsult, this.autoDetection.id).subscribe(event => { })
       // api consultation  bch tt7at lahneee  , subscribe ttsaker fi commentaire  num2 --> post
       this.message = '';
       this.ekhdem()

@@ -1,15 +1,12 @@
 <ion-card class="cardfull">
   <swiper [config]="config" class="swiper-slide" data-swiper-autoplay="2000">
-    <ng-template
-      swiperSlide
-      *ngFor="let imge of photoService.photos; let i = index"
-    >
+    <ng-template swiperSlide *ngFor="let imge of images2; let i = index">
       <img
-        [src]="imge.webviewPath"
+        [src]="imge"
         onerror="this.src='assets/add.jpg'"
         alt="alternative"
         tappable
-        (click)="ConsultationMedService.openPreview(imge.webviewPath)"
+        (click)="openPreview(imge)"
       />
     </ng-template>
   </swiper>

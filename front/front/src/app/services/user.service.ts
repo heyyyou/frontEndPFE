@@ -42,6 +42,7 @@ export class UserService {
   private updateimg4D = "http://localhost:8080/consultation/addimage4D"
   private updateimg5D = "http://localhost:8080/consultation/addimage5D"
 
+
   //gauche
   private updateimg1G = "http://localhost:8080/consultation/addimage1G"
   private updateimg2G = "http://localhost:8080/consultation/addimage2G"
@@ -52,7 +53,7 @@ export class UserService {
 
   //get consultation
   private getconsultationID = "http://localhost:8080/consultation/Consultation"
-
+  private getAllConsultation = "http://localhost:8080/consultation/Consultations"
   // islogin = false;
   // generaliste = false;
   // expert = false;
@@ -62,13 +63,24 @@ export class UserService {
 
   constructor(private http: HttpClient) { }
   ajouterDataConsultation(id: number, cin: number): Observable<Object> {
+
     return this.http.post(`${this.dataConsultation}/${id}/${cin}`, {
 
-    });
+    }
+
+    )
   }
   getPatient
     (id: number): Observable<Object[]> {
     return this.http.get<Object[]>(`${this.getPAtient}/${id}`, {
+
+    });
+
+  }
+
+  getallConsultation
+    (id: number): Observable<Object[]> {
+    return this.http.get<Object[]>(`${this.getAllConsultation}/${id}`, {
 
     });
 
@@ -281,8 +293,28 @@ export class UserService {
     });
 
   }
+  private AjouterAutoDetection = "http://localhost:8080/Auto/auto"
+  ajouterAutoDetection(id: number, idConsult: number): Observable<Object> {
+    return this.http.post(`${this.AjouterAutoDetection}/${id}/${idConsult}`, {
 
+    }
 
+    )
+  }
+  private updateIDAuto = "http://localhost:8080/consultation/editAuto"
+  updateIdAutoDetection(idGen: number, idConsult: number, idAutoDetection: number): Observable<any> {
 
+    return this.http.put(`${this.updateIDAuto}/${idGen}/${idConsult}/${idAutoDetection}`, {
+      responseType: 'text',
+    });
 
+  }
+  private deleteConsultationn = "http://localhost:8080/consultation/deleteConsult"
+  deleteConsultation(id: number, idConsult: number): Observable<any> {
+
+    return this.http.delete(`${this.deleteConsultationn}/${id}/${idConsult}`, { responseType: 'text' });
+  }
 }
+
+
+
