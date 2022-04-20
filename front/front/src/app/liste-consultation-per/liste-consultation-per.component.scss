@@ -7,7 +7,7 @@
     // height: 100px;
   }
   ion-toolbar {
-    --background: #3e64ff;
+    --background: #2183ac;
     .avatar {
       height: 35px;
       width: 35px;
@@ -93,11 +93,11 @@
     height: 20px;
     margin-bottom: -3px;
   }
-  // .details {
-  //   position: absolute;
-  //   top: 50px;
-  //   left: 220px;
-  // }
+  .details {
+    position: absolute;
+    top: 20px;
+    left: 220px;
+  }
   .image {
     min-width: 100%;
     min-height: 100%;

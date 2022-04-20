@@ -91,7 +91,9 @@
         <ion-item lines="none">
           <!-- <ion-col class="ion-margin"> -->
           <ion-buttons slot="end">
-            <ion-button color="primary" (click)="editConsultation()"
+            <ion-button
+              color="primary"
+              [routerLink]="['/modifConsult', item?.id, item.patient?.cin]"
               ><ion-icon name="pencil"></ion-icon>
             </ion-button>
             <ion-button color="primary" (click)="suppConsultation(item.id)"
@@ -141,7 +143,14 @@
             </div>
 
             <div class="details" *ngIf="item.autoDetection?.id === null">
-              <ion-button fill="outline" shape="round" (click)="openDetail()"
+              <ion-button
+                fill="outline"
+                shape="round"
+                [routerLink]="[
+                  '/DetailsWithoutAutoConsult',
+                  item?.id,
+                  item.patient?.cin
+                ]"
                 >Details</ion-button
               >
             </div>

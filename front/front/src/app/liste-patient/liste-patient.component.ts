@@ -14,7 +14,7 @@ import { unwatchFile } from 'fs';
   styleUrls: ['./liste-patient.component.scss'],
 })
 export class ListePatientComponent implements OnInit {
-  constructor(public router: Router, public modalCtrl: ModalController, route: ActivatedRoute, public modalController: ModalController, public AlertController: AlertController, public ConsultationMedService: ConsultationMedService, public actionSheetController: ActionSheetController, public service: UserService, private alertCtrl: AlertController) {
+  constructor(public router: Router, public modalCtrl: ModalController, route: ActivatedRoute, public modalController: ModalController, public AlertController: AlertController, public ConsultationMedService: ConsultationMedService, public actionSheetController: ActionSheetController, public service: UserService) {
     route.params.subscribe(val => {
       this.ngOnInit();
     })
@@ -111,6 +111,7 @@ export class ListePatientComponent implements OnInit {
 
 
   }
+
 
 
 

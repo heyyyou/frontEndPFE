@@ -31,6 +31,8 @@ import { ListeConsultationPerComponent } from './liste-consultation-per/liste-co
 import { Parametre2Component } from './medecin-expert/parametre2/parametre2.component';
 import { SplashScreenComponent } from './shared/splash-screen/splash-screen.component';
 import { AuthGuard } from './shared/auth-guard';
+import { ModifConsultationComponent } from './modif-consultation/modif-consultation.component';
+import { DetailsConsultationwithoutAutoComponent } from './details-consultationwithout-auto/details-consultationwithout-auto.component';
 
 
 const routes: Routes = [
@@ -82,7 +84,7 @@ const routes: Routes = [
 
   },
   {
-    path: 'ConsultationPatient', component: ListeConsultationPerComponent, canActivate: [AuthGuard]
+    path: 'ConsultationPatient/:id', component: ListeConsultationPerComponent, canActivate: [AuthGuard]
 
 
 
@@ -104,10 +106,15 @@ const routes: Routes = [
 
 
   },
+
+  { path: 'modifConsult/:id/:idp', component: ModifConsultationComponent },
+
   { path: 'patient-details/:id', component: ModalDetailsComponent },
-  { path: 'patient-update/:id', component: EditPatientComponent }
+  { path: 'patient-update/:id', component: EditPatientComponent },
 
-
+  {
+    path: 'DetailsWithoutAutoConsult/:id/:idp', component: DetailsConsultationwithoutAutoComponent
+  },
 
 
 

@@ -56,6 +56,8 @@ import { SignupexpertComponent } from './shared/login/signupexpert/signupexpert.
 import { SignupmedComponent } from './shared/login/signupmed/signupmed.component';
 import { ModalDetailsComponent } from './liste-patient/modal-details/modal-details.component';
 import { EditPatientComponent } from './liste-patient/edit-patient/edit-patient.component';
+import { ModifConsultationComponent } from './modif-consultation/modif-consultation.component';
+import { DetailsConsultationwithoutAutoComponent } from './details-consultationwithout-auto/details-consultationwithout-auto.component';
 @NgModule({
   declarations: [
     ReponseAvisNotifComponent,
@@ -77,7 +79,7 @@ import { EditPatientComponent } from './liste-patient/edit-patient/edit-patient.
     SignupexpertComponent,
     SignupmedComponent,
     ModalDetailsComponent,
-
+    DetailsConsultationwithoutAutoComponent,
     EditPatientComponent,
     ListeAvisComponent,
     StatistiqueComponent,
@@ -101,7 +103,8 @@ import { EditPatientComponent } from './liste-patient/edit-patient/edit-patient.
     Parametre2Component,
     EditProfilExpertComponent,
     ProfilExpertComponent,
-    SplashScreenComponent
+    SplashScreenComponent,
+    ModifConsultationComponent
 
   ],
   entryComponents: [],

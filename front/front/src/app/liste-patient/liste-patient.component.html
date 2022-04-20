@@ -31,7 +31,6 @@
     </ion-toolbar>
 
     <ion-searchbar
-      *ngIf="ConsultationMedService.users.length !== 0; else buttonajout"
       class="searchBar"
       placeholder="cherchez un patient"
       debounce="500"
@@ -78,7 +77,7 @@
                   <ion-text class="age">{{ item.cin }}</ion-text>
                 </ion-col>
               </ion-row>
-              <a routerLink="/ConsultationPatient"
+              <a [routerLink]="['/ConsultationPatient', item.cin]"
                 ><ion-text color="primary" class="consultation"
                   >Consultations</ion-text
                 >

@@ -165,7 +165,7 @@ export class UserService {
     return this.http.post(`${this.baseUrll}`, info);
   }
   ajouterPatient(patient: Patient, id: number): Observable<Object> {
-    return this.http.post(`${this.ajoutPatient}`, {
+    return this.http.post(`${this.ajoutPatient}/${id}`, {
       cin: patient.cin,
 
       antecedant: patient.antecedant,
@@ -313,6 +313,30 @@ export class UserService {
   deleteConsultation(id: number, idConsult: number): Observable<any> {
 
     return this.http.delete(`${this.deleteConsultationn}/${id}/${idConsult}`, { responseType: 'text' });
+  }
+  private getConsultationPourPatient = "http://localhost:8080/consultation/Consultation"
+  getConsultationPatient(id: number, idPatient: number): Observable<Object[]> {
+    return this.http.get<Object[]>(`${this.getConsultationPourPatient}/${id}/${idPatient}`, {
+
+    });
+  }
+  private suppimageGauche = "http://localhost:8080/consultation/consultation/picturesG"
+  suppImagesGauches(idGen: number, idConsult: number): Observable<any> {
+
+    return this.http.put(`${this.suppimageGauche}/${idGen}/${idConsult}`, {
+      responseType: 'text',
+    });
+
+  }
+
+  private suppimagesDroite = "http://localhost:8080/consultation/consultation/picturesD"
+
+  suppImagesDroite(idGen: number, idConsult: number): Observable<any> {
+
+    return this.http.put(`${this.suppimagesDroite}/${idGen}/${idConsult}`, {
+      responseType: 'text',
+    });
+
   }
 }
 

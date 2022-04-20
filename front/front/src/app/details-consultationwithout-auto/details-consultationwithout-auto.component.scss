@@ -1,0 +1,187 @@
+.border-radius-bottom {
+  border-bottom-left-radius: 22px;
+  border-bottom-right-radius: 22px;
+}
+
+ion-toolbar {
+  height: 120%;
+
+  .bordered {
+    --border-raduis: 20px;
+  }
+
+  .radius {
+    --border-radius: 12px;
+  }
+
+  .image-cropper {
+    width: 100px;
+    height: 100px;
+    position: relative;
+    overflow: hidden;
+    border-radius: 50%;
+    box-shadow: 8px 8px 10px 0 rgba(255, 255, 255, 0.5);
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    border: 0.2em solid #2183ac;
+    box-shadow: 0.375em 0.375em 0 0 rgba(15, 28, 63, 0.125);
+  }
+
+  .img {
+    display: inline;
+    margin: 0 auto;
+    height: 100%;
+    width: auto;
+    box-shadow: 8px 8px 10px 0 rgba(0, 0, 0, 0.5);
+    border-radius: 50%;
+  }
+
+  //   .text {
+  //     color: gray;
+  //   }
+  //   ion-item {
+  //     // box-shadow: 4px 4px 5px 0 rgba(255, 255, 255, 0.5);
+  //     margin-left: 12%;
+  //     margin-right: 12%;
+  //     border: 0 !important;
+  //   }
+  //   .ion-padding {
+  //     padding: 0;
+  //   }
+  //   .icon {
+  //     width: 7%;
+  //     height: 50%;
+  //     margin-left: 5%;
+  //     margin-right: 10%;
+  //   }
+  // }
+  .class {
+    background-color: #f3ecec;
+  }
+  .eyes {
+    height: 15%;
+    width: 4px;
+  }
+}
+.ajouterdelet {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+swiper {
+  img {
+    padding-top: 30px;
+    padding-bottom: 30px;
+  }
+}
+.ajouterdelet {
+  ion-button {
+    --border-width: 2px;
+  }
+}
+.avatar-containter {
+  width: 100%;
+}
+
+ion-avatar {
+  position: relative;
+  margin-left: auto;
+  margin-right: auto;
+}
+.cardfull {
+  border-radius: 12px;
+  padding-top: 7%;
+  margin-left: 7%;
+  margin-right: 7%;
+  margin-top: 5%;
+  margin-bottom: 5%;
+  background-color: #f7f7f7;
+  position: relative;
+}
+
+.addicon {
+  width: 50px;
+  height: 50px;
+}
+.AImodel {
+  margin-top: 7%;
+  margin-bottom: 10%;
+  margin-left: 7%;
+  margin-right: 7%;
+
+  --box-shadow: 6px 5px 10px #d1d1d1, -5px -5px 10px #ffffff;
+}
+
+.item1 {
+  margin-left: 7%;
+  margin-right: 7%;
+}
+.bordered2 {
+  height: 30%;
+  width: 15%;
+  border-radius: 20px;
+}
+.bordered3 {
+  height: 50px;
+  width: 50px;
+  border-radius: 20px;
+}
+ion-content {
+  --background: #ffffff;
+}
+ion-segment {
+  --background-checked: var(--ion-color-primary);
+  --color-checked: var(--ion-color-success-dark);
+}
+.segment {
+  background-color: #f7f7f7;
+  border-radius: 12px;
+  margin-left: 7%;
+
+  margin-top: 12%;
+  margin-right: 7%;
+}
+.bouttontrash {
+  position: absolute;
+  top: 25px;
+  right: 39.5%;
+  width: 100%;
+}
+.custom-file-input {
+  color: transparent;
+  margin-left: 25%;
+  margin-bottom: 12%;
+}
+.custom-file-input::-webkit-file-upload-button {
+  visibility: hidden;
+}
+.custom-file-input::before {
+  content: "Ajouter Images(+)";
+  color: rgb(22, 118, 156);
+  display: inline-block;
+  background: -webkit-linear-gradient(top, #f9f9f9, #e3e3e3);
+  border: 1px solid rgb(255, 255, 255);
+  border-radius: 10px;
+  padding: 5px 8px;
+  outline: none;
+  white-space: nowrap;
+  -webkit-user-select: none;
+  cursor: pointer;
+  text-shadow: 1px 1px #fff;
+  font-weight: 700;
+  font-size: 14pt;
+}
+.custom-file-input:hover::before {
+  border-color: rgb(255, 255, 255);
+}
+.custom-file-input:active {
+  outline: 0;
+}
+.custom-file-input:active::before {
+  background: -webkit-linear-gradient(top, #e3e3e3, #f9f9f9);
+}
+
+body {
+  padding: 20px;
+}
