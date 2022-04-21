@@ -24,62 +24,66 @@
   </ion-header>
 
   <ion-content>
-    <ion-card *ngFor="let item of ConsultationMedService.consultation">
-      <img class="image" [src]="item.imgMedical" />
+    <div *ngFor="let item of Consultation">
+      <ion-card *ngIf="item?.demandeAvis === 1">
+        <img class="image" src="assets/6.jpg" />
 
-      <ion-item lines="none">
-        <!-- <ion-col class="ion-margin"> -->
-        <ion-text slot="end" color="gris">Consultation assitée par :</ion-text
-        ><ion-text slot="end" color="primary2">Dr hela chelli</ion-text>
-      </ion-item>
-      <ion-card-header>
-        <ion-card-subtitle>Patient,</ion-card-subtitle>
+        <ion-item lines="none">
+          <!-- <ion-col class="ion-margin"> -->
+          <ion-text slot="end" color="gris">Consultation assitée par :</ion-text
+          ><ion-text slot="end" color="primary2"
+            >Dr, {{ item.generaliste?.username }}
+          </ion-text>
+        </ion-item>
+        <ion-card-header>
+          <ion-card-subtitle>Patient,</ion-card-subtitle>
 
-        <ion-card-title>{{ item.Nameusers }}</ion-card-title>
-      </ion-card-header>
-      <ion-card-content>
-        <div class="droite">
-          <ion-text color="primary2">oeil droite :</ion-text>
-          {{ item.AImodelD }}
-        </div>
-        <div class="gauche">
-          <ion-text color="primary2">oeil gauche :</ion-text>
-          {{ item.AImodelG }}
-        </div>
-        <br />
-        <ion-col>
-          <div class="date">
-            <ion-icon name="calendar-outline" class="calendar"> </ion-icon>
-            {{ item.date }}
-          </div>
-        </ion-col>
-        <ion-col class="flex-bloc">
+          <ion-card-title>{{ item.patient?.username }}</ion-card-title>
+        </ion-card-header>
+        <ion-card-content>
           <div>
-            <ion-icon name="ellipse-sharp" color="success"></ion-icon>
+            <ion-text color="primary2">Antécèdant :</ion-text>
+            {{ item.patient?.antecedant }}
           </div>
-
-          <div class="details">
-            <ion-button
-              color="primary2"
-              slot="start"
-              fill="outline"
-              shape="round"
-              (click)="openDetail()"
-              >Details</ion-button
-            >
+          <div>
+            <ion-text color="primary2">Date de Naissance :</ion-text>
+            {{ item.patient?.dateNaiss }}
           </div>
-        </ion-col>
-      </ion-card-content>
+          <br />
+          <ion-col>
+            <div class="date">
+              <ion-icon name="calendar-outline" class="calendar"> </ion-icon>
+              {{ item.dateConsult }}
+            </div>
+          </ion-col>
+          <ion-col class="flex-bloc">
+            <div>
+              <ion-icon name="ellipse-sharp" color="success"></ion-icon>
+            </div>
 
-      <app-stars-rating
-        (shareRatingValue)="showRating($event)"
-      ></app-stars-rating>
-      <br />
+            <div class="details">
+              <ion-button
+                color="primary2"
+                slot="start"
+                fill="outline"
+                shape="round"
+                (click)="openDetail()"
+                >Details</ion-button
+              >
+            </div>
+          </ion-col>
+        </ion-card-content>
 
-      <h4 *ngIf="currentRatingValue">
-        <!-- The value selected from the stars component is
+        <app-stars-rating
+          (shareRatingValue)="showRating($event)"
+        ></app-stars-rating>
+        <br />
+
+        <h4 *ngIf="currentRatingValue">
+          <!-- The value selected from the stars component is
         <h2>{{ currentRatingValue }}</h2> -->
-      </h4>
-    </ion-card>
+        </h4>
+      </ion-card>
+    </div>
   </ion-content></ion-app
 >

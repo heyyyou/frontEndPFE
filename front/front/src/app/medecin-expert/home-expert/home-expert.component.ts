@@ -1,3 +1,4 @@
+import { Consultation } from './../../model/image';
 import { UserService } from './../../services/user.service';
 import { MenuController, ToastController } from '@ionic/angular';
 import { Component, OnInit } from '@angular/core';
@@ -23,13 +24,19 @@ export class HomeExpertComponent implements OnInit {
 
   id: number;
   gender: string = "";
-
+  Consultation: any
+  ConsultationF: any
+  consult: any
   constructor(public router: Router, public service: UserService, public menu: MenuController, public toastController: ToastController, private ar: ActivatedRoute) { }
   public name = localStorage.getItem("name");
 
   ngOnInit() {
     this.presentToast();
     this.here()
+    // this.service.getAllConsultationExpert().subscribe((params) => {
+    //   this.Consultation = params; this.ConsultationF = params; this.consult = params
+    //   console.log(this.Consultation)
+    // })
   }
 
   here() {

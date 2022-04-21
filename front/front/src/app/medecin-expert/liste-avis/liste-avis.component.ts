@@ -1,6 +1,8 @@
+import { Generaliste } from './../../model/generaliste';
 import { ModalController } from '@ionic/angular';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-liste-avis',
@@ -8,8 +10,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./liste-avis.component.scss'],
 })
 export class ListeAvisComponent implements OnInit {
-
-  constructor(private router: Router, private modelController: ModalController) { }
+  Consultation: any[]
+  ConsultationF: any
+  consult: any
+  constructor(private router: Router, public service: UserService, private modelController: ModalController, route: ActivatedRoute) {
+    route.params.subscribe(val => {
+      this.ngOnInit();
+    })
+  }
   doRefresh(event) {
     console.log('Begin async operation');
     // new notif
@@ -26,6 +34,11 @@ export class ListeAvisComponent implements OnInit {
   dismissModal() {
     this.modelController.dismiss()
   }
-  ngOnInit() { }
+  ngOnInit() {
+    this.service.getAllConsultationExpert().subscribe((params) => {
+      this.Consultation = params; this.ConsultationF = params; this.consult = params
+      console.log(this.Consultation)
+    })
+  }
 
 }

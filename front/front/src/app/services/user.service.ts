@@ -338,6 +338,21 @@ export class UserService {
     });
 
   }
+  private demanderAvis = "http://localhost:8080/consultation/demanderAvis"
+  demanderAviss(idGen: number, idConsult: number): Observable<any> {
+    //ici l attribut demander avis va avoir 1 au lieu de 0
+    return this.http.put(`${this.demanderAvis}/${idGen}/${idConsult}`, {
+      responseType: 'text',
+    });
+
+  }
+  private getAllConsultationmaghirID = "http://localhost:8080/consultation/Consultations"
+  getAllConsultationExpert(): Observable<Object[]> {
+    return this.http.get<Object[]>(`${this.getAllConsultationmaghirID}`, {
+
+    });
+
+  }
 }
 
 

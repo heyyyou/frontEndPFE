@@ -20,7 +20,7 @@ export class SignupmedComponent implements OnInit {
 
   signup(f: NgForm) {
     this.service.registerMed(f.value).subscribe(() => {
-      console.log(this.user);
+
 
       // localStorage.setItem("ids", "generaliste"); // lorsque je fais sign up j vais store l data d woslt local bsh nestaaml baed role f login f root ;)
       this.router.navigate(['/login'])

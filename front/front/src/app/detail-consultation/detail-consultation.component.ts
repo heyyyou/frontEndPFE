@@ -87,7 +87,8 @@ export class DetailConsultationComponent implements OnInit {
 
     const { role, data } = await loading.onDidDismiss();
 
-    this.router.navigate(["home"])
+    // this.router.navigate(["home"])
+    this.service.demanderAviss(parseInt(localStorage.getItem("id")), this.idConsult).subscribe((params) => { })
   }
   hey() {
     this.disableButton = true;
