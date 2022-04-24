@@ -1,4 +1,4 @@
-<!-- pour l expert  -->
+<!-- pour l expert  home page -->
 <ion-app>
   <ion-app class="content">
     <ion-header class="ion-no-border">
@@ -17,8 +17,9 @@
       ></ion-searchbar>
       <div *ngFor="let item of Consultation">
         <ion-item-sliding
+          [routerLink]="['/detailsnotif', item?.id, item.patient?.cin]"
           id="item100"
-          *ngIf="item?.demandeAvis === 1 && item?.avisExpert === null"
+          *ngIf="item?.autoDetection?.avisExpert === null"
         >
           <!-- mariemmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm na7iiiiiiiiiiiiiiiiiii diff k tzid post w put  -->
           <ion-item (click)="details()">

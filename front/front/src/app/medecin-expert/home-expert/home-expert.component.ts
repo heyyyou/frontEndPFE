@@ -45,7 +45,7 @@ export class HomeExpertComponent implements OnInit {
       id = +params.get('id')
       this.service.getDataExpert(id).subscribe(data => {
         this.user = data
-        console.log(this.user.image)
+        console.log("eee", this.user.image)
         if (this.user.image == null) {
           this.imagePath = "assets/123.jpg"
         }

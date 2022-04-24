@@ -88,7 +88,6 @@ export class DetailConsultationComponent implements OnInit {
     const { role, data } = await loading.onDidDismiss();
 
     // this.router.navigate(["home"])
-    this.service.demanderAviss(parseInt(localStorage.getItem("id")), this.idConsult).subscribe((params) => { })
   }
   hey() {
     this.disableButton = true;
@@ -167,7 +166,7 @@ export class DetailConsultationComponent implements OnInit {
         console.log(params);
       })
     })
-    this.service.updateIdAutoDetection(parseInt(localStorage.getItem("id")), this.idConsult, this.idAutoDetection).subscribe(event => { })
+    // this.service.updateIdAutoDetection(parseInt(localStorage.getItem("id")), this.idConsult, this.idAutoDetection).subscribe(event => { })
 
     this.service.getConsultationID(parseInt(localStorage.getItem("id")), this.idConsult, this.idPatient).subscribe((params => {
       this.consultation = params;

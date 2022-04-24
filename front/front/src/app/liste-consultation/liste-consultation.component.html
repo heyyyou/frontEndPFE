@@ -93,7 +93,7 @@
           <ion-buttons slot="end">
             <ion-button
               color="primary"
-              [routerLink]="['/modifConsult', item?.id, item.patient?.cin]"
+              [routerLink]="['/modifConsult', item?.id, item?.patient?.cin]"
               ><ion-icon name="pencil"></ion-icon>
             </ion-button>
             <ion-button color="primary" (click)="suppConsultation(item.id)"
@@ -104,21 +104,22 @@
         <ion-card-header>
           <h4>Patient,</h4>
 
-          <ion-card-title>{{ item.patient.username }}</ion-card-title>
+          <ion-card-title>{{ item?.patient?.username }}</ion-card-title>
         </ion-card-header>
         <ion-card-content>
           <div>
             <ion-text color="primary">CIN :</ion-text>
-            {{ item.patient.cin }}
+            {{ item?.patient?.cin }}
           </div>
           <div>
             <ion-text color="primary">Antécèdant :</ion-text>
-            {{ item.patient.antecedant }}
+            {{ item?.patient?.antecedant }}
           </div>
           <div>
             <ion-text color="primary">Date de Naissance :</ion-text>
-            {{ item.patient.dateNaiss }}
+            {{ item?.patient?.dateNaiss }}
           </div>
+
           <!-- <div class="droite">
             <ion-text color="primary">oeil droite :</ion-text>
             {{ item.AImodelD }}
@@ -134,6 +135,12 @@
               {{ item.dateConsult }}
             </div>
           </ion-col>
+          <div *ngIf="item?.autoDetection?.id !== null">
+            <ion-text color="success"> avec AI Model</ion-text>
+          </div>
+          <div *ngIf="item?.autoDetection?.id === null">
+            <ion-text color="danger"> sans AI Model</ion-text>
+          </div>
           <ion-col class="flex-bloc">
             <div *ngIf="item.avisExpert">
               <ion-icon name="ellipse-sharp" color="success"></ion-icon>

@@ -37,7 +37,8 @@ export class ListeAvisComponent implements OnInit {
   ngOnInit() {
     this.service.getAllConsultationExpert().subscribe((params) => {
       this.Consultation = params; this.ConsultationF = params; this.consult = params
-      console.log(this.Consultation)
+      console.log("ya nariiiia aalik ya mounira", this.Consultation)
+
     })
   }
 

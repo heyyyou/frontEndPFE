@@ -58,6 +58,7 @@ import { ModalDetailsComponent } from './liste-patient/modal-details/modal-detai
 import { EditPatientComponent } from './liste-patient/edit-patient/edit-patient.component';
 import { ModifConsultationComponent } from './modif-consultation/modif-consultation.component';
 import { DetailsConsultationwithoutAutoComponent } from './details-consultationwithout-auto/details-consultationwithout-auto.component';
+import { AjouterAvisGaucheComponent } from './medecin-expert/ajouter-avis/ajouter-avis-gauche/ajouter-avis-gauche.component';
 @NgModule({
   declarations: [
     ReponseAvisNotifComponent,
@@ -73,6 +74,7 @@ import { DetailsConsultationwithoutAutoComponent } from './details-consultationw
     ConsultationAvisComponent,
     ExpertConsultationComponent,
     ParametreComponent,
+    AjouterAvisGaucheComponent,
     ToastComponent,
     SignupComponent,
     LoginComponent,

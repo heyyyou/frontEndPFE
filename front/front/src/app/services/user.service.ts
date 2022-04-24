@@ -10,6 +10,9 @@ import { IonicSelectableComponent } from 'ionic-selectable';
 })
 export class UserService {
   patients: Patient[];
+  isClicked: boolean = false;
+  idAvisExpert: any = 0;
+  idAutoDetection: any;
   public selectedPatient: any = null;
   private baseUrl = "http://localhost:8080/medecin/signup";
   private baseUrll = "http://localhost:8080/expert/signup"
@@ -78,13 +81,7 @@ export class UserService {
 
   }
 
-  getallConsultation
-    (id: number): Observable<Object[]> {
-    return this.http.get<Object[]>(`${this.getAllConsultation}/${id}`, {
 
-    });
-
-  }
   getPatientConsult
     (id: number): Observable<Patient> {
     return this.http.get<Patient>(`${this.getPAtient}/${id}`, {
@@ -293,22 +290,15 @@ export class UserService {
     });
 
   }
-  private AjouterAutoDetection = "http://localhost:8080/Auto/auto"
-  ajouterAutoDetection(id: number, idConsult: number): Observable<Object> {
-    return this.http.post(`${this.AjouterAutoDetection}/${id}/${idConsult}`, {
 
-    }
+  // private updateIDAuto = "http://localhost:8080/consultation/editAuto"
+  // updateIdAutoDetection(idGen: number, idConsult: number, idAutoDetection: number): Observable<any> {
 
-    )
-  }
-  private updateIDAuto = "http://localhost:8080/consultation/editAuto"
-  updateIdAutoDetection(idGen: number, idConsult: number, idAutoDetection: number): Observable<any> {
+  //   return this.http.put(`${this.updateIDAuto}/${idGen}/${idConsult}/${idAutoDetection}`, {
+  //     responseType: 'text',
+  //   });
 
-    return this.http.put(`${this.updateIDAuto}/${idGen}/${idConsult}/${idAutoDetection}`, {
-      responseType: 'text',
-    });
-
-  }
+  // }
   private deleteConsultationn = "http://localhost:8080/consultation/deleteConsult"
   deleteConsultation(id: number, idConsult: number): Observable<any> {
 
@@ -338,22 +328,112 @@ export class UserService {
     });
 
   }
-  private demanderAvis = "http://localhost:8080/consultation/demanderAvis"
-  demanderAviss(idGen: number, idConsult: number): Observable<any> {
-    //ici l attribut demander avis va avoir 1 au lieu de 0
-    return this.http.put(`${this.demanderAvis}/${idGen}/${idConsult}`, {
-      responseType: 'text',
+
+
+  getallConsultation
+    (id: number): Observable<Object[]> {
+    return this.http.get<Object[]>(`${this.getAllConsultation}/${id}`, {
+
     });
 
   }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  // partie généraliste
+  //1) post Consultation
+  //2) k nenzel al AI Model => post autoDetection et     put autoDetection f wost Consultation
+
+
+  // partie expert
+
+  //3)get All consultation baed f html condition si AvisExpert===0
+  //4)  post avisExpert
+  //5) put avisExpert f woslt autoDetection
+
+  //2)
+  private AiModel = "http://localhost:8080/Auto/auto"
+  ajouterAutoDetection(idGeneraliste: number, idConsult: number): Observable<Object> {
+
+    return this.http.post(`${this.AiModel}/${idGeneraliste}/${idConsult}`, {
+
+    }
+
+    )
+
+  }
+  private updateAutoDetectionDansConsultation = "http://localhost:8080/consultation/editAuto"
+  updateAutoDetectionInConsultation(idGeneraliste: number, idConsult: number, idAutoDetection: number) {
+    return this.http.put(`${this.updateAutoDetectionDansConsultation}/${idGeneraliste}/${idConsult}/${idAutoDetection}`, {
+
+    }
+
+    )
+  }
+  //3)
   private getAllConsultationmaghirID = "http://localhost:8080/consultation/Consultations"
   getAllConsultationExpert(): Observable<Object[]> {
-    return this.http.get<Object[]>(`${this.getAllConsultationmaghirID}`, {
+    return this.http.get<Object[]>(`${this.getAllConsultationmaghirID}`)
+  }
+  //4)
 
-    });
+  private postAvisExpertFtableMtaou = "http://localhost:8080/avisExpert/addAvis"
+  ajouterAvisExpertTableMtaou(idExpert: number): Observable<Object> {
+
+    return this.http.post(`${this.postAvisExpertFtableMtaou}/${idExpert}`, {
+
+    }
+
+    )
+  }
+
+  //Put Gauche
+  private ajouterAvisPourOeilGauche = "http://localhost:8080/avisExpert/updateAvisG"
+  ajouterAvisOeilGauche(idAvisExpert: number, value: any): Observable<Object> {
+
+    return this.http.put(`${this.ajouterAvisPourOeilGauche}/${idAvisExpert}`, value);
+
+
+
 
   }
+  //Droite
+  private ajouterAvisPourOeilDroite = "http://localhost:8080/avisExpert/updateAvisD"
+  ajouterAvisOeilDroite(idAvisExpert: number, value: any): Observable<Object> {
+
+    return this.http.put(`${this.ajouterAvisPourOeilDroite}/${idAvisExpert}`, value);
+
+  }
+
+
+
+  //updateIDAvisExpert dans autoDetection
+  private updateIDAvisExpertDansAutoDetection = "http://localhost:8080/Auto/ajouterReponseAvis"
+  updateIdAvisExpertDansAutoDetection(idAutoDetection: number, idConsult: number, idAvisExpert: number): Observable<Object> {
+
+    return this.http.put(`${this.updateIDAvisExpertDansAutoDetection}/${idAutoDetection}/${idConsult}/${idAvisExpert}`, {
+
+    }
+
+    )
+
+
+
+  }
+
 }
-
-
 

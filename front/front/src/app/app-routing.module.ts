@@ -33,6 +33,7 @@ import { SplashScreenComponent } from './shared/splash-screen/splash-screen.comp
 import { AuthGuard } from './shared/auth-guard';
 import { ModifConsultationComponent } from './modif-consultation/modif-consultation.component';
 import { DetailsConsultationwithoutAutoComponent } from './details-consultationwithout-auto/details-consultationwithout-auto.component';
+import { AjouterAvisGaucheComponent } from './medecin-expert/ajouter-avis/ajouter-avis-gauche/ajouter-avis-gauche.component';
 
 
 const routes: Routes = [
@@ -64,7 +65,10 @@ const routes: Routes = [
   { path: 'statistique', component: StatistiqueComponent, canActivate: [AuthGuard] },
   { path: 'AvisnonExpert', component: ReponseAvisNotifComponent, canActivate: [AuthGuard] },
   { path: 'homeExpert', component: HomeExpertComponent, canActivate: [AuthGuard] },
-  { path: 'detailsnotif', component: AjouterAvisComponent, canActivate: [AuthGuard] },
+  { path: 'detailsnotif/:idConsult/:cin', component: AjouterAvisComponent, canActivate: [AuthGuard] },
+  { path: 'detailsnotifGauche/:idConsult/:cin', component: AjouterAvisGaucheComponent, canActivate: [AuthGuard] },
+
+
   {
     path: 'listeConsultExpert', component: ListeConsultExpertComponent, canActivate: [AuthGuard]
   },

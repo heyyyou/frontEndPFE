@@ -66,6 +66,12 @@
             {{ item.dateConsult }}
           </div>
         </ion-col>
+        <div *ngIf="item?.autoDetection?.id !== null">
+          <ion-text color="success"> avec AI Model</ion-text>
+        </div>
+        <div *ngIf="item?.autoDetection?.id === null">
+          <ion-text color="danger"> sans AI Model</ion-text>
+        </div>
         <ion-col class="flex-bloc">
           <div *ngIf="item.avisExpert">
             <ion-icon name="ellipse-sharp" color="success"></ion-icon>

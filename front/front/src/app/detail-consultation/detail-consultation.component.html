@@ -100,72 +100,12 @@
       <ion-text color="danger">Gravitè :</ion-text>
       {{ ConsultationMedService.consultation_id.oeil_gaucheAI.gravite }}
     </div>
-    <!-- gauche -->
-    <!-- <ion-card class="cardfull">
-      <swiper
-        [config]="config"
-        class="swiper-slide"
-        data-swiper-autoplay="2000"
-      >
-        <ng-template swiperSlide *ngFor="let imgeE of images2; let i = index">
-          <img
-            [src]="imgeE"
-            onerror="this.src='assets/add.jpg'"
-            alt="alternative"
-            tappable
-          />
-        </ng-template>
-      </swiper>
-    </ion-card>
-    <div class="details">
-      <h5>AI Résultat Oeil Gauche</h5>
-      <h6>
-        <ion-text color="danger">Maladie : </ion-text>
-        Oeil Gauche :{{
-          ConsultationMedService.consultation_id.oeil_gaucheAI.maladie
-        }}
-      </h6>
-      <ion-text color="danger">Gravitè :</ion-text>
-      {{ ConsultationMedService.consultation_id.oeil_gaucheAI.gravite }}
-    </div>
 
-    <br />
-
-    <br /> -->
     <ng-container [ngSwitch]="segment">
       <app-details-gauche *ngSwitchCase="'gauche'"> </app-details-gauche>
     </ng-container>
   </ion-content>
-  <!-- <ion-card class="cardfull">
-      <swiper
-        [config]="config"
-        class="swiper-slide"
-        data-swiper-autoplay="2000"
-      >
-        <ng-template
-          swiperSlide
-          *ngFor="let imge of photoService.photos; let i = index"
-        >
-          <img
-            [src]="imge.webviewPath"
-            onerror="this.src='assets/add.jpg'"
-            alt="alternative"
-            tappable
-            (click)="ConsultationMedService.openPreview(imge.webviewPath)"
-          />
-        </ng-template>
-      </swiper>
-    </ion-card>
-    <div class="details">
-      <h5>AI Résultat</h5>
-      <h6>
-        Patient
-        <ion-text color="primary">{{
-          ConsultationMedService.selected_users.name
-        }}</ion-text>
-        a la maladie de la diabéte au niveau de l’oeil droite.
-      </h6>
-    </div>-->
+
   <ion-button
     color="primary"
     expand="block"
