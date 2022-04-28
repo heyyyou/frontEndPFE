@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
-import { AlertController } from '@ionic/angular';
+import { ActivatedRoute, Router } from '@angular/router';
+import { AlertController, MenuController } from '@ionic/angular';
 import { ConsultationMedService } from 'src/app/services/consultation-med.service';
 import { PhotoService } from 'src/app/services/photo.service';
 import { UserService } from 'src/app/services/user.service';
@@ -15,24 +15,67 @@ export class ListeConsultExpertComponent implements OnInit {
   public avisExpert;
   Consultation: any[]
   ConsultationF: any
+  base64: string;
+  user: any
+  name: any
+  uploadImageData: any
+  selectedFile: File;
+  retrievedImage: any;
+  base64Data: any;
+  retrieveResponse: any;
+  message: string;
+  imageName: any;
+  url: any;
+  imagePath: any; //string=null;
+  nombreConsult: any
   consult: any
+  idExp: any
   constructor(public ConsultationMedService: ConsultationMedService,
-    public photoService: PhotoService, public service: UserService, public router: Router, public alertController: AlertController) { }
+    public photoService: PhotoService, private ar: ActivatedRoute, public service: UserService, public router: Router, public alertController: AlertController) { }
 
   newConsultation() {
     this.router.navigate(["consultation"])
   }
   ngOnInit() {
+    this.here()
+    this.idExp = parseInt(localStorage.getItem("id"))
+
     this.service.getAllConsultationExpert().subscribe((params) => {
+
       this.Consultation = params; this.ConsultationF = params; this.consult = params
-      console.log(this.Consultation)
+      console.log("sssss", this.Consultation)
     })
   }
   showRating(rating) {
     this.currentRatingValue = (rating);
 
   }
+  here() {
+    let id: number
+    this.ar.paramMap.subscribe((params) => {
+      id = +params.get('id')
+      this.service.getDataExpert(id).subscribe(data => {
 
+
+        this.user = data
+        this.name = this.user.username
+        console.log("eee", this.user.image)
+        if (this.user.image == null) {
+          this.imagePath = "assets/123.jpg"
+        }
+        else {
+          this.retrieveResponse = this.user;
+          this.base64Data = this.retrieveResponse.image;
+          this.imagePath = 'data:image/jpeg;base64,' + this.base64Data;
+        }
+
+      });
+
+      console.log(this.user)
+
+    });
+
+  }
   async suppConsultation() {
 
 

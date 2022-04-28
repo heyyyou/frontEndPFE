@@ -434,6 +434,44 @@ export class UserService {
 
 
   }
+  private demandeD = "http://localhost:8080/consultation/demanderAvisD"
+  demanderAvisD(idGen: number, idConsult: number): Observable<Object> {
 
+    return this.http.put(`${this.demandeD}/${idGen}/${idConsult}`, {
+      responseType: 'text',
+    }
+
+    )
+
+
+
+  }
+  private demandeG = "http://localhost:8080/consultation/demanderAvisG"
+  demanderAvisG(idGen: number, idConsult: number): Observable<Object> {
+
+    return this.http.put(`${this.demandeG}/${idGen}/${idConsult}`, {
+      responseType: 'text',
+
+    }
+
+    )
+
+
+
+  }
+  // private historiquesExpert = "http://localhost:8080/consultation/historiques"
+  // historiqueExpert(id: number): Observable<Object[]> {
+  //   return this.http.get<Object[]>(`${this.historiquesExpert}/${id}`)
+  // }
+
+
+  private badge = "http://localhost:8080/consultation/demandes"
+  NotifBadge(): Observable<Object[]> {
+    return this.http.get<Object[]>(`${this.badge}`)
+  }
+  private consultationavis = "http://localhost:8080/consultation/test"
+  consultationNotifParDemande(): Observable<Object[]> {
+    return this.http.get<Object[]>(`${this.consultationavis}`)
+  }
 }
 

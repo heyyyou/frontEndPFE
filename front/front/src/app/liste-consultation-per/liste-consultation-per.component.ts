@@ -16,7 +16,7 @@ export class ListeConsultationPerComponent implements OnInit {
   cin: any
   consultation: any
   private sub: any;
-
+  nbrConsultation: any
   ConsultationF
   currentRatingValue: number = null;
   public avisExpert;
@@ -31,6 +31,8 @@ export class ListeConsultationPerComponent implements OnInit {
     this.router.navigate(["consultation"])
   }
   ngOnInit() {
+    this.presentToaste()
+
     console.log("dsdsdsdsdsd")
     this.sub = this.route.params.subscribe(params => {
       this.cin = +params['id']
@@ -38,10 +40,20 @@ export class ListeConsultationPerComponent implements OnInit {
       console.log(this.cin)
       this.service.getConsultationPatient(parseInt(localStorage.getItem("id")), this.cin).subscribe((params) => {
         this.consultation = params; this.ConsultationF = params;
-        console.log(this.consultation);
+        this.nbrConsultation = this.consultation.length
+        console.log("zazzzz", this.nbrConsultation);
       })
     }
     )
+  }
+  async presentToaste() {
+    const toast = await this.toastController.create({
+      message: 'Welcome Doctor' + " " + localStorage.getItem("name"),
+      duration: 3000,
+      position: 'top',
+      cssClass: "customToast"
+    });
+    toast.present();
   }
   async suppConsultation(id: number) {
 

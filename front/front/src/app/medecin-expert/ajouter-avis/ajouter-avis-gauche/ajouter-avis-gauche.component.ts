@@ -22,7 +22,8 @@ export class AjouterAvisGaucheComponent implements OnInit {
   base64Data: any;
   idavisExpert: any
   private sub: any;
-  retrieveResponse: any;
+  retrieveResponse: any
+  saine: any = false;
   imagePath: any; //string=null;
   avisExpert: any
   patient: any
@@ -76,12 +77,10 @@ export class AjouterAvisGaucheComponent implements OnInit {
 
 
   }
-  droite() {
-
+  onChange() {
+    this.saine = true
   }
-  gauche() {
 
-  }
   async presentLoading() {
     const loading = await this.loadingController.create({
       cssClass: 'my-custom-class',

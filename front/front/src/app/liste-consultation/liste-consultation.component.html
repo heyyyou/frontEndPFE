@@ -79,6 +79,7 @@
         </div>
       </ion-toolbar>
       <ion-searchbar
+        *ngIf="nbrConsultation !== 0"
         class="searchBar ion-padding"
         placeholder="cherchez une consultation"
         [(ngModel)]="texte"
@@ -86,6 +87,14 @@
     </ion-header>
 
     <ion-content>
+      <div *ngIf="nbrConsultation === 0">
+        <img class="pas" src="assets/14.png" />
+      </div>
+      <div *ngIf="nbrConsultation === 0">
+        <ion-text class="required" color="primary"
+          >"vous n'avez pas aucune consultation pour le moment"</ion-text
+        >
+      </div>
       <ion-card *ngFor="let item of consultation">
         <img class="image" src="assets/6.jpg" />
         <ion-item lines="none">

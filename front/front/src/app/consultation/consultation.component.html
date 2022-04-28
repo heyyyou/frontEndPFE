@@ -84,12 +84,12 @@
             multiple
             class="select-profile-picture custom-file-input"
             (change)="selectFiles($event)"
-            [disabled]="images.length != 0"
+            [disabled]="images.length !== 0"
           />
           <div
             class="trash"
             style="text-align: center"
-            *ngIf="images.length != 0"
+            *ngIf="images.length !== 0"
           >
             <ion-button
               fill="outline"
@@ -122,6 +122,19 @@
             </ng-template>
           </swiper>
         </ion-card>
+        <ion-button
+          #btn
+          expand="block"
+          size="large"
+          fill="outline"
+          class="AImodel"
+          [disabled]="
+            cinPatient === 0 || (images.length === 0 && images2.length === 0)
+          "
+          shape="round"
+          (click)="uploadFiles2(); btn.disabled = true"
+          >Ajouter Consultation Droite</ion-button
+        >
       </div>
 
       <!-- now gauche -->
@@ -193,7 +206,7 @@
           "
           shape="round"
           (click)="uploadFiles(); btn.disabled = true"
-          >Ajouter Consultation</ion-button
+          >Ajouter Consultation Gauche</ion-button
         >
 
         <ion-button

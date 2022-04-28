@@ -30,8 +30,8 @@ export class ConsultationComponent implements OnInit {
   myDate: String = new Date().toLocaleDateString();
 
 
-
-
+  clickedD: any = 0
+  clickedG: any = 0
   images2: any[] = [];
   val: any = 0;
 
@@ -81,11 +81,13 @@ export class ConsultationComponent implements OnInit {
       this.service.ajouterAutoDetection(parseInt(localStorage.getItem("id")), this.idConsult).subscribe((params) => {
         this.autoDetection = params
         this.service.idAutoDetection = this.autoDetection.id;
+        this.service.updateAutoDetectionInConsultation(parseInt(localStorage.getItem("id")), this.idConsult, this.autoDetection.id).subscribe((params) => { })
+        this.consultation = params, this.idConsult = this.consultation.id
         console.log("ba333333333333333333", this.autoDetection.id)
         console.log("rahmaaaaaaaaaaaaaaaaaaaa", this.consultation);
-        this.service.updateAutoDetectionInConsultation(parseInt(localStorage.getItem("id")), this.idConsult, this.autoDetection.id).subscribe((params) => {
-          this.consultation = params, this.idConsult = this.consultation.id
-        })
+        // this.service.updateAutoDetectionInConsultation(parseInt(localStorage.getItem("id")), this.idConsult, this.autoDetection.id).subscribe((params) => {
+        //   this.consultation = params, this.idConsult = this.consultation.id
+        // })
         this.router.navigate(['detailConsultation', this.idConsult, this.patient.cin, this.autoDetection.id]);
       })
 
@@ -408,68 +410,81 @@ export class ConsultationComponent implements OnInit {
   }
 
   uploadFiles() {
+
     this.var = 1;
-    this.service.ajouterDataConsultation(this.idGen, this.cinPatient).subscribe((params) => {
-      this.consultation = params
-      console.log("rahmaaaaaaaaaaaaaaaaaaaa", this.consultation);
-      // post rj3tli id consultation
+    if (this.clickedD === 0) {
+      this.service.ajouterDataConsultation(this.idGen, this.cinPatient).subscribe((params) => {
+        this.consultation = params
+        console.log("rahmaaaaaaaaaaaaaaaaaaaa", this.consultation);
+        // post rj3tli id consultation
 
-      this.idConsult = this.consultation.id
-      console.log(this.idConsult);
-      // this.service.updateIdAutoDetection(this.idGen, this.idConsult, this.autoDetection.id).subscribe(event => { })
-      // api consultation  bch tt7at lahneee  , subscribe ttsaker fi commentaire  num2 --> post
-      this.message = '';
-      this.ekhdem()
+        this.idConsult = this.consultation.id
+        localStorage.setItem("idConsultation", this.consultation.id)
+        console.log(this.idConsult);
+        // this.service.updateIdAutoDetection(this.idGen, this.idConsult, this.autoDetection.id).subscribe(event => { })
+        // api consultation  bch tt7at lahneee  , subscribe ttsaker fi commentaire  num2 --> post
+        this.message = '';
+        for (let i = 0; i < this.selectedFiles2.length; i++) {
+          this.upload(i, this.selectedFiles2[i]);
+
+        }
+      }
+
+      )
+    } else {
+      for (let i = 0; i < this.selectedFiles2.length; i++) {
+        this.upload(i, this.selectedFiles2[i]);
+      }
+
     }
-    )
-
-    // console.log("bellehy", this.selectedFiles2.length);
-    // if (this.selectedFiles.length !== 0) {
-    //   for (let i = 0; i < this.selectedFiles2.length; i++) {
-    //     this.upload(i, this.selectedFiles2[i]);
-    //   }
-    // }
 
 
-    // // console.log(this.selectedFiles.length);
-    // if (this.selectedFiles2.length !== 0) {
-    //   for (let i = 0; i < this.selectedFiles.length; i++) {
-    //     console.log("ekhdem", this.selectedFiles.length);
+    this.presentToastError()
+    this.clickedG = 1
 
-    //     this.upload2(i, this.selectedFiles[i]);
-    //   }
+  }
 
-    // }
+
+  uploadFiles2() {
+    this.var = 1;
+    if (this.clickedG === 0) {
+      this.service.ajouterDataConsultation(this.idGen, this.cinPatient).subscribe((params) => {
+        this.consultation = params
+        console.log("rahmaaaaaaaaaaaaaaaaaaaa", this.consultation);
+        // post rj3tli id consultation
+
+        this.idConsult = this.consultation.id
+        console.log(this.idConsult);
+        // this.service.updateIdAutoDetection(this.idGen, this.idConsult, this.autoDetection.id).subscribe(event => { })
+        // api consultation  bch tt7at lahneee  , subscribe ttsaker fi commentaire  num2 --> post
+        this.message = '';
+        for (let i = 0; i < this.selectedFiles.length; i++) {
+          this.upload2(i, this.selectedFiles[i]);
+
+
+
+        }
+
+      }
+      )
+    } else {
+      for (let i = 0; i < this.selectedFiles.length; i++) {
+        this.upload2(i, this.selectedFiles[i]);
+
+
+
+      }
+    }
+
 
 
     // commentaire num2
     this.presentToastError()
-
+    this.clickedD = 1;
   }
 
 
 
-  ekhdem() {
-    // BUGGGGGGGGGGGGGGGGGGGGGGGGGG HEREEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE
-    for (let i = 0; i < this.selectedFiles2.length; i++) {
-      this.upload(i, this.selectedFiles2[i]);
-
-    }
-    //TEKHDEM KEN LULAAAA WLA LES DEUX
-    for (let i = 0; i < this.selectedFiles.length; i++) {
-      this.upload2(i, this.selectedFiles[i]);
-
-
-
-    }
-    // if (this.images.length !== 0) {
-    //   for (let i = 0; i < this.selectedFiles.length; i++) {
-
-    //     this.upload2(i, this.selectedFiles[i]);
-    //   }
-    // }
-
-  }
 
 
 

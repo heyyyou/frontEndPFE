@@ -13,7 +13,7 @@
         <h4 style="color: white">historiques</h4>
 
         <ion-avatar slot="end" class="ion-margin avatar">
-          <img src="assets/doctour.png" />
+          <img src="{{ imagePath }}" />
         </ion-avatar>
       </div>
     </ion-toolbar>
@@ -25,7 +25,12 @@
 
   <ion-content>
     <div *ngFor="let item of Consultation">
-      <ion-card *ngIf="item?.demandeAvis === 1">
+      <ion-card
+        *ngIf="
+          item?.autoDetection?.avisExpert !== null &&
+          item?.autoDetection?.avisExpert?.expert?.id === idExp
+        "
+      >
         <img class="image" src="assets/6.jpg" />
 
         <ion-item lines="none">
@@ -67,7 +72,11 @@
                 slot="start"
                 fill="outline"
                 shape="round"
-                (click)="openDetail()"
+                [routerLink]="[
+                  '/DetailsHistoriques',
+                  item?.id,
+                  item?.patient?.cin
+                ]"
                 >Details</ion-button
               >
             </div>

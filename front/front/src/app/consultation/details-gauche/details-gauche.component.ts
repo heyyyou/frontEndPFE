@@ -21,7 +21,7 @@ export class DetailsGaucheComponent implements OnInit {
   patient: any
   base64 = '';
   images2: any[] = [];
-
+  idAutoDetection: any
   consultation: any
 
   DemandeAvis: boolean = false; // f details ya mariem demain
@@ -68,6 +68,14 @@ export class DetailsGaucheComponent implements OnInit {
 
   }
   async presentLoading() {
+
+    this.service.updateAutoDetectionInConsultation(parseInt(localStorage.getItem("id")), this.idConsult, this.idAutoDetection).subscribe((params) => {
+      this.consultation = params, this.idConsult = this.consultation.id
+      this.service.demanderAvisG(parseInt(localStorage.getItem("id")), this.idConsult).subscribe((params) => { this.consultation = params, console.log("qsdqsdqsdqsdcvvbbbbbb", this.consultation) })
+
+    })
+
+
     const loading = await this.loadingController.create({
       cssClass: 'my-custom-class',
       message: 'Dossier médical en cours de construction',
@@ -146,6 +154,8 @@ export class DetailsGaucheComponent implements OnInit {
     this.sub = this.route.params.subscribe(params => {
       this.idConsult = +params['id'];
       this.idPatient = +params['idp'];
+      this.idAutoDetection = +params['idA']
+
       console.log("baaaaaa3", this.idPatient);
       console.log("boooooooooooooooooooooooo", this.idConsult);
       this.service.patientID(parseInt(localStorage.getItem("id")), this.idPatient).subscribe((params) => {
@@ -156,7 +166,7 @@ export class DetailsGaucheComponent implements OnInit {
     this.service.getConsultationID(parseInt(localStorage.getItem("id")), this.idConsult, this.idPatient).subscribe((params => {
       this.consultation = params;
       console.log(this.consultation)
-      if (this.consultation.image1_Gauche == null) {
+      if (this.consultation.image1_Gauche === null) {
         this.imagePath = "assets/123.jpg"
       }
       else {
@@ -170,7 +180,7 @@ export class DetailsGaucheComponent implements OnInit {
 
 
 
-      if (this.consultation.image2_Gauche == null) {
+      if (this.consultation.image2_Gauche === null) {
         this.imagePath = "assets/123.jpg"
       }
       else {
@@ -183,7 +193,7 @@ export class DetailsGaucheComponent implements OnInit {
       }
 
 
-      if (this.consultation.image3_Gauche == null) {
+      if (this.consultation.image3_Gauche === null) {
         this.imagePath = "assets/123.jpg"
       }
       else {
@@ -196,7 +206,7 @@ export class DetailsGaucheComponent implements OnInit {
       }
 
 
-      if (this.consultation.image4_Gauche == null) {
+      if (this.consultation.image4_Gauche === null) {
         this.imagePath = "assets/123.jpg"
       }
       else {
@@ -208,7 +218,7 @@ export class DetailsGaucheComponent implements OnInit {
         console.log("tableee 2", this.images2[3]);
       }
 
-      if (this.consultation.image5_Gauche == null) {
+      if (this.consultation.image5_Gauche === null) {
         this.imagePath = "assets/123.jpg"
       }
       else {

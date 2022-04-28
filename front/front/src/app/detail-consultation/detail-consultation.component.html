@@ -100,19 +100,30 @@
       <ion-text color="danger">Gravitè :</ion-text>
       {{ ConsultationMedService.consultation_id.oeil_gaucheAI.gravite }}
     </div>
-
+    <ion-button
+      *ngIf="consultation?.demandeAvisD === 0"
+      #btn
+      color="primary"
+      expand="block"
+      size="large"
+      shape="round"
+      class="AvisExpert"
+      (click)="DemanderAvis(); btn.disabled = true"
+      >Demande Avis Expert</ion-button
+    >
+    <ion-button
+      *ngIf="consultation?.demandeAvisD !== 0"
+      color="primary"
+      expand="block"
+      size="large"
+      shape="round"
+      class="AvisExpert"
+      (click)="DemanderAvis()"
+      disabled="true"
+      >Demande Avis Expert</ion-button
+    >
     <ng-container [ngSwitch]="segment">
       <app-details-gauche *ngSwitchCase="'gauche'"> </app-details-gauche>
     </ng-container>
   </ion-content>
-
-  <ion-button
-    color="primary"
-    expand="block"
-    size="large"
-    shape="round"
-    class="AvisExpert"
-    (click)="DemanderAvis()"
-    >Avis Expert</ion-button
-  >
 </ion-app>

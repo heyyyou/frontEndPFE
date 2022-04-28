@@ -1,13 +1,9 @@
+<!-- now gauche -->
+
 <div *ngIf="!isLoadingAI">
   <div class="ajouterdelet">
     <!-- <ion-button
-      *ngIf="photoService.photos.length <= 4; else thenBlock" -->
-
-    <ng-template #thenBlock>
-      <ion-button fill="solid" color="primary" (click)="presentToast()"
-        >+</ion-button
-      ></ng-template
-    >
+        *ngIf="photoService.photos.length <= 4; else thenBlock" -->
   </div>
   <div>
     <ion-card class="cardfull">
@@ -16,7 +12,7 @@
         accept="image/*"
         multiple
         class="select-profile-picture custom-file-input"
-        (change)="selectFiles($event)"
+        (change)="selectFiles2($event)"
         [disabled]="images.length != 0"
       />
       <div class="trash" style="text-align: center" *ngIf="images.length != 0">
@@ -31,12 +27,12 @@
       <swiper [config]="config" class="swiper-slide">
         <ng-template swiperSlide *ngFor="let file of images; let i = index">
           <!-- <div class="bouttontrash">
-            <ion-button
-              fill="outline"
-              color="priamry"
-              (click)="showActionSheet(i)"
-              ><ion-icon name="trash"></ion-icon
-            ></ion-button> -->
+              <ion-button
+                fill="outline"
+                color="priamry"
+                (click)="showActionSheet(i)"
+                ><ion-icon name="trash"></ion-icon
+              ></ion-button> -->
 
           <img
             [src]="file"
@@ -49,14 +45,18 @@
       </swiper>
     </ion-card>
   </div>
+
   <ion-button
+    #btn
     expand="block"
     size="large"
     fill="outline"
     class="AImodel"
+    [disabled]="
+      cinPatient === 0 || (images.length === 0 && images2.length === 0)
+    "
     shape="round"
-    [disabled]="service.selectedPatient === null"
-    (click)="uploadFiles()"
+    (click)="uploadFiles(); btn.disabled = true"
     >Ajouter Consultation</ion-button
   >
 
@@ -66,12 +66,11 @@
     class="AImodel"
     shape="round"
     (click)="presentLoading()"
-    [disabled]="
-      disableButton || photoService.photos.length === 0 || dd === null
-    "
+    [disabled]="this.var === 0"
     >AI Modal</ion-button
   >
 </div>
+
 <ion-content *ngIf="isLoadingAI">
   <app-loading-ai></app-loading-ai>
 </ion-content>

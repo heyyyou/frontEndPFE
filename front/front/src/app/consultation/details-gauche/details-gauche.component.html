@@ -12,7 +12,7 @@
   </swiper>
 </ion-card>
 <div class="details">
-  <h5>AI Résultat</h5>
+  <h5>AI Résultat Oeil Gauche</h5>
   <h6>
     <ion-text color="danger">Maladie : </ion-text>
     Oeil Gauche :{{
@@ -23,12 +23,26 @@
   {{ ConsultationMedService.consultation_id.oeil_gaucheAI.gravite }}
 </div>
 
-<!-- <ion-button
-    color="primary"
-    expand="block"
-    size="large"
-    shape="round"
-    class="AvisExpert"
-    (click)="DemanderAvis()"
-    >Avis Expert</ion-button
-  > -->
+<ion-button
+  *ngIf="consultation?.demandeAvisG === 0"
+  #btn
+  color="primary"
+  expand="block"
+  size="large"
+  shape="round"
+  class="AvisExpert"
+  (click)="DemanderAvis(); btn.disabled = true"
+  >Demande Avis Expert</ion-button
+>
+
+<ion-button
+  *ngIf="consultation?.demandeAvisG !== 0"
+  color="primary"
+  expand="block"
+  size="large"
+  shape="round"
+  class="AvisExpert"
+  (click)="DemanderAvis()"
+  disabled="true"
+  >Demande Avis Expert</ion-button
+>

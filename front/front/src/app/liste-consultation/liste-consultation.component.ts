@@ -86,7 +86,10 @@ export class ListeConsultationComponent implements OnInit {
   getAllconsultation() {
     console.log("wooooooh");
     this.id = parseInt(localStorage.getItem("id"))
-    this.service.getallConsultation(this.id).subscribe((params) => { this.consultation = params; this.ConsultationF = params; this.consult = params })
+    this.service.getallConsultation(this.id).subscribe((params) => {
+      this.consultation = params; this.ConsultationF = params; this.consult = params
+      this.nbrConsultation = this.consultation.length
+    })
   }
 
 

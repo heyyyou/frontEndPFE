@@ -1,5 +1,4 @@
 <ion-app>
-  <!-- ici oeil droite  -->
   <ion-header class="ion-no-border">
     <ion-toolbar
       color="primary2"
@@ -8,14 +7,14 @@
       <ion-buttons slot="start">
         <ion-back-button defaultHref="homeExpert"></ion-back-button>
       </ion-buttons>
-      <!--
+
       <ion-avatar slot="end" class="ion-margin avatar">
         <img src="assets/doctour.png" />
-      </ion-avatar> -->
+      </ion-avatar>
     </ion-toolbar>
   </ion-header>
 
-  <ion-modal
+  <!-- <ion-modal
     trigger="trigger-button1"
     [isOpen]="true"
     [breakpoints]="[0.1, 0.5, 1]"
@@ -64,11 +63,11 @@
         </ion-row>
       </ion-grid>
     </ng-template>
-  </ion-modal>
+  </ion-modal> -->
 
   <ion-item>
     <ion-avatar slot="start">
-      <img src="{{ consultationMedService.consultation_id.url }}" />
+      <img src="assets/123.jpg" />
     </ion-avatar>
     <ion-label>
       <p>Patient,</p>
@@ -115,14 +114,12 @@
       >
         <ion-segment-button
           value="droite"
-          (click)="droite()"
           [disabled]="consultation?.demandeAvisD === 0"
           ><ion-icon name="eye-outline" color="primary2"></ion-icon
           ><ion-text color="primary2"> Oeil Droite</ion-text>
         </ion-segment-button>
         <ion-segment-button
           value="gauche"
-          (click)="what()"
           [disabled]="consultation?.demandeAvisG === 0"
         >
           <ion-icon name="eye-outline" color="primary2"></ion-icon>
@@ -160,113 +157,38 @@
           1
         </div>
 
-        <div
-          class="avis ion-padding ion-margin"
-          *ngIf="consultation?.avisExpert !== null"
-        >
-          <div>
-            <ion-label class="avisExpert ion-margin"
-              >Donnez un avis oeil Droite</ion-label
-            >
-          </div>
-          <div class="ion-margin" *ngIf="consultation?.avisExpert !== null">
-            <ion-item class="itemborder" lines="none">
-              <ion-text>Saine</ion-text>
-              <ion-checkbox color="primary" slot="end">Saine</ion-checkbox>
-            </ion-item>
-            <br />
-            <ion-item class="itemborder">
-              <ion-label class="comments">choisissez une maladie</ion-label>
-              <ion-select
-                id="maladieDroite"
-                ngModel
-                name="maladieDroite"
-                #maladieDroite
-                interface="popover"
-                [(ngModel)]="selected_maladie"
-                (ionChange)="choose()"
-              >
-                <ion-select-option
-                  *ngFor="let item of maladie"
-                  value="{{ item.value }}"
-                  >{{ item.nom }}
-                </ion-select-option>
-              </ion-select>
-            </ion-item>
-            <ion-item class="itemborder" lines="none">
-              <ion-label class="comments">Gravité</ion-label>
-              <ion-select
-                interface="popover"
-                id="graviteDroite"
-                ngModel
-                name="graviteDroite"
-                #graviteDroite
-              >
-                <ion-select-option *ngFor="let item of gravite">{{
-                  item.valeur
-                }}</ion-select-option>
-              </ion-select>
-            </ion-item>
-          </div>
-          <ion-item
-            class="itemborder"
-            *ngIf="consultation?.avisExpert !== null"
-          >
-            <ion-item lines="none">
-              <ion-textarea
-                placeholder="ajouter un commentaire..."
-                id="commentaireDroite"
-                ngModel
-                name="commentaireDroite"
-                #commentaireDroite
-              >
-              </ion-textarea>
-            </ion-item>
+        <div class="avis ion-margin ion-padding">
+          <ion-item lines="none" color="aviscolor">
+            <div>
+              <ion-label class="avisExpert ion-margin">Votre Avis :</ion-label>
+            </div>
+
+            <!-- modification bsh yaaml api update yrjaali l hajet l khtrtha  -->
           </ion-item>
-        </div>
-        <div class="div">
-          <ion-button
-            *ngIf="consultation?.avisExpert !== null"
-            color="primary2"
-            size="Medium"
-            class="ion-margin"
-            id="trigger-button"
-            (click)="truthClick(f)"
-            [disabled]="disableButton || choixMaladie === null"
-            >valider
-          </ion-button>
-          <ion-button
-            *ngIf="consultation?.avisExpert === 0"
-            color="primary2"
-            size="Medium"
-            class="ion-margin"
-            id="trigger-button"
-            (click)="truthClick(f)"
-            disabled="true"
-            >valider
-          </ion-button>
+
+          <div class="text">
+            <div class="ion-margin">
+              <ion-label class="oeil">Maladie :</ion-label
+              ><ion-text class="ion-margin"
+                >{{ consultation?.autoDetection?.avisExpert.maladieDroite }}
+              </ion-text>
+            </div>
+            <div class="ion-margin">
+              <ion-label class="oeil">Gravité :</ion-label
+              ><ion-text class="ion-margin"
+                >{{ consultation?.autoDetection?.avisExpert.graviteDroite }}
+              </ion-text>
+            </div>
+
+            <div class="ion-margin">
+              <ion-label class="oeil">Commentaire :</ion-label
+              ><ion-text class="ion-margin"
+                >{{ consultation?.autoDetection?.avisExpert.commentaireDroite }}
+              </ion-text>
+            </div>
+          </div>
         </div>
       </div>
     </form>
-    <!-- Gauche -->
-    <ng-container [ngSwitch]="segment"
-      ><app-ajouter-avis-gauche
-        *ngSwitchCase="'gauche'"
-      ></app-ajouter-avis-gauche>
-    </ng-container>
-    <!--
-    <div *ngIf="consultationMedService.consultation_id.avisExpert === true">
-      <app-toast></app-toast> -->
-    <!-- </div> -->
-    <ion-item lines="none">
-      <ion-fab-button
-        size="small"
-        slot="end"
-        id="trigger-button1"
-        color="danger"
-      >
-        <ion-icon name="alert-outline"></ion-icon>
-      </ion-fab-button>
-    </ion-item>
   </ion-content>
 </ion-app>

@@ -21,6 +21,7 @@ export class DepistageGaucheComponent implements OnInit {
 
   public disableButton = false;
   cinPatient: any
+  var: any
   idGen: any;
   imagePath: any;
   myFiles: string[] = [];
@@ -71,6 +72,79 @@ export class DepistageGaucheComponent implements OnInit {
     //   this.presentLoadingh();
     // }
     // )
+  }
+  selectFiles2(event) {
+
+    const files = event.target.files;
+    let isImage = true;
+    for (let i = 0; i < files.length; i++) {
+      if (files.item(i).type.match('image.*')) {
+        continue;
+      } else {
+        isImage = false;
+        alert('invalid format!');
+        break;
+      }
+    }
+
+    if (isImage) {
+      this.selectedFiles = event.target.files;
+      var reader = new FileReader();
+      var reader1 = new FileReader();
+      var reader2 = new FileReader();
+      var reader3 = new FileReader();
+      var reader4 = new FileReader();
+      var reader5 = new FileReader();
+      for (let i = 0; i < this.selectedFiles.length; i++) {
+        this.selectedFile = this.selectedFiles[i];
+        if (i == 0) {
+          reader1.readAsDataURL(this.selectedFiles[i]);
+          reader1.onload = (event) => {
+            this.imagee = reader1.result;
+            this.images[i] = this.imagee;
+            console.log(this.images[i])
+          }
+        }
+        if (i == 1) {
+          reader2.readAsDataURL(this.selectedFiles[i]);
+          reader2.onload = (event) => {
+            this.imagee = reader2.result;
+            this.images[i] = this.imagee;
+            console.log(this.images[i])
+          }
+        }
+        if (i == 2) {
+          reader3.readAsDataURL(this.selectedFiles[i]);
+          reader3.onload = (event) => {
+            this.imagee = reader3.result;
+            this.images[i] = this.imagee;
+            console.log(this.images[i])
+          }
+        }
+        if (i == 3) {
+          reader4.readAsDataURL(this.selectedFiles[i]);
+          reader4.onload = (event) => {
+            this.imagee = reader4.result;
+            this.images[i] = this.imagee;
+            console.log(this.images[i])
+          }
+        }
+        if (i == 4) {
+          reader5.readAsDataURL(this.selectedFiles[i]);
+          reader5.onload = (event) => {
+            this.imagee = reader5.result;
+            this.images[i] = this.imagee;
+            console.log(this.images[i])
+            // console.log("pleaseeeeeeeeeeeeeeeeeeeeeeee", this.values.push(this.selectedFiles.length));
+
+          }
+        }
+        // console.log("pleaseeeeeeeeeeeeeeeeeeeeeeee", this.values.push(this.selectedFiles.length));
+      }
+    } else {
+      this.selectedFiles = undefined;
+    }
+
   }
 
   async presentLoadingh() {
@@ -310,23 +384,45 @@ export class DepistageGaucheComponent implements OnInit {
     }
   }
 
+
+
+  // this.service.ajouterDataConsultation(this.idGen, this.cinPatient).subscribe((params) => {
+  //   this.consultation = params
+
+  //   this.idConsult = this.consultation.id
+  //   console.log(this.idConsult);
+  //   // api consultation  bch tt7at lahneee  , subscribe ttsaker fi commentaire  num2 --> post
+  //   this.message = '';
+  //   for (let i = 0; i < this.selectedFiles.length; i++) {
+  //     this.upload(i, this.selectedFiles[i]);
+  //   }
+  // })
+  // commentaire num2
+
+
+
+
   uploadFiles() {
+    this.var = 1;
+    this.service.ajouterDataConsultation(this.idGen, this.cinPatient).subscribe((params) => {
+      this.consultation = params
+      console.log("rahmaaaaaaaaaaaaaaaaaaaa", this.consultation);
+      // post rj3tli id consultation
 
-    // this.service.ajouterDataConsultation(this.idGen, this.cinPatient).subscribe((params) => {
-    //   this.consultation = params
+      this.idConsult = this.consultation.id
+      console.log(this.idConsult);
+      // this.service.updateIdAutoDetection(this.idGen, this.idConsult, this.autoDetection.id).subscribe(event => { })
+      // api consultation  bch tt7at lahneee  , subscribe ttsaker fi commentaire  num2 --> post
+      this.message = '';
+      for (let i = 0; i < this.selectedFiles.length; i++) {
+        this.upload(i, this.selectedFiles[i]);
 
-    //   this.idConsult = this.consultation.id
-    //   console.log(this.idConsult);
-    //   // api consultation  bch tt7at lahneee  , subscribe ttsaker fi commentaire  num2 --> post
-    //   this.message = '';
-    //   for (let i = 0; i < this.selectedFiles.length; i++) {
-    //     this.upload(i, this.selectedFiles[i]);
-    //   }
-    // })
-    // commentaire num2
 
+
+      }
+    }
+    )
   }
-
 
 
 

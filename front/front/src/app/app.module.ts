@@ -37,7 +37,7 @@ import { StatAvisComponent } from './statistique/stat-avis/stat-avis.component';
 import { AjouterAvisComponent } from './medecin-expert/ajouter-avis/ajouter-avis.component';
 import { ListeConsultExpertComponent } from './medecin-expert/liste-consult-expert/liste-consult-expert.component';
 import { DetailsConsultAvisComponent } from './medecin-expert/details-consult-avis/details-consult-avis.component';
-import { GestionAvisComponent } from './medecin-expert/details-consult-avis/gestion-avis/gestion-avis.component';
+import { GestionAvisComponent } from './medecin-expert/details-consult-avis/details-historiques/gestion-avis.component';
 import { DepistageGaucheComponent } from './consultation/depistage-gauche/depistage-gauche.component';
 import { DepistageDroiteComponent } from './consultation/depistage-droite/depistage-droite.component';
 import { DetailsDroiteComponent } from './consultation/details-droite/details-droite.component';

@@ -37,7 +37,7 @@ export class ListePatientComponent implements OnInit {
 
       this.patient = params;
       this.nbrPatient = this.patient.length;
-      console.log(this.patient.length);
+      console.log("zzazazazazazaz", this.patient.length);
       // this.name = this.patient.username
 
 
@@ -145,6 +145,7 @@ export class ListePatientComponent implements OnInit {
 
   ngOnInit() {
     console.log("wooooooh");
+    this.listePatient()
     this.id = parseInt(localStorage.getItem("id"))
     this.service.getPatient(this.id).subscribe((params) => { this.patient = params; this.patientF = params; })
     // console.log(params);

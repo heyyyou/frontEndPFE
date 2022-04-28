@@ -34,6 +34,7 @@ import { AuthGuard } from './shared/auth-guard';
 import { ModifConsultationComponent } from './modif-consultation/modif-consultation.component';
 import { DetailsConsultationwithoutAutoComponent } from './details-consultationwithout-auto/details-consultationwithout-auto.component';
 import { AjouterAvisGaucheComponent } from './medecin-expert/ajouter-avis/ajouter-avis-gauche/ajouter-avis-gauche.component';
+import { GestionAvisComponent } from './medecin-expert/details-consult-avis/details-historiques/gestion-avis.component';
 
 
 const routes: Routes = [
@@ -121,6 +122,9 @@ const routes: Routes = [
   },
 
 
+  {
+    path: 'DetailsHistoriques/:idConsult/:cin', component: GestionAvisComponent
+  },
 
 
 ];

@@ -33,8 +33,7 @@ export class DetailConsultationComponent implements OnInit {
   retrieveResponse2: any
   imagePath: any; //string=null;
   imagePath1: any; //string=null;
-
-
+  demandeAvisD: any
 
   base64Data: any;
   base64Data2: any;
@@ -77,6 +76,17 @@ export class DetailConsultationComponent implements OnInit {
   }
 
   async presentLoading() {
+
+    console.log("zazazazazaz", this.idAutoDetection)
+    this.service.updateAutoDetectionInConsultation(parseInt(localStorage.getItem("id")), this.idConsult, this.idAutoDetection).subscribe((params) => {
+      this.consultation = params, this.idConsult = this.consultation.id //update amltha khtr hchty juste b id
+      console.log("sqsqsqszahlaaa", this.consultation.demanderAvisD)
+      this.service.demanderAvisD(parseInt(localStorage.getItem("id")), this.idConsult).subscribe((params) => {
+        this.consultation = params
+        this.demandeAvisD = this.consultation.demandeAvisD
+      })
+    })
+
     const loading = await this.loadingController.create({
       cssClass: 'my-custom-class',
       message: 'Dossier médical en cours de construction',
@@ -235,7 +245,9 @@ export class DetailConsultationComponent implements OnInit {
     )
     )
   }
-
+  bew() {
+    console.log(this.photoService.photos.length);
+  }
 }
 
 

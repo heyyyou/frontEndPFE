@@ -33,6 +33,7 @@ export class AjouterAvisComponent implements OnInit {
   DemandeAvis: boolean = false; // f details ya mariem demain
   Avis: boolean = false;
   showLoader: boolean;
+  text: any
 
   displayProgress() {
     this.showLoader = true;
@@ -51,7 +52,6 @@ export class AjouterAvisComponent implements OnInit {
   }
   segment = 'droite';
   segmentChanged(ev: any) {
-
 
   }
 
@@ -154,13 +154,25 @@ export class AjouterAvisComponent implements OnInit {
 
 
   async ngOnInit() {
+
     this.sub = this.route.params.subscribe(params => {
       this.idConsult = +params['idConsult'];
       this.idPatient = +params['cin'];
 
       this.service.getConsultationID(parseInt(localStorage.getItem("id")), this.idConsult, this.idPatient).subscribe((params => {
         this.consultation = params;
-        console.log(this.consultation)
+        if (this.consultation.demanderAvisD !== null && this.consultation.demanderAvisG !== null) {
+          this.text = "les deux yeux"
+        }
+        if (this.consultation.demanderAvisD !== null) {
+          this.text = "oeil droite"
+        }
+        if (this.consultation.demanderAvisG !== null) {
+          this.text = "oeil gauche"
+        }
+        console.log(this.consultation);
+        console.log("ddderrrrrrrrrrrrrrrrrrrrr", this.consultation.autoDetection.avisExpert)
+
         if (this.consultation.image1_Droite == null) {
           this.imagePath = "assets/123.jpg"
 
@@ -236,53 +248,59 @@ export class AjouterAvisComponent implements OnInit {
   public disableButton = false;
 
   truthClick(f: NgForm) {
-    this.service.getConsultationID(parseInt(localStorage.getItem("id")), this.idConsult, this.idPatient).subscribe((params => {
-      this.consultation = params;
-      console.log("ddd", this.consultation.autoDetection.avisExpert)
-      this.idavisExpert = this.consultation.autoDetection.avisExpert
-      console.log(this.idavisExpert)
+    this.sub = this.route.params.subscribe(params => {
+      this.idConsult = +params['idConsult'];
+      this.idPatient = +params['cin'];
 
+      this.service.getConsultationID(parseInt(localStorage.getItem("id")), this.idConsult, this.idPatient).subscribe((params => {
+        this.consultation = params;
+        console.log("ddderrrrrrrrrrrrrrrrrrrrr", this.consultation.autoDetection.avisExpert)
+        this.idavisExpert = this.consultation.autoDetection.avisExpert
+        console.log(this.idavisExpert)
 
-      if (this.idavisExpert === null) {
-        this.service.ajouterAvisExpertTableMtaou(parseInt(localStorage.getItem("id"))).subscribe((params) => {
-          // ajout att kol null
-          console.log("laaaaaaaaaaa")
-          this.avisExpert = params
-          this.idavisExpert = this.avisExpert.id
-
-
-          //update ken droite
-
-          this.service.ajouterAvisOeilDroite(this.idavisExpert, f.value).subscribe((params) => {
-            this.avisExpert = params;
+        console.log("ddsdsdsdsdsdsdsdsdsddddddddddddddddddd")
+        if (this.idavisExpert === null) {
+          console.log("fdfdfgdfg")
+          this.service.ajouterAvisExpertTableMtaou(parseInt(localStorage.getItem("id"))).subscribe((params) => {
+            // ajout att kol null
+            console.log("laaaaaaaaaaa")
+            this.avisExpert = params
             this.idavisExpert = this.avisExpert.id
 
-            this.service.updateIdAvisExpertDansAutoDetection(this.consultation.autoDetection.id, this.idConsult, this.idavisExpert).subscribe(() => { console.log("eyyyyyy") })
+            console.log("ezez", this.idavisExpert)
+            //update ken droite
+
+            this.service.ajouterAvisOeilDroite(this.idavisExpert, f.value).subscribe((params) => {
+              this.avisExpert = params;
+              this.idavisExpert = this.avisExpert.id
+
+              this.service.updateIdAvisExpertDansAutoDetection(this.consultation.autoDetection.id, this.idConsult, this.idavisExpert).subscribe(() => { console.log("eyyyyyy") })
+            })
+
           })
 
-        })
-
-      }
+        }
 
 
-      else {
+        else {
 
-        this.service.getConsultationID(parseInt(localStorage.getItem("id")), this.idConsult, this.idPatient).subscribe((params => {
-          this.consultation = params;
-          console.log("ddd", this.consultation.autoDetection.avisExpert)
-          this.idavisExpert = this.consultation.autoDetection.avisExpert.id
-          this.idAutoDetection = this.consultation.autoDetection.id
+          this.service.getConsultationID(parseInt(localStorage.getItem("id")), this.idConsult, this.idPatient).subscribe((params => {
+            this.consultation = params;
+            console.log("ddd", this.consultation.autoDetection.avisExpert)
+            this.idavisExpert = this.consultation.autoDetection.avisExpert.id
+            this.idAutoDetection = this.consultation.autoDetection.id
 
-          this.service.ajouterAvisOeilDroite(this.idavisExpert, f.value).subscribe(() =>
-            this.service.updateIdAvisExpertDansAutoDetection(this.idAutoDetection, this.idConsult, this.idavisExpert).subscribe(() => { console.log("eyyyyyy") })
+            this.service.ajouterAvisOeilDroite(this.idavisExpert, f.value).subscribe(() =>
+              this.service.updateIdAvisExpertDansAutoDetection(this.idAutoDetection, this.idConsult, this.idavisExpert).subscribe(() => { console.log("eyyyyyy") })
 
+            )
+          }
+          )
           )
         }
-        )
-        )
-      }
+      })
+      )
     })
-    )
   }
 
   public gravite = [
@@ -305,22 +323,19 @@ export class AjouterAvisComponent implements OnInit {
 
   ]
   public maladie = [{
+
+
     id: 0,
-    nom: "saine",
-    value: "saine",
-  },
-  {
-    id: 1,
     nom: "diabète",
     value: "diab",
 
 
   }, {
-    id: 2,
+    id: 1,
     nom: "rhétino",
     value: "rhét"
   }, {
-    id: 3,
+    id: 2,
     nom: "surtension",
     value: "surt"
   },

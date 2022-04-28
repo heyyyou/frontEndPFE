@@ -12,7 +12,6 @@ import { MenuController, ToastController } from '@ionic/angular';
 })
 export class HomePage implements OnInit {
   ngOnInit() {
-    this.presentToast()
   }
 
 

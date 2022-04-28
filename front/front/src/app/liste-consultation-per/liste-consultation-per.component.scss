@@ -14,7 +14,7 @@
     }
   }
   ion-content {
-    --background: rgb(250, 245, 245);
+    --background: #ffffff;
   }
 
   .bordered {
@@ -242,4 +242,14 @@ ion-footer {
       background: #3e64ff;
     }
   }
+}
+.pas {
+  position: absolute;
+  top: 151px;
+  left: 8px;
+}
+.required {
+  position: absolute;
+  top: 541px;
+  left: 14px;
 }
