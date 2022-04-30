@@ -58,7 +58,7 @@ const routes: Routes = [
   { path: 'detailConsultation/:id/:idp/:idA', component: DetailConsultationComponent, canActivate: [AuthGuard] },
   { path: 'ListePatient', component: ListePatientComponent, canActivate: [AuthGuard] },
   { path: 'ListeConsultation', component: ListeConsultationComponent, canActivate: [AuthGuard] },
-  { path: 'consultationAvis', component: ConsultationAvisComponent, canActivate: [AuthGuard] },
+  { path: 'consultationAvis/:idConsult/:cin', component: ConsultationAvisComponent, canActivate: [AuthGuard] },
   { path: 'ExpertConsultation', component: ExpertConsultationComponent, canActivate: [AuthGuard] },
   { path: 'parametre', component: ParametreComponent, canActivate: [AuthGuard] },
   { path: 'toastExpert', component: ToastComponent, canActivate: [AuthGuard] },

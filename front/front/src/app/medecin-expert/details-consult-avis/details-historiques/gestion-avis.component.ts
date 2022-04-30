@@ -1,6 +1,6 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { ModalController, AlertController, LoadingController, ToastController } from '@ionic/angular';
+import { ModalController, AlertController, LoadingController, ToastController, IonContent } from '@ionic/angular';
 import { ModalImageComponent } from 'src/app/modal-image/modal-image.component';
 import { ConsultationMedService } from 'src/app/services/consultation-med.service';
 import { UserService } from 'src/app/services/user.service';
@@ -12,6 +12,7 @@ import { SwiperOptions } from 'swiper';
   styleUrls: ['./gestion-avis.component.scss'],
 })
 export class GestionAvisComponent implements OnInit {
+  @ViewChild(IonContent) private content: IonContent;
 
   @Output() shareRatingValue: EventEmitter<number> = new EventEmitter();
   currentValue: number = null;
@@ -37,7 +38,14 @@ export class GestionAvisComponent implements OnInit {
   getValueSelected(value: number) {
     this.shareRatingValue.emit(value);
   }
+  what() {
 
+    this.content.scrollToBottom(500);
+
+
+    console.log("yhees");
+
+  }
 
 
   constructor(public consultationMedService: ConsultationMedService,

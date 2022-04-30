@@ -16,10 +16,10 @@
   </ion-header>
 
   <ion-content class="ion-padding ion-margin" color="light">
-    <ion-searchbar
+    <!-- <ion-searchbar
       class="searchBar ion-padding"
       placeholder="cherchez un patient"
-    ></ion-searchbar>
+    ></ion-searchbar> -->
     <div *ngFor="let item of consultation">
       <ion-item-sliding
         id="item100"
@@ -28,7 +28,9 @@
           item?.generaliste?.id === id
         "
       >
-        <ion-item (click)="reponseDetails()">
+        <ion-item
+          [routerLink]="['/consultationAvis', item?.id, item?.patient?.cin]"
+        >
           <ion-item lines="none">
             <ion-avatar slot="start">
               <img src="assets/fatma.jpg" />

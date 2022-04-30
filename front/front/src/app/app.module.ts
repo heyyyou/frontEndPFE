@@ -41,7 +41,7 @@ import { GestionAvisComponent } from './medecin-expert/details-consult-avis/deta
 import { DepistageGaucheComponent } from './consultation/depistage-gauche/depistage-gauche.component';
 import { DepistageDroiteComponent } from './consultation/depistage-droite/depistage-droite.component';
 import { DetailsDroiteComponent } from './consultation/details-droite/details-droite.component';
-import { DetailsGaucheComponent } from './consultation/details-gauche/details-gauche.component';
+import { DetailsGaucheComponent } from './detail-consultation/details-gauche/details-gauche.component';
 import { ProfilMedcinComponent } from './profil-medcin/profil-medcin.component';
 import { EditProfilMedecinComponent } from './edit-profil-medecin/edit-profil-medecin.component';
 import { ListeConsultationPerComponent } from './liste-consultation-per/liste-consultation-per.component';
@@ -59,6 +59,8 @@ import { EditPatientComponent } from './liste-patient/edit-patient/edit-patient.
 import { ModifConsultationComponent } from './modif-consultation/modif-consultation.component';
 import { DetailsConsultationwithoutAutoComponent } from './details-consultationwithout-auto/details-consultationwithout-auto.component';
 import { AjouterAvisGaucheComponent } from './medecin-expert/ajouter-avis/ajouter-avis-gauche/ajouter-avis-gauche.component';
+import { GestionAvisGaucheComponent } from './medecin-expert/details-consult-avis/details-historiques/gestion-avis-gauche/gestion-avis-gauche.component';
+import { ConsultationAvisGaucheComponent } from './consultation-avis/consultation-avis-gauche/consultation-avis-gauche.component';
 @NgModule({
   declarations: [
     ReponseAvisNotifComponent,
@@ -78,6 +80,7 @@ import { AjouterAvisGaucheComponent } from './medecin-expert/ajouter-avis/ajoute
     ToastComponent,
     SignupComponent,
     LoginComponent,
+    GestionAvisGaucheComponent,
     SignupexpertComponent,
     SignupmedComponent,
     ModalDetailsComponent,
@@ -106,6 +109,7 @@ import { AjouterAvisGaucheComponent } from './medecin-expert/ajouter-avis/ajoute
     EditProfilExpertComponent,
     ProfilExpertComponent,
     SplashScreenComponent,
+    ConsultationAvisGaucheComponent,
     ModifConsultationComponent
 
   ],

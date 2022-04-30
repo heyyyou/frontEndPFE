@@ -1,20 +1,19 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AlertController, IonContent, LoadingController, ModalController } from '@ionic/angular';
+import { ModalImageComponent } from 'src/app/modal-image/modal-image.component';
+import { ConsultationMedService } from 'src/app/services/consultation-med.service';
+import { PhotoService } from 'src/app/services/photo.service';
+import { UserService } from 'src/app/services/user.service';
 import { SwiperOptions } from 'swiper';
-import { ModalImageComponent } from '../modal-image/modal-image.component';
-import { ConsultationMedService } from '../services/consultation-med.service';
-import { PhotoService } from '../services/photo.service';
-import { UserService } from '../services/user.service';
-
 
 @Component({
-  selector: 'app-consultation-avis',
-  templateUrl: './consultation-avis.component.html',
-  styleUrls: ['./consultation-avis.component.scss'],
+  selector: 'app-consultation-avis-gauche',
+  templateUrl: './consultation-avis-gauche.component.html',
+  styleUrls: ['./consultation-avis-gauche.component.scss'],
 })
-export class ConsultationAvisComponent implements OnInit {
-  // eli fih button disabled w fih avis expert w expert consultation
+export class ConsultationAvisGaucheComponent implements OnInit {
+
   @ViewChild(IonContent) private content: IonContent;
 
   base64 = '';
@@ -153,7 +152,6 @@ export class ConsultationAvisComponent implements OnInit {
 
 
   async ngOnInit() {
-    this.service.isClicked === 1
     this.route.params.subscribe(params => {
       this.idConsult = +params['idConsult'];
       this.idPatient = +params['cin'];
@@ -169,13 +167,13 @@ export class ConsultationAvisComponent implements OnInit {
         this.consultation = params;
         console.log("meryeù", this.consultation.id)
 
-        if (this.consultation.image1_Droite === null) {
+        if (this.consultation.image1_Gauche === null) {
           this.imagePath = "assets/123.jpg"
         }
         else {
 
           this.retrieveResponse = this.consultation;
-          this.base64Data = this.retrieveResponse.image1_Droite;
+          this.base64Data = this.retrieveResponse.image1_Gauche;
           this.imagePath = 'data:image/jpeg;base64,' + this.base64Data;
           this.images[0] = this.imagePath;
           console.log("lulaa", this.images[0]);
@@ -183,33 +181,33 @@ export class ConsultationAvisComponent implements OnInit {
 
 
 
-        if (this.consultation.image2_Droite === null) {
+        if (this.consultation.image2_Gauche === null) {
           this.imagePath = "assets/123.jpg"
         }
         else {
 
           this.retrieveResponse = this.consultation;
-          this.base64Data = this.retrieveResponse.image2_Droite;
+          this.base64Data = this.retrieveResponse.image2_Gauche;
           this.imagePath = 'data:image/jpeg;base64,' + this.base64Data;
           this.images[1] = this.imagePath;
           console.log("tableee 2", this.images[1]);
         }
 
 
-        if (this.consultation.image3_Droite === null) {
+        if (this.consultation.image3_Gauche === null) {
           this.imagePath = "assets/123.jpg"
         }
         else {
 
           this.retrieveResponse = this.consultation;
-          this.base64Data = this.retrieveResponse.image3_Droite;
+          this.base64Data = this.retrieveResponse.image3_Gauche;
           this.imagePath = 'data:image/jpeg;base64,' + this.base64Data;
           this.images[2] = this.imagePath;
           console.log("tableee 2", this.images[2]);
         }
 
 
-        if (this.consultation.image4_Droite === null) {
+        if (this.consultation.image4_Gauche === null) {
           this.imagePath = "assets/123.jpg"
         }
         else {

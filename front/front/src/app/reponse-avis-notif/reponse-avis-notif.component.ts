@@ -1,4 +1,5 @@
-import { Router } from '@angular/router';
+import { Generaliste } from './../model/generaliste';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { MenuController } from '@ionic/angular';
 import { UserService } from '../services/user.service';
@@ -13,21 +14,26 @@ export class ReponseAvisNotifComponent implements OnInit {
   ConsultationF: any
   id: any
   consultation: any
-  reponseDetails() {
-    this.router.navigate(["consultationAvis"]);
-    this.menu.close();
-  }
 
-  constructor(public router: Router, private menu: MenuController, public service: UserService) { }
+  // reponseDetails() {
+  //   this.router.navigate(["consultationAvis"]);
+  //   this.menu.close();
+  // }
+
+  constructor(public router: Router, private ar: ActivatedRoute, private menu: MenuController, public service: UserService) { }
 
   ngOnInit() {
+
+
     this.id = parseInt(localStorage.getItem("id"))
     this.service.getAllConsultationExpert().subscribe((params) => {
       this.consultation = params; this.ConsultationF = params; this.consult = params
       console.log("ya nariiiia aalik ya mounira", this.consultation)
       console.log("ahmeddd", this.consultation)
 
+
     })
   }
+
 
 }

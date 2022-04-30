@@ -34,7 +34,7 @@ export class AjouterAvisComponent implements OnInit {
   Avis: boolean = false;
   showLoader: boolean;
   text: any
-
+  Saine: any
   displayProgress() {
     this.showLoader = true;
 
@@ -142,7 +142,7 @@ export class AjouterAvisComponent implements OnInit {
 
   constructor(public consultationMedService: ConsultationMedService, public photoService: PhotoService,
     private router: Router, public loadingController: LoadingController, private modalCtrl: ModalController, private ToastController: ToastController,
-    public alertController: AlertController, private route: ActivatedRoute, public service: UserService) {
+    public alertController: AlertController, private toastController: ToastController, private route: ActivatedRoute, public service: UserService) {
   }
 
 
@@ -172,6 +172,9 @@ export class AjouterAvisComponent implements OnInit {
         }
         console.log(this.consultation);
         console.log("ddderrrrrrrrrrrrrrrrrrrrr", this.consultation.autoDetection.avisExpert)
+        if (this.consultation?.autoDetection?.avisExpert?.maladieDroite === null) {
+          this.consl();
+        }
 
         if (this.consultation.image1_Droite == null) {
           this.imagePath = "assets/123.jpg"
@@ -275,6 +278,7 @@ export class AjouterAvisComponent implements OnInit {
               this.idavisExpert = this.avisExpert.id
 
               this.service.updateIdAvisExpertDansAutoDetection(this.consultation.autoDetection.id, this.idConsult, this.idavisExpert).subscribe(() => { console.log("eyyyyyy") })
+              this.presentToastWithOptions()
             })
 
           })
@@ -294,6 +298,7 @@ export class AjouterAvisComponent implements OnInit {
               this.service.updateIdAvisExpertDansAutoDetection(this.idAutoDetection, this.idConsult, this.idavisExpert).subscribe(() => { console.log("eyyyyyy") })
 
             )
+            this.presentToastWithOptions();
           }
           )
           )
@@ -301,6 +306,29 @@ export class AjouterAvisComponent implements OnInit {
       })
       )
     })
+  }
+  async presentToastWithOptions() {
+    const toast = await this.toastController.create({
+      message: 'Avis ajouté avec succées',
+      icon: 'information-circle',
+      position: 'top',
+      color: "light",
+      duration: 2000
+
+
+    });
+    await toast.present();
+  }
+  async consl() {
+    const toast = await this.toastController.create({
+      message: 'Avis déja ajouté',
+      icon: 'information-circle',
+      color: "danger",
+      duration: 2000
+
+
+    });
+    await toast.present();
   }
 
   public gravite = [
@@ -339,6 +367,11 @@ export class AjouterAvisComponent implements OnInit {
     nom: "surtension",
     value: "surt"
   },
+  {
+    id: 3,
+    nom: "saine",
+    value: "saine"
+  },
 
   ]
   choose() {
@@ -346,6 +379,11 @@ export class AjouterAvisComponent implements OnInit {
     console.log(this.selected_maladie.nom);
 
   }
+  // change(event) {
+  //   this.Saine = event.detail;
+  //   console.log("eeeeeeeeeeeeeeeeeeeee", this.Saine)
+
+  // }
 
   @Output() shareRatingValue: EventEmitter<number> = new EventEmitter();
   currentValue: number = null;

@@ -23,12 +23,14 @@ export class AjouterAvisGaucheComponent implements OnInit {
   idavisExpert: any
   private sub: any;
   retrieveResponse: any
-  saine: any = false;
   imagePath: any; //string=null;
   avisExpert: any
   patient: any
   idAutoDetection: any
   consultation: any
+  Saine: any = false;
+  maladieDisabled: any = false
+  graviteDisabled: any = false
   images: any[] = [];
   base64 = '';
   DemandeAvis: boolean = false; // f details ya mariem demain
@@ -77,9 +79,7 @@ export class AjouterAvisGaucheComponent implements OnInit {
 
 
   }
-  onChange() {
-    this.saine = true
-  }
+
 
   async presentLoading() {
     const loading = await this.loadingController.create({
@@ -101,7 +101,23 @@ export class AjouterAvisGaucheComponent implements OnInit {
     console.log("yhees");
 
   }
+  change(event) {
+    this.Saine = event.detail;
+    console.log("eeeeeeeeeeeeeeeeeeeee", this.Saine)
+    this.maladieDisabled = true;
 
+  }
+  async consl() {
+    const toast = await this.toastController.create({
+      message: 'Avis déja ajouté',
+      icon: 'information-circle',
+      color: "danger",
+      duration: 2000
+
+
+    });
+    await toast.present();
+  }
 
   async DemanderAvis() {
 
@@ -141,7 +157,7 @@ export class AjouterAvisGaucheComponent implements OnInit {
 
   constructor(public consultationMedService: ConsultationMedService, public photoService: PhotoService,
     private router: Router, public loadingController: LoadingController, private modalCtrl: ModalController, private ToastController: ToastController,
-    public alertController: AlertController, private route: ActivatedRoute, public service: UserService) {
+    public alertController: AlertController, private route: ActivatedRoute, public service: UserService, private toastController: ToastController) {
   }
 
 
@@ -160,6 +176,8 @@ export class AjouterAvisGaucheComponent implements OnInit {
     this.service.getConsultationID(parseInt(localStorage.getItem("id")), this.idConsult, this.idPatient).subscribe((params => {
       this.consultation = params;
       console.log(this.consultation)
+
+
       if (this.consultation.image1_Gauche == null) {
         this.imagePath = "assets/123.jpg"
 
@@ -265,6 +283,7 @@ export class AjouterAvisGaucheComponent implements OnInit {
             this.idavisExpert = this.avisExpert.id
 
             this.service.updateIdAvisExpertDansAutoDetection(this.consultation.autoDetection.id, this.idConsult, this.idavisExpert).subscribe(() => { console.log("eyyyyyy") })
+            this.presentToastWithOptions()
           })
 
         })
@@ -285,6 +304,8 @@ export class AjouterAvisGaucheComponent implements OnInit {
             this.service.updateIdAvisExpertDansAutoDetection(this.idAutoDetection, this.idConsult, this.idavisExpert).subscribe(() => { console.log("eyyyyyy") })
 
           )
+          this.presentToastWithOptions()
+
         }
         )
         )
@@ -312,31 +333,33 @@ export class AjouterAvisGaucheComponent implements OnInit {
     }
 
   ]
-  public maladie = [{
-    id: 0,
-    nom: "saine",
-    value: "saine",
-  },
-  {
-    id: 1,
-    nom: "diabète",
-    value: "diab",
+  public maladie = [
+
+    {
+      id: 0,
+      nom: "diabète",
+      valeur: "diab",
 
 
-  }, {
-    id: 2,
-    nom: "rhétino",
-    value: "rhét"
-  }, {
-    id: 3,
-    nom: "surtension",
-    value: "surt"
-  },
+    }, {
+      id: 1,
+      nom: "rhétino",
+      valeur: "rhét"
+    }, {
+      id: 2,
+      nom: "surtension",
+      valeur: "surt"
+    },
+    {
+      id: 3,
+      nom: "saine",
+      valeur: "saine"
+    },
 
   ]
   choose() {
-    this.choixMaladie = this.selected_maladie.nom;
-    console.log(this.selected_maladie.nom);
+    this.choixMaladie = this.selected_maladie?.nom;
+    console.log(this.selected_maladie?.nom);
 
   }
 
@@ -377,7 +400,18 @@ export class AjouterAvisGaucheComponent implements OnInit {
 
 
   }
+  async presentToastWithOptions() {
+    const toast = await this.toastController.create({
+      message: 'Avis ajouté avec succées',
+      icon: 'information-circle',
+      position: 'top',
+      color: "light",
+      duration: 2000
 
+
+    });
+    await toast.present();
+  }
 
 
 }

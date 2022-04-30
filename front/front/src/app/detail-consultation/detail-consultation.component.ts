@@ -48,6 +48,15 @@ export class DetailConsultationComponent implements OnInit {
     this.showLoader = true;
 
   }
+  what() {
+
+    this.content.scrollToBottom(500);
+
+
+    console.log("yhees");
+
+  }
+
   // async routerHome() {
   //   return await this.router.navigate(['home']);
   // }

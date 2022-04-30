@@ -31,12 +31,25 @@
       >
     </div>
     <div class="ion-margin">
-      <ion-item lines="none"
+      <!-- <ion-item lines="none"
         ><ion-text>Saine</ion-text>
-        <ion-checkbox color="primary" slot="end" (click)="onChange()"
-          >Saine</ion-checkbox
+        <ion-radio-group
+          id="saineG"
+          ngModel
+          name="saineG"
+          #saine="ngModel"
+          slot="end"
+          allow-empty-selection="true"
+          (ionChange)="change($event)"
         >
-      </ion-item>
+          <ion-item lines="none">
+            <ion-radio
+              slot="end"
+              color="primary2"
+              value="saine"
+            ></ion-radio> </ion-item
+        ></ion-radio-group>
+      </ion-item> -->
       <br />
       <ion-item class="itemborder">
         <ion-label class="comments">choisissez une maladie</ion-label>
@@ -51,8 +64,8 @@
         >
           <ion-select-option
             *ngFor="let item of maladie"
-            value="{{ item.value }}"
-            >{{ item.nom }}
+            value="{{ item?.valeur }}"
+            >{{ item?.nom }}
           </ion-select-option>
         </ion-select>
       </ion-item>
@@ -66,7 +79,7 @@
           #graviteGauche
         >
           <ion-select-option *ngFor="let item of gravite">{{
-            item.valeur
+            item?.valeur
           }}</ion-select-option>
         </ion-select>
       </ion-item>
@@ -86,18 +99,31 @@
   </div>
   <div class="div">
     <ion-button
+      #btn
+      *ngIf="consultation?.autoDetection?.avisExpert?.maladieGauche === null"
       color="primary2"
       size="Medium"
       class="ion-margin"
       id="trigger-button"
-      (click)="truthClick(f)"
-      [disabled]="disableButton || choixMaladie === null"
+      (click)="truthClick(f); btn.disabled = true"
+      [disabled]="choixMaladie === null"
       >valider
     </ion-button>
+    <ion-button
+      *ngIf="consultation?.autoDetection?.avisExpert?.maladieGauche !== null"
+      color="danger"
+      size="Medium"
+      class="ion-margin"
+      id="trigger-button"
+      (click)="truthClick(f)"
+      disabled="true"
+      >Avis déja ajouté
+    </ion-button>
+    <!-- [disabled]="disableButton || choixMaladie === null" -->
   </div>
 </form>
 
-<ion-modal trigger="trigger-button">
+<!-- <ion-modal trigger="trigger-button">
   <ng-template>
     <ion-header>
       <ion-icon
@@ -135,4 +161,4 @@
       </ion-fab-button>
     </ion-item>
   </ng-template>
-</ion-modal>
+</ion-modal> -->

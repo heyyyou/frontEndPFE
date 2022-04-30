@@ -10,7 +10,7 @@ import { IonicSelectableComponent } from 'ionic-selectable';
 })
 export class UserService {
   patients: Patient[];
-  isClicked: boolean = false;
+  isClicked: any;
   idAvisExpert: any = 0;
   idAutoDetection: any;
   public selectedPatient: any = null;

@@ -170,10 +170,24 @@
             >
           </div>
           <div class="ion-margin" *ngIf="consultation?.avisExpert !== null">
-            <ion-item class="itemborder" lines="none">
+            <!-- <ion-item class="itemborder" lines="none">
               <ion-text>Saine</ion-text>
-              <ion-checkbox color="primary" slot="end">Saine</ion-checkbox>
-            </ion-item>
+              <ion-radio-group
+                id="saineD"
+                ngModel
+                name="saineD"
+                #saineD="ngModel"
+                slot="end"
+                allow-empty-selection="true"
+              >
+                <ion-item lines="none">
+                  <ion-radio
+                    slot="end"
+                    color="primary2"
+                    value="saine"
+                  ></ion-radio> </ion-item
+              ></ion-radio-group>
+            </ion-item> -->
             <br />
             <ion-item class="itemborder">
               <ion-label class="comments">choisissez une maladie</ion-label>
@@ -186,10 +200,12 @@
                 [(ngModel)]="selected_maladie"
                 (ionChange)="choose()"
               >
+                <!-- [disabled]="this.Saine.value === 'saine'" -->
+
                 <ion-select-option
                   *ngFor="let item of maladie"
                   value="{{ item.value }}"
-                  >{{ item.nom }}
+                  >{{ item?.nom }}
                 </ion-select-option>
               </ion-select>
             </ion-item>
@@ -202,6 +218,8 @@
                 name="graviteDroite"
                 #graviteDroite
               >
+                <!-- [disabled]="this.Saine?.value === 'saine'" -->
+
                 <ion-select-option *ngFor="let item of gravite">{{
                   item.valeur
                 }}</ion-select-option>
@@ -226,24 +244,29 @@
         </div>
         <div class="div">
           <ion-button
-            *ngIf="consultation?.avisExpert !== null"
+            #btn
+            *ngIf="
+              consultation?.autoDetection?.avisExpert?.maladieDroite === null
+            "
             color="primary2"
             size="Medium"
             class="ion-margin"
             id="trigger-button"
-            (click)="truthClick(f)"
-            [disabled]="disableButton || choixMaladie === null"
+            (click)="truthClick(f); btn.disabled = true"
+            [disabled]="choixMaladie === null"
             >valider
           </ion-button>
           <ion-button
-            *ngIf="consultation?.avisExpert === 0"
-            color="primary2"
+            *ngIf="
+              consultation?.autoDetection?.avisExpert?.maladieDroite !== null
+            "
+            color="danger"
             size="Medium"
             class="ion-margin"
             id="trigger-button"
             (click)="truthClick(f)"
             disabled="true"
-            >valider
+            >Avis déja ajouté
           </ion-button>
         </div>
       </div>

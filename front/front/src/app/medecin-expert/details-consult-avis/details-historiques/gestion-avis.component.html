@@ -7,10 +7,6 @@
       <ion-buttons slot="start">
         <ion-back-button defaultHref="homeExpert"></ion-back-button>
       </ion-buttons>
-
-      <ion-avatar slot="end" class="ion-margin avatar">
-        <img src="assets/doctour.png" />
-      </ion-avatar>
     </ion-toolbar>
   </ion-header>
 
@@ -114,13 +110,18 @@
       >
         <ion-segment-button
           value="droite"
-          [disabled]="consultation?.demandeAvisD === 0"
+          [disabled]="
+            consultation?.autoDetection?.avisExpert?.maladieDroite === null
+          "
           ><ion-icon name="eye-outline" color="primary2"></ion-icon
           ><ion-text color="primary2"> Oeil Droite</ion-text>
         </ion-segment-button>
         <ion-segment-button
           value="gauche"
-          [disabled]="consultation?.demandeAvisG === 0"
+          (click)="what()"
+          [disabled]="
+            consultation?.autoDetection?.avisExpert?.maladieGauche === null
+          "
         >
           <ion-icon name="eye-outline" color="primary2"></ion-icon>
           <ion-text color="primary2"> Oeil Gauche</ion-text></ion-segment-button
@@ -170,25 +171,32 @@
             <div class="ion-margin">
               <ion-label class="oeil">Maladie :</ion-label
               ><ion-text class="ion-margin"
-                >{{ consultation?.autoDetection?.avisExpert.maladieDroite }}
+                >{{ consultation?.autoDetection?.avisExpert?.maladieDroite }}
               </ion-text>
             </div>
             <div class="ion-margin">
               <ion-label class="oeil">Gravité :</ion-label
               ><ion-text class="ion-margin"
-                >{{ consultation?.autoDetection?.avisExpert.graviteDroite }}
+                >{{ consultation?.autoDetection?.avisExpert?.graviteDroite }}
               </ion-text>
             </div>
 
             <div class="ion-margin">
               <ion-label class="oeil">Commentaire :</ion-label
               ><ion-text class="ion-margin"
-                >{{ consultation?.autoDetection?.avisExpert.commentaireDroite }}
+                >{{
+                  consultation?.autoDetection?.avisExpert?.commentaireDroite
+                }}
               </ion-text>
             </div>
           </div>
         </div>
       </div>
     </form>
+    <ng-container [ngSwitch]="segment"
+      ><app-gestion-avis-gauche
+        *ngSwitchCase="'gauche'"
+      ></app-gestion-avis-gauche>
+    </ng-container>
   </ion-content>
 </ion-app>

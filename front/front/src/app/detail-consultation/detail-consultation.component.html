@@ -55,11 +55,11 @@
         color="primary"
         (ionChange)="segmentChanged($event)"
       >
-        <ion-segment-button value="droite"
+        <ion-segment-button value="droite" [disabled]="images.length === 0"
           ><ion-icon name="eye-outline" color="favorites"></ion-icon
           ><ion-text color="favorites"> Oeil Droite</ion-text>
         </ion-segment-button>
-        <ion-segment-button value="gauche">
+        <ion-segment-button value="gauche" (click)="what()">
           <ion-icon name="eye-outline" color="favorites"></ion-icon>
           <ion-text color="favorites">
             Oeil Gauche</ion-text
@@ -70,58 +70,95 @@
     <!-- <ng-container [ngSwitch]="segment">
       <app-details-gauche *ngSwitchCase="'gauche'"> </app-details-gauche>
       <app-details-droite *ngSwitchCase="'droite'"> </app-details-droite>
-    </ng-container> -->
-    <ion-card class="cardfull">
-      <swiper
-        [config]="config"
-        class="swiper-slide"
-        data-swiper-autoplay="2000"
-      >
-        <ng-template swiperSlide *ngFor="let imge of images; let i = index">
-          <img
-            [src]="imge"
-            onerror="this.src='assets/add.jpg'"
-            alt="alternative"
-            tappable
-            (click)="openPreview(imge)"
-          />
-        </ng-template>
-      </swiper>
-    </ion-card>
-    <div class="details">
-      <h5>AI Résultat Oeil Droite</h5>
 
-      <h6>
-        <ion-text color="danger">Maladie : </ion-text>
-        Oeil Gauche :{{
-          ConsultationMedService.consultation_id.oeil_gaucheAI.maladie
-        }}
-      </h6>
-      <ion-text color="danger">Gravitè :</ion-text>
-      {{ ConsultationMedService.consultation_id.oeil_gaucheAI.gravite }}
+    </ng-container> -->
+    <div *ngIf="images.length !== 0">
+      <ion-card class="cardfull">
+        <swiper
+          [config]="config"
+          class="swiper-slide"
+          data-swiper-autoplay="2000"
+        >
+          <ng-template swiperSlide *ngFor="let imge of images; let i = index">
+            <img
+              [src]="imge"
+              onerror="this.src='assets/add.jpg'"
+              alt="alternative"
+              tappable
+              (click)="openPreview(imge)"
+            />
+          </ng-template>
+        </swiper>
+      </ion-card>
+      <div class="details">
+        <h5>AI Résultat Oeil Droite</h5>
+
+        <h6>
+          <ion-text color="danger">Maladie : </ion-text>
+          Oeil Gauche :{{
+            ConsultationMedService.consultation_id.oeil_gaucheAI.maladie
+          }}
+        </h6>
+        <ion-text color="danger">Gravitè :</ion-text>
+        {{ ConsultationMedService.consultation_id.oeil_gaucheAI.gravite }}
+      </div>
+      <ion-button
+        *ngIf="consultation?.demandeAvisD === 0 && images.length !== 0"
+        #btn
+        color="primary"
+        expand="block"
+        size="large"
+        shape="round"
+        class="AvisExpert"
+        [disabled]="images.length === 0"
+        (click)="DemanderAvis(); btn.disabled = true"
+        >Demande Avis Expert</ion-button
+      >
+      <ion-button
+        *ngIf="
+          consultation?.demandeAvisD !== 0 &&
+          consultation?.autoDetection?.avisExpert?.maladieDroite === null
+        "
+        color="danger"
+        expand="block"
+        size="large"
+        shape="round"
+        class="AvisExpert"
+        (click)="DemanderAvis()"
+        disabled="true"
+        >Demande Avis envoyé</ion-button
+      >
+      <div
+        class="avis ion-margin ion-padding"
+        *ngIf="consultation?.autoDetection?.avisExpert?.maladieDroite !== null"
+      >
+        <ion-item lines="none" color="aviscolor">
+          <div>
+            <ion-label class="avisExpert ion-margin"> Avis Expert :</ion-label>
+          </div>
+        </ion-item>
+        <div class="text">
+          <div class="ion-margin">
+            <ion-label class="oeil">Maladie :</ion-label
+            ><ion-text class="ion-margin"
+              >{{ consultation?.autoDetection?.avisExpert?.maladieDroite }}
+            </ion-text>
+          </div>
+          <div class="ion-margin">
+            <ion-label class="oeil">Gravité :</ion-label
+            ><ion-text class="ion-margin"
+              >{{ consultation?.autoDetection?.avisExpert?.graviteDroite }}
+            </ion-text>
+          </div>
+        </div>
+        <div class="ion-margin">
+          <ion-label class="oeil">Commentaire :</ion-label
+          ><ion-text class="ion-margin"
+            >{{ consultation?.autoDetection?.avisExpert?.commentaireDroite }}
+          </ion-text>
+        </div>
+      </div>
     </div>
-    <ion-button
-      *ngIf="consultation?.demandeAvisD === 0"
-      #btn
-      color="primary"
-      expand="block"
-      size="large"
-      shape="round"
-      class="AvisExpert"
-      (click)="DemanderAvis(); btn.disabled = true"
-      >Demande Avis Expert</ion-button
-    >
-    <ion-button
-      *ngIf="consultation?.demandeAvisD !== 0"
-      color="primary"
-      expand="block"
-      size="large"
-      shape="round"
-      class="AvisExpert"
-      (click)="DemanderAvis()"
-      disabled="true"
-      >Demande Avis Expert</ion-button
-    >
     <ng-container [ngSwitch]="segment">
       <app-details-gauche *ngSwitchCase="'gauche'"> </app-details-gauche>
     </ng-container>

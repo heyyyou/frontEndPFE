@@ -128,9 +128,7 @@
           size="large"
           fill="outline"
           class="AImodel"
-          [disabled]="
-            cinPatient === 0 || (images.length === 0 && images2.length === 0)
-          "
+          [disabled]="cinPatient === 0 || images.length === 0"
           shape="round"
           (click)="uploadFiles2(); btn.disabled = true"
           >Ajouter Consultation Droite</ion-button
@@ -201,9 +199,7 @@
           size="large"
           fill="outline"
           class="AImodel"
-          [disabled]="
-            cinPatient === 0 || (images.length === 0 && images2.length === 0)
-          "
+          [disabled]="cinPatient === 0 || images2.length === 0"
           shape="round"
           (click)="uploadFiles(); btn.disabled = true"
           >Ajouter Consultation Gauche</ion-button
