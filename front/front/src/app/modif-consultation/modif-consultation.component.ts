@@ -74,7 +74,7 @@ export class ModifConsultationComponent implements OnInit {
         this.autoDetection = params
         console.log("ba333333333333333333", this.autoDetection.id)
         console.log("rahmaaaaaaaaaaaaaaaaaaaa", this.consultation);
-        this.router.navigate(['detailConsultation', this.idConsult, this.consultation.patient.cin, this.autoDetection.id]);
+        this.router.navigate(['detailConsultation', this.idConsult, this.consultation.patient.id, this.autoDetection.id]);
       })
 
 
@@ -177,51 +177,51 @@ export class ModifConsultationComponent implements OnInit {
           console.log("lulaa", this.images[0]);
         }
 
-        if (this.consultation.image2_Droite == null) {
-          this.imagePath = "assets/123.jpg"
-        }
-        else {
+        /*  if (this.consultation.image2_Droite == null) {
+            this.imagePath = "assets/123.jpg"
+          }
+          else {
 
-          this.retrieveResponse = this.consultation;
-          this.base64Data = this.retrieveResponse.image2_Droite;
-          this.imagePath = 'data:image/jpeg;base64,' + this.base64Data;
-          this.images[1] = this.imagePath;
-          console.log("lqqsulaa", this.images[1]);
-        }
+            this.retrieveResponse = this.consultation;
+            this.base64Data = this.retrieveResponse.image2_Droite;
+            this.imagePath = 'data:image/jpeg;base64,' + this.base64Data;
+            this.images[1] = this.imagePath;
+            console.log("lqqsulaa", this.images[1]);
+          }
 
-        if (this.consultation.image3_Droite == null) {
-          this.imagePath = "assets/123.jpg"
-        }
-        else {
+          if (this.consultation.image3_Droite == null) {
+            this.imagePath = "assets/123.jpg"
+          }
+          else {
 
-          this.retrieveResponse = this.consultation;
-          this.base64Data = this.retrieveResponse.image3_Droite;
-          this.imagePath = 'data:image/jpeg;base64,' + this.base64Data;
-          this.images[2] = this.imagePath;
-          console.log("lqqsulaa", this.images[2]);
-        }
-        if (this.consultation.image4_Droite == null) {
-          this.imagePath = "assets/123.jpg"
-        }
-        else {
+            this.retrieveResponse = this.consultation;
+            this.base64Data = this.retrieveResponse.image3_Droite;
+            this.imagePath = 'data:image/jpeg;base64,' + this.base64Data;
+            this.images[2] = this.imagePath;
+            console.log("lqqsulaa", this.images[2]);
+          }
+          if (this.consultation.image4_Droite == null) {
+            this.imagePath = "assets/123.jpg"
+          }
+          else {
 
-          this.retrieveResponse = this.consultation;
-          this.base64Data = this.retrieveResponse.image4_Droite;
-          this.imagePath = 'data:image/jpeg;base64,' + this.base64Data;
-          this.images[3] = this.imagePath;
-          console.log("lqqsulaa", this.images[3]);
-        }
-        if (this.consultation.image5_Droite == null) {
-          this.imagePath = "assets/123.jpg"
-        }
-        else {
+            this.retrieveResponse = this.consultation;
+            this.base64Data = this.retrieveResponse.image4_Droite;
+            this.imagePath = 'data:image/jpeg;base64,' + this.base64Data;
+            this.images[3] = this.imagePath;
+            console.log("lqqsulaa", this.images[3]);
+          }
+          if (this.consultation.image5_Droite == null) {
+            this.imagePath = "assets/123.jpg"
+          }
+          else {
 
-          this.retrieveResponse = this.consultation;
-          this.base64Data = this.retrieveResponse.image5_Droite;
-          this.imagePath = 'data:image/jpeg;base64,' + this.base64Data;
-          this.images[4] = this.imagePath;
-          console.log("lqqsulaa", this.images[4]);
-        }
+            this.retrieveResponse = this.consultation;
+            this.base64Data = this.retrieveResponse.image5_Droite;
+            this.imagePath = 'data:image/jpeg;base64,' + this.base64Data;
+            this.images[4] = this.imagePath;
+            console.log("lqqsulaa", this.images[4]);
+          }*/
         if (this.consultation.image1_Gauche == null) {
           this.imagePath = "assets/123.jpg"
         }
@@ -234,57 +234,56 @@ export class ModifConsultationComponent implements OnInit {
           console.log("lulaa", this.images2[0]);
         }
 
+        /*
+                  if (this.consultation.image2_Gauche == null) {
+                    this.imagePath = "assets/123.jpg"
+                  }
+                  else {
+
+                    this.retrieveResponse = this.consultation;
+                    this.base64Data = this.retrieveResponse.image2_Gauche;
+                    this.imagePath = 'data:image/jpeg;base64,' + this.base64Data;
+                    this.images2[1] = this.imagePath;
+                    console.log("tableee 2", this.images2[1]);
+                  }
 
 
-        if (this.consultation.image2_Gauche == null) {
-          this.imagePath = "assets/123.jpg"
-        }
-        else {
+                  if (this.consultation.image3_Gauche == null) {
+                    this.imagePath = "assets/123.jpg"
+                  }
+                  else {
 
-          this.retrieveResponse = this.consultation;
-          this.base64Data = this.retrieveResponse.image2_Gauche;
-          this.imagePath = 'data:image/jpeg;base64,' + this.base64Data;
-          this.images2[1] = this.imagePath;
-          console.log("tableee 2", this.images2[1]);
-        }
-
-
-        if (this.consultation.image3_Gauche == null) {
-          this.imagePath = "assets/123.jpg"
-        }
-        else {
-
-          this.retrieveResponse = this.consultation;
-          this.base64Data = this.retrieveResponse.image3_Gauche;
-          this.imagePath = 'data:image/jpeg;base64,' + this.base64Data;
-          this.images2[2] = this.imagePath;
-          console.log("tableee 2", this.images2[2]);
-        }
+                    this.retrieveResponse = this.consultation;
+                    this.base64Data = this.retrieveResponse.image3_Gauche;
+                    this.imagePath = 'data:image/jpeg;base64,' + this.base64Data;
+                    this.images2[2] = this.imagePath;
+                    console.log("tableee 2", this.images2[2]);
+                  }
 
 
-        if (this.consultation.image4_Gauche == null) {
-          this.imagePath = "assets/123.jpg"
-        }
-        else {
+                  if (this.consultation.image4_Gauche == null) {
+                    this.imagePath = "assets/123.jpg"
+                  }
+                  else {
 
-          this.retrieveResponse = this.consultation;
-          this.base64Data = this.retrieveResponse.image4_Gauche;
-          this.imagePath = 'data:image/jpeg;base64,' + this.base64Data;
-          this.images2[3] = this.imagePath;
-          console.log("tableee 2", this.images2[3]);
-        }
+                    this.retrieveResponse = this.consultation;
+                    this.base64Data = this.retrieveResponse.image4_Gauche;
+                    this.imagePath = 'data:image/jpeg;base64,' + this.base64Data;
+                    this.images2[3] = this.imagePath;
+                    console.log("tableee 2", this.images2[3]);
+                  }
 
-        if (this.consultation.image5_Gauche == null) {
-          this.imagePath = "assets/123.jpg"
-        }
-        else {
+                  if (this.consultation.image5_Gauche == null) {
+                    this.imagePath = "assets/123.jpg"
+                  }
+                  else {
 
-          this.retrieveResponse = this.consultation;
-          this.base64Data = this.retrieveResponse.image5_Gauche;
-          this.imagePath = 'data:image/jpeg;base64,' + this.base64Data;
-          this.images2[4] = this.imagePath;
-          console.log("tableee 2", this.images2[4]);
-        }
+                    this.retrieveResponse = this.consultation;
+                    this.base64Data = this.retrieveResponse.image5_Gauche;
+                    this.imagePath = 'data:image/jpeg;base64,' + this.base64Data;
+                    this.images2[4] = this.imagePath;
+                    console.log("tableee 2", this.images2[4]);
+                  }*/
 
       }
 
@@ -449,6 +448,7 @@ export class ModifConsultationComponent implements OnInit {
 
 
   deletePic() {
+    this.var = 1
     this.images.splice(0, this.images.length)
     this.service.suppImagesDroite(parseInt(localStorage.getItem("id")), this.idConsult/* id consu */).subscribe(
       event => {
@@ -479,44 +479,92 @@ export class ModifConsultationComponent implements OnInit {
     modal.present();
 
   }
+  upload2(file) { //ll droite
+    console.log("droite", this.selectedFiles);
 
-
-  upload(idx, file) {
-    for (let i = 0; i < this.selectedFiles2.length; i++) {
+    for (let i = 0; i < this.selectedFiles.length; i++) {
       if (i == 0) {
-        this.service.updateImage1G(this.idConsult/* id consu */, file).subscribe(
+        this.service.updateImage1D(this.idConsult, this.selectedFiles[0]).subscribe(
           event => {
+            console.log('event1');
 
           });
       }
+
       if (i == 1) {
-        this.service.updateImage2G(this.idConsult, file).subscribe(
+        this.service.updateImage2D(this.idConsult, this.selectedFiles[1]).subscribe(
           event => {
+            console.log('event2', event);
 
           });
       }
       if (i == 2) {
-        this.service.updateImage3G(this.idConsult, file).subscribe(
+        this.service.updateImage3D(this.idConsult, this.selectedFiles[2]).subscribe(
           event => {
+            console.log('event3', event);
 
 
           });
       }
       if (i == 3) {
-        this.service.updateImage4G(this.idConsult, file).subscribe(
+        this.service.updateImage4D(this.idConsult, this.selectedFiles[3]).subscribe(
           event => {
+            console.log('event4', event);
 
           });
       }
       if (i == 4) {
-        this.service.updateImage5G(this.idConsult, file).subscribe(
+        this.service.updateImage5D(this.idConsult, this.selectedFiles[4]).subscribe(
           event => {
+            console.log('event5', event);
+
 
           });
       }
     }
   }
 
+
+  upload(file) {
+    console.log("gauche", this.selectedFiles2);
+
+    for (let i = 0; i < this.selectedFiles2.length; i++) {
+
+      if (i == 0) {
+        this.service.updateImage1G(this.idConsult, this.selectedFiles2[0]).subscribe(
+          event => {
+            console.log("event1", event);
+
+          });
+      } else
+        if (i == 1) {
+          this.service.updateImage2G(this.idConsult, this.selectedFiles2[1]).subscribe(
+            event => {
+              console.log("event2", event);
+
+            });
+        } else
+          if (i == 2) {
+            this.service.updateImage3G(this.idConsult, this.selectedFiles2[2]).subscribe(
+              event => {
+                console.log("event3", event);
+
+
+              });
+          } else
+            if (i == 3) {
+              this.service.updateImage4G(this.idConsult, this.selectedFiles2[3]).subscribe(
+                event => {
+
+                });
+            } else {
+              this.service.updateImage5G(this.idConsult, this.selectedFiles2[4]).subscribe(
+                event => {
+
+                });
+            }
+    }
+  }
 
 
 
@@ -562,7 +610,7 @@ export class ModifConsultationComponent implements OnInit {
             console.log(this.images2[i])
           }
         }
-        if (i == 1) {
+       /* if (i == 1) {
           reader2.readAsDataURL(this.selectedFiles2[i]);
           reader2.onload = (event) => {
             this.imagee = reader2.result;
@@ -603,7 +651,9 @@ export class ModifConsultationComponent implements OnInit {
     }
 
   }
-
+*/}
+    }
+  }
 
   async openPreview2(imge) {
     const modal = await this.modalCtrl.create({
@@ -617,42 +667,41 @@ export class ModifConsultationComponent implements OnInit {
 
   }
 
+  // upload2(idx, file) { //ll droite
+  //   for (let i = 0; i < this.selectedFiles.length; i++) {
+  //     if (i == 0) {
+  //       this.service.updateImage1D(this.idConsult/* id consu */, file).subscribe(
+  //         event => {
 
-  upload2(idx, file) { //ll droite
-    for (let i = 0; i < this.selectedFiles.length; i++) {
-      if (i == 0) {
-        this.service.updateImage1D(this.idConsult/* id consu */, file).subscribe(
-          event => {
+  //         });
+  //     }
+  //     if (i == 1) {
+  //       this.service.updateImage2D(this.idConsult, file).subscribe(
+  //         event => {
 
-          });
-      }
-      if (i == 1) {
-        this.service.updateImage2D(this.idConsult, file).subscribe(
-          event => {
-
-          });
-      }
-      if (i == 2) {
-        this.service.updateImage3D(this.idConsult, file).subscribe(
-          event => {
+  //         });
+  //     }
+  //     if (i == 2) {
+  //       this.service.updateImage3D(this.idConsult, file).subscribe(
+  //         event => {
 
 
-          });
-      }
-      if (i == 3) {
-        this.service.updateImage4D(this.idConsult, file).subscribe(
-          event => {
+  //         });
+  //     }
+  //     if (i == 3) {
+  //       this.service.updateImage4D(this.idConsult, file).subscribe(
+  //         event => {
 
-          });
-      }
-      if (i == 4) {
-        this.service.updateImage5D(this.idConsult, file).subscribe(
-          event => {
+  //         });
+  //     }
+  //     if (i == 4) {
+  //       this.service.updateImage5D(this.idConsult, file).subscribe(
+  //         event => {
 
-          });
-      }
-    }
-  }
+  //         });
+  //     }
+  //   }
+  // }
 
 
 
@@ -661,21 +710,21 @@ export class ModifConsultationComponent implements OnInit {
 
   modifConsult() {
     this.clicked = 1
-    for (let i = 0; i < this.selectedFiles.length; i++) {
-      this.upload2(i, this.selectedFiles[i]);
+    this.upload2(this.selectedFiles);
 
-    }
-    //TEKHDEM KEN LULAAAA WLA LES DEUX
-    for (let i = 0; i < this.selectedFiles2.length; i++) {
-      this.upload(i, this.selectedFiles2[i]);
-
-
-
-    }
   }
 
 
+  modifConsult2() {
+    //TEKHDEM KEN LULAAAA WLA LES DEUX
+    this.upload(this.selectedFiles2);
+
+
+
+  }
 }
+
+
 
 
 

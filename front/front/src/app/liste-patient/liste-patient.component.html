@@ -64,7 +64,7 @@
             <ion-col class="params-icon">
               <ion-icon
                 name="ellipsis-vertical-sharp"
-                (click)="showActionSheet(item.cin)"
+                (click)="showActionSheet(item.id)"
               ></ion-icon>
             </ion-col>
             <ion-grid>
@@ -73,7 +73,7 @@
                   <ion-img
                     class="image"
                     src="assets/123.jpg"
-                    [routerLink]="['/patient-details', item.cin]"
+                    [routerLink]="['/patient-details', item.id]"
                   ></ion-img
                 ></ion-col>
                 <ion-col size="12">
@@ -86,7 +86,7 @@
                   <ion-text class="age">{{ item.cin }}</ion-text>
                 </ion-col>
               </ion-row>
-              <a [routerLink]="['/ConsultationPatient', item.cin]"
+              <a [routerLink]="['/ConsultationPatient', item.id]"
                 ><ion-text color="primary" class="consultation"
                   >Consultations</ion-text
                 >

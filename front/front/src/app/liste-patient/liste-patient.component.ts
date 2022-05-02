@@ -147,7 +147,7 @@ export class ListePatientComponent implements OnInit {
     console.log("wooooooh");
     this.listePatient()
     this.id = parseInt(localStorage.getItem("id"))
-    this.service.getPatient(this.id).subscribe((params) => { this.patient = params; this.patientF = params; })
+    this.service.getPatient(this.id).subscribe((params) => { this.patient = params; this.patientF = params; console.log("zzzazazaz") })
     // console.log(params);
 
     // this.patient = params;

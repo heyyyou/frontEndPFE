@@ -93,6 +93,7 @@ import { ConsultationAvisGaucheComponent } from './consultation-avis/consultatio
     StatAvisComponent,
     StatConsultComponent,
     HomePage,
+
     HomeExpertComponent,
     AjouterAvisComponent,
     ListeConsultExpertComponent,

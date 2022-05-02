@@ -93,6 +93,17 @@
             </ng-template>
           </swiper>
         </ion-card>
+        <ion-button
+          #btn
+          expand="block"
+          size="large"
+          fill="outline"
+          class="AImodel"
+          shape="round"
+          (click)="modifConsult(); btn.disabled = true"
+          [disabled]="this.var === 0"
+          >Modifer Consultation Droite
+        </ion-button>
       </div>
 
       <!-- now gauche -->
@@ -153,7 +164,6 @@
             </swiper>
           </ion-card>
         </div>
-
         <ion-button
           #btn
           expand="block"
@@ -161,11 +171,10 @@
           fill="outline"
           class="AImodel"
           shape="round"
-          (click)="modifConsult(); btn.disabled = true"
+          (click)="modifConsult2(); btn.disabled = true"
           [disabled]="this.var === 0"
-          >Modifer Consultation</ion-button
-        >
-
+          >Modifer Consultation Gauche
+        </ion-button>
         <ion-button
           #btn
           expand="block"
@@ -173,9 +182,9 @@
           class="AImodel"
           shape="round"
           (click)="presentLoading(); btn.disabled = true"
-          [disabled]="this.clicked === 0"
           >AI Modal</ion-button
         >
+        <!-- [disabled]="this.clicked === 0" -->
       </div>
     </div></ion-content
   >

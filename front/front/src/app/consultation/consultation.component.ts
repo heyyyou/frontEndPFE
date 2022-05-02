@@ -18,6 +18,7 @@ import { DomSanitizer } from '@angular/platform-browser';
 import { Key } from 'protractor';
 import { IonicSelectableComponent } from 'ionic-selectable';
 import { IonContent } from '@ionic/angular';
+import { LOADIPHLPAPI } from 'dns';
 @Component({
   selector: 'app-consultation',
   templateUrl: './consultation.component.html',
@@ -82,13 +83,14 @@ export class ConsultationComponent implements OnInit {
         this.autoDetection = params
         this.service.idAutoDetection = this.autoDetection.id;
         this.service.updateAutoDetectionInConsultation(parseInt(localStorage.getItem("id")), this.idConsult, this.autoDetection.id).subscribe((params) => { })
-        this.consultation = params, this.idConsult = this.consultation.id
+        // this.consultation = params, this.idConsult = this.consultation.id
         console.log("ba333333333333333333", this.autoDetection.id)
         console.log("rahmaaaaaaaaaaaaaaaaaaaa", this.consultation);
         // this.service.updateAutoDetectionInConsultation(parseInt(localStorage.getItem("id")), this.idConsult, this.autoDetection.id).subscribe((params) => {
         //   this.consultation = params, this.idConsult = this.consultation.id
         // })
-        this.router.navigate(['detailConsultation', this.idConsult, this.patient.cin, this.autoDetection.id]);
+        console.log("ùaùaùaù", this.idConsult)
+        this.router.navigate(['detailConsultation', this.idConsult, this.patient.id, this.autoDetection.id]);
       })
 
 
@@ -239,8 +241,8 @@ export class ConsultationComponent implements OnInit {
   portChange(e
   ) {
     console.log('port:', e.value);
-    console.log('port:', e.value.cin);
-    this.cinPatient = e.value.cin;
+    console.log('port:', e.value.id);
+    this.cinPatient = e.value.id;
   }
 
 
@@ -373,39 +375,44 @@ export class ConsultationComponent implements OnInit {
   }
 
 
-  upload(idx, file) {
+  upload(file) {
+    console.log("gauche", this.selectedFiles2);
+
     for (let i = 0; i < this.selectedFiles2.length; i++) {
+
       if (i == 0) {
-        this.service.updateImage1G(this.idConsult/* id consu */, file).subscribe(
+        this.service.updateImage1G(this.idConsult, this.selectedFiles2[0]).subscribe(
           event => {
+            console.log("event1", event);
 
           });
-      }
-      if (i == 1) {
-        this.service.updateImage2G(this.idConsult, file).subscribe(
-          event => {
+      } else
+        if (i == 1) {
+          this.service.updateImage2G(this.idConsult, this.selectedFiles2[1]).subscribe(
+            event => {
+              console.log("event2", event);
 
-          });
-      }
-      if (i == 2) {
-        this.service.updateImage3G(this.idConsult, file).subscribe(
-          event => {
+            });
+        } else
+          if (i == 2) {
+            this.service.updateImage3G(this.idConsult, this.selectedFiles2[2]).subscribe(
+              event => {
+                console.log("event3", event);
 
 
-          });
-      }
-      if (i == 3) {
-        this.service.updateImage4G(this.idConsult, file).subscribe(
-          event => {
+              });
+          } else
+            if (i == 3) {
+              this.service.updateImage4G(this.idConsult, this.selectedFiles2[3]).subscribe(
+                event => {
 
-          });
-      }
-      if (i == 4) {
-        this.service.updateImage5G(this.idConsult, file).subscribe(
-          event => {
+                });
+            } else {
+              this.service.updateImage5G(this.idConsult, this.selectedFiles2[4]).subscribe(
+                event => {
 
-          });
-      }
+                });
+            }
     }
   }
 
@@ -424,17 +431,19 @@ export class ConsultationComponent implements OnInit {
         // this.service.updateIdAutoDetection(this.idGen, this.idConsult, this.autoDetection.id).subscribe(event => { })
         // api consultation  bch tt7at lahneee  , subscribe ttsaker fi commentaire  num2 --> post
         this.message = '';
-        for (let i = 0; i < this.selectedFiles2.length; i++) {
-          this.upload(i, this.selectedFiles2[i]);
+        console.log("this.selectedFiles2", this.selectedFiles2);
 
-        }
+        // for (let i = 0; i < this.selectedFiles2.length; i++) {
+        this.upload(this.selectedFiles2);
+
+        // }
       }
 
       )
     } else {
-      for (let i = 0; i < this.selectedFiles2.length; i++) {
-        this.upload(i, this.selectedFiles2[i]);
-      }
+      // for (let i = 0; i < this.selectedFiles2.length; i++) {
+      this.upload(this.selectedFiles2);
+      // }
 
     }
 
@@ -458,22 +467,20 @@ export class ConsultationComponent implements OnInit {
         // this.service.updateIdAutoDetection(this.idGen, this.idConsult, this.autoDetection.id).subscribe(event => { })
         // api consultation  bch tt7at lahneee  , subscribe ttsaker fi commentaire  num2 --> post
         this.message = '';
-        for (let i = 0; i < this.selectedFiles.length; i++) {
-          this.upload2(i, this.selectedFiles[i]);
+        this.upload2(this.selectedFiles);
 
 
 
-        }
+
 
       }
       )
     } else {
-      for (let i = 0; i < this.selectedFiles.length; i++) {
-        this.upload2(i, this.selectedFiles[i]);
+      this.upload2(this.selectedFiles);
 
 
 
-      }
+
     }
 
 
@@ -584,36 +591,45 @@ export class ConsultationComponent implements OnInit {
   }
 
 
-  upload2(idx, file) { //ll droite
+  upload2(file) { //ll droite
+    console.log("droite", this.selectedFiles);
+
     for (let i = 0; i < this.selectedFiles.length; i++) {
       if (i == 0) {
-        this.service.updateImage1D(this.idConsult/* id consu */, file).subscribe(
+        this.service.updateImage1D(this.idConsult, this.selectedFiles[0]).subscribe(
           event => {
+            console.log('event1');
 
           });
       }
+
       if (i == 1) {
-        this.service.updateImage2D(this.idConsult, file).subscribe(
+        this.service.updateImage2D(this.idConsult, this.selectedFiles[1]).subscribe(
           event => {
+            console.log('event2', event);
 
           });
       }
       if (i == 2) {
-        this.service.updateImage3D(this.idConsult, file).subscribe(
+        this.service.updateImage3D(this.idConsult, this.selectedFiles[2]).subscribe(
           event => {
+            console.log('event3', event);
 
 
           });
       }
       if (i == 3) {
-        this.service.updateImage4D(this.idConsult, file).subscribe(
+        this.service.updateImage4D(this.idConsult, this.selectedFiles[3]).subscribe(
           event => {
+            console.log('event4', event);
 
           });
       }
       if (i == 4) {
-        this.service.updateImage5D(this.idConsult, file).subscribe(
+        this.service.updateImage5D(this.idConsult, this.selectedFiles[4]).subscribe(
           event => {
+            console.log('event5', event);
+
 
           });
       }

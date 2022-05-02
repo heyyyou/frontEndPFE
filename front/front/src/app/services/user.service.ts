@@ -1,5 +1,5 @@
 import { Patient } from './../model/patient';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { IonicSelectableComponent } from 'ionic-selectable';
@@ -255,37 +255,40 @@ export class UserService {
   //GAUCHE
 
   updateImage1G(id: number, file: File): Observable<any> {
-    const formData: FormData = new FormData();
+    console.log("1", file);
+
+    let formData: FormData = new FormData();
     formData.append('image1', file);
-    return this.http.put(`${this.updateimg1G}/${id}`, formData, {
+    return this.http.put(this.updateimg1G + "/" + id, formData, {
       responseType: 'text',
     });
   }
   updateImage2G(id: number, file: File): Observable<any> {
-    const formData: FormData = new FormData();
+    console.log("2", file);
+    let formData: FormData = new FormData();
     formData.append('image2', file);
-    return this.http.put(`${this.updateimg2G}/${id}`, formData, {
+    return this.http.put(this.updateimg2G + "/" + id, formData, {
       responseType: 'text',
     });
   }
   updateImage3G(id: number, file: File): Observable<any> {
-    const formData: FormData = new FormData();
+    let formData: FormData = new FormData();
     formData.append('image3', file);
-    return this.http.put(`${this.updateimg3G}/${id}`, formData, {
+    return this.http.put(this.updateimg3G + "/" + id, formData, {
       responseType: 'text',
     });
   }
   updateImage4G(id: number, file: File): Observable<any> {
-    const formData: FormData = new FormData();
+    let formData: FormData = new FormData();
     formData.append('image4', file);
-    return this.http.put(`${this.updateimg4G}/${id}`, formData, {
+    return this.http.put(this.updateimg4G + "/" + id, formData, {
       responseType: 'text',
     });
   }
   updateImage5G(id: number, file: File): Observable<any> {
-    const formData: FormData = new FormData();
+    let formData: FormData = new FormData();
     formData.append('image5', file);
-    return this.http.put(`${this.updateimg5G}/${id}`, formData, {
+    return this.http.put(this.updateimg5G + "/" + id, formData, {
       responseType: 'text',
     });
 
@@ -376,6 +379,7 @@ export class UserService {
     )
 
   }
+
   private updateAutoDetectionDansConsultation = "http://localhost:8080/consultation/editAuto"
   updateAutoDetectionInConsultation(idGeneraliste: number, idConsult: number, idAutoDetection: number) {
     return this.http.put(`${this.updateAutoDetectionDansConsultation}/${idGeneraliste}/${idConsult}/${idAutoDetection}`, {
@@ -400,6 +404,15 @@ export class UserService {
 
     )
   }
+  private updateAutoDetectionFConsult = "http://localhost:8080/consultation/updateAuto"
+  updateAutConst(idGen: any, idConsult: any, idAuto: any): Observable<Object> {
+
+    return this.http.put(`${this.updateAutoDetectionFConsult}/${idGen}/${idConsult}/${idAuto}`, {}
+
+
+    )
+  }
+
 
   //Put Gauche
   private ajouterAvisPourOeilGauche = "http://localhost:8080/avisExpert/updateAvisG"

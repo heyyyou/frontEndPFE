@@ -180,55 +180,55 @@ export class DetailsGaucheComponent implements OnInit {
 
 
 
-      if (this.consultation.image2_Gauche === null) {
-        this.imagePath = "assets/123.jpg"
-      }
-      else {
+      /*  if (this.consultation.image2_Gauche === null) {
+          this.imagePath = "assets/123.jpg"
+        }
+        else {
 
-        this.retrieveResponse = this.consultation;
-        this.base64Data = this.retrieveResponse.image2_Gauche;
-        this.imagePath = 'data:image/jpeg;base64,' + this.base64Data;
-        this.images2[1] = this.imagePath;
-        console.log("tableee 2", this.images2[1]);
-      }
-
-
-      if (this.consultation.image3_Gauche === null) {
-        this.imagePath = "assets/123.jpg"
-      }
-      else {
-
-        this.retrieveResponse = this.consultation;
-        this.base64Data = this.retrieveResponse.image3_Gauche;
-        this.imagePath = 'data:image/jpeg;base64,' + this.base64Data;
-        this.images2[2] = this.imagePath;
-        console.log("tableee 2", this.images2[2]);
-      }
+          this.retrieveResponse = this.consultation;
+          this.base64Data = this.retrieveResponse.image2_Gauche;
+          this.imagePath = 'data:image/jpeg;base64,' + this.base64Data;
+          this.images2[1] = this.imagePath;
+          console.log("tableee 2", this.images2[1]);
+        }
 
 
-      if (this.consultation.image4_Gauche === null) {
-        this.imagePath = "assets/123.jpg"
-      }
-      else {
+        if (this.consultation.image3_Gauche === null) {
+          this.imagePath = "assets/123.jpg"
+        }
+        else {
 
-        this.retrieveResponse = this.consultation;
-        this.base64Data = this.retrieveResponse.image4_Gauche;
-        this.imagePath = 'data:image/jpeg;base64,' + this.base64Data;
-        this.images2[3] = this.imagePath;
-        console.log("tableee 2", this.images2[3]);
-      }
+          this.retrieveResponse = this.consultation;
+          this.base64Data = this.retrieveResponse.image3_Gauche;
+          this.imagePath = 'data:image/jpeg;base64,' + this.base64Data;
+          this.images2[2] = this.imagePath;
+          console.log("tableee 2", this.images2[2]);
+        }
 
-      if (this.consultation.image5_Gauche === null) {
-        this.imagePath = "assets/123.jpg"
-      }
-      else {
 
-        this.retrieveResponse = this.consultation;
-        this.base64Data = this.retrieveResponse.image5_Gauche;
-        this.imagePath = 'data:image/jpeg;base64,' + this.base64Data;
-        this.images2[4] = this.imagePath;
-        console.log("tableee 2", this.images2[4]);
-      }
+        if (this.consultation.image4_Gauche === null) {
+          this.imagePath = "assets/123.jpg"
+        }
+        else {
+
+          this.retrieveResponse = this.consultation;
+          this.base64Data = this.retrieveResponse.image4_Gauche;
+          this.imagePath = 'data:image/jpeg;base64,' + this.base64Data;
+          this.images2[3] = this.imagePath;
+          console.log("tableee 2", this.images2[3]);
+        }
+
+        if (this.consultation.image5_Gauche === null) {
+          this.imagePath = "assets/123.jpg"
+        }
+        else {
+
+          this.retrieveResponse = this.consultation;
+          this.base64Data = this.retrieveResponse.image5_Gauche;
+          this.imagePath = 'data:image/jpeg;base64,' + this.base64Data;
+          this.images2[4] = this.imagePath;
+          console.log("tableee 2", this.images2[4]);
+        }*/
     })
 
     )

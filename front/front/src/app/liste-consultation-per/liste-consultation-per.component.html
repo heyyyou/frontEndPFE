@@ -95,7 +95,7 @@
               [routerLink]="[
                 '/DetailsWithoutAutoConsult',
                 item?.id,
-                item.patient?.cin
+                item.patient?.id
               ]"
               >Details</ion-button
             >
@@ -107,7 +107,7 @@
               [routerLink]="[
                 '/detailConsultation',
                 item?.id,
-                item.patient?.cin,
+                item.patient?.id,
                 item.autoDetection?.id
               ]"
               >Details</ion-button

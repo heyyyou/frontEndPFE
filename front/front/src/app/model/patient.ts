@@ -1,6 +1,6 @@
 import { Generaliste } from './generaliste';
 export interface Patient {
-
+  id: Number;
   username: String;
   cin: Number;
   antecedant: any;
