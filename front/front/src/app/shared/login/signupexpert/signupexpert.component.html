@@ -3,7 +3,20 @@
     <div class="form-input">
       <ion-icon color="primary" name="person-outline"></ion-icon>
       <ion-item>
-        <ion-label position="floating">Nom & prenom </ion-label>
+        <ion-label position="floating">Nom & Prenom </ion-label>
+        <ion-input
+          type="text"
+          required
+          id="nomPrenom"
+          ngModel
+          name="nomPrenom"
+          #username="ngModel"
+        ></ion-input>
+      </ion-item>
+
+      <ion-icon color="primary" name="person-outline"></ion-icon>
+      <ion-item>
+        <ion-label position="floating">Nom Utilisateur </ion-label>
         <ion-input
           type="text"
           required

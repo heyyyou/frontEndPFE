@@ -40,6 +40,9 @@ export class SignupComponent implements OnInit {
 
 
   }
+  passoub() {
+    this.route.navigate(['forgetPassword'])
+  }
   Router: any;
   dismiss() {
     this.modal.dismiss();

@@ -166,10 +166,12 @@ export class DetailsGaucheComponent implements OnInit {
     this.service.getConsultationID(parseInt(localStorage.getItem("id")), this.idConsult, this.idPatient).subscribe((params => {
       this.consultation = params;
       console.log(this.consultation)
-      if (this.consultation.image1_Gauche === null) {
+
+      if (this.consultation.image1_Gauche == null) {
         this.imagePath = "assets/123.jpg"
       }
       else {
+        console.log("be333");
 
         this.retrieveResponse = this.consultation;
         this.base64Data = this.retrieveResponse.image1_Gauche;

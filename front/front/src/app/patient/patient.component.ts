@@ -5,7 +5,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { format } from 'date-fns';
 import { parseISO } from 'date-fns/esm';
 import { Camera, CameraResultType, CameraSource, ImageOptions } from '@capacitor/camera';
-import { ActionSheetController, MenuController } from '@ionic/angular';
+import { ActionSheetController, MenuController, ToastController } from '@ionic/angular';
 import { NgForm } from '@angular/forms';
 import { id } from 'date-fns/locale';
 import { threadId } from 'worker_threads';
@@ -66,11 +66,11 @@ export class PatientComponent implements OnInit {
   showPicker = false;
   dateValue = format(new Date(), 'yyyy-MM-dd');
   formattedString = '';
-  constructor(private router: Router, public actionSheetController: ActionSheetController, private menu: MenuController, private service: UserService, private ar: ActivatedRoute) {
+  constructor(private router: Router, private toastController: ToastController, public actionSheetController: ActionSheetController, private menu: MenuController, private service: UserService, private ar: ActivatedRoute) {
     this.setToday();
   }
   setToday() {
-    this.formattedString = format(parseISO(format(new Date(), 'yyyy-MM-dd')), 'MMM d,yyyy');
+    this.formattedString = format(parseISO(format(new Date(), 'yyyy-MM-dd')), 'yyyy-MM-dd');
   }
   openFirst() {
     this.menu.enable(true, 'first');
@@ -93,7 +93,7 @@ export class PatientComponent implements OnInit {
 
   dateChanged(value) {
     this.dateValue = value; // one way binding that s why
-    this.formattedString = format(parseISO(value), 'MMM d,yyyy');
+    this.formattedString = format(parseISO(value), 'yyyy-MM-dd');
     this.showPicker = false;
     console.log("formattedString", this.formattedString);
 
@@ -170,18 +170,26 @@ export class PatientComponent implements OnInit {
 
     this.ide = parseInt(localStorage.getItem("id"));
     this.service.ajouterPatient(f.value, this.ide).subscribe(() => {
-
+      this.router.navigate(["ListePatient"])
+    },
 
       err => {
-        alert(" proléme dans modifier l'image ")
+        this.presentToastError();
       }
 
-      this.router.navigate(["ListePatient"])
 
-    })
+    )
   }
 
+  async presentToastError() {
+    const toast = await this.toastController.create({
+      message: 'Le patient existe déja',
+      duration: 3000,
+      cssClass: "customToastaya",
 
+    });
+    toast.present();
+  }
 
   consultation() {
     this.router.navigate(['consultation']);

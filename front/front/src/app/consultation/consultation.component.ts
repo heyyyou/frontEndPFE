@@ -173,7 +173,6 @@ export class ConsultationComponent implements OnInit {
       console.log();
 
 
-
       err => {
         alert(" proléme dans modifier l'image ")
       }
@@ -244,6 +243,7 @@ export class ConsultationComponent implements OnInit {
     console.log('port:', e.value.id);
     this.cinPatient = e.value.id;
   }
+
 
 
   // async openPreview(imge) {

@@ -13,17 +13,43 @@ export class ReponseAvisNotifComponent implements OnInit {
   consult: any
   ConsultationF: any
   id: any
+  imagePath: any;
   consultation: any
+  retrieveResponse: any;
+  base64Data: string;
 
+  user: any
   // reponseDetails() {
   //   this.router.navigate(["consultationAvis"]);
   //   this.menu.close();
   // }
 
   constructor(public router: Router, private ar: ActivatedRoute, private menu: MenuController, public service: UserService) { }
+  here() {
+    let id: number
+    this.ar.paramMap.subscribe((params) => {
+      id = +params.get('id')
+      this.service.getData(id).subscribe(data => {
+        this.user = data
+        console.log(this.user.image)
+        if (this.user.image == null) {
+          this.imagePath = "assets/123.jpg"
+        }
+        else {
+          this.retrieveResponse = this.user;
+          this.base64Data = this.retrieveResponse.image;
+          this.imagePath = 'data:image/jpeg;base64,' + this.base64Data;
+        }
 
+      });
+
+      console.log(this.user)
+
+    });
+
+  }
   ngOnInit() {
-
+    this.here();
 
     this.id = parseInt(localStorage.getItem("id"))
     this.service.getAllConsultationExpert().subscribe((params) => {

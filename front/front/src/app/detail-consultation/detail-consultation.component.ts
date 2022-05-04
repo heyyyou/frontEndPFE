@@ -25,6 +25,7 @@ export class DetailConsultationComponent implements OnInit {
   idConsult: any;
   idPatient: any;
   private sub: any;
+  images2: any[] = [];
   patient: any
   consultation: any
   images: any[] = [];
@@ -201,6 +202,8 @@ export class DetailConsultationComponent implements OnInit {
         this.imagePath = 'data:image/jpeg;base64,' + this.base64Data;
         this.images[0] = this.imagePath;
         console.log("lulaa", this.images[0]);
+
+
       }
 
       /*  if (this.consultation.image2_Droite == null) {

@@ -44,6 +44,43 @@
     <ion-list>
       <ion-item>
         <ion-label>
+          <ion-text color="primary2">Nom & prenom </ion-text>
+          <p>
+            <ion-input
+              color="dark"
+              [ngModel]="user?.nomPrenom"
+              id="nomPrenom"
+              #nomPrenom="ngModel"
+              name="nomPrenom"
+            ></ion-input>
+          </p>
+        </ion-label>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>
+          <ion-text color="primary2">Gender </ion-text>
+        </ion-label>
+        <ion-item lines="none">
+          <ion-radio-group
+            id="gender"
+            ngModel
+            name="gender"
+            #gender="ngModel"
+            [ngModel]="user?.gender"
+          >
+            <ion-item lines="none">
+              <ion-label color="primary2">femme</ion-label>
+              <ion-radio slot="start" value="femme"></ion-radio>
+            </ion-item>
+            <ion-item lines="none">
+              <ion-label color="primary2">homme</ion-label>
+              <ion-radio slot="start" value="homme"></ion-radio>
+            </ion-item> </ion-radio-group
+        ></ion-item>
+      </ion-item>
+      <ion-item>
+        <ion-label>
           <ion-text color="primary2"> Téléphone </ion-text>
           <p>
             <ion-input
@@ -52,19 +89,6 @@
               [ngModel]="user?.telephone"
               #telephone="ngModel"
               name="telephone"
-            ></ion-input>
-          </p>
-        </ion-label>
-      </ion-item>
-      <ion-item>
-        <ion-label>
-          <ion-text color="primary2">Gender </ion-text>
-          <p>
-            <ion-input
-              color="dark"
-              [ngModel]="user?.gender"
-              id="gender"
-              name="gender"
             ></ion-input>
           </p>
         </ion-label>

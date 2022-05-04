@@ -486,5 +486,24 @@ export class UserService {
   consultationNotifParDemande(): Observable<Object[]> {
     return this.http.get<Object[]>(`${this.consultationavis}`)
   }
+  // **************Stat*******************
+  private age = " http://localhost:8080/api/ageS"
+  getAgeSup50(): Observable<number> {
+    return this.http.get<number>(`${this.age}`)
+  }
+  private agei = " http://localhost:8080/api/ageI"
+  getAgeInf50(): Observable<number> {
+    return this.http.get<number>(`${this.agei}`)
+  }
+  private nouveauPatient = "http://localhost:8080/api/patientParMonth?month="
+  getNouvPat(month: number): Observable<number> {
+    return this.http.get<number>(`${this.nouveauPatient + month}`);
+
+  }
+  privatetsConsultParMonth = "http://localhost:8080/consultation/consultationParMonth?month="
+  getAllConsultMonth(month: number): Observable<number> {
+    return this.http.get<number>(`${this.privatetsConsultParMonth + month}`);
+
+  }
 }
 

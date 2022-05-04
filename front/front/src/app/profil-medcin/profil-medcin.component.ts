@@ -39,6 +39,7 @@ export class ProfilMedcinComponent implements OnInit {
       id = +params.get('id')
       this.service.getData(id).subscribe(data => {
         this.user = data
+        console.log("eeeeeeeeee", this.user.nomPrenom)
         console.log(this.user.image)
         if (this.user.image == null) {
           this.imagePath = "assets/123.jpg"
