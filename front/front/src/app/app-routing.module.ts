@@ -36,7 +36,7 @@ import { DetailsConsultationwithoutAutoComponent } from './details-consultationw
 import { AjouterAvisGaucheComponent } from './medecin-expert/ajouter-avis/ajouter-avis-gauche/ajouter-avis-gauche.component';
 import { GestionAvisComponent } from './medecin-expert/details-consult-avis/details-historiques/gestion-avis.component';
 import { ForgetPasswordComponent } from './shared/forget-password/forget-password.component';
-
+import { StatistiqsueComponent } from './medecin-expert/statistique/statistique.component';
 
 const routes: Routes = [
 
@@ -78,6 +78,12 @@ const routes: Routes = [
     path: 'forgetPassword', component: ForgetPasswordComponent
 
   },
+  {
+    path: 'statExpert', component: StatistiqsueComponent
+
+  },
+
+
 
   {
     path: 'DetailsConsultExpert', component: DetailsConsultAvisComponent, canActivate: [AuthGuard]

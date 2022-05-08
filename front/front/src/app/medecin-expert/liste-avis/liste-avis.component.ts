@@ -126,6 +126,11 @@ export class ListeAvisComponent implements OnInit {
     this.router.navigate(['profilExpert']);
     this.menu.close();
   }
+  statistique() {
+    this.router.navigate(['statExpert']);
+    this.menu.close();
+  }
+
 }
 
 

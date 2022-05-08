@@ -12,7 +12,6 @@ export class AppComponent implements OnInit {
 
   public isExpert: any;
 
-
   @ViewChildren(IonRouterOutlet) routerOutlets: QueryList<IonRouterOutlet>;
 
   lastTimeBackPress = 0;

@@ -163,6 +163,9 @@ export class PatientComponent implements OnInit {
     f.value.antecedant = localStorage.getItem("item");
     console.log(this.getSelectedItem(f.value));
     f.value.antecedant = this._antecedantlist.filter(x => x.isSelected === true).map(x => x.name).join(",").toString();
+    // f.value.NomPCin = f.value.username + " " + f.value.cin
+    console.log("zzzzzzzzzzzzzzzzzz", f.value.NomPCin);
+
     console.log(f.value.antecedant);
 
     console.log("fffff", f.value);

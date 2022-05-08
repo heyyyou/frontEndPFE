@@ -44,11 +44,11 @@
           <ion-input
             placeholder="réponse courte"
             type="text"
-            required
             id="cin"
             ngModel
             name="cin"
             #cin="ngModel"
+            required
           ></ion-input>
         </ion-item>
         <span style="color: red" *ngIf="!cin.valid && cin.touched"
@@ -62,11 +62,11 @@
           <ion-input
             placeholder="réponse courte"
             type="text"
-            required
             id="username"
             ngModel
             name="username"
             #username="ngModel"
+            required
           ></ion-input>
         </ion-item>
         <span style="color: red" *ngIf="!username.valid && username.touched"
@@ -77,7 +77,7 @@
       <ion-card>
         <ion-item>
           <ion-label position="stacked" class="text"
-            >Numéro de téléphone</ion-label
+            >Numéro de téléphone<ion-text color="danger">*</ion-text></ion-label
           >
           <ion-input
             placeholder="réponse courte"
@@ -88,30 +88,28 @@
             name="telephone"
             #telephone="ngModel"
           ></ion-input>
+          <span style="color: red" *ngIf="!telephone.valid && telephone.touched"
+            >Entrer Télephone
+          </span>
         </ion-item>
-        <span style="color: red" *ngIf="!telephone.valid && telephone.touched"
-          >Entrer Télephone
-        </span>
 
         <ion-item lines="none">
           <ion-label position="stacked" class="text">Adresse mail</ion-label>
           <ion-input
             placeholder="réponse courte"
             type="text"
-            required
             id="email"
             ngModel
             name="email"
             #email="ngModel"
           ></ion-input>
         </ion-item>
-        <span style="color: red" *ngIf="!telephone.valid && telephone.touched"
-          >Entrer Email
-        </span>
       </ion-card>
       <ion-card>
         <ion-item lines="none">
-          <ion-label position="stacked" class="text">Gender</ion-label>
+          <ion-label position="stacked" class="text"
+            >Gender<ion-text color="danger">*</ion-text></ion-label
+          >
 
           <ion-radio-group id="gender" ngModel name="gender" #gender="ngModel">
             <ion-item lines="none">

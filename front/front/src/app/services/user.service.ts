@@ -505,5 +505,38 @@ export class UserService {
     return this.http.get<number>(`${this.privatetsConsultParMonth + month}`);
 
   }
+  privateConsultPathoParMonth = "http://localhost:8080/consultation/getAllPatho?month="
+  getAllConsultPathMonth(month: number): Observable<number> {
+    return this.http.get<number>(`${this.privateConsultPathoParMonth + month}`);
+
+  }
+  private ConsultAvecAvis = "http://localhost:8080/consultation/getAllavecAvis"
+  ConsultavecAvis(): Observable<number> {
+    return this.http.get<number>(`${this.ConsultAvecAvis}`);
+
+  }
+  private ConsultSansAvis = "http://localhost:8080/consultation/getAllsansAvis"
+  ConsultasansAvis(): Observable<number> {
+    return this.http.get<number>(`${this.ConsultSansAvis}`);
+
+  }
+  private notifGen = "http://localhost:8080/consultation/NotifGen"
+  consultationNotifGen(): Observable<Object[]> {
+    return this.http.get<Object[]>(`${this.notifGen}`)
+  }
+
+
+
+
+  private urlAllDemandesRepondueParExpertByMonth = "http://localhost:8080/expert/getDemendeAvisEnvoyesParMonthAvecReponse"
+  private suite = "?month=";
+  getAllDemandesRepondueParExpertByMonth(idExpert: number, month: number): Observable<number> {
+    return this.http.get<number>(`${this.urlAllDemandesRepondueParExpertByMonth}/${idExpert}${this.suite + month}`);
+  }
+  //demainnn nchlhhhhhhhhhh
+  private urlGetAllDemandesParMonth = " http://localhost:8080/expert/getDemendeAvisEnvoyesParMonth?month="
+  getAllDemandesParMonth(month: number): Observable<number> {
+    return this.http.get<number>(`${this.urlGetAllDemandesParMonth + month}`);
+  }
 }
 

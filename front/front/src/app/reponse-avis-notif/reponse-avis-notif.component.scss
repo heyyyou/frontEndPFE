@@ -67,12 +67,22 @@
     }
   }
 }
-.searchBar {
-  --border-radius: 12px;
-  --box-shadow: rgb(179, 170, 170);
-  --placeholder-color: #8b8a8a;
-  --color: #0a0000;
-  --background: #ebe8e8;
-  padding-left: 7%;
-  padding-right: 7%;
+// .searchBar {
+//   --border-radius: 12px;
+//   --box-shadow: rgb(179, 170, 170);
+//   --placeholder-color: #8b8a8a;
+//   --color: #0a0000;
+//   --background: #ebe8e8;
+//   padding-left: 7%;
+//   padding-right: 7%;
+// }
+.notif {
+  position: absolute;
+  top: 133px;
+  left: 2px;
+}
+.notift {
+  position: absolute;
+  top: 549px;
+  left: 145px;
 }

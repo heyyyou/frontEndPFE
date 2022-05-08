@@ -62,6 +62,8 @@ import { AjouterAvisGaucheComponent } from './medecin-expert/ajouter-avis/ajoute
 import { GestionAvisGaucheComponent } from './medecin-expert/details-consult-avis/details-historiques/gestion-avis-gauche/gestion-avis-gauche.component';
 import { ConsultationAvisGaucheComponent } from './consultation-avis/consultation-avis-gauche/consultation-avis-gauche.component';
 import { ForgetPasswordComponent } from './shared/forget-password/forget-password.component';
+import { StatistiqsueComponent } from './medecin-expert/statistique/statistique.component';
+
 @NgModule({
   declarations: [
     ReponseAvisNotifComponent,
@@ -95,7 +97,7 @@ import { ForgetPasswordComponent } from './shared/forget-password/forget-passwor
     StatAvisComponent,
     StatConsultComponent,
     HomePage,
-
+    StatistiqsueComponent,
     HomeExpertComponent,
     AjouterAvisComponent,
     ListeConsultExpertComponent,
@@ -106,6 +108,7 @@ import { ForgetPasswordComponent } from './shared/forget-password/forget-passwor
     DetailsGaucheComponent,
     DetailsDroiteComponent,
     ProfilMedcinComponent,
+
     EditProfilMedecinComponent,
     ListeConsultationPerComponent,
     Parametre2Component,

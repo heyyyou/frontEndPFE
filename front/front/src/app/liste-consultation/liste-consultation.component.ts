@@ -1,3 +1,4 @@
+import { Capacitor } from '@capacitor/core';
 import { Patient } from './../model/patient';
 import { Consultation } from './../model/image';
 import { UserService } from 'src/app/services/user.service';
@@ -20,6 +21,7 @@ export class ListeConsultationComponent implements OnInit {
   ConsultationF: any
   nbrConsultation: any
   consult: any
+  nbr: any
   base64: string;
   uploadImageData: any
   selectedFile: File;
@@ -94,6 +96,8 @@ export class ListeConsultationComponent implements OnInit {
 
 
   ngOnInit() {
+    this.getNbrAvis()
+
     this.getAllconsultation()
     let id: number
     this.ar.paramMap.subscribe((params) => {
@@ -115,9 +119,18 @@ export class ListeConsultationComponent implements OnInit {
       console.log(this.user)
 
     });
-
-
   }
+
+  getNbrAvis() {
+    this.service.consultationNotifGen().subscribe((params) => {
+      this.consultation = params; this.ConsultationF = params; this.consult = params
+      console.log("ya nariiiia aalik ya mounira", this.consultation)
+      console.log("ahmeddd", this.consultation)
+      this.nbr = this.consultation.length;
+      console.log("heskdsdf", this.nbr)
+    })
+  }
+
   showRating(rating) {
     this.currentRatingValue = (rating);
 

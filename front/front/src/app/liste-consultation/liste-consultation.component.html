@@ -36,6 +36,9 @@
               name="notifications-outline"
               class="ion-padding"
             ></ion-icon>
+            <ion-badge *ngIf="nbr !== 0" color="danger" class="badge">{{
+              nbr
+            }}</ion-badge>
             <ion-text>notifications</ion-text>
           </ion-item>
           <ion-item (click)="statistique()">
@@ -68,9 +71,13 @@
             <ion-header [translucent]="true">
               <ion-toolbar>
                 <ion-buttons slot="start">
-                  <ion-menu-button menu="first1"></ion-menu-button>
-                </ion-buttons> </ion-toolbar
-            ></ion-header>
+                  <ion-menu-button menu="first1"> </ion-menu-button>
+                  <ion-badge *ngIf="nbr !== 0" color="danger" class="badge">{{
+                    nbr
+                  }}</ion-badge>
+                </ion-buttons>
+              </ion-toolbar></ion-header
+            >
           </ion-buttons>
 
           <ion-avatar slot="end" class="ion-margin avatar">

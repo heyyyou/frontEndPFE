@@ -1,5 +1,6 @@
 import { Chart } from 'chart.js';
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-stat-avis',
@@ -11,13 +12,14 @@ export class StatAvisComponent {
   @ViewChild('doughnutCanvas') private doughnutCanvas: ElementRef;
   @ViewChild('lineCanvas') private lineCanvas: ElementRef;
 
-
+  nbrConsultAvec: any
+  nbrConsultSans: any
   doughnutChart: any;
 
   lineChart: any;
   #bb68b4
 
-  constructor() { }
+  constructor(public service: UserService) { }
 
 
   // When we try to call our chart to initialize methods in ngOnInit() it shows an error nativeElement of undefined.
@@ -89,27 +91,33 @@ export class StatAvisComponent {
 
 
   doughnutChartMethod() {
-    this.doughnutChart = new Chart(this.doughnutCanvas.nativeElement, {
-      type: 'doughnut',
-      data: {
-        labels: ['Consultation avec avis', 'Consultation sans avis'],
-        datasets: [{
-          label: '# of Votes',
-          data: [20, 5],
-          backgroundColor: [
-            '#0091ff',
-            '#468000',
-          ],
-          hoverBackgroundColor: [
-            '#0091ff',
-            '#468000',
-            '#36A2EB',
-            '#FFCE56',
-            '#FF6384'
-          ]
-        }]
-      }
-    });
+    this.service.ConsultavecAvis().subscribe(data => {
+      this.nbrConsultAvec = data
+      this.service.ConsultasansAvis().subscribe(data => {
+        this.nbrConsultSans = data
+        this.doughnutChart = new Chart(this.doughnutCanvas.nativeElement, {
+          type: 'doughnut',
+          data: {
+            labels: ['Consultation avec avis', 'Consultation sans avis'],
+            datasets: [{
+              label: '# of Votes',
+              data: [this.nbrConsultAvec, this.nbrConsultSans],
+              backgroundColor: [
+                '#0091ff',
+                '#468000',
+              ],
+              hoverBackgroundColor: [
+                '#0091ff',
+                '#468000',
+                '#36A2EB',
+                '#FFCE56',
+                '#FF6384'
+              ]
+            }]
+          }
+        });
+      })
+    })
   }
 
 }
