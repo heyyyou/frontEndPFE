@@ -483,8 +483,8 @@ export class UserService {
     return this.http.get<Object[]>(`${this.badge}`)
   }
   private consultationavis = "http://localhost:8080/consultation/test"
-  consultationNotifParDemande(): Observable<Object[]> {
-    return this.http.get<Object[]>(`${this.consultationavis}`)
+  consultationNotifParDemande(id: number): Observable<Object[]> {
+    return this.http.get<Object[]>(`${this.consultationavis}/${id}`)
   }
   // **************Stat*******************
   private age = " http://localhost:8080/api/ageS"
@@ -521,8 +521,8 @@ export class UserService {
 
   }
   private notifGen = "http://localhost:8080/consultation/NotifGen"
-  consultationNotifGen(): Observable<Object[]> {
-    return this.http.get<Object[]>(`${this.notifGen}`)
+  consultationNotifGen(idGen: number): Observable<Object[]> {
+    return this.http.get<Object[]>(`${this.notifGen}/${idGen}`)
   }
 
 
@@ -537,6 +537,30 @@ export class UserService {
   private urlGetAllDemandesParMonth = " http://localhost:8080/expert/getDemendeAvisEnvoyesParMonth?month="
   getAllDemandesParMonth(month: number): Observable<number> {
     return this.http.get<number>(`${this.urlGetAllDemandesParMonth + month}`);
+  }
+  private AIModelequlasAVisExpert = "http://localhost:8080/consultation/getAIEgaleAvis?month="
+  getAllAvisegaleMOdel(month: number): Observable<number> {
+    return this.http.get<number>(`${this.AIModelequlasAVisExpert + month}`);
+  }
+  private AIModeldiffAVisExpert = "http://localhost:8080/consultation/getAIdiffAvis?month="
+  getAllAvisdiffMOdel(month: number): Observable<number> {
+    return this.http.get<number>(`${this.AIModeldiffAVisExpert + month}`);
+  }
+
+  private rating = "http://localhost:8080/consultation/consultation/rating"
+  private rate = "?rating=";
+
+  Rate(rating: number, idConsult: number): Observable<Object> {
+
+    return this.http.put(`${this.rating}/${idConsult}/${this.rate}` + rating, {
+      responseType: 'text',
+
+    }
+
+    )
+
+
+
   }
 }
 

@@ -26,6 +26,7 @@ export class ListeConsultationComponent implements OnInit {
   uploadImageData: any
   selectedFile: File;
   retrievedImage: any;
+  nofound: boolean
   base64Data: any;
   retrieveResponse: any;
   message: string;
@@ -122,7 +123,7 @@ export class ListeConsultationComponent implements OnInit {
   }
 
   getNbrAvis() {
-    this.service.consultationNotifGen().subscribe((params) => {
+    this.service.consultationNotifGen(parseInt(localStorage.getItem("id"))).subscribe((params) => {
       this.consultation = params; this.ConsultationF = params; this.consult = params
       console.log("ya nariiiia aalik ya mounira", this.consultation)
       console.log("ahmeddd", this.consultation)
@@ -210,6 +211,10 @@ export class ListeConsultationComponent implements OnInit {
   set texte(chaine: string) {
 
     this.consultation = this.filtrer(chaine);
+    if (this.consultation == null) {
+      this.nofound == true
+
+    }
 
   }
 

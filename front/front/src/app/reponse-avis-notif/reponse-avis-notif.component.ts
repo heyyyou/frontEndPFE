@@ -52,7 +52,7 @@ export class ReponseAvisNotifComponent implements OnInit {
     this.here();
 
     this.id = parseInt(localStorage.getItem("id"))
-    this.service.consultationNotifGen().subscribe((params) => {
+    this.service.consultationNotifGen(parseInt(localStorage.getItem("id"))).subscribe((params) => {
       this.consultation = params; this.ConsultationF = params; this.consult = params
       console.log("ya nariiiia aalik ya mounira", this.consultation)
       console.log("ahmeddd", this.consultation)

@@ -3,6 +3,7 @@ import { MenuController, ModalController, ToastController } from '@ionic/angular
 import { ActivatedRoute, Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { UserService } from 'src/app/services/user.service';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-liste-avis',
@@ -10,6 +11,9 @@ import { UserService } from 'src/app/services/user.service';
   styleUrls: ['./liste-avis.component.scss'],
 })
 export class ListeAvisComponent implements OnInit {
+  today: Date = new Date();
+  pipe = new DatePipe('en-US');
+  todayWithPipe = null;
   Consultation: any[]
   ConsultationF: any
   consult: any
@@ -54,12 +58,17 @@ export class ListeAvisComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.todayWithPipe = this.pipe.transform(Date.now(), 'h:mm:ss ');
+    console.log("mimimimimi", this.todayWithPipe);
+
     this.presentToast();
     this.here()
-    this.service.consultationNotifParDemande().subscribe((params) => {
+    this.service.consultationNotifParDemande(parseInt(localStorage.getItem("id"))).subscribe((params) => {
       this.consultation = params; this.ConsultationF = params; this.consult = params
       console.log("ya nariiiia aalik ya mounira", this.consultation)
       console.log("ahmeddd", this.consultation)
+
+
       this.nombreConsult = this.consultation.length
 
 

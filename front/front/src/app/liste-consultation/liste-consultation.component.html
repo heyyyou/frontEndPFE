@@ -70,12 +70,10 @@
           <ion-buttons slot="start">
             <ion-header [translucent]="true">
               <ion-toolbar>
-                <ion-buttons slot="start">
-                  <ion-menu-button menu="first1"> </ion-menu-button>
-                  <ion-badge *ngIf="nbr !== 0" color="danger" class="badge">{{
-                    nbr
-                  }}</ion-badge>
-                </ion-buttons>
+                <ion-menu-button menu="first1"> </ion-menu-button>
+                <ion-badge *ngIf="nbr !== 0" color="danger" class="badge">{{
+                  nbr
+                }}</ion-badge>
               </ion-toolbar></ion-header
             >
           </ion-buttons>
@@ -192,16 +190,16 @@
             </div>
           </ion-col>
         </ion-card-content>
+        <div *ngIf="item.rating">
+          <img src="./assets/star.png" style="height: 22px; width: 22px" />
+          {{ item.rating }}/6
+          <br />
+        </div>
 
-        <app-stars-rating
-          (shareRatingValue)="showRating($event)"
-        ></app-stars-rating>
-        <br />
-
-        <h4 *ngIf="currentRatingValue">
-          <!-- The value selected from the stars component is
-        <h2>{{ currentRatingValue }}</h2> -->
-        </h4>
+        <!-- <h4 *ngIf="currentRatingValue">
+          The value selected from the stars component is
+          <h2>{{ currentRatingValue }}</h2>
+        </h4> -->
       </ion-card>
     </ion-content>
 

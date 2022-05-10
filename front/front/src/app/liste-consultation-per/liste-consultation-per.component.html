@@ -20,6 +20,7 @@
   </ion-header>
 
   <ion-content>
+    <div *ngIf="nofound == true"><img src="assets/notfound.png" /></div>
     <div *ngIf="nbrConsultation === 0">
       <img class="pas" src="assets/14.jpg" />
     </div>
@@ -33,9 +34,6 @@
       <ion-item lines="none">
         <!-- <ion-col class="ion-margin"> -->
         <ion-buttons slot="end">
-          <ion-button color="primary" (click)="editConsultation()"
-            ><ion-icon name="pencil"></ion-icon>
-          </ion-button>
           <ion-button color="primary" (click)="suppConsultation(item.id)"
             ><ion-icon name="trash"></ion-icon>
           </ion-button> </ion-buttons
@@ -115,16 +113,13 @@
           </div>
         </ion-col>
       </ion-card-content>
+      <div *ngIf="item.rating">
+        <img src="./assets/star.png" style="height: 22px; width: 22px" />
+        {{ item.rating }}/6
+        <br />
+      </div>
 
-      <app-stars-rating
-        (shareRatingValue)="showRating($event)"
-      ></app-stars-rating>
       <br />
-
-      <h4 *ngIf="currentRatingValue">
-        <!-- The value selected from the stars component is
-      <h2>{{ currentRatingValue }}</h2> -->
-      </h4>
     </ion-card>
   </ion-content>
 

@@ -15,6 +15,7 @@ export class ListeConsultationPerComponent implements OnInit {
   id: any
   cin: any
   consultation: any
+  nofound: boolean = false
   private sub: any;
   nbrConsultation: any
   ConsultationF
@@ -140,6 +141,10 @@ export class ListeConsultationPerComponent implements OnInit {
   set texte(chaine: string) {
 
     this.consultation = this.filtrer(chaine);
+    if (this.consultation == null) {
+      this.nofound == true
+
+    }
 
   }
 

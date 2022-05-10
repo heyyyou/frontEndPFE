@@ -104,7 +104,6 @@
       color="primary2"
       size="Medium"
       class="ion-margin"
-      id="trigger-button"
       (click)="truthClick(f); btn.disabled = true"
       [disabled]="choixMaladie === null"
       >valider
@@ -114,7 +113,6 @@
       color="danger"
       size="Medium"
       class="ion-margin"
-      id="trigger-button"
       (click)="truthClick(f)"
       disabled="true"
       >Avis déja ajouté
@@ -143,7 +141,7 @@
 
           <ion-col size="12" class="ion-padding">
             <app-stars-rating
-              (click)="dismissModal()"
+              (shareRatingValue)="showRating($event)"
               class="starsModel"
             ></app-stars-rating
           ></ion-col>
@@ -160,5 +158,5 @@
         <ion-icon name="alert-outline"></ion-icon>
       </ion-fab-button>
     </ion-item>
-  </ng-template>
-</ion-modal> -->
+  </ng-template> -->
+<!-- </ion-modal> -->

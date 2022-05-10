@@ -33,6 +33,8 @@ export class AjouterAvisGaucheComponent implements OnInit {
   graviteDisabled: any = false
   images: any[] = [];
   base64 = '';
+  currentRatingValue: number = null;
+
   DemandeAvis: boolean = false; // f details ya mariem demain
   Avis: boolean = false;
   showLoader: boolean;
@@ -40,6 +42,13 @@ export class AjouterAvisGaucheComponent implements OnInit {
   displayProgress() {
     this.showLoader = true;
 
+  }
+  envoyerRating() {
+    this.service.Rate(this.currentRatingValue, this.idConsult).subscribe((params => {
+      this.consultation = params;
+      console.log("ezezezezezezezeze", this.consultation)
+    }))
+    this.ngOnInit();
   }
   // async routerHome() {
   //   return await this.router.navigate(['home']);
@@ -260,6 +269,8 @@ export class AjouterAvisGaucheComponent implements OnInit {
   //   this.disableButton = true;
   // }
   truthClick(f: NgForm) {
+
+
     this.service.getConsultationID(parseInt(localStorage.getItem("id")), this.idConsult, this.idPatient).subscribe((params => {
       this.consultation = params;
       console.log("ddd", this.consultation.autoDetection.avisExpert)
@@ -386,6 +397,10 @@ export class AjouterAvisGaucheComponent implements OnInit {
     this.modalCtrl.dismiss({
       'dismissed': true
     });
+
+  }
+  showRating(rating) {
+    this.currentRatingValue = (rating);
 
   }
 

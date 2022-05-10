@@ -9,12 +9,13 @@ import { BrowserModule } from '@angular/platform-browser';
 import { RouteReuseStrategy, RouterModule } from '@angular/router';
 import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
 import { IonicRatingModule } from 'ionic-rating';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { IonicSelectableModule } from 'ionic-selectable';
 import { SwiperModule } from 'swiper/angular';
-import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS, HttpClient } from '@angular/common/http';
 import { ImagePicker } from '@ionic-native/image-picker/ngx';
 import { DetailConsultationComponent } from './detail-consultation/detail-consultation.component';
 import { CommonModule } from '@angular/common';
@@ -63,6 +64,7 @@ import { GestionAvisGaucheComponent } from './medecin-expert/details-consult-avi
 import { ConsultationAvisGaucheComponent } from './consultation-avis/consultation-avis-gauche/consultation-avis-gauche.component';
 import { ForgetPasswordComponent } from './shared/forget-password/forget-password.component';
 import { StatistiqsueComponent } from './medecin-expert/statistique/statistique.component';
+import { LocalNotifications } from '@capacitor/local-notifications';
 
 @NgModule({
   declarations: [

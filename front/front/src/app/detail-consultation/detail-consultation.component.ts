@@ -12,12 +12,7 @@ import { UserService } from '../services/user.service';
 import { DomSanitizer } from '@angular/platform-browser';
 import { ModalImageComponent } from '../modal-image/modal-image.component';
 
-import {
-  ActionPerformed,
-  PushNotificationSchema,
-  PushNotifications,
-  Token,
-} from '@capacitor/push-notifications';
+
 
 interface AlertTextareaAttributes extends JSXBase.TextareaHTMLAttributes<HTMLTextAreaElement> { }
 
@@ -166,39 +161,7 @@ export class DetailConsultationComponent implements OnInit {
 
   constructor(public ConsultationMedService: ConsultationMedService, public photoService: PhotoService, private router: Router, public loadingController: LoadingController, private modalCtrl: ModalController,
     public alertController: AlertController, private route: ActivatedRoute, public service: UserService, private sanitizer: DomSanitizer) {
-    PushNotifications.requestPermissions().then(result => {
-      if (result.receive === 'granted') {
-        // Register with Apple / Google to receive push via APNS/FCM
-        PushNotifications.register();
-      } else {
-        // Show some error
-      }
-    });
-
-    PushNotifications.addListener('registration', (token: Token) => {
-      alert('Push registration success, token: ' + token.value);
-    });
-
-    PushNotifications.addListener('registrationError', (error: any) => {
-      alert('Error on registration: ' + JSON.stringify(error));
-    });
-
-    PushNotifications.addListener(
-      'pushNotificationReceived',
-      (notification: PushNotificationSchema) => {
-        alert('Push received: ' + JSON.stringify(notification));
-      },
-    );
-
-    PushNotifications.addListener(
-      'pushNotificationActionPerformed',
-      (notification: ActionPerformed) => {
-        alert('Push action performed: ' + JSON.stringify(notification));
-      },
-    );
-
   }
-
 
 
 
@@ -333,12 +296,3 @@ export class DetailConsultationComponent implements OnInit {
 }
 
 
-
-PushNotifications.requestPermissions().then(result => {
-  if (result.receive === 'granted') {
-    // Register with Apple / Google to receive push via APNS/FCM
-    PushNotifications.register();
-  } else {
-    // Show some error
-  }
-});

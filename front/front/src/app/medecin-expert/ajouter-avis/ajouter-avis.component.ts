@@ -22,6 +22,8 @@ export class AjouterAvisComponent implements OnInit {
   idPatient: any;
   base64Data: any;
   avisExpert: any;
+  currentRatingValue: number = null;
+
   private sub: any;
   retrieveResponse: any;
   imagePath: any; //string=null;
@@ -37,6 +39,10 @@ export class AjouterAvisComponent implements OnInit {
   Saine: any
   displayProgress() {
     this.showLoader = true;
+
+  }
+  showRating(rating) {
+    this.currentRatingValue = (rating);
 
   }
   // async routerHome() {
@@ -391,6 +397,14 @@ export class AjouterAvisComponent implements OnInit {
   getValueSelected(value: number) {
     this.shareRatingValue.emit(value);
   }
+  envoyerRating() {
+    this.service.Rate(this.currentRatingValue, this.idConsult).subscribe((params => {
+      this.ngOnInit();
+      this.dismiss()
+    }))
+
+  }
+
 
 
 

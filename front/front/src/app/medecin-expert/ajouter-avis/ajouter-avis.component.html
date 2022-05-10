@@ -8,6 +8,7 @@
       <ion-buttons slot="start">
         <ion-back-button defaultHref="homeExpert"></ion-back-button>
       </ion-buttons>
+
       <!--
       <ion-avatar slot="end" class="ion-margin avatar">
         <img src="assets/doctour.png" />
@@ -60,6 +61,40 @@
               Médecin "{{ consultation?.generaliste?.username }}" veut avoir un
               avis pour oeil Gauche
             </ion-text>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ng-template>
+  </ion-modal>
+  <ion-modal
+    trigger="trigger-button"
+    [breakpoints]="[0.1, 0.5, 1]"
+    [initialBreakpoint]="0.6"
+  >
+    <ng-template>
+      <ion-header lines="none"></ion-header>
+      <ion-grid>
+        <ion-row>
+          <ion-col size="12" class="ion-padding">
+            <ion-text color="white" class="evaluer"
+              >veuillez évaluer la consultation avec AI Model</ion-text
+            >
+          </ion-col>
+          <ion-col size="12">
+            <app-stars-rating
+              (shareRatingValue)="showRating($event)"
+              class="starsModel"
+            ></app-stars-rating
+          ></ion-col>
+
+          <ion-col size="6">
+            <ion-button
+              class="buttonRating"
+              color="light"
+              (click)="envoyerRating()"
+              id="trigger-button"
+              >Envoyer</ion-button
+            >
           </ion-col>
         </ion-row>
       </ion-grid>
@@ -251,7 +286,6 @@
             color="primary2"
             size="Medium"
             class="ion-margin"
-            id="trigger-button"
             (click)="truthClick(f); btn.disabled = true"
             [disabled]="choixMaladie === null"
             >valider
@@ -263,7 +297,6 @@
             color="danger"
             size="Medium"
             class="ion-margin"
-            id="trigger-button"
             (click)="truthClick(f)"
             disabled="true"
             >Avis déja ajouté
@@ -289,6 +322,15 @@
         color="danger"
       >
         <ion-icon name="alert-outline"></ion-icon>
+      </ion-fab-button>
+
+      <ion-fab-button
+        size="small"
+        slot="start"
+        id="trigger-button"
+        color="light"
+      >
+        <ion-icon name="star-half"></ion-icon>
       </ion-fab-button>
     </ion-item>
   </ion-content>
