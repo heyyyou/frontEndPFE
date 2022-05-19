@@ -47,6 +47,10 @@
         </ion-card-header>
         <ion-card-content>
           <div>
+            <ion-text color="primary2">Cin :</ion-text>
+            {{ item.patient?.cin }}
+          </div>
+          <div>
             <ion-text color="primary2">Antécèdant :</ion-text>
             {{ item.patient?.antecedant }}
           </div>
@@ -82,11 +86,11 @@
             </div>
           </ion-col>
         </ion-card-content>
-
-        <app-stars-rating
-          (shareRatingValue)="showRating($event)"
-        ></app-stars-rating>
-        <br />
+        <div *ngIf="item.rating">
+          <img src="./assets/star.png" style="height: 22px; width: 22px" />
+          {{ item.rating }}/6
+          <br />
+        </div>
 
         <h4 *ngIf="currentRatingValue">
           <!-- The value selected from the stars component is

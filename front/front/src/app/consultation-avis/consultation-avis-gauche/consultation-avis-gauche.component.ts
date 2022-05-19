@@ -28,7 +28,7 @@ export class ConsultationAvisGaucheComponent implements OnInit {
   images: any[] = [];
   idAutoDetection: any
   consultation: any
-
+  url: any
   retrieveResponse: any
   imagePath: any; //string=null;
   base64Data: any;
@@ -166,18 +166,22 @@ export class ConsultationAvisGaucheComponent implements OnInit {
       this.service.getConsultationID(parseInt(localStorage.getItem("id")), this.idConsult, this.idPatient).subscribe((params => {
         this.consultation = params;
         console.log("meryeù", this.consultation.id)
+        this.url = "http://localhost:8080/consultation/imageGauche1/" + this.consultation.id;
+        console.log("zezezeze", this.url)
+        this.images[0] = this.url;
 
-        if (this.consultation.image1_Gauche === null) {
-          this.imagePath = "assets/123.jpg"
-        }
-        else {
 
-          this.retrieveResponse = this.consultation;
-          this.base64Data = this.retrieveResponse.image1_Gauche;
-          this.imagePath = 'data:image/jpeg;base64,' + this.base64Data;
-          this.images[0] = this.imagePath;
-          console.log("lulaa", this.images[0]);
-        }
+        // if (this.consultation.image1_Gauche === null) {
+        //   this.imagePath = "assets/123.jpg"
+        // }
+        // else {
+
+        //   this.retrieveResponse = this.consultation;
+        //   this.base64Data = this.retrieveResponse.image1_Gauche;
+        //   this.imagePath = 'data:image/jpeg;base64,' + this.base64Data;
+        //   this.images[0] = this.imagePath;
+        //   console.log("lulaa", this.images[0]);
+        // }
 
 
 

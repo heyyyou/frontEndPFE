@@ -13,6 +13,8 @@ import { UserService } from 'src/app/services/user.service';
 })
 export class GestionAvisGaucheComponent implements OnInit {
   idConsult: any;
+  url: string = "http://localhost:8080/consultation/imageGauche1/";
+
   idavisExpert: any;
   idPatient: any;
   base64Data: any;
@@ -61,64 +63,8 @@ export class GestionAvisGaucheComponent implements OnInit {
       console.log(this.consultation)
 
 
-      if (this.consultation.image1_Gauche == null) {
-        this.imagePath = "assets/123.jpg"
-
-      }
-      else {
-
-        this.retrieveResponse = this.consultation;
-        this.base64Data = this.retrieveResponse.image1_Gauche;
-        this.imagePath = 'data:image/jpeg;base64,' + this.base64Data;
-        this.images[0] = this.imagePath;
-        console.log("lulaa", this.images[0]);
-      }
-
-      if (this.consultation.image2_Gauche == null) {
-        this.imagePath = "assets/123.jpg"
-      }
-      else {
-
-        this.retrieveResponse = this.consultation;
-        this.base64Data = this.retrieveResponse.image2_Gauche;
-        this.imagePath = 'data:image/jpeg;base64,' + this.base64Data;
-        this.images[1] = this.imagePath;
-        console.log("lqqsulaa", this.images[1]);
-      }
-
-      if (this.consultation.image3_Gauche == null) {
-        this.imagePath = "assets/123.jpg"
-      }
-      else {
-
-        this.retrieveResponse = this.consultation;
-        this.base64Data = this.retrieveResponse.image3_Gauche;
-        this.imagePath = 'data:image/jpeg;base64,' + this.base64Data;
-        this.images[2] = this.imagePath;
-        console.log("lqqsulaa", this.images[2]);
-      }
-      if (this.consultation.image4_Gauche == null) {
-        this.imagePath = "assets/123.jpg"
-      }
-      else {
-
-        this.retrieveResponse = this.consultation;
-        this.base64Data = this.retrieveResponse.image4_Gauche;
-        this.imagePath = 'data:image/jpeg;base64,' + this.base64Data;
-        this.images[3] = this.imagePath;
-        console.log("lqqsulaa", this.images[3]);
-      }
-      if (this.consultation.image5_Gauche == null) {
-        this.imagePath = "assets/123.jpg"
-      }
-      else {
-
-        this.retrieveResponse = this.consultation;
-        this.base64Data = this.retrieveResponse.image5_Gauche;
-        this.imagePath = 'data:image/jpeg;base64,' + this.base64Data;
-        this.images[4] = this.imagePath;
-        console.log("lqqsulaa", this.images[4]);
-      }
+      this.url = this.url + this.consultation.id;
+      this.images[0] = this.url;
     })
 
     )

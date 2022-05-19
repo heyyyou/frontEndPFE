@@ -62,20 +62,19 @@
       </ion-content>
     </ion-menu>
   </div>
-  <ion-router-outlet id="main1"></ion-router-outlet>
   <ion-app class="content">
+    <ion-router-outlet id="main1"></ion-router-outlet>
+
     <ion-header class="ion-no-border">
       <ion-toolbar class="border-radius-bottom">
         <div class="flex-bloc">
           <ion-buttons slot="start">
-            <ion-header [translucent]="true">
-              <ion-toolbar>
-                <ion-menu-button menu="first1"> </ion-menu-button>
-                <ion-badge *ngIf="nbr !== 0" color="danger" class="badge">{{
-                  nbr
-                }}</ion-badge>
-              </ion-toolbar></ion-header
-            >
+            <ion-toolbar>
+              <ion-menu-button menu="first1"> </ion-menu-button>
+              <ion-badge *ngIf="nbr !== 0" color="danger" class="badge">{{
+                nbr
+              }}</ion-badge>
+            </ion-toolbar>
           </ion-buttons>
 
           <ion-avatar slot="end" class="ion-margin avatar">

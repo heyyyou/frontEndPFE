@@ -36,6 +36,7 @@ export class DetailsConsultationwithoutAutoComponent implements OnInit {
   idConsult: any
   selectedFiles: FileList;
   selectedFile: any;
+  url: string;
 
 
   selectedFiles2: FileList;
@@ -155,135 +156,140 @@ export class DetailsConsultationwithoutAutoComponent implements OnInit {
       this.idGen = parseInt(localStorage.getItem('id'));
       this.service.getConsultationID(parseInt(localStorage.getItem("id")), this.idConsult, this.cin).subscribe((params => {
         this.consultation = params;
+        console.log("dddddddddddddd", this.consultation.id)
 
-        console.log("eeee", this.consultation.patient.username);
+        this.url = "http://localhost:8080/consultation/imageDroite1/" + this.consultation.id;
+        console.log("zezezeze", this.url)
+        this.images[0] = this.url;
 
-
-
-
-
-
-        if (this.consultation.image1_Droite == null) {
-          this.imagePath = "assets/123.jpg"
-
-        }
-        else {
-
-          this.retrieveResponse = this.consultation;
-          this.base64Data = this.retrieveResponse.image1_Droite;
-          this.imagePath = 'data:image/jpeg;base64,' + this.base64Data;
-          this.images[0] = this.imagePath;
-          console.log("lulaa", this.images[0]);
-        }
-
-        /*  if (this.consultation.image2_Droite == null) {
-            this.imagePath = "assets/123.jpg"
-          }
-          else {
-
-            this.retrieveResponse = this.consultation;
-            this.base64Data = this.retrieveResponse.image2_Droite;
-            this.imagePath = 'data:image/jpeg;base64,' + this.base64Data;
-            this.images[1] = this.imagePath;
-            console.log("lqqsulaa", this.images[1]);
-          }
-
-          if (this.consultation.image3_Droite == null) {
-            this.imagePath = "assets/123.jpg"
-          }
-          else {
-
-            this.retrieveResponse = this.consultation;
-            this.base64Data = this.retrieveResponse.image3_Droite;
-            this.imagePath = 'data:image/jpeg;base64,' + this.base64Data;
-            this.images[2] = this.imagePath;
-            console.log("lqqsulaa", this.images[2]);
-          }
-          if (this.consultation.image4_Droite == null) {
-            this.imagePath = "assets/123.jpg"
-          }
-          else {
-
-            this.retrieveResponse = this.consultation;
-            this.base64Data = this.retrieveResponse.image4_Droite;
-            this.imagePath = 'data:image/jpeg;base64,' + this.base64Data;
-            this.images[3] = this.imagePath;
-            console.log("lqqsulaa", this.images[3]);
-          }
-          if (this.consultation.image5_Droite == null) {
-            this.imagePath = "assets/123.jpg"
-          }
-          else {
-
-            this.retrieveResponse = this.consultation;
-            this.base64Data = this.retrieveResponse.image5_Droite;
-            this.imagePath = 'data:image/jpeg;base64,' + this.base64Data;
-            this.images[4] = this.imagePath;
-            console.log("lqqsulaa", this.images[4]);
-          }*/
-        if (this.consultation.image1_Gauche == null) {
-          this.imagePath = "assets/123.jpg"
-        }
-        else {
-
-          this.retrieveResponse = this.consultation;
-          this.base64Data = this.retrieveResponse.image1_Gauche;
-          this.imagePath = 'data:image/jpeg;base64,' + this.base64Data;
-          this.images2[0] = this.imagePath;
-          console.log("lulaa", this.images2[0]);
-        }
-
-        /*
-
-                  if (this.consultation.image2_Gauche == null) {
-                    this.imagePath = "assets/123.jpg"
-                  }
-                  else {
-
-                    this.retrieveResponse = this.consultation;
-                    this.base64Data = this.retrieveResponse.image2_Gauche;
-                    this.imagePath = 'data:image/jpeg;base64,' + this.base64Data;
-                    this.images2[1] = this.imagePath;
-                    console.log("tableee 2", this.images2[1]);
-                  }
+        this.url = "http://localhost:8080/consultation/imageGauche1/" + this.consultation.id;
+        console.log("zezezeze", this.url)
+        this.images2[0] = this.url;
 
 
-                  if (this.consultation.image3_Gauche == null) {
-                    this.imagePath = "assets/123.jpg"
-                  }
-                  else {
-
-                    this.retrieveResponse = this.consultation;
-                    this.base64Data = this.retrieveResponse.image3_Gauche;
-                    this.imagePath = 'data:image/jpeg;base64,' + this.base64Data;
-                    this.images2[2] = this.imagePath;
-                    console.log("tableee 2", this.images2[2]);
-                  }
 
 
-                  if (this.consultation.image4_Gauche == null) {
-                    this.imagePath = "assets/123.jpg"
-                  }
-                  else {
+        /*    if (this.consultation.image1_Droite == null) {
+              this.imagePath = "assets/123.jpg"
 
-                    this.retrieveResponse = this.consultation;
-                    this.base64Data = this.retrieveResponse.image4_Gauche;
-                    this.imagePath = 'data:image/jpeg;base64,' + this.base64Data;
-                    this.images2[3] = this.imagePath;
-                    console.log("tableee 2", this.images2[3]);
-                  }
+            }
+            else {
 
-                  if (this.consultation.image5_Gauche == null) {
-                    this.imagePath = "assets/123.jpg"
-                  }
-                  else {
+              this.retrieveResponse = this.consultation;
+              this.base64Data = this.retrieveResponse.image1_Droite;
+              this.imagePath = 'data:image/jpeg;base64,' + this.base64Data;
+              this.images[0] = this.imagePath;
+              console.log("lulaa", this.images[0]);
+            }
 
-                    this.retrieveResponse = this.consultation;
-                    this.base64Data = this.retrieveResponse.image5_Gauche;
-                    this.imagePath = 'data:image/jpeg;base64,' + this.base64Data;
-                    this.images2[4] = this.imagePath;
-                    console.log("tableee 2", this.images2[4]);
-                  }*/
+            /*  if (this.consultation.image2_Droite == null) {
+                this.imagePath = "assets/123.jpg"
+              }
+              else {
+
+                this.retrieveResponse = this.consultation;
+                this.base64Data = this.retrieveResponse.image2_Droite;
+                this.imagePath = 'data:image/jpeg;base64,' + this.base64Data;
+                this.images[1] = this.imagePath;
+                console.log("lqqsulaa", this.images[1]);
+              }
+
+              if (this.consultation.image3_Droite == null) {
+                this.imagePath = "assets/123.jpg"
+              }
+              else {
+
+                this.retrieveResponse = this.consultation;
+                this.base64Data = this.retrieveResponse.image3_Droite;
+                this.imagePath = 'data:image/jpeg;base64,' + this.base64Data;
+                this.images[2] = this.imagePath;
+                console.log("lqqsulaa", this.images[2]);
+              }
+              if (this.consultation.image4_Droite == null) {
+                this.imagePath = "assets/123.jpg"
+              }
+              else {
+
+                this.retrieveResponse = this.consultation;
+                this.base64Data = this.retrieveResponse.image4_Droite;
+                this.imagePath = 'data:image/jpeg;base64,' + this.base64Data;
+                this.images[3] = this.imagePath;
+                console.log("lqqsulaa", this.images[3]);
+              }
+              if (this.consultation.image5_Droite == null) {
+                this.imagePath = "assets/123.jpg"
+              }
+              else {
+
+                this.retrieveResponse = this.consultation;
+                this.base64Data = this.retrieveResponse.image5_Droite;
+                this.imagePath = 'data:image/jpeg;base64,' + this.base64Data;
+                this.images[4] = this.imagePath;
+                console.log("lqqsulaa", this.images[4]);
+              }*/
+        /*   if (this.consultation.image1_Gauche == null) {
+             this.imagePath = "assets/123.jpg"
+           }
+           else {
+
+             this.retrieveResponse = this.consultation;
+             this.base64Data = this.retrieveResponse.image1_Gauche;
+             this.imagePath = 'data:image/jpeg;base64,' + this.base64Data;
+             this.images2[0] = this.imagePath;
+             console.log("lulaa", this.images2[0]);
+           }
+
+           /*
+
+                     if (this.consultation.image2_Gauche == null) {
+                       this.imagePath = "assets/123.jpg"
+                     }
+                     else {
+
+                       this.retrieveResponse = this.consultation;
+                       this.base64Data = this.retrieveResponse.image2_Gauche;
+                       this.imagePath = 'data:image/jpeg;base64,' + this.base64Data;
+                       this.images2[1] = this.imagePath;
+                       console.log("tableee 2", this.images2[1]);
+                     }
+
+
+                     if (this.consultation.image3_Gauche == null) {
+                       this.imagePath = "assets/123.jpg"
+                     }
+                     else {
+
+                       this.retrieveResponse = this.consultation;
+                       this.base64Data = this.retrieveResponse.image3_Gauche;
+                       this.imagePath = 'data:image/jpeg;base64,' + this.base64Data;
+                       this.images2[2] = this.imagePath;
+                       console.log("tableee 2", this.images2[2]);
+                     }
+
+
+                     if (this.consultation.image4_Gauche == null) {
+                       this.imagePath = "assets/123.jpg"
+                     }
+                     else {
+
+                       this.retrieveResponse = this.consultation;
+                       this.base64Data = this.retrieveResponse.image4_Gauche;
+                       this.imagePath = 'data:image/jpeg;base64,' + this.base64Data;
+                       this.images2[3] = this.imagePath;
+                       console.log("tableee 2", this.images2[3]);
+                     }
+
+                     if (this.consultation.image5_Gauche == null) {
+                       this.imagePath = "assets/123.jpg"
+                     }
+                     else {
+
+                       this.retrieveResponse = this.consultation;
+                       this.base64Data = this.retrieveResponse.image5_Gauche;
+                       this.imagePath = 'data:image/jpeg;base64,' + this.base64Data;
+                       this.images2[4] = this.imagePath;
+                       console.log("tableee 2", this.images2[4]);
+                     }*/
 
       }
 

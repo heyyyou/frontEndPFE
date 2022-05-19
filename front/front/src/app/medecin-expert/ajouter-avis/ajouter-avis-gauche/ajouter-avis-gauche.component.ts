@@ -34,7 +34,7 @@ export class AjouterAvisGaucheComponent implements OnInit {
   images: any[] = [];
   base64 = '';
   currentRatingValue: number = null;
-
+  url: any
   DemandeAvis: boolean = false; // f details ya mariem demain
   Avis: boolean = false;
   showLoader: boolean;
@@ -186,65 +186,69 @@ export class AjouterAvisGaucheComponent implements OnInit {
       this.consultation = params;
       console.log(this.consultation)
 
+      this.url = "http://localhost:8080/consultation/imageGauche1/" + this.consultation.id;
+      console.log("zezezeze", this.url)
+      this.images[0] = this.url;
 
-      if (this.consultation.image1_Gauche == null) {
-        this.imagePath = "assets/123.jpg"
 
-      }
-      else {
+      // if (this.consultation.image1_Gauche == null) {
+      //   this.imagePath = "assets/123.jpg"
 
-        this.retrieveResponse = this.consultation;
-        this.base64Data = this.retrieveResponse.image1_Gauche;
-        this.imagePath = 'data:image/jpeg;base64,' + this.base64Data;
-        this.images[0] = this.imagePath;
-        console.log("lulaa", this.images[0]);
-      }
+      // }
+      // else {
 
-      if (this.consultation.image2_Gauche == null) {
-        this.imagePath = "assets/123.jpg"
-      }
-      else {
+      //   this.retrieveResponse = this.consultation;
+      //   this.base64Data = this.retrieveResponse.image1_Gauche;
+      //   this.imagePath = 'data:image/jpeg;base64,' + this.base64Data;
+      //   this.images[0] = this.imagePath;
+      //   console.log("lulaa", this.images[0]);
+      // }
 
-        this.retrieveResponse = this.consultation;
-        this.base64Data = this.retrieveResponse.image2_Gauche;
-        this.imagePath = 'data:image/jpeg;base64,' + this.base64Data;
-        this.images[1] = this.imagePath;
-        console.log("lqqsulaa", this.images[1]);
-      }
+      // if (this.consultation.image2_Gauche == null) {
+      //   this.imagePath = "assets/123.jpg"
+      // }
+      // else {
 
-      if (this.consultation.image3_Gauche == null) {
-        this.imagePath = "assets/123.jpg"
-      }
-      else {
+      //   this.retrieveResponse = this.consultation;
+      //   this.base64Data = this.retrieveResponse.image2_Gauche;
+      //   this.imagePath = 'data:image/jpeg;base64,' + this.base64Data;
+      //   this.images[1] = this.imagePath;
+      //   console.log("lqqsulaa", this.images[1]);
+      // }
 
-        this.retrieveResponse = this.consultation;
-        this.base64Data = this.retrieveResponse.image3_Gauche;
-        this.imagePath = 'data:image/jpeg;base64,' + this.base64Data;
-        this.images[2] = this.imagePath;
-        console.log("lqqsulaa", this.images[2]);
-      }
-      if (this.consultation.image4_Gauche == null) {
-        this.imagePath = "assets/123.jpg"
-      }
-      else {
+      // if (this.consultation.image3_Gauche == null) {
+      //   this.imagePath = "assets/123.jpg"
+      // }
+      // else {
 
-        this.retrieveResponse = this.consultation;
-        this.base64Data = this.retrieveResponse.image4_Gauche;
-        this.imagePath = 'data:image/jpeg;base64,' + this.base64Data;
-        this.images[3] = this.imagePath;
-        console.log("lqqsulaa", this.images[3]);
-      }
-      if (this.consultation.image5_Gauche == null) {
-        this.imagePath = "assets/123.jpg"
-      }
-      else {
+      //   this.retrieveResponse = this.consultation;
+      //   this.base64Data = this.retrieveResponse.image3_Gauche;
+      //   this.imagePath = 'data:image/jpeg;base64,' + this.base64Data;
+      //   this.images[2] = this.imagePath;
+      //   console.log("lqqsulaa", this.images[2]);
+      // }
+      // if (this.consultation.image4_Gauche == null) {
+      //   this.imagePath = "assets/123.jpg"
+      // }
+      // else {
 
-        this.retrieveResponse = this.consultation;
-        this.base64Data = this.retrieveResponse.image5_Gauche;
-        this.imagePath = 'data:image/jpeg;base64,' + this.base64Data;
-        this.images[4] = this.imagePath;
-        console.log("lqqsulaa", this.images[4]);
-      }
+      //   this.retrieveResponse = this.consultation;
+      //   this.base64Data = this.retrieveResponse.image4_Gauche;
+      //   this.imagePath = 'data:image/jpeg;base64,' + this.base64Data;
+      //   this.images[3] = this.imagePath;
+      //   console.log("lqqsulaa", this.images[3]);
+      // }
+      // if (this.consultation.image5_Gauche == null) {
+      //   this.imagePath = "assets/123.jpg"
+      // }
+      // else {
+
+      //   this.retrieveResponse = this.consultation;
+      //   this.base64Data = this.retrieveResponse.image5_Gauche;
+      //   this.imagePath = 'data:image/jpeg;base64,' + this.base64Data;
+      //   this.images[4] = this.imagePath;
+      //   console.log("lqqsulaa", this.images[4]);
+      // }
     })
 
     )

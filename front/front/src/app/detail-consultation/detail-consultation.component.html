@@ -55,7 +55,9 @@
         color="primary"
         (ionChange)="segmentChanged($event)"
       >
-        <ion-segment-button value="droite" [disabled]="images.length === 0"
+        <ion-segment-button
+          value="droite"
+          [disabled]="consultation?.image1Droite === null"
           ><ion-icon name="eye-outline" color="favorites"></ion-icon
           ><ion-text color="favorites"> Oeil Droite</ion-text>
         </ion-segment-button>
@@ -72,7 +74,7 @@
       <app-details-droite *ngSwitchCase="'droite'"> </app-details-droite>
 
     </ng-container> -->
-    <div *ngIf="images.length !== 0">
+    <div *ngIf="consultation?.image1Droite !== null">
       <ion-card class="cardfull">
         <swiper
           [config]="config"
@@ -95,12 +97,10 @@
 
         <h6>
           <ion-text color="danger">Maladie : </ion-text>
-          Oeil Gauche :{{
-            ConsultationMedService.consultation_id.oeil_gaucheAI.maladie
-          }}
+          rhétinopathie
         </h6>
         <ion-text color="danger">Gravitè :</ion-text>
-        {{ ConsultationMedService.consultation_id.oeil_gaucheAI.gravite }}
+        2
       </div>
       <ion-button
         *ngIf="consultation?.demandeAvisD === 0 && images.length !== 0"

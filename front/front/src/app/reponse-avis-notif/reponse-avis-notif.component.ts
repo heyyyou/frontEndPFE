@@ -58,6 +58,7 @@ export class ReponseAvisNotifComponent implements OnInit {
       console.log("ahmeddd", this.consultation)
       this.nbr = this.consultation.length;
       console.log("heskdsdf", this.nbr)
+
     })
   }
 

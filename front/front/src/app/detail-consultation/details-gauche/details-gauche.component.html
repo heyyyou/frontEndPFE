@@ -1,4 +1,4 @@
-<ion-card class="cardfull" *ngIf="images2.length !== 0">
+<ion-card class="cardfull">
   <swiper [config]="config" class="swiper-slide" data-swiper-autoplay="2000">
     <ng-template swiperSlide *ngFor="let imge of images2; let i = index">
       <img
@@ -11,7 +11,7 @@
     </ng-template>
   </swiper>
 </ion-card>
-<div class="details" *ngIf="images2.length !== 0">
+<div class="details">
   <h5>AI Résultat Oeil Gauche</h5>
   <h6>
     <ion-text color="danger">Maladie : </ion-text>
@@ -24,7 +24,7 @@
 </div>
 
 <ion-button
-  *ngIf="consultation?.demandeAvisG === 0 && images2.length !== 0"
+  *ngIf="consultation?.demandeAvisG === 0"
   #btn
   color="primary"
   expand="block"

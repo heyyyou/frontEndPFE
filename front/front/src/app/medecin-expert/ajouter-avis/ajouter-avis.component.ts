@@ -37,6 +37,7 @@ export class AjouterAvisComponent implements OnInit {
   showLoader: boolean;
   text: any
   Saine: any
+  url: any
   displayProgress() {
     this.showLoader = true;
 
@@ -181,65 +182,68 @@ export class AjouterAvisComponent implements OnInit {
         if (this.consultation?.autoDetection?.avisExpert?.maladieDroite === null) {
           this.consl();
         }
+        this.url = "http://localhost:8080/consultation/imageDroite1/" + this.consultation.id;
+        console.log("zezezeze", this.url)
+        this.images[0] = this.url;
 
-        if (this.consultation.image1_Droite == null) {
-          this.imagePath = "assets/123.jpg"
+        // if (this.consultation.image1_Droite == null) {
+        //   this.imagePath = "assets/123.jpg"
 
-        }
-        else {
+        // }
+        // else {
 
-          this.retrieveResponse = this.consultation;
-          this.base64Data = this.retrieveResponse.image1_Droite;
-          this.imagePath = 'data:image/jpeg;base64,' + this.base64Data;
-          this.images[0] = this.imagePath;
-          console.log("lulaa", this.images[0]);
-        }
+        //   this.retrieveResponse = this.consultation;
+        //   this.base64Data = this.retrieveResponse.image1_Droite;
+        //   this.imagePath = 'data:image/jpeg;base64,' + this.base64Data;
+        //   this.images[0] = this.imagePath;
+        //   console.log("lulaa", this.images[0]);
+        // }
 
-        if (this.consultation.image2_Droite == null) {
-          this.imagePath = "assets/123.jpg"
-        }
-        else {
+        // if (this.consultation.image2_Droite == null) {
+        //   this.imagePath = "assets/123.jpg"
+        // }
+        // else {
 
-          this.retrieveResponse = this.consultation;
-          this.base64Data = this.retrieveResponse.image2_Droite;
-          this.imagePath = 'data:image/jpeg;base64,' + this.base64Data;
-          this.images[1] = this.imagePath;
-          console.log("lqqsulaa", this.images[1]);
-        }
+        //   this.retrieveResponse = this.consultation;
+        //   this.base64Data = this.retrieveResponse.image2_Droite;
+        //   this.imagePath = 'data:image/jpeg;base64,' + this.base64Data;
+        //   this.images[1] = this.imagePath;
+        //   console.log("lqqsulaa", this.images[1]);
+        // }
 
-        if (this.consultation.image3_Droite == null) {
-          this.imagePath = "assets/123.jpg"
-        }
-        else {
+        // if (this.consultation.image3_Droite == null) {
+        //   this.imagePath = "assets/123.jpg"
+        // }
+        // else {
 
-          this.retrieveResponse = this.consultation;
-          this.base64Data = this.retrieveResponse.image3_Droite;
-          this.imagePath = 'data:image/jpeg;base64,' + this.base64Data;
-          this.images[2] = this.imagePath;
-          console.log("lqqsulaa", this.images[2]);
-        }
-        if (this.consultation.image4_Droite == null) {
-          this.imagePath = "assets/123.jpg"
-        }
-        else {
+        //   this.retrieveResponse = this.consultation;
+        //   this.base64Data = this.retrieveResponse.image3_Droite;
+        //   this.imagePath = 'data:image/jpeg;base64,' + this.base64Data;
+        //   this.images[2] = this.imagePath;
+        //   console.log("lqqsulaa", this.images[2]);
+        // }
+        // if (this.consultation.image4_Droite == null) {
+        //   this.imagePath = "assets/123.jpg"
+        // }
+        // else {
 
-          this.retrieveResponse = this.consultation;
-          this.base64Data = this.retrieveResponse.image4_Droite;
-          this.imagePath = 'data:image/jpeg;base64,' + this.base64Data;
-          this.images[3] = this.imagePath;
-          console.log("lqqsulaa", this.images[3]);
-        }
-        if (this.consultation.image5_Droite == null) {
-          this.imagePath = "assets/123.jpg"
-        }
-        else {
+        //   this.retrieveResponse = this.consultation;
+        //   this.base64Data = this.retrieveResponse.image4_Droite;
+        //   this.imagePath = 'data:image/jpeg;base64,' + this.base64Data;
+        //   this.images[3] = this.imagePath;
+        //   console.log("lqqsulaa", this.images[3]);
+        // }
+        // if (this.consultation.image5_Droite == null) {
+        //   this.imagePath = "assets/123.jpg"
+        // }
+        // else {
 
-          this.retrieveResponse = this.consultation;
-          this.base64Data = this.retrieveResponse.image5_Droite;
-          this.imagePath = 'data:image/jpeg;base64,' + this.base64Data;
-          this.images[4] = this.imagePath;
-          console.log("lqqsulaa", this.images[4]);
-        }
+        //   this.retrieveResponse = this.consultation;
+        //   this.base64Data = this.retrieveResponse.image5_Droite;
+        //   this.imagePath = 'data:image/jpeg;base64,' + this.base64Data;
+        //   this.images[4] = this.imagePath;
+        //   console.log("lqqsulaa", this.images[4]);
+        // }
       })
 
       )

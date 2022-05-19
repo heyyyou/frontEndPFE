@@ -23,11 +23,12 @@ export class SignupexpertComponent implements OnInit {
 
 
   signup(f: NgForm) {
+    this.router.navigate(['/login'])
+    this.presentToast();
     this.service.registerExpert(f.value).subscribe(() => {
       //  localStorage.setItem("role", "expert");
       //  this.user.roles=="expert"
-      this.router.navigate(['/login'])
-      this.presentToast();
+
     },
       err => {
         this.presentToastError();

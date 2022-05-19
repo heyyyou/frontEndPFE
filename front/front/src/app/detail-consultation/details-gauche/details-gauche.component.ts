@@ -15,6 +15,7 @@ import { SwiperOptions } from 'swiper';
 export class DetailsGaucheComponent implements OnInit {
 
   @ViewChild(IonContent) private content: IonContent;
+  url: string = "http://localhost:8080/consultation/imageGauche1/";
   idConsult: any;
   idPatient: any;
   private sub: any;
@@ -166,19 +167,20 @@ export class DetailsGaucheComponent implements OnInit {
     this.service.getConsultationID(parseInt(localStorage.getItem("id")), this.idConsult, this.idPatient).subscribe((params => {
       this.consultation = params;
       console.log(this.consultation)
+      this.url = this.url + this.consultation.id;
+      this.images2[0] = this.url;
+      // if (this.consultation.image1_Gauche == null) {
+      //   this.imagePath = "assets/123.jpg"
+      // }
+      // else {
+      //   console.log("be333");
 
-      if (this.consultation.image1_Gauche == null) {
-        this.imagePath = "assets/123.jpg"
-      }
-      else {
-        console.log("be333");
-
-        this.retrieveResponse = this.consultation;
-        this.base64Data = this.retrieveResponse.image1_Gauche;
-        this.imagePath = 'data:image/jpeg;base64,' + this.base64Data;
-        this.images2[0] = this.imagePath;
-        console.log("lulaa", this.images2[0]);
-      }
+      //   this.retrieveResponse = this.consultation;
+      //   this.base64Data = this.retrieveResponse.image1_Gauche;
+      //   this.imagePath = 'data:image/jpeg;base64,' + this.base64Data;
+      //   this.images2[0] = this.imagePath;
+      //   console.log("lulaa", this.images2[0]);
+      // }
 
 
 

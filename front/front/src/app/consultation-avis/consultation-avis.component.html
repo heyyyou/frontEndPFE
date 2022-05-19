@@ -106,8 +106,24 @@
         <ion-text color="danger">Gravitè :</ion-text>
         1
       </div>
-
-      <div class="avis ion-margin ion-padding">
+      <ion-button
+        *ngIf="
+          consultation?.demandeAvisD !== 0 &&
+          consultation?.autoDetection?.avisExpert?.maladieDroite === null
+        "
+        color="danger"
+        expand="block"
+        size="large"
+        shape="round"
+        class="AvisExpert"
+        (click)="DemanderAvis()"
+        disabled="true"
+        >Demande Avis envoyé</ion-button
+      >
+      <div
+        class="avis ion-margin ion-padding"
+        *ngIf="consultation?.autoDetection?.avisExpert?.maladieDroite !== null"
+      >
         <ion-item lines="none" color="aviscolor">
           <div>
             <ion-label class="avisExpert ion-margin"> Avis Expert :</ion-label>

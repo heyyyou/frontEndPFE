@@ -19,12 +19,13 @@ export class SignupmedComponent implements OnInit {
 
 
   signup(f: NgForm) {
+    this.router.navigate(['/login'])
+    this.presentToast();
     this.service.registerMed(f.value).subscribe(() => {
 
 
       // localStorage.setItem("ids", "generaliste"); // lorsque je fais sign up j vais store l data d woslt local bsh nestaaml baed role f login f root ;)
-      this.router.navigate(['/login'])
-      this.presentToast();
+
     },
       err => {
         this.presentToastError();
