@@ -108,7 +108,11 @@
         <ion-item (click)="details()">
           <ion-item lines="none">
             <ion-avatar slot="start">
-              <img src="assets/fatma.jpg" />
+              <img
+                src="http://localhost:8080/medecin/getImage/{{
+                  item.generaliste.id
+                }}"
+              />
             </ion-avatar>
             <ion-label>
               <p>Docteur,</p>

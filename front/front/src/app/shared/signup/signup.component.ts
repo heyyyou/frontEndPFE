@@ -80,13 +80,29 @@ export class SignupComponent implements OnInit {
 
     );
   }
+  async presentToaste() {
+    const toast = await this.toastController.create({
+      message: 'Consultez Votre E-mail',
+      duration: 3000,
+      cssClass: "customToast",
 
+    });
+    toast.present();
+  }
 
 
   logOut() {
     localStorage.removeItem("username");
   }
+  reset(g: NgForm) {
 
+    this.presentToaste()
+    this.service.sendEmail(g.value.reserve).subscribe(
+      res => {
+
+      }
+    )
+  }
 
 
   async presentToast() {

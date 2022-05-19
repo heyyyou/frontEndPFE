@@ -36,11 +36,9 @@ export class ReponseAvisNotifComponent implements OnInit {
           this.imagePath = "assets/123.jpg"
         }
         else {
-          this.retrieveResponse = this.user;
-          this.base64Data = this.retrieveResponse.image;
-          this.imagePath = 'data:image/jpeg;base64,' + this.base64Data;
-        }
+          this.imagePath = "http://localhost:8080/medecin/getImage/" + this.user.id;
 
+        }
       });
 
       console.log(this.user)
@@ -48,6 +46,7 @@ export class ReponseAvisNotifComponent implements OnInit {
     });
 
   }
+
   ngOnInit() {
     this.here();
 

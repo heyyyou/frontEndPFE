@@ -54,17 +54,37 @@
           <ng-template>
             <ion-content>
               <ion-card>
-                <ion-item>
-                  <p class="ion-padding instruction">Instruction envoyées</p>
-                </ion-item>
-                <ion-item>
-                  <ion-text class="ion-padding">
-                    Nous t'avons envoyé des instructions pour changer ton mot de
-                    passe à l'adresse "ss@gmail.com" . Consulte ta boite de
-                    réception et tes courriers indésirables pour les retrouver
-                  </ion-text>
-                </ion-item>
-                <ion-button expand="block" (click)="dismiss()">OK</ion-button>
+                <form (ngSubmit)="reset(g)" #g="ngForm">
+                  <ion-item>
+                    <p class="ion-padding instruction">Mot de passe oublié ?</p>
+                  </ion-item>
+                  <ion-item>
+                    <ion-text class="ion-padding">
+                      <ion-label position="floating"
+                        >Entrez Votre Adresse E-mail</ion-label
+                      >
+
+                      <ion-input
+                        type="text"
+                        id="reserve"
+                        ngModel
+                        name="reserve"
+                        #reserve="ngModel"
+                        required
+                        pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
+                      >
+                      </ion-input>
+                    </ion-text>
+                  </ion-item>
+
+                  <ion-button
+                    expand="block"
+                    type="submit"
+                    (click)="dismiss()"
+                    [disabled]="!g.valid"
+                    >OK</ion-button
+                  >
+                </form>
               </ion-card>
             </ion-content>
           </ng-template>

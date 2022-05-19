@@ -562,5 +562,8 @@ export class UserService {
 
 
   }
+  sendEmail(email: String): Observable<any> {
+    return this.http.post("http://localhost:8080/api/send?email=" + email, {});
+  }
 }
 

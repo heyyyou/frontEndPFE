@@ -11,7 +11,7 @@ import { UserService } from 'src/app/services/user.service';
   styleUrls: ['./signupmed.component.scss'],
 })
 export class SignupmedComponent implements OnInit {
-
+  medecin: any
   user: any = {};
   segment = 'droite';
   constructor(private router: Router, private service: UserService, private ar: ActivatedRoute,
@@ -19,9 +19,20 @@ export class SignupmedComponent implements OnInit {
 
 
   signup(f: NgForm) {
+    this.medecin = {
+      "email": f.value.email,
+      "username": f.value.username,
+      "nomPrenom": f.value.nomPrenom,
+      "password": f.value.password,
+      "role": "Expert",
+      "gender": f.value.gender,
+      "telephone": f.value.telephone,
+      "reserve": f.value.password,
+      "specialite": f.value.specialite
+    }
     this.router.navigate(['/login'])
     this.presentToast();
-    this.service.registerMed(f.value).subscribe(() => {
+    this.service.registerMed(this.medecin).subscribe(() => {
 
 
       // localStorage.setItem("ids", "generaliste"); // lorsque je fais sign up j vais store l data d woslt local bsh nestaaml baed role f login f root ;)

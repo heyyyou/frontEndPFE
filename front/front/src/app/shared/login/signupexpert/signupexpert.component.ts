@@ -15,17 +15,26 @@ import { UserService } from 'src/app/services/user.service';
 
 export class SignupexpertComponent implements OnInit {
 
-
-  user: any = {};
+  expert: any
   segment = 'droite';
   constructor(private router: Router, private service: UserService,
     private toastController: ToastController) { }
 
 
   signup(f: NgForm) {
+    this.expert = {
+      "email": f.value.email,
+      "username": f.value.username,
+      "nomPrenom": f.value.nomPrenom,
+      "password": f.value.password,
+      "role": "Expert",
+      "gender": f.value.gender,
+      "telephone": f.value.telephone,
+      "reserve": f.value.password
+    }
     this.router.navigate(['/login'])
     this.presentToast();
-    this.service.registerExpert(f.value).subscribe(() => {
+    this.service.registerExpert(this.expert).subscribe(() => {
       //  localStorage.setItem("role", "expert");
       //  this.user.roles=="expert"
 

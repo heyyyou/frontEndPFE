@@ -24,14 +24,18 @@
       class="searchBar ion-padding"
       placeholder="cherchez un patient"
     ></ion-searchbar> -->
-    <div *ngFor="let item of consultation">
+    <div *ngFor="let item of consultation; let i = index">
       <ion-item-sliding id="item100">
         <ion-item
           [routerLink]="['/consultationAvis', item?.id, item?.patient?.id]"
         >
           <ion-item lines="none">
             <ion-avatar slot="start">
-              <img src="assets/fatma.jpg" />
+              <img
+                src="http://localhost:8080/expert/getImage/{{
+                  item.autoDetection?.avisExpert?.expert?.id
+                }}"
+              />
             </ion-avatar>
             <ion-label>
               <p>Docteur,</p>

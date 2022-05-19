@@ -17,6 +17,7 @@ export class ListeAvisComponent implements OnInit {
   Consultation: any[]
   ConsultationF: any
   consult: any
+  imageMed: any
   user: any = {};
   name: any
   base64: string;
@@ -67,6 +68,8 @@ export class ListeAvisComponent implements OnInit {
       this.consultation = params; this.ConsultationF = params; this.consult = params
       console.log("ya nariiiia aalik ya mounira", this.consultation)
       console.log("ahmeddd", this.consultation)
+      console.log("qsdsdklfshd", this.consultation.generaliste)
+
 
 
       this.nombreConsult = this.consultation.length
@@ -88,9 +91,8 @@ export class ListeAvisComponent implements OnInit {
           this.imagePath = "assets/123.jpg"
         }
         else {
-          this.retrieveResponse = this.user;
-          this.base64Data = this.retrieveResponse.image;
-          this.imagePath = 'data:image/jpeg;base64,' + this.base64Data;
+          this.imagePath = "http://localhost:8080/expert/getImage/" + this.user.id;
+
         }
 
       });

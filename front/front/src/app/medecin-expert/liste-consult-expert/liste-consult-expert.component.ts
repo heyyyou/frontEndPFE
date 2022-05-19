@@ -64,11 +64,9 @@ export class ListeConsultExpertComponent implements OnInit {
           this.imagePath = "assets/123.jpg"
         }
         else {
-          this.retrieveResponse = this.user;
-          this.base64Data = this.retrieveResponse.image;
-          this.imagePath = 'data:image/jpeg;base64,' + this.base64Data;
-        }
+          this.imagePath = "http://localhost:8080/expert/getImage/" + this.user.id;
 
+        }
       });
 
       console.log(this.user)
