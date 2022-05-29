@@ -32,7 +32,16 @@
           <ion-icon color="primary" name="lock-closed-outline"></ion-icon>
           <ion-item>
             <ion-label position="floating">Mot de passe</ion-label>
-            <ion-input
+            <!-- juste inty 7ot balise ta3 composant jdid ali sna3to o fi wostha input password
+            kima 3malt ana houni pas +
+            exemple
+             <app-show-hide-password> <input type="password"></input> </app-show-hide-password>
+
+             kahaw mataaml chy akher
+
+            -->
+            <app-show-hide-password>
+              <ion-input
               type="password"
               id="password"
               ngModel
@@ -41,6 +50,9 @@
               required
               maxlength="10"
             ></ion-input>
+          </app-show-hide-password>
+
+
           </ion-item>
           <div *ngIf="password.invalid && password.touched"></div>
         </div>

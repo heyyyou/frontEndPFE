@@ -65,9 +65,11 @@ import { ConsultationAvisGaucheComponent } from './consultation-avis/consultatio
 import { ForgetPasswordComponent } from './shared/forget-password/forget-password.component';
 import { StatistiqsueComponent } from './medecin-expert/statistique/statistique.component';
 import { LocalNotifications } from '@capacitor/local-notifications';
+import { ShowHidePasswordComponent } from './shared/show-hide-password/show-hide-password.component';
 
 @NgModule({
   declarations: [
+    ShowHidePasswordComponent,
     ReponseAvisNotifComponent,
     LoadingAIComponent,
     AppComponent,
