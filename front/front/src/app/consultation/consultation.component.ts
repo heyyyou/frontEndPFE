@@ -354,10 +354,7 @@ export class ConsultationComponent implements OnInit {
 
   deletePic() {
     this.images.splice(0, this.images.length)
-    this.service.suppImagesGauches(parseInt(localStorage.getItem("id")), this.idConsult/* id consu */).subscribe(
-      event => {
 
-      });
 
 
 

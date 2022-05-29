@@ -49,7 +49,7 @@ export class ReponseAvisNotifComponent implements OnInit {
 
   ngOnInit() {
     this.here();
-
+    this.service.isConsulted = true;
     this.id = parseInt(localStorage.getItem("id"))
     this.service.consultationNotifGen(parseInt(localStorage.getItem("id"))).subscribe((params) => {
       this.consultation = params; this.ConsultationF = params; this.consult = params

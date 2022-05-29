@@ -74,7 +74,7 @@
       <app-details-droite *ngSwitchCase="'droite'"> </app-details-droite>
 
     </ng-container> -->
-    <div *ngIf="consultation?.image1Droite !== null">
+    <div *ngIf="consultation?.image1_Droite">
       <ion-card class="cardfull">
         <swiper
           [config]="config"
@@ -110,7 +110,7 @@
         size="large"
         shape="round"
         class="AvisExpert"
-        [disabled]="images.length === 0"
+        [disabled]="images.length === 0 && reponseAvisTime != null"
         (click)="DemanderAvis(); btn.disabled = true"
         >Demande Avis Expert</ion-button
       >

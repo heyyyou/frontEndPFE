@@ -78,7 +78,7 @@ export class ListeConsultationComponent implements OnInit {
     const toast = await this.toastController.create({
       message: 'suppression avec succées',
       duration: 3000,
-      position: 'top',
+      position: 'bottom',
 
     });
     toast.present();
@@ -90,14 +90,19 @@ export class ListeConsultationComponent implements OnInit {
     console.log("wooooooh");
     this.id = parseInt(localStorage.getItem("id"))
     this.service.getallConsultation(this.id).subscribe((params) => {
-      this.consultation = params; this.ConsultationF = params; this.consult = params
+      this.consultation = params;
+      this.getNbrAvis()
+
+
+
+      this.ConsultationF = params;
+      this.consult = params
       this.nbrConsultation = this.consultation.length
     })
   }
 
 
   ngOnInit() {
-    this.getNbrAvis()
 
     this.getAllconsultation()
     let id: number
@@ -110,23 +115,23 @@ export class ListeConsultationComponent implements OnInit {
           this.imagePath = "assets/123.jpg"
         }
         else {
-          this.imagePath = "http://localhost:8080/medecin/getImage/" + this.user.id;
+          this.imagePath = "http://localhost:8080/medecin/getImage/" + this.user?.id;
 
         }
 
       });
 
-      console.log(this.user)
 
     });
   }
 
   getNbrAvis() {
     this.service.consultationNotifGen(parseInt(localStorage.getItem("id"))).subscribe((params) => {
-      this.consultation = params; this.ConsultationF = params; this.consult = params
+      this.ConsultationF = params;
+      this.consult = params
       console.log("ya nariiiia aalik ya mounira", this.consultation)
       console.log("ahmeddd", this.consultation)
-      this.nbr = this.consultation.length;
+      this.nbr = params.length;
       console.log("heskdsdf", this.nbr)
     })
   }

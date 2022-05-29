@@ -97,7 +97,10 @@ export class EditProfilMedecinComponent implements OnInit {
           alert(" proléme dans modifier l'image ")
         }
       );
-      this.router.navigate(['profil'])
+      setTimeout(() => {
+        this.router.navigate(['profil']);
+      }, 1000);
+
       // this.router.navigate(['profil']).then(() => {
       //   window.location.reload();
       // });

@@ -423,7 +423,7 @@ export class AjouterAvisGaucheComponent implements OnInit {
     const toast = await this.toastController.create({
       message: 'Avis ajouté avec succées',
       icon: 'information-circle',
-      position: 'top',
+      position: 'bottom',
       color: "light",
       duration: 2000
 

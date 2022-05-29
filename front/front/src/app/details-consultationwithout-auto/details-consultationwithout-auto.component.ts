@@ -72,6 +72,9 @@ export class DetailsConsultationwithoutAutoComponent implements OnInit {
       this.isLoadingAI = false;
       this.service.ajouterAutoDetection(parseInt(localStorage.getItem("id")), this.idConsult).subscribe((params) => {
         this.autoDetection = params
+        this.service.idAutoDetection = this.autoDetection.id;
+        this.service.updateAutoDetectionInConsultation(parseInt(localStorage.getItem("id")), this.idConsult, this.autoDetection.id).subscribe((params) => { })
+        // this.consultation = params, this.idConsult = this.consultation.id
         console.log("ba333333333333333333", this.autoDetection.id)
         console.log("rahmaaaaaaaaaaaaaaaaaaaa", this.consultation);
         this.router.navigate(['detailConsultation', this.idConsult, this.consultation.patient.id, this.autoDetection.id]);

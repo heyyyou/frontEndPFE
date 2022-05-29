@@ -31,7 +31,8 @@ export class DetailConsultationComponent implements OnInit {
   idPatient: any;
   private sub: any;
   images2: any[] = [];
-  patient: any
+  patient: any;
+  reponseAvisTime: any;
   consultation: any
   images: any[] = [];
   idAutoDetection: any
@@ -224,6 +225,7 @@ export class DetailConsultationComponent implements OnInit {
 
     this.service.getConsultationID(parseInt(localStorage.getItem("id")), this.idConsult, this.idPatient).subscribe((params => {
       this.consultation = params;
+      this.reponseAvisTime = this.consultation?.autoDetection?.avisExpert?.reponseAvisTime;
       console.log(this.consultation)
       this.url = this.url + this.consultation.id;
       this.images[0] = this.url;

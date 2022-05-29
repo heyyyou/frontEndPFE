@@ -36,9 +36,12 @@
               name="notifications-outline"
               class="ion-padding"
             ></ion-icon>
-            <ion-badge *ngIf="nbr !== 0" color="danger" class="badge">{{
-              nbr
-            }}</ion-badge>
+            <ion-badge
+              *ngIf="nbr !== 0 && service.isConsulted == false"
+              color="danger"
+              class="badge"
+              >{{ nbr }}</ion-badge
+            >
             <ion-text>notifications</ion-text>
           </ion-item>
           <ion-item (click)="statistique()">
@@ -71,9 +74,12 @@
           <ion-buttons slot="start">
             <ion-toolbar>
               <ion-menu-button menu="first1"> </ion-menu-button>
-              <ion-badge *ngIf="nbr !== 0" color="danger" class="badge">{{
-                nbr
-              }}</ion-badge>
+              <ion-badge
+                *ngIf="nbr !== 0 && service.isConsulted == false"
+                color="danger"
+                class="badge"
+                >{{ nbr }}</ion-badge
+              >
             </ion-toolbar>
           </ion-buttons>
 

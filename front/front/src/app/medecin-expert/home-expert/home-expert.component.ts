@@ -73,7 +73,7 @@ export class HomeExpertComponent implements OnInit {
   //     const toast = await this.toastController.create({
   //       message: 'Welcome Doctor' + " " + localStorage.getItem("name"),
   //       duration: 3000,
-  //       position: 'top',
+  //       position: 'bottom',
   //       cssClass: "customToast"
   //     });
   //     toast.present();

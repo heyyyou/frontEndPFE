@@ -24,7 +24,7 @@ export class DetailsGaucheComponent implements OnInit {
   images2: any[] = [];
   idAutoDetection: any
   consultation: any
-
+  reponseAvisTime: any
   DemandeAvis: boolean = false; // f details ya mariem demain
   Avis: boolean = false;
   showLoader: boolean;
@@ -166,6 +166,10 @@ export class DetailsGaucheComponent implements OnInit {
     })
     this.service.getConsultationID(parseInt(localStorage.getItem("id")), this.idConsult, this.idPatient).subscribe((params => {
       this.consultation = params;
+      console.log(this.consultation);
+
+      this.reponseAvisTime = this.consultation?.autoDetection?.avisExpert?.reponseAvisTime;
+
       console.log(this.consultation)
       this.url = this.url + this.consultation.id;
       this.images2[0] = this.url;
