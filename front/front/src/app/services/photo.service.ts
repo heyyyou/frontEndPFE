@@ -9,19 +9,19 @@ import { Platform } from '@ionic/angular';
 })
 export class PhotoService {
   public photos: UserPhoto[] = [];
-  private PHOTO_STORAGE: string = 'photos';
+  private PHOTO_STORAGE = 'photos';
 
   constructor(private platform: Platform) { }
 
   public async loadSaved() {
     // Retrieve cached photo array data
     const photoList = await Storage.get({ key: this.PHOTO_STORAGE });
-    this.photos = JSON.parse(photoList.value) || [];
+    this.photos = JSON.parse(photoList.value) || []; // traiter un objet json
 
     // If running on the web...
     if (!this.platform.is('hybrid')) {
       // Display the photo by reading into base64 format
-      for (let photo of this.photos) {
+      for (const photo of this.photos) {
         // Read each saved photo's data from the Filesystem
         const readFile = await Filesystem.readFile({
           path: photo.filepath,
@@ -47,7 +47,7 @@ export class PhotoService {
     // Take a photo
     const capturedPhoto = await Camera.getPhoto({
       resultType: CameraResultType.Uri, // file-based data; provides best performance
-      source: CameraSource.Camera, // automatically take a new photo with the camera
+      source: CameraSource.Photos, // automatically take a new photo with the camera
       quality: 100, // highest quality (0 to 100)
     });
 

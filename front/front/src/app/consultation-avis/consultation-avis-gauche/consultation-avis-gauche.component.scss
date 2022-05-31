@@ -1,0 +1,395 @@
+.cardfull {
+  border-radius: 12px;
+  padding-top: 7%;
+  margin-left: 15%;
+  margin-right: 7%;
+  margin-top: 5%;
+  margin-bottom: 5%;
+  width: 70%;
+  height: 35%;
+  background-color: #f5f4f4;
+}
+.color {
+  background-color: #3e64ff;
+}
+ion-toolbar {
+  height: 100%;
+  .bordered {
+    --border-raduis: 20px;
+  }
+  .avatar {
+    height: 35px;
+    width: 35px;
+  }
+}
+ion-item {
+  h3 {
+    font-weight: 700;
+    font-size: 14px;
+  }
+  h4 {
+    font-weight: 600;
+    font-size: 13px;
+    color: darkgrey;
+  }
+
+  p {
+    font-weight: 500;
+    font-size: 14px;
+  }
+
+  ion-avatar {
+    --border-radius: 40%;
+  }
+}
+h5 {
+  font-weight: 700;
+  font-size: 18px;
+}
+.details {
+  margin-left: 7%;
+  margin-right: 7%;
+  padding-top: 1px;
+  margin-top: 7%;
+  margin-bottom: 10%;
+
+  ion-icon {
+    height: 15px;
+    width: 15px;
+  }
+  ion-item {
+    margin-left: 7%;
+    margin-right: 7%;
+
+    h3 {
+      font-weight: 400;
+      font-size: 15px;
+      color: darkgrey;
+      margin-left: 5%;
+    }
+  }
+
+  .item1 {
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px;
+  }
+  .item4 {
+    border-bottom-left-radius: 12px;
+    border-bottom-right-radius: 12px;
+  }
+}
+ion-segment {
+  --background-checked: var(--ion-color-primary);
+  --color-checked: var(--ion-color-success-dark);
+}
+.segment {
+  background-color: #f7f7f7;
+  border-radius: 12px;
+  margin-left: 9%;
+  margin-right: 9%;
+}
+.item1 {
+  background-color: #f5f4f4;
+}
+.AvisExpert {
+  margin-left: 10%;
+  margin-right: 10%;
+}
+.calendar {
+  height: 18px;
+  width: 18px;
+  padding-right: 5px;
+}
+.avis {
+  background-color: #f5f4f4;
+  border-radius: 12px;
+}
+.avisExpert {
+  font-weight: bold;
+  font-size: 20px;
+  color: #323fb3;
+}
+.oeil {
+  font-weight: bold;
+  font-size: 14px;
+}
+.rating {
+  border: none;
+  float: left;
+}
+
+.rating > input {
+  display: none;
+}
+.rating > label:before {
+  margin: 5px;
+  font-size: 1.25em;
+  font-family: FontAwesome;
+  display: inline-block;
+  content: "\f005";
+}
+
+.rating > .half:before {
+  content: "\f089";
+  position: absolute;
+}
+
+.rating > label {
+  color: #ddd;
+  float: right;
+}
+
+/***** CSS Magic to Highlight Stars on Hover *****/
+
+.rating > input:checked ~ label, /* show gold star when clicked */
+.rating:not(:checked) > label:hover, /* hover current star */
+.rating:not(:checked) > label:hover ~ label {
+  color: #ffd700;
+} /* hover previous stars in list */
+
+.rating > input:checked + label:hover, /* hover current star when changing rating */
+.rating > input:checked ~ label:hover,
+.rating > label:hover ~ input:checked ~ label, /* lighten current selection */
+.rating > input:checked ~ label:hover ~ label {
+  color: #ffed85;
+}
+ion-modal {
+  --background: rgba(44, 39, 45, 0.2);
+  &::part(content) {
+    backdrop-filter: blur(6px);
+  }
+  ion-content {
+    --background: transparent;
+    --padding-top: 25vh;
+    --padding-start: 20px;
+    --padding-end: 20px;
+  }
+}
+ion-item {
+  h3 {
+    font-weight: 700;
+    font-size: 18px;
+  }
+  h4 {
+    font-weight: 600;
+    font-size: 20px;
+    color: darkgrey;
+  }
+
+  p {
+    font-weight: 500;
+    font-size: 18px;
+  }
+
+  ion-avatar {
+    --border-radius: 40%;
+  }
+}
+h5 {
+  color: darkgray;
+  font-size: 18px;
+}
+.comm {
+  font-weight: 600;
+  font-size: 15px;
+  color: #3880ff;
+}
+.details {
+  ion-icon {
+    height: 18px;
+    width: 18px;
+  }
+
+  h3 {
+    font-weight: 400;
+    font-size: 18px;
+    color: darkgrey;
+    margin-left: 5%;
+  }
+}
+.cardfull {
+  border-radius: 12px;
+  padding-top: 7%;
+  margin-left: 15%;
+  margin-right: 7%;
+  margin-top: 5%;
+  margin-bottom: 5%;
+  width: 70%;
+  height: 35%;
+  background-color: #f5f4f4;
+}
+.color {
+  background-color: #639956;
+}
+ion-toolbar {
+  height: 100%;
+  .bordered {
+    --border-raduis: 20px;
+  }
+  .avatar {
+    height: 40px;
+    width: 40px;
+  }
+}
+ion-item {
+  h3 {
+    font-weight: 700;
+    font-size: 14px;
+  }
+  h4 {
+    font-weight: 600;
+    font-size: 13px;
+    color: darkgrey;
+  }
+
+  p {
+    font-weight: 500;
+    font-size: 14px;
+  }
+
+  ion-avatar {
+    --border-radius: 40%;
+  }
+}
+h5 {
+  font-weight: 600;
+  font-size: 25px;
+  color: #fa0606;
+}
+.details {
+  margin-left: 7%;
+  margin-right: 7%;
+  padding-top: 1px;
+  margin-top: 7%;
+  margin-bottom: 10%;
+
+  ion-icon {
+    height: 15px;
+    width: 15px;
+  }
+  ion-item {
+    margin-left: 7%;
+    margin-right: 7%;
+
+    h3 {
+      font-weight: 400;
+      font-size: 15px;
+      color: darkgrey;
+      margin-left: 5%;
+    }
+  }
+
+  .item1 {
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px;
+  }
+  .item4 {
+    border-bottom-left-radius: 12px;
+    border-bottom-right-radius: 12px;
+  }
+}
+ion-segment {
+  --background-checked: var(--ion-color-primary);
+  --color-checked: var(--ion-color-success-dark);
+}
+.segment {
+  background-color: #f7f7f7;
+  border-radius: 12px;
+  margin-left: 9%;
+  margin-right: 9%;
+}
+.item1 {
+  background-color: #f5f4f4;
+}
+.AvisExpert {
+  margin-left: 10%;
+  margin-right: 10%;
+}
+.calendar {
+  height: 18px;
+  width: 18px;
+  padding-right: 5px;
+}
+ion-modal {
+  --background: rgba(44, 39, 45, 0.2);
+  &::part(content) {
+    backdrop-filter: blur(8px);
+  }
+  ion-content {
+    --background: transparent;
+    --padding-top: 25vh;
+    --padding-start: 20px;
+    --padding-end: 20px;
+  }
+}
+.commentaire {
+  font-size: 19px;
+  color: #f7f7f7;
+}
+.avis {
+  background-color: #f5f4f4;
+  border-radius: 12px;
+}
+.avisExpert {
+  font-weight: bold;
+  font-size: 16px;
+  color: #4caf50;
+}
+.oeil {
+  font-weight: bold;
+  font-size: 14px;
+}
+.itemborder {
+  border-radius: 10px;
+}
+.itemborder2 {
+  border-radius: 10px;
+}
+.comments {
+  color: #525050;
+  font-size: 14px;
+}
+.boutton {
+  text-align: center;
+}
+.div {
+  text-align: center;
+}
+@import url(//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css);
+
+fieldset,
+label {
+  margin: 0;
+  padding: 0;
+}
+body {
+  margin: 20px;
+}
+h1 {
+  font-size: 1.5em;
+  margin: 10px;
+}
+ion-modal {
+  --background: rgba(44, 39, 45, 0.2);
+  &::part(content) {
+    backdrop-filter: blur(10px);
+  }
+  ion-content {
+    --background: transparent;
+    --padding-top: 25vh;
+    --padding-start: 20px;
+    --padding-end: 20px;
+  }
+}
+
+.evaluer {
+}
+.starsModel {
+  position: absolute;
+  left: 83px;
+}
+.closeModel {
+  font-size: 30px;
+}
+
+/****** Style Star Rating Widget *****/

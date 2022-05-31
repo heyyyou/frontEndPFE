@@ -3,14 +3,14 @@ import { ModalController } from '@ionic/angular';
 import Swiper, { Pagination, SwiperOptions } from 'swiper';
 import SwiperCore, { Zoom } from 'swiper';
 import { SwiperComponent } from 'swiper/angular';
-SwiperCore.use([Zoom, Pagination])
+SwiperCore.use([Zoom, Pagination]);
 @Component({
   selector: 'app-modal-image',
   templateUrl: './modal-image.component.html',
   styleUrls: ['./modal-image.component.scss'],
 })
 export class ModalImageComponent implements OnInit {
-  @ViewChild('swiper') swiper: SwiperComponent
+  @ViewChild('swiper') swiper: SwiperComponent;
   @Input() imge: String;
   config: SwiperOptions = {
     zoom: {
@@ -19,7 +19,7 @@ export class ModalImageComponent implements OnInit {
 
     }
 
-  }
+  };
 
   constructor(private modalCtrl: ModalController) { }
 

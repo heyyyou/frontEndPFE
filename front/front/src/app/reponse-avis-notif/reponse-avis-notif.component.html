@@ -1,0 +1,72 @@
+<!-- pour l generaliste  -->
+<ion-app class="content">
+  <ion-header class="ion-no-border">
+    <ion-toolbar class="border-radius-bottom">
+      <div class="flex-bloc">
+        <ion-buttons>
+          <ion-back-button defaultHref="home"></ion-back-button>
+        </ion-buttons>
+
+        <h5>Notifications Avis</h5>
+        <ion-avatar slot="end" class="ion-margin avatar">
+          <img src="{{ imagePath }}" />
+        </ion-avatar>
+      </div>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-content class="ion-padding ion-margin" color="light">
+    <div *ngIf="nbr === 0">
+      <img class="notif" src="assets/notif.jpg" />
+      <ion-text class="notift">Pas de réponse</ion-text>
+    </div>
+    <!-- <ion-searchbar
+      class="searchBar ion-padding"
+      placeholder="cherchez un patient"
+    ></ion-searchbar> -->
+    <div *ngFor="let item of consultation; let i = index">
+      <ion-item-sliding id="item100">
+        <ion-item
+          [routerLink]="['/consultationAvis', item?.id, item?.patient?.id]"
+        >
+          <ion-item lines="none">
+            <ion-avatar slot="start">
+              <img
+                src="http://localhost:8080/expert/getImage/{{
+                  item.autoDetection?.avisExpert?.expert?.id
+                }}"
+                onerror="this.onerror=null;this.src='assets/123.jpg';"
+              />
+            </ion-avatar>
+            <ion-label>
+              <p>Docteur,</p>
+              <h3>{{ item?.autoDetection?.avisExpert?.expert?.username }},</h3>
+              <ion-text
+                color="success"
+                style="font-weight: bold; font-size: 14px"
+                >Reponse Avis</ion-text
+              >
+            </ion-label>
+          </ion-item>
+          <ion-note slot="end">
+            <ion-chip color="tertiary">
+              <ion-label>
+                <ion-icon
+                  color="primary"
+                  name="notifications-outline"
+                ></ion-icon>
+              </ion-label> </ion-chip
+            >Il y a
+            {{ item?.autoDetection?.avisExpert?.decalageHoraireGen }}</ion-note
+          >
+        </ion-item>
+
+        <ion-item-options side="end">
+          <ion-item-option color="danger">
+            <ion-icon slot="icon-only" name="trash"></ion-icon>
+          </ion-item-option>
+        </ion-item-options>
+      </ion-item-sliding>
+    </div>
+  </ion-content>
+</ion-app>

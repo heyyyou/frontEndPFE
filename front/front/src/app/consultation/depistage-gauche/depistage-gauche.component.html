@@ -1,0 +1,76 @@
+<!-- now gauche -->
+
+<div *ngIf="!isLoadingAI">
+  <div class="ajouterdelet">
+    <!-- <ion-button
+        *ngIf="photoService.photos.length <= 4; else thenBlock" -->
+  </div>
+  <div>
+    <ion-card class="cardfull">
+      <input
+        type="file"
+        accept="image/*"
+        multiple
+        class="select-profile-picture custom-file-input"
+        (change)="selectFiles2($event)"
+        [disabled]="images.length != 0"
+      />
+      <div class="trash" style="text-align: center" *ngIf="images.length != 0">
+        <ion-button fill="outline" color="priamry" (click)="showActionSheet()"
+          ><ion-icon name="trash"></ion-icon
+        ></ion-button>
+      </div>
+
+      <div *ngIf="images.length === 0">
+        <img [src]="'assets/add.jpg'" />
+      </div>
+      <swiper [config]="config" class="swiper-slide">
+        <ng-template swiperSlide *ngFor="let file of images; let i = index">
+          <!-- <div class="bouttontrash">
+              <ion-button
+                fill="outline"
+                color="priamry"
+                (click)="showActionSheet(i)"
+                ><ion-icon name="trash"></ion-icon
+              ></ion-button> -->
+
+          <img
+            [src]="file"
+            onerror="this.src='assets/add.jpg'"
+            alt="alternative"
+            tappable
+            (click)="openPreview(file)"
+          />
+        </ng-template>
+      </swiper>
+    </ion-card>
+  </div>
+
+  <ion-button
+    #btn
+    expand="block"
+    size="large"
+    fill="outline"
+    class="AImodel"
+    [disabled]="
+      cinPatient === 0 || (images.length === 0 && images.length === 0)
+    "
+    shape="round"
+    (click)="uploadFiles(); btn.disabled = true"
+    >Ajouter Consultation</ion-button
+  >
+
+  <ion-button
+    expand="block"
+    size="large"
+    class="AImodel"
+    shape="round"
+    (click)="presentLoading()"
+    [disabled]="this.var === 0"
+    >AI Modal</ion-button
+  >
+</div>
+
+<ion-content *ngIf="isLoadingAI">
+  <app-loading-ai></app-loading-ai>
+</ion-content>

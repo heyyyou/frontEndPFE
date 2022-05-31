@@ -1,0 +1,40 @@
+<ion-app>
+  <ion-header translucent>
+    <ion-toolbar>
+      <ion-buttons slot="start">
+        <ion-back-button defaultHref="home"></ion-back-button>
+      </ion-buttons>
+      <p><ion-title>Statistique</ion-title></p>
+    </ion-toolbar>
+    <ion-toolbar>
+      <ion-segment [(ngModel)]="type">
+        <ion-segment-button value="patient">
+          <ion-label>Patients</ion-label>
+        </ion-segment-button>
+        <ion-segment-button value="consultation">
+          <ion-label>Consultations</ion-label>
+        </ion-segment-button>
+        <ion-segment-button value="avis">
+          <ion-label>Avis</ion-label>
+        </ion-segment-button>
+      </ion-segment>
+    </ion-toolbar>
+  </ion-header>
+  <ion-content [fullscreen]="true">
+    <ng-container [ngSwitch]="type">
+      <app-stat-patient *ngSwitchCase="'patient'"> </app-stat-patient>
+      <app-stat-consult *ngSwitchCase="'consultation'"></app-stat-consult>
+      <app-stat-avis *ngSwitchCase="'avis'"></app-stat-avis>
+    </ng-container>
+  </ion-content>
+  <!-- <ion-header no-border>
+    <ion-toolbar
+      color="primary"
+      style="border-bottom-left-radius: 12px; border-bottom-right-radius: 12px"
+    >
+      <ion-buttons>
+        <ion-back-button undefined="home"></ion-back-button>
+      </ion-buttons>
+    </ion-toolbar>
+  </ion-header> -->
+</ion-app>

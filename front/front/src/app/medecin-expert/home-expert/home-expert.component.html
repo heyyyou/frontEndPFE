@@ -1,0 +1,78 @@
+<!-- pour l expert  -->
+<ion-app>
+  <!-- <div class="menu">
+    <ion-menu side="start" menuId="first" contentId="main" swipe-gesture="true">
+      <ion-content>
+        <div class="menu-header-bg"></div>
+        <div class="header-content">
+          <img src="{{ imagePath }}" />
+
+          <ion-label>
+            <h2>DR.{{ name }}</h2>
+            <p>Expert Ophtalmologue</p>
+          </ion-label>
+        </div>
+        <ion-list class="menu-items ion-margin" lines="none">
+          <ion-item (click)="profil()">
+            <ion-icon
+              name="person-outline"
+              class="active ion-padding"
+            ></ion-icon>
+            <ion-text>Profil</ion-text>
+          </ion-item>
+
+          <ion-item (click)="Historiques()">
+            <ion-icon name="clipboard-outline" class="ion-padding"></ion-icon>
+            <ion-text> Historiques</ion-text>
+          </ion-item>
+          <ion-item (click)="notification()">
+            <ion-icon
+              name="notifications-outline"
+              class="ion-padding"
+            ></ion-icon>
+            <ion-badge color="danger" class="badge">{{
+              nombreConsult
+            }}</ion-badge>
+            <ion-text>notifications</ion-text>
+          </ion-item>
+          <ion-item (click)="statistique()">
+            <ion-icon name="pie-chart-outline" class="ion-padding"></ion-icon>
+            <ion-text>Statistique</ion-text>
+          </ion-item>
+
+          <ion-item (click)="parametre()">
+            <ion-icon name="options-outline" class="ion-padding"></ion-icon
+            ><ion-text>paramètres</ion-text>
+          </ion-item>
+          <ion-item class="logout" (click)="logout()">
+            <ion-icon
+              name="log-out-outline"
+              class="ion-padding"
+              color="primary2"
+            ></ion-icon
+            ><ion-text>Log out</ion-text>
+          </ion-item>
+        </ion-list>
+      </ion-content>
+    </ion-menu>
+  </div>
+  <ion-router-outlet id="main"></ion-router-outlet>
+
+  <ion-header class="content ion-no-border">
+    <ion-toolbar class="border-radius-bottom">
+      <div class="flex-bloc">
+        <ion-buttons slot="end">
+          <ion-menu-button menu="first"></ion-menu-button>
+          <ion-badge *ngIf="nombreConsult !== 0" color="danger" class="badge">{{
+            nombreConsult
+          }}</ion-badge>
+        </ion-buttons>
+
+        <ion-avatar slot="end" class="ion-margin avatar">
+          <img src="{{ imagePath }}" />
+        </ion-avatar>
+      </div>
+    </ion-toolbar>
+  </ion-header> -->
+  <app-liste-avis></app-liste-avis>
+</ion-app>

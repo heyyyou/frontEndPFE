@@ -1,0 +1,223 @@
+<ion-app>
+  <ion-header class="ion-no-border">
+    <ion-toolbar class="border-radius-bottom" color="primary">
+      <div class="buttonback" style="margin-right: 80%">
+        <ion-back-button defaultHref="home"></ion-back-button>
+      </div>
+      <div class="image-cropper">
+        <img
+          class="rounded"
+          src="{{ ConsultationMedService.pic }}"
+          onerror="this.onerror=null;this.src='assets/123.jpg';"
+        />
+      </div>
+
+      <ion-item lines="none" class="ion-margin radius" *ngIf="!isLoadingAI">
+        <ion-label
+          ><ion-text color="new2">choisissez un patient</ion-text>
+        </ion-label>
+        <ion-button slot="end" fill="outline" (click)="ajouter_patient()"
+          ><ion-icon name="person-add-outline"></ion-icon
+        ></ion-button>
+
+        <ionic-selectable
+          [(ngModel)]="patient"
+          [items]="patients"
+          itemValueField="id"
+          itemTextField="nomPCin"
+          lines="none"
+          style="border-radius: 15px"
+          (onChange)="portChange($event)"
+          [canSearch]="true"
+        >
+          <ng-template ionicSelectableHeaderTemplate>
+            <div class="class">
+              <ion-buttons>
+                <ion-button
+                  class="bordered"
+                  fill="solid"
+                  color="light"
+                  shape="round"
+                  (click)="dismiss()"
+                >
+                  <ion-icon name="arrow-back-outline"></ion-icon
+                ></ion-button>
+              </ion-buttons>
+            </div>
+          </ng-template>
+        </ionic-selectable>
+      </ion-item>
+    </ion-toolbar>
+  </ion-header>
+  <ion-content *ngIf="!isLoadingAI">
+    <div class="segment">
+      <ion-segment mode="ios" [(ngModel)]="segment" color="primary">
+        <ion-segment-button value="droite"
+          ><ion-icon name="eye-outline" color="favorites"></ion-icon
+          ><ion-text color="favorites"> Oeil Droite</ion-text>
+        </ion-segment-button>
+        <ion-segment-button value="gauche" (click)="what()">
+          <ion-icon name="eye-outline" color="favorites"></ion-icon>
+          <ion-text color="favorites">
+            Oeil Gauche</ion-text
+          ></ion-segment-button
+        >
+      </ion-segment>
+    </div>
+    <!-- bdit lahna -->
+
+    <ng-container [ngSwitch]="segment">
+      <!-- <app-depistage-droite *ngSwitchCase="'droite'"> </app-depistage-droite>
+      <app-depistage-droite *ngSwitchCase="'gauche'"> </app-depistage-droite> -->
+    </ng-container>
+
+    <div *ngIf="!isLoadingAI">
+      <div class="ajouterdelet">
+        <!-- <ion-button
+          *ngIf="photoService.photos.length <= 4; else thenBlock" -->
+      </div>
+      <div>
+        <ion-card class="cardfull">
+          <input
+            type="file"
+            accept="image/*"
+            multiple
+            class="select-profile-picture custom-file-input"
+            (change)="selectFiles($event)"
+            [disabled]="images.length !== 0"
+          />
+          <div
+            class="trash"
+            style="text-align: center"
+            *ngIf="images.length !== 0"
+          >
+            <ion-button
+              fill="outline"
+              color="priamry"
+              (click)="showActionSheet()"
+              ><ion-icon name="trash"></ion-icon
+            ></ion-button>
+          </div>
+
+          <div *ngIf="images.length === 0">
+            <img [src]="'assets/add.jpg'" />
+          </div>
+          <swiper [config]="config" class="swiper-slide">
+            <ng-template swiperSlide *ngFor="let file of images; let i = index">
+              <!-- <div class="bouttontrash">
+                <ion-button
+                  fill="outline"
+                  color="priamry"
+                  (click)="showActionSheet(i)"
+                  ><ion-icon name="trash"></ion-icon
+                ></ion-button> -->
+
+              <img
+                [src]="file"
+                onerror="this.src='assets/add.jpg'"
+                alt="alternative"
+                tappable
+                (click)="openPreview(file)"
+              />
+            </ng-template>
+          </swiper>
+        </ion-card>
+        <ion-button
+          #btn
+          expand="block"
+          size="Medium"
+          fill="outline"
+          class="AImodel"
+          [disabled]="cinPatient === 0 || images.length === 0"
+          shape="round"
+          (click)="uploadFiles2(); btn.disabled = true"
+          >Ajouter Consultation Droite</ion-button
+        >
+      </div>
+
+      <!-- now gauche -->
+
+      <div *ngIf="!isLoadingAI">
+        <div class="ajouterdelet">
+          <!-- <ion-button
+            *ngIf="photoService.photos.length <= 4; else thenBlock" -->
+        </div>
+        <div>
+          <ion-card class="cardfull">
+            <input
+              type="file"
+              accept="image/*"
+              multiple
+              class="select-profile-picture custom-file-input"
+              (change)="selectFiles2($event)"
+              [disabled]="images2.length != 0"
+            />
+            <div
+              class="trash"
+              style="text-align: center"
+              *ngIf="images2.length != 0"
+            >
+              <ion-button
+                fill="outline"
+                color="priamry"
+                (click)="showActionSheet2()"
+                ><ion-icon name="trash"></ion-icon
+              ></ion-button>
+            </div>
+
+            <div *ngIf="images2.length === 0">
+              <img [src]="'assets/add.jpg'" />
+            </div>
+            <swiper [config]="config" class="swiper-slide">
+              <ng-template
+                swiperSlide
+                *ngFor="let file of images2; let i = index"
+              >
+                <!-- <div class="bouttontrash">
+                  <ion-button
+                    fill="outline"
+                    color="priamry"
+                    (click)="showActionSheet(i)"
+                    ><ion-icon name="trash"></ion-icon
+                  ></ion-button> -->
+
+                <img
+                  [src]="file"
+                  onerror="this.src='assets/add.jpg'"
+                  alt="alternative"
+                  tappable
+                  (click)="openPreview2(file)"
+                />
+              </ng-template>
+            </swiper>
+          </ion-card>
+        </div>
+
+        <ion-button
+          #btn
+          expand="block"
+          size="Medium"
+          fill="outline"
+          class="AImodel"
+          [disabled]="cinPatient === 0 || images2.length === 0"
+          shape="round"
+          (click)="uploadFiles(); btn.disabled = true"
+          >Ajouter Consultation Gauche</ion-button
+        >
+
+        <ion-button
+          expand="block"
+          size="large"
+          class="AImodel"
+          shape="round"
+          (click)="presentLoading()"
+          [disabled]="this.var === 0"
+          >AI Modal</ion-button
+        >
+      </div>
+    </div></ion-content
+  >
+  <ion-content *ngIf="isLoadingAI">
+    <app-loading-ai></app-loading-ai>
+  </ion-content>
+</ion-app>

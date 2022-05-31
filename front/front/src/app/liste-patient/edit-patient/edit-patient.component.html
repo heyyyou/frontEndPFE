@@ -1,0 +1,220 @@
+<ion-app>
+  <ion-toolbar color="primary" style="border-radius: 12px">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="ListePatient"></ion-back-button>
+    </ion-buttons>
+    <ion-text>modifier patient</ion-text>
+    <!-- <ion-avatar slot="end" class="ion-margin avatar">
+      <img src="{{ imagePath }}" />
+    </ion-avatar> -->
+  </ion-toolbar>
+  <ion-content mode="ios">
+    <div class="main-header">
+      <div align="center">
+        <ion-avatar>
+          <img src="assets/123.jpg" height="150px" width="150px" /> <br />
+        </ion-avatar>
+      </div>
+    </div>
+    <!-- <div class="flex1">
+        <div class="border-blue1">
+          <div class="border-white1">
+            <div class="img-box1">
+              <div class="cam">
+                <ion-icon
+                  (click)="showActionSheet()"
+                  color="dark"
+                  name="camera"
+                  style="margin-left: 4.5px; margin-top: -2px"
+                ></ion-icon>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div> -->
+
+    <div></div>
+    <form #f="ngForm">
+      <ion-card>
+        <!-- <ion-item>
+          <ion-label position="stacked" class="text"
+            >CIN <ion-text color="danger">*</ion-text></ion-label
+          >
+          <ion-input
+            placeholder="réponse courte"
+            type="text"
+            required
+            id="cin"
+            [ngModel]="patientid?.cin"
+            ngModel
+            name="cin"
+            #cin="ngModel"
+          ></ion-input>
+        </ion-item>
+        <span style="color: red" *ngIf="!cin.valid && cin.touched"
+          >Entrer CIN
+        </span> -->
+
+        <ion-item lines="none">
+          <ion-label position="stacked" class="text"
+            >Nom & Prénom<ion-text color="danger">*</ion-text></ion-label
+          >
+          <ion-input
+            placeholder="réponse courte"
+            type="text"
+            required
+            id="username"
+            ngModel
+            [ngModel]="patientid?.username"
+            name="username"
+            #username="ngModel"
+          ></ion-input>
+        </ion-item>
+        <span style="color: red" *ngIf="!username.valid && username.touched"
+          >Entrer nom & prenom
+        </span>
+      </ion-card>
+
+      <ion-card>
+        <ion-item>
+          <ion-label position="stacked" class="text"
+            >Numéro de téléphone</ion-label
+          >
+          <ion-input
+            placeholder="réponse courte"
+            type="text"
+            required
+            id="telephone"
+            ngModel
+            [ngModel]="patientid?.telephone"
+            name="telephone"
+            #telephone="ngModel"
+          ></ion-input>
+        </ion-item>
+        <span style="color: red" *ngIf="!telephone.valid && telephone.touched"
+          >Entrer Télephone
+        </span>
+
+        <ion-item lines="none">
+          <ion-label position="stacked" class="text">Adresse mail</ion-label>
+          <ion-input
+            placeholder="réponse courte"
+            type="text"
+            required
+            id="email"
+            ngModel
+            [ngModel]="patientid?.email"
+            name="email"
+            #email="ngModel"
+          ></ion-input>
+        </ion-item>
+        <span style="color: red" *ngIf="!telephone.valid && telephone.touched"
+          >Entrer Email
+        </span>
+      </ion-card>
+      <ion-card>
+        <ion-item lines="none">
+          <ion-label position="stacked" class="text">Gender</ion-label>
+
+          <ion-radio-group
+            id="gender"
+            ngModel
+            name="gender"
+            #gender="ngModel"
+            [ngModel]="patientid?.gender"
+          >
+            <ion-item lines="none">
+              <ion-label color="primary1">femme</ion-label>
+              <ion-radio slot="start" value="femme"></ion-radio>
+            </ion-item>
+            <ion-item lines="none">
+              <ion-label color="primary1">homme</ion-label>
+              <ion-radio slot="start" value="homme"></ion-radio>
+            </ion-item> </ion-radio-group
+        ></ion-item>
+      </ion-card>
+      <ion-card>
+        <ion-item lines="none">
+          <ion-datetime
+            displayFormat="MMM DD,YYYY"
+            id="dateNaiss"
+            showDefaultButtons="false;"
+            show-default-time-label="false"
+            ngModel
+            name="dateNaiss"
+            #dateNaiss="ngModel"
+            [value]="dateValue"
+            size="cover"
+            (ionChange)="dateChanged(dateNaiss.value)"
+          ></ion-datetime>
+          <!-- <ion-icon
+            icon="calendar-outline"
+            slot="start"
+            color="primary"
+          ></ion-icon>
+          <ion-label
+            ><ion-text class="date"
+              >Date de naissance<ion-text color="danger">*</ion-text></ion-text
+            ></ion-label
+          >
+          <ion-text slot="end">{{ formattedString }}</ion-text> -->
+        </ion-item>
+        <!-- <ion-modal trigger="open-modal" mode="md">
+          <ng-template>
+            <ion-content>
+              <ion-datetime
+                id="dateNaiss"
+                ngModel
+                name="dateNaiss"
+                #dateNaiss="ngModel"
+                [value]="dateValue"
+                size="cover"
+                (ionChange)="dateChanged(dateNaiss.value)"
+                showDefaultButtons="true"
+                (ionCancel)="showPicker = false"
+              ></ion-datetime>
+            </ion-content>
+          </ng-template>
+        </ion-modal> -->
+      </ion-card>
+
+      <ion-card>
+        <br />
+        <ion-label position="stacked" class="text ion-padding"
+          >Antécédents cardio-vasculaires<ion-text color="danger"
+            >*</ion-text
+          ></ion-label
+        >
+        <ion-list>
+          <ion-item lines="none" *ngFor="let entry of _antecedantlist">
+            <ion-label>{{ entry.name }}</ion-label>
+            <ion-checkbox
+              mode="md"
+              id="antecedant"
+              ngModel
+              name="{{ entry.name }}"
+              #antecedant="ngModel"
+              slot="end"
+              [ngModel]="patientid?.antecedant"
+              [(ngModel)]="entry.isSelected"
+              (click)="onchange()"
+              [ngModelOptions]="{ standalone: true }"
+            ></ion-checkbox>
+          </ion-item>
+        </ion-list>
+      </ion-card>
+      <ion-button
+        color="primary"
+        fill="outline"
+        class="valider"
+        size="large"
+        expand="block"
+        (click)="updatePatient(f)"
+        [disabled]="!f.valid"
+        >Modifier</ion-button
+      >
+    </form>
+    <!-- EDit -->
+  </ion-content>
+</ion-app>

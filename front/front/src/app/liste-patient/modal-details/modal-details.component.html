@@ -1,0 +1,60 @@
+<ion-app>
+  <ion-header>
+    <ion-toolbar color="primary">
+      <h6 class="ion-padding">Détails patient</h6>
+      <ion-button
+        color="primary1"
+        slot="end"
+        (click)="dismissModal()"
+        class="ion-margin"
+        shape="round"
+        >X</ion-button
+      >
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-item style="border-radius: 12px" color="couleurbase" class="ion-margin">
+    <ion-avatar slot="start">
+      <img src="assets/123.jpg" />
+    </ion-avatar>
+    <ion-label class="detaills">
+      <p>Patient,</p>
+
+      <h3>{{ patientid?.username }}</h3>
+    </ion-label>
+  </ion-item>
+  <ion-content color="primary">
+    <ion-list class="details">
+      <!-- <div class="header"> -->
+      <ion-item color="couleurbase" class="item1">
+        <ion-icon name="transgender" color="primary"></ion-icon>
+        <h3>{{ patientid?.gender }}</h3></ion-item
+      >
+
+      <ion-item color="couleurbase">
+        <ion-icon name="call" color="primary"></ion-icon>
+
+        <h3>{{ patientid?.telephone }}</h3>
+      </ion-item>
+
+      <ion-item color="couleurbase">
+        <ion-icon name="calendar-outline" color="primary"></ion-icon>
+        <h3>{{ patientid?.dateNaiss }}</h3></ion-item
+      >
+
+      <ion-item lines="none" color="couleurbase" class="item4">
+        <ion-icon name="medkit" color="primary"></ion-icon>
+        <h3>{{ patientid?.antecedant }}</h3>
+      </ion-item></ion-list
+    >
+    <div align="center">
+      <ion-button
+        color="primary1"
+        class="ion-margin"
+        shape="round"
+        [routerLink]="['/patient-update', patientid?.id]"
+        >modifier Patient</ion-button
+      >
+    </div>
+  </ion-content>
+</ion-app>

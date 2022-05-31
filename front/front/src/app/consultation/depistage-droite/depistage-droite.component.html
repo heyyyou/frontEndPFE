@@ -1,0 +1,75 @@
+<div *ngIf="!isLoadingAI">
+  <div class="ajouterdelet">
+    <!-- <ion-button
+      *ngIf="photoService.photos.length <= 4; else thenBlock" -->
+
+    <ng-template #thenBlock>
+      <ion-button fill="solid" color="primary" (click)="presentToast()"
+        >+</ion-button
+      ></ng-template
+    >
+  </div>
+  <div>
+    <ion-card class="cardfull">
+      <input
+        type="file"
+        accept="image/*"
+        multiple
+        class="select-profile-picture custom-file-input"
+        (change)="selectFiles($event)"
+        [disabled]="images.length != 0"
+      />
+      <div class="trash" style="text-align: center" *ngIf="images.length != 0">
+        <ion-button fill="outline" color="priamry" (click)="showActionSheet()"
+          ><ion-icon name="trash"></ion-icon
+        ></ion-button>
+      </div>
+
+      <div *ngIf="images.length === 0">
+        <img [src]="'assets/add.jpg'" />
+      </div>
+      <swiper [config]="config" class="swiper-slide">
+        <ng-template swiperSlide *ngFor="let file of images; let i = index">
+          <!-- <div class="bouttontrash">
+            <ion-button
+              fill="outline"
+              color="priamry"
+              (click)="showActionSheet(i)"
+              ><ion-icon name="trash"></ion-icon
+            ></ion-button> -->
+
+          <img
+            [src]="file"
+            onerror="this.src='assets/add.jpg'"
+            alt="alternative"
+            tappable
+            (click)="openPreview(file)"
+          />
+        </ng-template>
+      </swiper>
+    </ion-card>
+  </div>
+  <ion-button
+    expand="block"
+    size="large"
+    fill="outline"
+    class="AImodel"
+    shape="round"
+    [disabled]="service.selectedPatient === null"
+    (click)="uploadFiles()"
+    >Ajouter Consultation</ion-button
+  >
+
+  <ion-button
+    expand="block"
+    size="large"
+    class="AImodel"
+    shape="round"
+    (click)="presentLoading()"
+    [disabled]="service.selectedPatient === null"
+    >AI Modal</ion-button
+  >
+</div>
+<ion-content *ngIf="isLoadingAI">
+  <app-loading-ai></app-loading-ai>
+</ion-content>

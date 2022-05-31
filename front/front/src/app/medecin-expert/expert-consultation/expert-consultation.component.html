@@ -1,0 +1,74 @@
+<div class="avis ion-padding ion-margin">
+  <div>
+    <ion-label class="avisExpert ion-margin">Donnez un avis</ion-label>
+  </div>
+  <div class="ion-margin">
+    <ion-item class="itemborder">
+      <ion-label class="comments">choisissez une maladie</ion-label>
+      <ion-select
+        interface="popover"
+        [(ngModel)]="selected_maladie"
+        (ionChange)="choose()"
+      >
+        <ion-select-option *ngFor="let item of maladie" value="{{ item.value }}"
+          >{{ item.nom }}
+        </ion-select-option>
+      </ion-select>
+    </ion-item>
+    <ion-item class="itemborder" lines="none">
+      <ion-label class="comments">Gravité</ion-label>
+      <ion-select interface="popover">
+        <ion-select-option *ngFor="let item of gravite">{{
+          item.valeur
+        }}</ion-select-option>
+      </ion-select>
+    </ion-item>
+  </div>
+  <ion-item class="itemborder">
+    <ion-item lines="none">
+      <ion-textarea placeholder="ajouter un commentaire..."> </ion-textarea>
+    </ion-item>
+  </ion-item>
+</div>
+<div class="div">
+  <ion-button
+    color="primary2"
+    size="Medium"
+    class="ion-margin"
+    id="trigger-button"
+    (click)="truthClick()"
+    [disabled]="disableButton || choixMaladie === null"
+    >valider
+  </ion-button>
+  <ion-modal trigger="trigger-button">
+    <ng-template>
+      <ion-header>
+        <ion-icon
+          name="close-outline"
+          (click)="dismissModal()"
+          class="closeModel"
+        ></ion-icon>
+      </ion-header>
+      <ion-content>
+        <ion-grid>
+          <ion-row>
+            <ion-col size="12" class="ion-padding">
+              <ion-text color="white" class="evaluer"
+                >veuillez évaluer la consultation avec AI Model</ion-text
+              >
+            </ion-col>
+
+            <ion-col size="12" class="ion-padding">
+              <app-stars-rating
+                (click)="dismissModal()"
+                class="starsModel"
+              ></app-stars-rating
+            ></ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-content>
+    </ng-template>
+  </ion-modal>
+</div>
+
+<!-- k yebda expert 7al -->

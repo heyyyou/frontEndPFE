@@ -5,11 +5,13 @@
     {
       "files": ["*.ts"],
       "parserOptions": {
-        "project": ["tsconfig.json", "e2e/tsconfig.json"],
-        "createDefaultProgram": true
+        "project": ["tsconfig.json"],
+        "createDefaultProgram": true,
+        "allowJs": true
       },
       "extends": [
         "plugin:@angular-eslint/ng-cli-compat",
+        "plugin:@typescript-eslint/parser",
         "plugin:@angular-eslint/ng-cli-compat--formatting-add-on",
         "plugin:@angular-eslint/template/process-inline-templates"
       ],

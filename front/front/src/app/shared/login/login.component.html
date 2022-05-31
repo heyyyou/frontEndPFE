@@ -1,0 +1,40 @@
+<!-- par defaut on a medecinGen -->
+<ion-header no-border>
+  <ion-toolbar
+    color="primary"
+    style="border-bottom-left-radius: 12px; border-bottom-right-radius: 12px"
+  >
+    <ion-buttons>
+      <ion-back-button defaultHref="login"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <div class="login-section ion-padding">
+    <div class="heading ion-padding">
+      <h1>Welcome Doctor !</h1>
+      <p>S'inscrire</p>
+    </div>
+
+    <div class="segment ion-margin">
+      <ion-segment mode="ios" [(ngModel)]="segment" color="primary">
+        <ion-segment-button value="droite">
+          <ion-icon name="person" color="primary"></ion-icon
+          ><ion-text color="primary1"> Médecin non Expert</ion-text>
+        </ion-segment-button>
+        <ion-segment-button value="gauche">
+          <ion-icon name="person" color="primary"></ion-icon>
+          <ion-text color="primary1">
+            Expert Ophtalmologue</ion-text
+          ></ion-segment-button
+        >
+      </ion-segment>
+    </div>
+    <ng-container [ngSwitch]="segment">
+      <app-signupexpert *ngSwitchCase="'gauche'"> </app-signupexpert>
+      <app-signupmed *ngSwitchCase="'droite'"></app-signupmed>
+    </ng-container>
+
+    <!-- </ion-content> -->
+  </div></ion-content
+>

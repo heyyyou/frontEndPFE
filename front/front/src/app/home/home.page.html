@@ -1,138 +1,105 @@
-<ion-app>
-  <ion-header class="ion-no-border">
-    <ion-toolbar
-      color="favorite"
-      style="border-bottom-left-radius: 22px; border-bottom-right-radius: 22px"
-      ><ion-buttons>
-        <ion-button class="bordered" fill="solid" color="light">
-          <ion-icon name="arrow-back-outline"></ion-icon
-        ></ion-button>
-      </ion-buttons>
-      <div class="image-cropper">
-        <img src="assets/mer.jpg" class="rounded" />
-      </div>
-      <br />
-      <ion-item lines="none" style="border-radius: 15px">
-        <ion-label
-          ><ion-text color="new2">choisissez un patient</ion-text>
-        </ion-label>
-        <ionic-selectable
-          [(ngModel)]="selected_users"
-          [items]="users"
-          itemValueField="id"
-          itemTextField="name"
-          lines="none"
-          style="border-radius: 15px"
-        >
-          <ng-template ionicSelectableHeaderTemplate>
-            <div class="class">
-              <ion-buttons>
-                <ion-button class="bordered" fill="solid" color="light">
-                  <ion-icon name="arrow-back-outline"></ion-icon
-                ></ion-button>
-              </ion-buttons>
-              <ion-searchbar
-                color="light"
-                class="cancel-button-icon"
-                placeholder="cherchez un patient"
-                style="border-radius: 111px"
-                lines="none"
-              ></ion-searchbar>
-            </div>
-          </ng-template>
-        </ionic-selectable>
-      </ion-item>
-      <br />
-      <br />
-    </ion-toolbar>
-    <br />
-    <!-- <ion-segment
-      [(ngModel)]="segment"
-      style="border-radius: 30px"
-      color="primary"
-      size="small"
-    >
-      <ion-segment-button value="droite"
-        ><ion-icon name="eye-outline" color="favorites"></ion-icon
-        ><ion-text color="favorites"> Oeil Droite</ion-text>
-      </ion-segment-button>
-      <ion-segment-button value="gauche">
-        <ion-icon name="eye-outline" color="favorites"></ion-icon>
-        <ion-text color="favorites"> Oeil Gauche</ion-text></ion-segment-button
-      > </ion-segment -->
-    <br />
-  </ion-header>
-  <ion-segment
-    [(ngModel)]="segment"
-    style="border-radius: 30px"
-    color="primary"
-    size="small"
-  >
-    <ion-segment-button value="droite"
-      ><ion-icon name="eye-outline" color="favorites"></ion-icon
-      ><ion-text color="favorites"> Oeil Droite</ion-text>
-    </ion-segment-button>
-    <ion-segment-button value="gauche">
-      <ion-icon name="eye-outline" color="favorites"></ion-icon>
-      <ion-text color="favorites"> Oeil Gauche</ion-text></ion-segment-button
-    > </ion-segment
-  ><br />
-  <ion-content>
-    <div class="ajouterdelet">
-      <ion-button
-        *ngIf="photoService.photos.length<=4 ;else thenBlock "
-        fill="outline"
-        color="success"
-        (click)="photoService.addNewToGallery()"
-        >+</ion-button
-      >
-      <ng-template #thenBlock>
-        <ion-button fill="outline" color="success" (click)="presentToast()"
-          >+</ion-button
-        ></ng-template
-      >
-    </div>
-    <div>
-      <ion-card class="cardfull">
-        <swiper [config]="config" class="swiper-slide">
-          <ng-template
-            swiperSlide
-            *ngFor="let imge of photoService.photos;  let i = index"
-          >
-            <ion-button
-              fill="outline"
-              color="danger"
-              (click)="showActionSheet(imge, i)"
-              >-</ion-button
-            >
-            <img
-              [src]="imge.webviewPath"
-              onerror="this.src='assets/add.jpg'"
-              alt="alternative"
-              tappable
-              (click)="openPreview(imge.webviewPath)"
-            />
-          </ng-template>
-        </swiper>
-      </ion-card>
-    </div>
-
-    <ion-button expand="block" size="large" class="AImodel"
-      >AI Modal</ion-button
-    >
-  </ion-content>
-
-  <!-- ion-grid>
-  <ion-row>
-    <ion-col
-      size="6"
-      *ngFor="let photo of photoService.photos; index as position"
-    >
-      <ion-img
-        [src]="photo.webviewPath"
-        (click)="showActionSheet(photo, position)"
-      ></ion-img>
-    </ion-col>
-  </ion-row>
+<!-- <ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button menu="main-menu"></ion-menu-button>
+    </ion-buttons> </ion-toolbar
+></ion-header> -->
+<!-- pour l expert  -->
+<!-- <ion-app
+  ><ion-header></ion-header
+  ><ion-content><ion-button (click)="fetch()">sss</ion-button></ion-content>
 </ion-app> -->
-</ion-app>
+<app-liste-consultation></app-liste-consultation>
+<!-- <div class="notification">
+      <ion-buttons slot="end">
+        <ion-icon
+          size="large"
+          color="primary"
+          name="notifications-sharp"
+          (click)="notificationAvis()"
+        >
+        </ion-icon>
+        <ion-badge color="danger" class="badge">5</ion-badge>
+      </ion-buttons>
+    </div>
+  </ion-toolbar>
+</ion-header>
+<ion-content
+  [fullscreen]="true"
+  color="primary"
+  class="ion-margin"
+  style="border-radius: 12px"
+>
+  <ion-app>
+    <ion-header translucent>
+      <ion-toolbar>
+        <ion-title>Card</ion-title>
+      </ion-toolbar> </ion-header
+    >,
+    <ion-content fullscreen class="ion-padding">
+      <ion-card class="ion-margin">
+        <img src="assets/consultationn.jpg" />
+        <ion-card-header>
+          <ion-card-title color="primary"
+            >Consultation ophtalmologique</ion-card-title
+          >
+        </ion-card-header>
+        <ion-card-content>
+          Founded in 1829 on an isthmus between Lake Monona and Lake Mendota,
+          Madison was named the capital of the Wisconsin Territory in 1836.
+        </ion-card-content>
+        <ion-item>
+          <ion-button
+            fill="outline"
+            slot="end"
+            shape="round"
+            (click)="listeConsultation()"
+          >
+            Liste Consultations</ion-button
+          ></ion-item
+        >
+      </ion-card>
+      <ion-card class="ion-margin">
+        <img src="assets/as.jpg" />
+        <ion-card-header>
+          <ion-card-title color="primary"
+            >Avis Expert ophtalmologue
+          </ion-card-title>
+        </ion-card-header>
+        <ion-card-content>
+          Founded in 1829 on an isthmus between Lake Monona and Lake Mendota,
+          Madison was named the capital of the Wisconsin Territory in 1836.
+        </ion-card-content>
+        <ion-item>
+          <ion-button
+            fill="outline"
+            slot="end"
+            (click)="listeAvis()"
+            shape="round"
+            >Liste Avis</ion-button
+          ></ion-item
+        >
+      </ion-card>
+      <ion-card class="ion-margin">
+        <img src="assets/patient.jpg" />
+        <ion-card-header>
+          <ion-card-title color="primary">Les patients</ion-card-title>
+        </ion-card-header>
+        <ion-card-content>
+          Founded in 1829 on an isthmus between Lake Monona and Lake Mendota,
+          Madison was named the capital of the Wisconsin Territory in 1836.
+        </ion-card-content>
+        <ion-item>
+          <ion-button
+            fill="outline"
+            slot="end"
+            shape="round"
+            (click)="patient()"
+          >
+            Liste Patients</ion-button
+          ></ion-item
+        >
+      </ion-card>
+    </ion-content>
+  </ion-app>
+</ion-content> -->

@@ -1,0 +1,70 @@
+<!-- ya mariem rak bsh dji text mn table avisExpert generaliste -->
+<div class="avis ion-margin ion-padding">
+  <div>
+    <ion-label class="avisExpert ion-margin">avis expert :</ion-label>
+  </div>
+  <div class="text">
+    <div class="ion-margin">
+      <ion-label class="oeil">Oeil Droite :</ion-label
+      ><ion-text class="ion-margin"
+        >{{ ConsultationMedService.consultation_id.oeil_droite.maladie }}
+      </ion-text>
+
+      <ion-text
+        >niveau :
+        {{
+          ConsultationMedService.consultation_id.oeil_droite.gravite
+        }}</ion-text
+      >
+    </div>
+    <div class="ion-margin">
+      <ion-label class="oeil">Oeil Gauche:</ion-label
+      ><ion-text class="ion-margin"
+        >{{ ConsultationMedService.consultation_id.oeil_gauche.maladie }}
+      </ion-text>
+
+      <ion-text
+        >niveau :
+        {{
+          ConsultationMedService.consultation_id.oeil_gauche.gravite
+        }}</ion-text
+      >
+    </div>
+    <ion-item
+      lines="none"
+      color="aviscolor"
+      *ngIf="
+        ConsultationMedService.consultation_id.commentaire.length;
+        is: null
+      "
+    >
+      <ion-button id="trigger-button" slot="end" fill="primary"
+        ><ion-icon name="chatbox-outline" color="primary"></ion-icon>
+      </ion-button>
+    </ion-item>
+
+    <ion-modal trigger="trigger-button" mode="md">
+      <ng-template>
+        <ion-header>
+          <ion-icon name="close-outline" (click)="dismissModal()"></ion-icon>
+        </ion-header>
+        <ion-content>
+          <ion-item>
+            <ion-avatar slot="start">
+              <img src="assets/fatma.jpg" />
+            </ion-avatar>
+            <ion-label>
+              <p>Expert Ophtalmologue,</p>
+              <h3>Mariem Chelli,</h3>
+            </ion-label>
+          </ion-item>
+          <ion-list class="details ion-padding">
+            <div class="comm">Commentaire Expert</div>
+            <h5>{{ ConsultationMedService.consultation_id.commentaire }}</h5>
+          </ion-list>
+          <!-- </div> -->
+        </ion-content>
+      </ng-template>
+    </ion-modal>
+  </div>
+</div>

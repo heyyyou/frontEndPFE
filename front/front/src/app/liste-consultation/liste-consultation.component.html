@@ -1,0 +1,217 @@
+<ion-app>
+  <div class="menu">
+    <ion-menu
+      side="start"
+      menuId="first1"
+      contentId="main1"
+      swipe-gesture="true"
+    >
+      <ion-content>
+        <div class="menu-header-bg2"></div>
+        <div class="header-content">
+          <img src="{{ imagePath }}" />
+          <ion-label>
+            <h2>Dr.{{ name }}</h2>
+            <p>Médecin non Ophtalmologue</p>
+          </ion-label>
+        </div>
+        <ion-list class="menu-items ion-margin" lines="none">
+          <ion-item (click)="profil()">
+            <ion-icon
+              name="person-outline"
+              class="active ion-padding"
+            ></ion-icon>
+            <ion-text>Profil</ion-text>
+          </ion-item>
+          <ion-item (click)="patient()">
+            <ion-icon name="people-outline" class="ion-padding"></ion-icon>
+            <ion-text> Patient</ion-text>
+          </ion-item>
+          <ion-item (click)="home()">
+            <ion-icon name="clipboard-outline" class="ion-padding"></ion-icon>
+            <ion-text> Consultations</ion-text>
+          </ion-item>
+          <ion-item (click)="notification()">
+            <ion-icon
+              name="notifications-outline"
+              class="ion-padding"
+            ></ion-icon>
+            <ion-badge
+              *ngIf="nbr !== 0 && service.isConsulted == false"
+              color="danger"
+              class="badge"
+              >{{ nbr }}</ion-badge
+            >
+            <ion-text>notifications</ion-text>
+          </ion-item>
+          <ion-item (click)="statistique()">
+            <ion-icon name="pie-chart-outline" class="ion-padding"></ion-icon>
+            <ion-text>Statistique</ion-text>
+          </ion-item>
+
+          <ion-item (click)="parametre()">
+            <ion-icon name="options-outline" class="ion-padding"></ion-icon
+            ><ion-text>paramètres</ion-text>
+          </ion-item>
+          <ion-item class="logout" (click)="logout()">
+            <ion-icon
+              name="log-out-outline"
+              class="ion-padding"
+              color="primary"
+            ></ion-icon
+            ><ion-text>Log out</ion-text>
+          </ion-item>
+        </ion-list>
+      </ion-content>
+    </ion-menu>
+  </div>
+  <ion-app class="content">
+    <ion-router-outlet id="main1"></ion-router-outlet>
+
+    <ion-header class="ion-no-border">
+      <ion-toolbar class="border-radius-bottom">
+        <div class="flex-bloc">
+          <ion-buttons slot="start">
+            <ion-toolbar>
+              <ion-menu-button menu="first1"> </ion-menu-button>
+              <ion-badge
+                *ngIf="nbr !== 0 && service.isConsulted == false"
+                color="danger"
+                class="badge"
+                >{{ nbr }}</ion-badge
+              >
+            </ion-toolbar>
+          </ion-buttons>
+
+          <ion-avatar slot="end" class="ion-margin avatar">
+            <img src="{{ imagePath }}" />
+          </ion-avatar>
+        </div>
+      </ion-toolbar>
+      <ion-searchbar
+        *ngIf="nbrConsultation !== 0"
+        class="searchBar ion-padding"
+        placeholder="cherchez une consultation"
+        [(ngModel)]="texte"
+      ></ion-searchbar>
+    </ion-header>
+
+    <ion-content>
+      <div *ngIf="nbrConsultation === 0">
+        <img class="pas" src="assets/14.png" />
+      </div>
+      <div *ngIf="nbrConsultation === 0">
+        <ion-text class="required" color="primary"
+          >"vous n'avez pas aucune consultation pour le moment"</ion-text
+        >
+      </div>
+      <ion-card *ngFor="let item of consultation">
+        <img class="image" src="assets/6.jpg" />
+        <ion-item lines="none">
+          <!-- <ion-col class="ion-margin"> -->
+          <ion-buttons slot="end">
+            <!-- <ion-button
+              color="primary"
+              [routerLink]="['/modifConsult', item?.id, item?.patient?.id]"
+              ><ion-icon name="pencil"></ion-icon>
+            </ion-button> -->
+            <ion-button color="primary" (click)="suppConsultation(item.id)"
+              ><ion-icon name="trash"></ion-icon>
+            </ion-button> </ion-buttons
+        ></ion-item>
+
+        <ion-card-header>
+          <h4>Patient,</h4>
+
+          <ion-card-title>{{ item?.patient?.username }}</ion-card-title>
+        </ion-card-header>
+        <ion-card-content>
+          <div>
+            <ion-text color="primary">CIN :</ion-text>
+            {{ item?.patient?.cin }}
+          </div>
+          <div>
+            <ion-text color="primary">Antécèdant :</ion-text>
+            {{ item?.patient?.antecedant }}
+          </div>
+          <div>
+            <ion-text color="primary">Date de Naissance :</ion-text>
+            {{ item?.patient?.dateNaiss }}
+          </div>
+
+          <!-- <div class="droite">
+            <ion-text color="primary">oeil droite :</ion-text>
+            {{ item.AImodelD }}
+          </div>
+          <div class="gauche">
+            <ion-text color="primary">oeil gauche :</ion-text>
+            {{ item.AImodelG }}
+          </div> -->
+          <br />
+          <ion-col>
+            <div class="date">
+              <ion-icon name="calendar-outline" class="calendar"> </ion-icon>
+              {{ item.dateConsult }}
+            </div>
+          </ion-col>
+          <div *ngIf="item?.autoDetection?.id !== null">
+            <ion-text color="success"> avec AI Model</ion-text>
+          </div>
+          <div *ngIf="item?.autoDetection?.id === null">
+            <ion-text color="danger"> sans AI Model</ion-text>
+          </div>
+          <ion-col class="flex-bloc">
+            <div *ngIf="item.avisExpert">
+              <ion-icon name="ellipse-sharp" color="success"></ion-icon>
+            </div>
+            <div *ngIf="item.avisExpert === false">
+              <ion-icon name="ellipse-sharp" color="Medium"></ion-icon>
+            </div>
+
+            <div class="details" *ngIf="item.autoDetection?.id === null">
+              <ion-button
+                fill="outline"
+                shape="round"
+                [routerLink]="[
+                  '/DetailsWithoutAutoConsult',
+                  item?.id,
+                  item.patient?.id
+                ]"
+                >Details</ion-button
+              >
+            </div>
+            <div class="details" *ngIf="item?.autoDetection?.id !== null">
+              <ion-button
+                fill="outline"
+                shape="round"
+                [routerLink]="[
+                  '/detailConsultation',
+                  item?.id,
+                  item.patient?.id,
+                  item.autoDetection?.id
+                ]"
+                >Details</ion-button
+              >
+            </div>
+          </ion-col>
+        </ion-card-content>
+        <div *ngIf="item.rating">
+          <img src="./assets/star.png" style="height: 22px; width: 22px" />
+          {{ item.rating }}/6
+          <br />
+        </div>
+
+        <!-- <h4 *ngIf="currentRatingValue">
+          The value selected from the stars component is
+          <h2>{{ currentRatingValue }}</h2>
+        </h4> -->
+      </ion-card>
+    </ion-content>
+
+    <ion-footer>
+      <ion-fab-button color="primary" (click)="newConsultation()">
+        <ion-icon name="add"></ion-icon>
+      </ion-fab-button>
+    </ion-footer>
+  </ion-app>
+</ion-app>
